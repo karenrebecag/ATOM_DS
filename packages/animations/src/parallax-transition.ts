@@ -22,7 +22,7 @@
  *
  * ## Usage
  * ```ts
- * import { runParallaxLeave, runParallaxEnter, runParallaxOnce } from '@anthropic-atom/animations';
+ * import { runParallaxLeave, runParallaxEnter, runParallaxOnce } from '@atomchat/animations';
  *
  * // In Barba.js transition hooks:
  * async leave({ current }) { await runParallaxLeave(current.container); }

@@ -17,7 +17,7 @@
  *
  * ## Usage
  * ```ts
- * import { initSidebarCollapse } from '@anthropic-atom/animations';
+ * import { initSidebarCollapse } from '@atomchat/animations';
  *
  * const cleanup = initSidebarCollapse();
  * cleanup();

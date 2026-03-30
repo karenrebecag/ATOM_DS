@@ -1,5 +1,5 @@
 /**
- * @module @anthropic-atom/animations
+ * @module @atomchat/animations
  * Animation system entry point.
  *
  * Import this module to initialize all animation systems at once,
@@ -7,7 +7,7 @@
  *
  * ## Usage (all at once)
  * ```ts
- * import { initAllAnimations } from '@anthropic-atom/animations';
+ * import { initAllAnimations } from '@atomchat/animations';
  *
  * const cleanup = initAllAnimations();
  * // ... on page leave:
@@ -16,8 +16,8 @@
  *
  * ## Usage (individual)
  * ```ts
- * import { initReveal } from '@anthropic-atom/animations';
- * import { initMagnetic } from '@anthropic-atom/animations';
+ * import { initReveal } from '@atomchat/animations';
+ * import { initMagnetic } from '@atomchat/animations';
  *
  * initReveal();
  * initMagnetic();

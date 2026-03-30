@@ -28,7 +28,7 @@
  * ```
  *
  * ```ts
- * import { initShimmerText } from '@anthropic-atom/animations';
+ * import { initShimmerText } from '@atomchat/animations';
  *
  * const cleanup = initShimmerText();
  * // Later:

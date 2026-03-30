@@ -1,9 +1,12 @@
 {
-  "name": "@anthropic-atom/css",
+  "name": "@atomchat/css",
   "version": "0.1.0",
   "description": "ATOM Design System — Component styles and utilities",
   "main": "./dist/atom.css",
   "style": "./dist/atom.css",
+  "publishConfig": {
+    "access": "public"
+  },
   "exports": {
     ".": "./dist/atom.css",
     "./atom.css": "./dist/atom.css"
@@ -16,7 +19,7 @@
     "dev": "vite build --watch"
   },
   "peerDependencies": {
-    "@anthropic-atom/tokens": "workspace:*"
+    "@atomchat/tokens": "workspace:*"
   },
   "devDependencies": {
     "vite": "^5.0.0",

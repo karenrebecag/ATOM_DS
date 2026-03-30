@@ -1,4 +1,4 @@
-# @anthropic-atom/animations
+# @atomchat/animations
 
 GSAP animation system for ATOM websites and applications.
 
@@ -7,7 +7,7 @@ GSAP animation system for ATOM websites and applications.
 ## Installation
 
 ```bash
-pnpm add @anthropic-atom/animations gsap
+pnpm add @atomchat/animations gsap
 ```
 
 ### Peer Dependencies
@@ -31,7 +31,7 @@ pnpm add lenis @barba/core @barba/prefetch
 ### All animations at once
 
 ```ts
-import { initAllAnimations } from "@anthropic-atom/animations";
+import { initAllAnimations } from "@atomchat/animations";
 
 // After DOM is ready:
 const cleanup = initAllAnimations();
@@ -49,7 +49,7 @@ const cleanup = initAllAnimations(document.querySelector("main")!);
 ### Individual modules
 
 ```ts
-import { initReveal, initMagnetic } from "@anthropic-atom/animations";
+import { initReveal, initMagnetic } from "@atomchat/animations";
 
 const cleanReveal = initReveal({ scope: mySection });
 const cleanMagnetic = initMagnetic();
@@ -123,7 +123,7 @@ import {
   setMotionLevel,
   watchMotionPreference,
   isMotionExempt,
-} from "@anthropic-atom/animations";
+} from "@atomchat/animations";
 
 // Quick boolean guard
 if (prefersReducedMotion()) return;
@@ -170,10 +170,10 @@ All other modules check motion **inside event handlers** and apply instant state
 
 ### Timing Constants
 
-Aligned with `@anthropic-atom/tokens` motion tokens:
+Aligned with `@atomchat/tokens` motion tokens:
 
 ```ts
-import { DURATION, STAGGER } from "@anthropic-atom/animations";
+import { DURATION, STAGGER } from "@atomchat/animations";
 
 DURATION.quarter       // 0.15s
 DURATION.half          // 0.3s
@@ -349,7 +349,7 @@ See each module's JSDoc header for its complete list of supported attributes.
   <slot />
 
   <script>
-    import { initAllAnimations } from "@anthropic-atom/animations";
+    import { initAllAnimations } from "@atomchat/animations";
 
     const cleanup = initAllAnimations();
 
@@ -363,7 +363,7 @@ See each module's JSDoc header for its complete list of supported attributes.
 
 ```astro
 <script>
-  import { initAllAnimations, initSmoothScroll, initBarba } from "@anthropic-atom/animations";
+  import { initAllAnimations, initSmoothScroll, initBarba } from "@atomchat/animations";
 
   // First page load
   initSmoothScroll();
@@ -376,7 +376,7 @@ See each module's JSDoc header for its complete list of supported attributes.
 
 ```tsx
 import { useEffect, useRef } from "react";
-import { initReveal, initMagnetic } from "@anthropic-atom/animations";
+import { initReveal, initMagnetic } from "@atomchat/animations";
 
 export function AnimatedSection({ children }: { children: React.ReactNode }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -403,7 +403,7 @@ export function AnimatedSection({ children }: { children: React.ReactNode }) {
 ```vue
 <script setup lang="ts">
 import { onMounted, onBeforeUnmount, ref } from "vue";
-import { initReveal, type CleanupFn } from "@anthropic-atom/animations";
+import { initReveal, type CleanupFn } from "@atomchat/animations";
 
 const container = ref<HTMLElement>();
 let cleanup: CleanupFn;
@@ -426,7 +426,7 @@ onBeforeUnmount(() => cleanup?.());
 
 ```html
 <script type="module">
-  import { initAllAnimations } from "https://cdn.jsdelivr.net/npm/@anthropic-atom/animations/dist/index.js";
+  import { initAllAnimations } from "https://cdn.jsdelivr.net/npm/@atomchat/animations/dist/index.js";
 
   document.addEventListener("DOMContentLoaded", () => {
     const cleanup = initAllAnimations();
@@ -450,7 +450,7 @@ Every `init*` function returns a `CleanupFn` that:
 If there's nothing to animate (element not found, motion reduced for vestibular modules), the function returns `NOOP` — a shared no-op function that avoids unnecessary allocations.
 
 ```ts
-import { NOOP } from "@anthropic-atom/animations";
+import { NOOP } from "@atomchat/animations";
 
 // NOOP is a single shared reference: () => {}
 ```
@@ -467,7 +467,7 @@ import type {
   CleanupFn,         // () => void
   AnimationOptions,  // { duration?, ease?, delay? }
   MotionLevel,       // "full" | "reduced" | "none"
-} from "@anthropic-atom/animations";
+} from "@atomchat/animations";
 ```
 
 ---

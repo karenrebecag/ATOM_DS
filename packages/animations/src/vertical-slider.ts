@@ -28,7 +28,7 @@
  *
  * ## Usage
  * ```ts
- * import { initVerticalSlider } from '@anthropic-atom/animations';
+ * import { initVerticalSlider } from '@atomchat/animations';
  *
  * const cleanup = initVerticalSlider();
  * cleanup();

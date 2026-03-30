@@ -22,7 +22,7 @@
  * ```
  *
  * ```ts
- * import { initParallax, initParallaxScale } from '@anthropic-atom/animations';
+ * import { initParallax, initParallaxScale } from '@atomchat/animations';
  *
  * const cleanups = [initParallax(), initParallaxScale()];
  * // Later:

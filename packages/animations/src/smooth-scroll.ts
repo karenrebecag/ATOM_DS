@@ -17,7 +17,7 @@
  *
  * ## Usage
  * ```ts
- * import { initSmoothScroll, destroySmoothScroll, getLenis } from '@anthropic-atom/animations';
+ * import { initSmoothScroll, destroySmoothScroll, getLenis } from '@atomchat/animations';
  *
  * const lenis = initSmoothScroll();
  * // ... on page leave:

@@ -1,7 +1,7 @@
 /* ============================================
-   @anthropic-atom/css — utilities/glass.css
+   @atomchat/css — utilities/glass.css
    Glass/frosted effects with rgba() + var()
-   Deferred from @anthropic-atom/tokens (DTCG limitation)
+   Deferred from @atomchat/tokens (DTCG limitation)
 ============================================ */
 
 :root {

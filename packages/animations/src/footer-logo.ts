@@ -12,7 +12,7 @@
  *
  * ## Usage
  * ```ts
- * import { initFooterLogo } from '@anthropic-atom/animations';
+ * import { initFooterLogo } from '@atomchat/animations';
  *
  * const cleanup = initFooterLogo();
  * cleanup();

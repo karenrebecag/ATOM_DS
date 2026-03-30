@@ -1,8 +1,8 @@
 /* ============================================
-   @anthropic-atom/css — Main Entry Point
+   @atomchat/css — Main Entry Point
    Complete ATOM Design System CSS
    
-   Depends on: @anthropic-atom/tokens
+   Depends on: @atomchat/tokens
    Load order: foundation → components → utilities
 ============================================ */
 

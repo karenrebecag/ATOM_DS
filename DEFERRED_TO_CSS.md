@@ -1,8 +1,8 @@
-# Patterns Deferred to @anthropic-atom/css
+# Patterns Deferred to @atomchat/css
 
 These CSS custom properties exist in the ATOM_website SCSS source but **cannot be represented as W3C DTCG tokens** because they use composite CSS values (multiple `var()` references, `rgba()` with variable opacity, border shorthands, or media query logic).
 
-They will be implemented in the `@anthropic-atom/css` package as plain CSS custom properties that consume the DTCG token primitives/semantics compiled by `@anthropic-atom/tokens`.
+They will be implemented in the `@atomchat/css` package as plain CSS custom properties that consume the DTCG token primitives/semantics compiled by `@atomchat/tokens`.
 
 ---
 
@@ -125,7 +125,7 @@ The ATOM_website overrides text sizes at three breakpoints:
 | SM | 960px | Mobile landscape reductions |
 | XS | 599px | Mobile portrait reductions |
 
-These will be implemented in `@anthropic-atom/css` as `@media` rules that reassign the semantic text-size custom properties.
+These will be implemented in `@atomchat/css` as `@media` rules that reassign the semantic text-size custom properties.
 
 ---
 
@@ -149,7 +149,7 @@ Breakpoint values (consumed by mixins):
 | lg | 1281px | 1920px |
 | xl | 1921px | -- |
 
-> Note: Foundation breakpoint tokens already exist in `@anthropic-atom/tokens` (`Primitive.Breakpoint.*`). These mixins will be part of the CSS package as SCSS utilities that consume those token values.
+> Note: Foundation breakpoint tokens already exist in `@atomchat/tokens` (`Primitive.Breakpoint.*`). These mixins will be part of the CSS package as SCSS utilities that consume those token values.
 
 ---
 

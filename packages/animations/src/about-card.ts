@@ -24,7 +24,7 @@
  *
  * ## Usage
  * ```ts
- * import { initAboutCardAnimation } from '@anthropic-atom/animations';
+ * import { initAboutCardAnimation } from '@atomchat/animations';
  *
  * const cleanup = initAboutCardAnimation();
  * cleanup();

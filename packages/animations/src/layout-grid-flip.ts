@@ -18,7 +18,7 @@
  *
  * ## Usage
  * ```ts
- * import { initLayoutGridFlip } from '@anthropic-atom/animations';
+ * import { initLayoutGridFlip } from '@atomchat/animations';
  *
  * const cleanup = initLayoutGridFlip();
  * cleanup();

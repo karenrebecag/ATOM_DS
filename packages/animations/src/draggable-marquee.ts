@@ -17,7 +17,7 @@
  *
  * ## Usage
  * ```ts
- * import { initDraggableMarquee } from '@anthropic-atom/animations';
+ * import { initDraggableMarquee } from '@atomchat/animations';
  *
  * const cleanup = initDraggableMarquee();
  * // Later:

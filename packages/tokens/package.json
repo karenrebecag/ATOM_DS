@@ -1,10 +1,13 @@
 {
-  "name": "@anthropic-atom/tokens",
+  "name": "@atomchat/tokens",
   "version": "1.0.0",
   "description": "ATOM Design System tokens — W3C DTCG format, compiled via Style Dictionary",
   "main": "build/js/tokens.cjs",
   "module": "build/js/tokens.js",
   "types": "build/js/tokens.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
   "exports": {
     ".": {
       "import": "./build/js/tokens.js",

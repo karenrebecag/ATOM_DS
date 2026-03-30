@@ -17,7 +17,7 @@
  *
  * ## Usage
  * ```ts
- * import { initRotatingLayers } from '@anthropic-atom/animations';
+ * import { initRotatingLayers } from '@atomchat/animations';
  *
  * const cleanup = initRotatingLayers();
  * cleanup();

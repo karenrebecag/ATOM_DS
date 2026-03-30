@@ -20,7 +20,7 @@
  *
  * ## Usage
  * ```ts
- * import { initProgressNav } from '@anthropic-atom/animations';
+ * import { initProgressNav } from '@atomchat/animations';
  *
  * const cleanup = initProgressNav();
  * cleanup();

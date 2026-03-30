@@ -16,7 +16,7 @@
  *
  * ## Usage
  * ```ts
- * import { initMarqueeObserver } from '@anthropic-atom/animations';
+ * import { initMarqueeObserver } from '@atomchat/animations';
  *
  * const cleanup = initMarqueeObserver();
  * // With custom speed:

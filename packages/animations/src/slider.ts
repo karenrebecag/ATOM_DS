@@ -24,7 +24,7 @@
  *
  * ## Usage
  * ```ts
- * import { initRotationSlider } from '@anthropic-atom/animations';
+ * import { initRotationSlider } from '@atomchat/animations';
  *
  * const cleanup = initRotationSlider();
  * cleanup();

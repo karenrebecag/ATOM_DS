@@ -16,7 +16,7 @@
  *
  * ## Usage
  * ```ts
- * import { runPageEnterAnimation } from '@anthropic-atom/animations';
+ * import { runPageEnterAnimation } from '@atomchat/animations';
  *
  * const timeline = runPageEnterAnimation();
  * ```

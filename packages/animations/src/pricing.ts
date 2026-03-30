@@ -15,7 +15,7 @@
  *
  * ## Usage
  * ```ts
- * import { initPricingSection } from '@anthropic-atom/animations';
+ * import { initPricingSection } from '@atomchat/animations';
  *
  * const cleanup = initPricingSection();
  * cleanup();

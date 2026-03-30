@@ -20,7 +20,7 @@
  * ```
  *
  * ```ts
- * import { initReveal, initBatchReveal } from '@anthropic-atom/animations';
+ * import { initReveal, initBatchReveal } from '@atomchat/animations';
  *
  * const cleanups = [initReveal(), initBatchReveal()];
  * // Later:

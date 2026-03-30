@@ -15,7 +15,7 @@
  *
  * ## Usage
  * ```ts
- * import { initFeatures } from '@anthropic-atom/animations';
+ * import { initFeatures } from '@atomchat/animations';
  *
  * const cleanup = initFeatures();
  * cleanup();

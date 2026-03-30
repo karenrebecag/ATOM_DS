@@ -1,7 +1,10 @@
 {
-  "name": "@anthropic-atom/components-astro",
+  "name": "@atomchat/components-astro",
   "version": "1.0.0",
   "description": "ATOM Design System — Astro component library",
+  "publishConfig": {
+    "access": "public"
+  },
   "exports": {
     ".": "./src/index.ts",
     "./atoms/*": "./src/atoms/*",
@@ -16,7 +19,7 @@
   },
   "peerDependencies": {
     "astro": ">=4.0.0",
-    "@anthropic-atom/css": "workspace:*"
+    "@atomchat/css": "workspace:*"
   },
   "license": "MIT"
 }

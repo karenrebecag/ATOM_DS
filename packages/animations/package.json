@@ -1,11 +1,14 @@
 {
-  "name": "@anthropic-atom/animations",
+  "name": "@atomchat/animations",
   "version": "1.0.0",
   "type": "module",
   "description": "ATOM Design System — GSAP animation system with accessibility-first motion preferences",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
   "exports": {
     ".": {
       "import": "./dist/index.js",

@@ -11,7 +11,7 @@
  *
  * ## Usage
  * ```ts
- * import { showBadge, hideBadge, animateBadgeEntry } from '@anthropic-atom/animations';
+ * import { showBadge, hideBadge, animateBadgeEntry } from '@atomchat/animations';
  *
  * // Show with default timing
  * const cleanup = showBadge(badgeEl);

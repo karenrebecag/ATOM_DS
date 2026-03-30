@@ -5,17 +5,17 @@
 This monorepo contains 4 packages:
 
 ```
-packages/tokens/      @anthropic-atom/tokens    ✅ COMPLETE
-packages/animations/  @anthropic-atom/animations ✅ COMPLETE
-packages/css/         @anthropic-atom/css        ✅ COMPLETE
-packages/components-astro/ @anthropic-atom/components-astro ❌ NOT STARTED
+packages/tokens/      @atomchat/tokens    ✅ COMPLETE
+packages/animations/  @atomchat/animations ✅ COMPLETE
+packages/css/         @atomchat/css        ✅ COMPLETE
+packages/components-astro/ @atomchat/components-astro ❌ NOT STARTED
 
 apps/docs/            Empty — ATOM_website will move here eventually
 ```
 
 ## Completed Work
 
-### @anthropic-atom/tokens
+### @atomchat/tokens
 - 1,110 W3C DTCG tokens across 3 tiers
 - Foundation (primitives) → Semantic (aliases) → Component (scoped)
 - Build outputs: tokens.css, dark.css, foundation.css,
@@ -24,7 +24,7 @@ apps/docs/            Empty — ATOM_website will move here eventually
 - Dark theme: separate dark.css with [data-theme="dark"]
 - ALL naming: lowercase kebab-case
 
-### @anthropic-atom/animations
+### @atomchat/animations
 - 34 TypeScript files, 28 animation modules
 - Three-tier WCAG 2.3.3 motion system:
   OS (prefers-reduced-motion) + Site (data-motion) + Element (data-motion-exempt)
@@ -32,7 +32,7 @@ apps/docs/            Empty — ATOM_website will move here eventually
 - Single GSAP plugin registration in config.ts
 - Peer dependency: gsap >=3.12.0
 
-### @anthropic-atom/css
+### @atomchat/css
 - 42.5 kB compiled CSS (pure asset build, no JS wrapper)
 - 17 CSS files: foundation + components + utilities
 - Zero hardcoded values — all var(--token)
@@ -73,4 +73,4 @@ cd packages/animations && pnpm build  # Rebuild animations only
 ## Deferred Work
 
 See DEFERRED_TO_CSS.md for patterns deferred from tokens.
-@anthropic-atom/components-astro is the next package to build.
+@atomchat/components-astro is the next package to build.

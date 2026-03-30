@@ -17,7 +17,7 @@
  *
  * ## Usage
  * ```ts
- * import { initToastAnimations, animateToastExit, restackToasts } from '@anthropic-atom/animations';
+ * import { initToastAnimations, animateToastExit, restackToasts } from '@atomchat/animations';
  *
  * // Setup observer on container
  * const cleanup = initToastAnimations(container, 'top-right');

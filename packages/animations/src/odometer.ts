@@ -22,7 +22,7 @@
  *
  * ## Usage
  * ```ts
- * import { initNumberOdometer } from '@anthropic-atom/animations';
+ * import { initNumberOdometer } from '@atomchat/animations';
  *
  * // Scroll-triggered groups auto-init
  * const updateOdometer = initNumberOdometer();

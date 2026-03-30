@@ -16,7 +16,7 @@
  * ```
  *
  * ```ts
- * import { initTextReveal } from '@anthropic-atom/animations';
+ * import { initTextReveal } from '@atomchat/animations';
  *
  * const cleanup = initTextReveal();
  * // Later (reverts SplitText DOM changes):

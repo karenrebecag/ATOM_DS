@@ -17,7 +17,7 @@
  *
  * ## Usage
  * ```ts
- * import { initScrollDirection } from '@anthropic-atom/animations';
+ * import { initScrollDirection } from '@atomchat/animations';
  *
  * const cleanup = initScrollDirection();
  * // Later:

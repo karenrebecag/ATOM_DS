@@ -26,7 +26,7 @@ importers:
 
   packages/components-astro:
     dependencies:
-      '@anthropic-atom/css':
+      '@atomchat/css':
         specifier: workspace:*
         version: link:../css
       astro:
@@ -35,7 +35,7 @@ importers:
 
   packages/css:
     dependencies:
-      '@anthropic-atom/tokens':
+      '@atomchat/tokens':
         specifier: workspace:*
         version: link:../tokens
     devDependencies:

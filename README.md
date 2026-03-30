@@ -7,22 +7,22 @@ Built with W3C DTCG tokens, GSAP animations, and pure CSS.
 
 | Package | Version | Description |
 |---|---|---|
-| `@anthropic-atom/tokens` | 1.0.0 | 1,110 W3C DTCG design tokens |
-| `@anthropic-atom/animations` | 1.0.0 | GSAP animation system (WCAG 2.3.3) |
-| `@anthropic-atom/css` | 0.1.0 | Component stylesheets (42.5 kB) |
+| `@atomchat/tokens` | 1.0.0 | 1,110 W3C DTCG design tokens |
+| `@atomchat/animations` | 1.0.0 | GSAP animation system (WCAG 2.3.3) |
+| `@atomchat/css` | 0.1.0 | Component stylesheets (42.5 kB) |
 
 ## Quick Start
 
 ```bash
-npm install @anthropic-atom/tokens @anthropic-atom/css @anthropic-atom/animations gsap
+npm install @atomchat/tokens @atomchat/css @atomchat/animations gsap
 ```
 
 ```js
 // In your layout
-import '@anthropic-atom/tokens/css'
-import '@anthropic-atom/tokens/css/dark'
-import '@anthropic-atom/css/atom.css'
-import { initAllAnimations } from '@anthropic-atom/animations'
+import '@atomchat/tokens/css'
+import '@atomchat/tokens/css/dark'
+import '@atomchat/css/atom.css'
+import { initAllAnimations } from '@atomchat/animations'
 
 const cleanup = initAllAnimations()
 ```

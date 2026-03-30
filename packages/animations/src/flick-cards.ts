@@ -18,7 +18,7 @@
  *
  * ## Usage
  * ```ts
- * import { initFlickCards } from '@anthropic-atom/animations';
+ * import { initFlickCards } from '@atomchat/animations';
  *
  * const cleanup = initFlickCards();
  * cleanup();

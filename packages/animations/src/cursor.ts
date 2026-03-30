@@ -25,7 +25,7 @@
  *
  * ## Usage
  * ```ts
- * import { initCursor, destroyCursor } from '@anthropic-atom/animations';
+ * import { initCursor, destroyCursor } from '@atomchat/animations';
  *
  * initCursor();
  * // Later:

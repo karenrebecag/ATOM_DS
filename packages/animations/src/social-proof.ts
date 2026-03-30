@@ -17,7 +17,7 @@
  *
  * ## Usage
  * ```ts
- * import { initSocialProof } from '@anthropic-atom/animations';
+ * import { initSocialProof } from '@atomchat/animations';
  *
  * const cleanup = initSocialProof();
  * cleanup();

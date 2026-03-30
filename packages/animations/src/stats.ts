@@ -17,7 +17,7 @@
  *
  * ## Usage
  * ```ts
- * import { initStats } from '@anthropic-atom/animations';
+ * import { initStats } from '@atomchat/animations';
  *
  * const cleanup = initStats();
  * // Later:

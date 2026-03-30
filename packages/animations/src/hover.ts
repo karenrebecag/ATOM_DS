@@ -16,7 +16,7 @@
  *
  * ## Usage
  * ```ts
- * import { initRotateClones, initRotateCalc, initHoverRotate, initCardHover, initMagnetic } from '@anthropic-atom/animations';
+ * import { initRotateClones, initRotateCalc, initHoverRotate, initCardHover, initMagnetic } from '@atomchat/animations';
  *
  * const cleanups = [
  *   initRotateClones(),

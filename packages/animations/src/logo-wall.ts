@@ -17,7 +17,7 @@
  *
  * ## Usage
  * ```ts
- * import { initLogoWallCycle } from '@anthropic-atom/animations';
+ * import { initLogoWallCycle } from '@atomchat/animations';
  *
  * const cleanup = initLogoWallCycle();
  * cleanup();

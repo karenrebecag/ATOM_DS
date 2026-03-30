@@ -19,7 +19,7 @@
  *
  * ## Usage
  * ```ts
- * import { initBarba } from '@anthropic-atom/animations';
+ * import { initBarba } from '@atomchat/animations';
  *
  * initBarba();
  * ```

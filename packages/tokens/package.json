@@ -1,5 +1,5 @@
 {
-  "name": "@atomchat/tokens",
+  "name": "@atomchat.io/tokens",
   "version": "1.0.0",
   "description": "ATOM Design System tokens — W3C DTCG format, compiled via Style Dictionary",
   "main": "build/js/tokens.cjs",

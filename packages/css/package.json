@@ -1,5 +1,5 @@
 {
-  "name": "@atomchat/css",
+  "name": "@atomchat.io/css",
   "version": "0.2.0",
   "description": "ATOM Design System — Component styles and utilities",
   "main": "./dist/atom.css",
@@ -19,7 +19,7 @@
     "dev": "vite build --watch"
   },
   "peerDependencies": {
-    "@atomchat/tokens": "workspace:*"
+    "@atomchat.io/tokens": "workspace:*"
   },
   "devDependencies": {
     "vite": "^5.0.0",

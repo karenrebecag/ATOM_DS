@@ -1,5 +1,5 @@
 {
-  "name": "@atomchat/animations",
+  "name": "@atomchat.io/animations",
   "version": "1.1.0",
   "type": "module",
   "description": "ATOM Design System — GSAP animation system with accessibility-first motion preferences",

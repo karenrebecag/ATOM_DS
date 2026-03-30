@@ -1,5 +1,5 @@
 {
-  "name": "@atomchat/components-astro",
+  "name": "@atomchat.io/components-astro",
   "version": "2.0.0",
   "description": "ATOM Design System — Astro component library",
   "publishConfig": {
@@ -19,7 +19,7 @@
   },
   "peerDependencies": {
     "astro": ">=4.0.0",
-    "@atomchat/css": "workspace:*"
+    "@atomchat.io/css": "workspace:*"
   },
   "license": "MIT"
 }

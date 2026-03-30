@@ -25,6 +25,7 @@
  * ```
  */
 
+// @ts-expect-error - Lenis is an optional peer dependency
 import Lenis from "lenis";
 import { gsap, ScrollTrigger } from "./config";
 

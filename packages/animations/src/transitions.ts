@@ -25,7 +25,9 @@
  * ```
  */
 
+// @ts-expect-error - Barba is an optional peer dependency
 import barba from "@barba/core";
+// @ts-expect-error - Barba prefetch is an optional peer dependency
 import barbaPrefetch from "@barba/prefetch";
 import { gsap, ScrollTrigger, DURATION } from "./config";
 import { initAllAnimations } from "./index";
@@ -244,7 +246,7 @@ export function initBarba(): void {
   history.scrollRestoration = "manual";
 
   // Enable link prefetching (skip in dev — stale cache conflicts with HMR)
-  if (typeof import.meta !== "undefined" && !(import.meta as Record<string, unknown>).env) {
+  if (typeof import.meta !== "undefined" && !(import.meta as any).env) {
     barba.use(barbaPrefetch);
   }
 
@@ -255,7 +257,7 @@ export function initBarba(): void {
       {
         name: "default",
 
-        once(data) {
+        once(data: any) {
           runCoordinatedEnter(data.next.container);
         },
 
@@ -272,7 +274,7 @@ export function initBarba(): void {
           return fadeOverlayIn();
         },
 
-        afterLeave(data) {
+        afterLeave(data: any) {
           data.current.container.style.display = "none";
 
           destroySmoothScroll();
@@ -284,7 +286,7 @@ export function initBarba(): void {
           }
         },
 
-        beforeEnter(data) {
+        beforeEnter(data: any) {
           syncHead(data.next.html);
           initSmoothScroll();
           window.scrollTo(0, 0);
@@ -295,7 +297,7 @@ export function initBarba(): void {
           document.dispatchEvent(new Event("astro:after-swap"));
         },
 
-        enter(data) {
+        enter(data: any) {
           return runCoordinatedEnter(data.next.container).then();
         },
 

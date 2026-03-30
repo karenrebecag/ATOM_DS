@@ -1,0 +1,65 @@
+---
+/**
+ * LabelText
+ *
+ * Form label component with required indicator support.
+ * Associates with form inputs via `for` attribute.
+ *
+ * @param {string} for - ID of associated input element
+ * @param {string} size - Text size (default: "label")
+ *   Options: "label" | "label-small" | "footnote"
+ * @param {string} weight - Font weight (default: "medium")
+ *   Options: "regular" | "medium" | "bold"
+ * @param {boolean} required - Show required asterisk (default: false)
+ * @param {boolean} disabled - Disabled state (default: false)
+ * @param {string} color - Text color CSS var or "inherit" (default: "inherit")
+ * @param {string} class - Additional CSS classes
+ *
+ * Usage:
+ * <LabelText for="email">Email address</LabelText>
+ * <LabelText for="password" required>Password</LabelText>
+ * <LabelText for="bio" size="label-small">Bio (optional)</LabelText>
+ * <LabelText for="terms" disabled>Disabled label</LabelText>
+ */
+
+interface Props {
+  for?: string;
+  size?: "label" | "label-small" | "footnote";
+  weight?: "regular" | "medium" | "bold";
+  required?: boolean;
+  disabled?: boolean;
+  color?: string;
+  class?: string;
+  [key: string]: any;
+}
+
+const {
+  for: htmlFor,
+  size = "label",
+  weight = "medium",
+  required = false,
+  disabled = false,
+  color = "inherit",
+  class: className = "",
+  ...rest
+} = Astro.props;
+---
+
+<label
+  class:list={[
+    "label-text",
+    `label-text--${size}`,
+    `label-text--${weight}`,
+    { "label-text--disabled": disabled },
+    className,
+  ]}
+  style={color !== "inherit" ? `color: ${color}` : undefined}
+  for={htmlFor}
+  data-text
+  {...rest}
+>
+  <slot />
+  {required && (
+    <span class="label-text__required" aria-hidden="true"> *</span>
+  )}
+</label>

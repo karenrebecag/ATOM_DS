@@ -1,0 +1,84 @@
+---
+/**
+ * Badge (Notification Badge)
+ *
+ * A notification indicator with smart overflow logic.
+ * Displays notification counts with context-aware capping rules.
+ *
+ * @param {number} count - The raw notification count
+ * @param {string} context - Context for overflow rules: "default" | "inbox"
+ * @param {string} type - Visual type: "neutral" | "inbox" | "info"
+ * @param {string} state - Visual state: "default" | "focused" | "subtle"
+ * @param {string} class - Additional CSS classes
+ *
+ * Overflow Rules:
+ * - Default context: Shows exact count 1-99, then "99+"
+ * - Inbox context: Shows exact count 1-49, then "+50"
+ * - Zero count: Hidden (returns null)
+ *
+ * Usage:
+ * <Badge count={45} context="inbox" type="inbox" state="focused" />
+ * <Badge count={150} context="default" type="info" />
+ */
+
+interface Props {
+  count: number;
+  context?: "default" | "inbox";
+  type?: "neutral" | "inbox" | "info";
+  state?: "default" | "focused" | "subtle";
+  class?: string;
+  [key: string]: any;
+}
+
+const {
+  count = 0,
+  context = "default",
+  type = "neutral",
+  state = "default",
+  class: className = "",
+  ...rest
+} = Astro.props;
+
+// ── Badge Display Logic (Overflow Rules) ──
+function getBadgeDisplay(count: number, context: string): string | null {
+  // Rule 4: Zero — hide
+  if (count <= 0) return null;
+
+  if (context === "inbox") {
+    // Inbox context rules
+    if (count >= 50) return "+50"; // Rule 2: Inbox cap
+    return count.toString();        // Rule 1: 1-49 exact
+  }
+
+  // Default context rules
+  if (count > 99) return "99+";     // Rule 2: Default cap
+  return count.toString();          // Rule 1: 1-99 exact
+}
+
+const displayValue = getBadgeDisplay(count, context);
+
+// If count is zero or invalid, don't render anything
+if (!displayValue) {
+  return null;
+}
+
+const ariaLabel = `${count} ${count === 1 ? 'notification' : 'notifications'}`;
+---
+
+<span
+  class:list={[
+    "badge",
+    `badge--${type}`,
+    `badge--${state}`,
+    className,
+  ]}
+  data-badge
+  data-count={count}
+  data-context={context}
+  data-state={state}
+  role="status"
+  aria-label={ariaLabel}
+  {...rest}
+>
+  <span class="badge__text" data-badge-text>{displayValue}</span>
+</span>

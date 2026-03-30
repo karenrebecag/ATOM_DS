@@ -1,0 +1,109 @@
+/* ============================================
+   @atomchat/css — text.css
+   Depends on: @atomchat/tokens (tokens.css)
+   Animations: @atomchat/animations (text.ts)
+============================================ */
+
+/* TEXT — Body text component with truncation support */
+.text {
+  /* Typography */
+  font-family: var(--font-body);
+  font-weight: var(--font-weight-regular);
+  color: var(--fg-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Defaults */
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Size Variants ────────────────────────────────────────────────── */
+.text--body {
+  font-size: var(--text-body);
+  line-height: var(--line-height-body);
+}
+
+.text--caption {
+  font-size: var(--text-caption);
+  line-height: var(--line-height-caption);
+}
+
+.text--label {
+  font-size: var(--text-label);
+  line-height: var(--line-height-label);
+}
+
+.text--label-small {
+  font-size: var(--text-label-small);
+  line-height: var(--line-height-label-small);
+}
+
+.text--footnote {
+  font-size: var(--text-footnote);
+  line-height: var(--line-height-footnote);
+}
+
+/* ── Weight Variants ──────────────────────────────────────────────── */
+.text--regular {
+  font-weight: var(--font-weight-regular);
+}
+
+.text--medium {
+  font-weight: var(--font-weight-medium);
+}
+
+.text--bold {
+  font-weight: var(--font-weight-bold);
+}
+
+/* ── Color Variants ───────────────────────────────────────────────── */
+.text--primary {
+  color: var(--fg-primary);
+}
+
+.text--secondary {
+  color: var(--fg-secondary);
+}
+
+.text--tertiary {
+  color: var(--fg-tertiary);
+}
+
+.text--disabled {
+  color: var(--fg-disabled);
+}
+
+/* ── Alignment Variants ───────────────────────────────────────────── */
+.text--left {
+  text-align: left;
+}
+
+.text--center {
+  text-align: center;
+}
+
+.text--right {
+  text-align: right;
+}
+
+/* ── Truncation ───────────────────────────────────────────────────── */
+/* Single line truncate with ellipsis */
+.text--truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Multi-line clamp (requires --text-clamp-lines custom property) */
+.text--clamp {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: var(--text-clamp-lines, 2);
+  overflow: hidden;
+}
+
+/* ── Text Balance (for readable paragraphs) ───────────────────────── */
+.text--balance {
+  text-wrap: balance;
+}

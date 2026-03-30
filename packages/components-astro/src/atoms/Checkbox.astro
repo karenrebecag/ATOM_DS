@@ -1,0 +1,72 @@
+---
+/**
+ * Checkbox — Binary input control
+ * @atomchat/components-astro
+ *
+ * Depends on:
+ *   @atomchat/tokens (--checkbox-* custom properties)
+ *   @atomchat/css (checkbox.css)
+ *
+ * Props:
+ *   name      string   (required) - Form input name
+ *   value?    string   - Input value attribute
+ *   checked?  boolean  - Checked state (default: false)
+ *   type?     "checkbox" | "radio" - Input type (default: "checkbox")
+ *   theme?    "light" | "dark" - Visual theme (default: "light")
+ *   class?    string   - Additional CSS classes
+ */
+
+interface Props {
+  name: string;
+  value?: string;
+  checked?: boolean;
+  type?: "checkbox" | "radio";
+  theme?: "light" | "dark";
+  class?: string;
+}
+
+const {
+  name,
+  value,
+  checked = false,
+  type = "checkbox",
+  theme = "light",
+  class: className = "",
+} = Astro.props;
+
+const id = `${name}-${value || "default"}`;
+---
+
+<label
+  class:list={["checkbox", `checkbox--${theme}`, className]}
+  for={id}
+  data-checkbox
+>
+  <input
+    class="checkbox__input"
+    type={type}
+    id={id}
+    name={name}
+    value={value}
+    checked={checked}
+  />
+  <span class="checkbox__custom" aria-hidden="true" data-checkbox-custom>
+    <svg
+      class="checkbox__check"
+      viewBox="0 0 12 10"
+      fill="none"
+      data-checkbox-check
+    >
+      <path
+        d="M1 5.5L4 8.5L11 1.5"
+        stroke="currentColor"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  </span>
+  <span class="checkbox__label">
+    <slot />
+  </span>
+</label>

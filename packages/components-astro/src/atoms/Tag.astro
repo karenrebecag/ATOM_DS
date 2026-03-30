@@ -1,0 +1,81 @@
+---
+/**
+ * Tag (Atom)
+ *
+ * Status indicator with semantic colors and multiple visual styles.
+ * Supports 7 semantic states (success, warning, danger, info, neutral, brand, ai)
+ * and 2 types (filled, outlined).
+ *
+ * @param {"success" | "warning" | "danger" | "info" | "neutral" | "brand" | "ai"} state - Semantic state (default: "success")
+ * @param {"filled" | "outlined"} type - Visual style variant (default: "filled")
+ * @param {boolean} hasDots - Show status dot indicator (default: false)
+ * @param {string} class - Additional CSS classes
+ *
+ * Slots:
+ * - default: Tag label text
+ * - icon: Icon element (16px)
+ * - avatar: Avatar element (24px)
+ *
+ * Data Attributes (Animation Contract):
+ * - data-tag: Root element (discovery)
+ * - data-tag-dot: Status dot element
+ * - data-tag-text: Text content element
+ *
+ * Usage:
+ * <Tag state="success" type="filled">Active</Tag>
+ * <Tag state="warning" type="outlined">Pending</Tag>
+ * <Tag state="danger" hasDots>Error</Tag>
+ * <Tag state="info">
+ *   <svg slot="icon">...</svg>
+ *   With Icon
+ * </Tag>
+ * <Tag state="brand">
+ *   <Avatar slot="avatar" size="xs" />
+ *   With Avatar
+ * </Tag>
+ *
+ * @see packages/css/src/components/tag.css
+ * @see packages/tokens/src/components/tag.json
+ */
+
+interface Props {
+  state?: "success" | "warning" | "danger" | "info" | "neutral" | "brand" | "ai";
+  type?: "filled" | "outlined";
+  hasDots?: boolean;
+  class?: string;
+  [key: string]: any;
+}
+
+const {
+  state = "success",
+  type = "filled",
+  hasDots = false,
+  class: className = "",
+  ...rest
+} = Astro.props;
+
+const hasIcon = Astro.slots.has("icon");
+const hasAvatar = Astro.slots.has("avatar");
+---
+
+<span
+  class:list={[
+    "tag",
+    state && `tag--${state}`,
+    `tag--${type}`,
+    className
+  ]}
+  data-tag
+  {...rest}
+>
+  {hasDots && <span class="tag__dot" aria-hidden="true" data-tag-dot></span>}
+  {hasAvatar && (
+    <span class="tag__avatar"><slot name="avatar" /></span>
+  )}
+  {hasIcon && (
+    <span class="tag__icon"><slot name="icon" /></span>
+  )}
+  <span class="tag__text" data-tag-text>
+    <slot />
+  </span>
+</span>

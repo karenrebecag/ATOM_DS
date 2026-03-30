@@ -1,0 +1,54 @@
+---
+interface Props {
+  href: string;
+  size?: "s" | "l";
+  disabled?: boolean;
+  loading?: boolean;
+  external?: boolean;
+  class?: string;
+  [key: string]: any;
+}
+
+const {
+  href,
+  size = "s",
+  disabled = false,
+  loading = false,
+  external = false,
+  class: className = "",
+  ...rest
+} = Astro.props;
+
+const externalAttrs = external ? { target: "_blank", rel: "noopener noreferrer" } : {};
+const hasIconLeft = Astro.slots.has("icon-left");
+const hasIconRight = Astro.slots.has("icon-right");
+---
+
+<a
+  class:list={[
+    "link-button",
+    `link-button--${size}`,
+    { "link-button--disabled": disabled, "link-button--loading": loading },
+    className
+  ]}
+  href={disabled ? undefined : href}
+  {...disabled ? { "aria-disabled": "true", role: "link", tabindex: "-1" } : {}}
+  {...loading ? { "aria-busy": "true" } : {}}
+  {...externalAttrs}
+  {...rest}
+  data-link-button
+>
+  {hasIconLeft && (
+    <span class="link-button__icon"><slot name="icon-left" /></span>
+  )}
+  <span class="link-button__label">
+    {loading ? (
+      <span class="link-button__loading-text" data-shimmer>Loading...</span>
+    ) : (
+      <slot />
+    )}
+  </span>
+  {hasIconRight && !loading && (
+    <span class="link-button__icon"><slot name="icon-right" /></span>
+  )}
+</a>

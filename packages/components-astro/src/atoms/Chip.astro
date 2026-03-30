@@ -1,0 +1,61 @@
+---
+/**
+ * Chip — Filterable tag component
+ * @atomchat/components-astro
+ *
+ * Depends on:
+ *   @atomchat/tokens (--chip-* custom properties)
+ *   @atomchat/css (chip.css)
+ *
+ * Props:
+ *   size?      "xs" | "s" | "m" | "l" | "xl" - Chip size (default: "m")
+ *   selected?  boolean - Selected state (default: false)
+ *   disabled?  boolean - Disabled state (default: false)
+ *   class?     string - Additional CSS classes
+ *
+ * Slots:
+ *   default    - Chip label text
+ *   icon-start - Leading icon (optional)
+ *   icon-end   - Trailing icon (optional)
+ */
+
+interface Props {
+  size?: "xs" | "s" | "m" | "l" | "xl";
+  selected?: boolean;
+  disabled?: boolean;
+  class?: string;
+  [key: string]: any;
+}
+
+const {
+  size = "m",
+  selected = false,
+  disabled = false,
+  class: className = "",
+  ...rest
+} = Astro.props;
+---
+
+<button
+  class:list={["chip", className]}
+  data-chip
+  data-size={size}
+  data-selected={selected}
+  disabled={disabled}
+  type="button"
+  {...rest}
+>
+  {Astro.slots.has("icon-start") && (
+    <span class="chip__icon" data-chip-icon>
+      <slot name="icon-start" />
+    </span>
+  )}
+  <span class="chip__label" data-chip-label>
+    <slot />
+  </span>
+  {Astro.slots.has("icon-end") && (
+    <span class="chip__icon" data-chip-icon>
+      <slot name="icon-end" />
+    </span>
+  )}
+</button>

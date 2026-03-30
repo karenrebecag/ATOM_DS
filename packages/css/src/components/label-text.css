@@ -1,0 +1,70 @@
+/* ============================================
+   @atomchat/css — label-text.css
+   Depends on: @atomchat/tokens (tokens.css)
+============================================ */
+
+/* LABEL-TEXT — Form label component with required indicator */
+.label-text {
+  /* Typography */
+  font-family: var(--font-body);
+  font-weight: var(--font-weight-medium);
+  color: var(--fg-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Layout */
+  display: inline-flex;
+  align-items: center;
+  gap: var(--xs);
+
+  /* Interaction */
+  cursor: default;
+  user-select: none;
+
+  /* Defaults */
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Size Variants ────────────────────────────────────────────────── */
+.label-text--label {
+  font-size: var(--text-label);
+  line-height: var(--line-height-label);
+}
+
+.label-text--label-small {
+  font-size: var(--text-label-small);
+  line-height: var(--line-height-label-small);
+}
+
+.label-text--footnote {
+  font-size: var(--text-footnote);
+  line-height: var(--line-height-footnote);
+}
+
+/* ── Weight Variants ──────────────────────────────────────────────── */
+.label-text--regular {
+  font-weight: var(--font-weight-regular);
+}
+
+.label-text--medium {
+  font-weight: var(--font-weight-medium);
+}
+
+.label-text--bold {
+  font-weight: var(--font-weight-bold);
+}
+
+/* ── State: Disabled ──────────────────────────────────────────────── */
+.label-text--disabled {
+  color: var(--fg-disabled);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ── Required Indicator ───────────────────────────────────────────── */
+.label-text__required {
+  color: var(--primitive-red-500);
+  font-weight: var(--font-weight-bold);
+  user-select: none;
+}

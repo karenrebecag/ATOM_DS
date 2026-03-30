@@ -1,0 +1,50 @@
+---
+/**
+ * Spinner (Atom)
+ *
+ * Loading indicator with continuous rotation animation.
+ * Uses CSS @keyframes for performant infinite rotation.
+ *
+ * @param {"xs" | "s" | "m" | "l" | "xl"} size - Spinner size variant (default: "m")
+ * @param {string} class - Additional CSS classes
+ *
+ * Data Attributes (Animation Contract):
+ * - data-spinner: Root element (discovery)
+ * - data-spinner-indicator: Rotating indicator element
+ *
+ * Accessibility:
+ * - role="status" indicates dynamic content update
+ * - aria-label="Loading" provides screen reader context
+ *
+ * Usage:
+ * <Spinner size="m" />
+ * <Spinner size="xs" />
+ * <Spinner size="xl" class="custom-class" />
+ *
+ * @see packages/css/src/components/spinner.css
+ * @see packages/tokens/src/components/spinner.json
+ */
+
+interface Props {
+  size?: "xs" | "s" | "m" | "l" | "xl";
+  class?: string;
+  [key: string]: any;
+}
+
+const {
+  size = "m",
+  class: className = "",
+  ...rest
+} = Astro.props;
+---
+
+<span
+  class:list={["spinner", `spinner--${size}`, className]}
+  role="status"
+  aria-label="Loading"
+  data-spinner
+  {...rest}
+>
+  <span class="spinner__track"></span>
+  <span class="spinner__indicator" data-spinner-indicator></span>
+</span>

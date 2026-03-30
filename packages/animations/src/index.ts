@@ -31,7 +31,16 @@ import { NOOP } from "./types";
 // ── Individual module imports (used by initAllAnimations) ────
 
 import { initReveal, initBatchReveal } from "./reveal";
-import { initTextReveal } from "./text";
+import {
+  initTextReveal,
+  initMaskedReveal,
+  initFadeUpLoad,
+  initScrambleLoad,
+  initScrambleHover,
+  initHighlightScroll,
+  initScrambleScroll,
+  initTextAnimations,
+} from "./text";
 import { initParallax, initParallaxScale } from "./parallax";
 import { initMarqueeObserver } from "./marquee";
 import {
@@ -65,7 +74,7 @@ import {
   initToastAnimations,
   cleanupToastAnimations,
 } from "./toast";
-import { hideBadge, showBadge, animateBadgeEntry } from "./badge";
+import { initBadge, hideBadge, showBadge, animateBadgeEntry } from "./badge";
 import { initScrollDirection } from "./scroll-direction";
 import { runPageEnterAnimation } from "./page-transition";
 import {
@@ -124,7 +133,7 @@ export {
 export { initAboutCardAnimation };
 
 // badge
-export { hideBadge, showBadge, animateBadgeEntry };
+export { initBadge, hideBadge, showBadge, animateBadgeEntry };
 
 // cursor
 export { initCursor, destroyCursor };
@@ -205,7 +214,16 @@ export { initSocialProof };
 export { initStats };
 
 // text
-export { initTextReveal };
+export {
+  initTextReveal,
+  initMaskedReveal,
+  initFadeUpLoad,
+  initScrambleLoad,
+  initScrambleHover,
+  initHighlightScroll,
+  initScrambleScroll,
+  initTextAnimations,
+};
 
 // toast
 export {
@@ -311,6 +329,9 @@ export function initAllAnimations(
 
   // Sidebar collapse/expand
   cleanups.push(initSidebarCollapse(config));
+
+  // Badge lifecycle (count updates, show/hide, odometer)
+  cleanups.push(initBadge(config));
 
   // Scroll direction (pure DOM, no scope needed)
   cleanups.push(initScrollDirection());

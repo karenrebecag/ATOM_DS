@@ -1,0 +1,50 @@
+{
+  "name": "@anthropic-atom/animations",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "ATOM Design System — GSAP animation system with accessibility-first motion preferences",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./extras/smooth-scroll": {
+      "import": "./dist/extras/smooth-scroll.js",
+      "types": "./dist/extras/smooth-scroll.d.ts"
+    },
+    "./extras/transitions": {
+      "import": "./dist/extras/transitions.js",
+      "types": "./dist/extras/transitions.d.ts"
+    }
+  },
+  "files": [
+    "dist/",
+    "src/"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch"
+  },
+  "peerDependencies": {
+    "gsap": ">=3.12.0"
+  },
+  "peerDependenciesMeta": {
+    "lenis": {
+      "optional": true
+    },
+    "@barba/core": {
+      "optional": true
+    },
+    "@barba/prefetch": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "typescript": "^5.8.0",
+    "gsap": "^3.12.0"
+  },
+  "license": "MIT"
+}

@@ -1,0 +1,33 @@
+{
+  "radio": {
+    "structure": {
+      "circle": {
+        "size": {
+          "s": { "$value": "16px", "$type": "dimension" },
+          "m": { "$value": "24px", "$type": "dimension" }
+        },
+        "border-width": { "$value": "2px", "$type": "dimension" }
+      },
+      "dot": {
+        "size": {
+          "s": { "$value": "6px", "$type": "dimension" },
+          "m": { "$value": "8px", "$type": "dimension" }
+        }
+      }
+    },
+    "field": {
+      "font-size": {
+        "s": { "$value": "12px", "$type": "dimension" },
+        "m": { "$value": "16px", "$type": "dimension" }
+      },
+      "error-font-size": {
+        "s": { "$value": "10px", "$type": "dimension" },
+        "m": { "$value": "16px", "$type": "dimension" }
+      },
+      "icon-size": {
+        "s": { "$value": "12px", "$type": "dimension" },
+        "m": { "$value": "16px", "$type": "dimension" }
+      }
+    }
+  }
+}

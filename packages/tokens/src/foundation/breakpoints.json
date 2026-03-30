@@ -1,0 +1,27 @@
+{
+  "Primitive": {
+    "Breakpoint": {
+      "$type": "dimension",
+      "XS": { "$value": "0px", "$description": "x-Small: 0-599" },
+      "SM": { "$value": "600px", "$description": "Small: 600-960" },
+      "MD": { "$value": "961px", "$description": "Medium: 961-1280" },
+      "LG": { "$value": "1281px", "$description": "Large: 1281-1920" },
+      "XL": { "$value": "1921px", "$description": "X-Large: 1921+" }
+    },
+    "BreakpointMax": {
+      "$type": "dimension",
+      "XS": { "$value": "599px" },
+      "SM": { "$value": "960px" },
+      "MD": { "$value": "1280px" },
+      "LG": { "$value": "1920px" }
+    },
+    "Canvas": {
+      "$type": "dimension",
+      "XS": { "$value": "360px" },
+      "SM": { "$value": "600px" },
+      "MD": { "$value": "1024px" },
+      "LG": { "$value": "1280px" },
+      "XL": { "$value": "1921px" }
+    }
+  }
+}

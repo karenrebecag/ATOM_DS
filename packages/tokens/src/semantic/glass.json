@@ -1,0 +1,7 @@
+{
+  "glass": {
+    "shadow-default":  { "$type": "shadow", "$value": "0 16px 32px rgba(0, 0, 0, 0.12)", "$description": "Default glass surface shadow" },
+    "shadow-hover":    { "$type": "shadow", "$value": "0 20px 40px rgba(0, 0, 0, 0.16)", "$description": "Hovered glass surface shadow" },
+    "shadow-elevated": { "$type": "shadow", "$value": "0 24px 48px rgba(0, 0, 0, 0.2)", "$description": "Elevated glass surface shadow" }
+  }
+}

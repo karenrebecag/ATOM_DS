@@ -1,0 +1,16 @@
+{
+  "Primitive": {
+    "ZIndex": {
+      "$type": "number",
+      "base":           { "$value": 0 },
+      "dropdown":       { "$value": 100 },
+      "sticky":         { "$value": 200 },
+      "fixed":          { "$value": 300 },
+      "toast":          { "$value": 600 },
+      "tooltip":        { "$value": 700 },
+      "transition":     { "$value": 9999 },
+      "dialogBackdrop": { "$value": 10000 },
+      "dialog":         { "$value": 10001 }
+    }
+  }
+}

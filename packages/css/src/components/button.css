@@ -1,0 +1,139 @@
+/* ============================================
+   @anthropic-atom/css — button.css
+   Depends on: @anthropic-atom/tokens (tokens.css)
+   Animations: @anthropic-atom/animations
+============================================ */
+
+:root {
+  /* ── Primary Button ────────────────────────────────────────── */
+  --buttons-bg-primary-enabled: var(--bg-inverse-primary);
+  --buttons-bg-primary-hovered: var(--bg-inverse-secondary);
+  --buttons-bg-primary-focused: var(--bg-inverse-primary);
+  --buttons-bg-primary-disabled: var(--bg-disabled);
+  --buttons-bg-primary-pressed: var(--bg-inverse-secondary);
+  --buttons-bg-primary-loading: var(--bg-inverse-primary);
+
+  --buttons-fg-primary-enabled: var(--fg-inverse-primary);
+  --buttons-fg-primary-hovered: var(--fg-inverse-primary);
+  --buttons-fg-primary-focused: var(--fg-inverse-primary);
+  --buttons-fg-primary-disabled: var(--fg-disabled);
+  --buttons-fg-primary-pressed: var(--fg-inverse-tertiary);
+  --buttons-fg-primary-loading: var(--fg-inverse-primary);
+
+  --buttons-border-primary-focused: var(--border-tertiary);
+
+  /* ── Secondary Button ──────────────────────────────────────── */
+  --buttons-bg-secondary-enabled: var(--bg-primary);
+  --buttons-bg-secondary-hovered: var(--bg-tertiary);
+  --buttons-bg-secondary-focused: var(--bg-primary);
+  --buttons-bg-secondary-disabled: var(--bg-disabled);
+  --buttons-bg-secondary-pressed: var(--bg-secondary);
+  --buttons-bg-secondary-loading: var(--bg-primary);
+
+  --buttons-fg-secondary-enabled: var(--fg-primary);
+  --buttons-fg-secondary-hovered: var(--fg-primary);
+  --buttons-fg-secondary-focused: var(--fg-primary);
+  --buttons-fg-secondary-disabled: var(--fg-disabled);
+  --buttons-fg-secondary-pressed: var(--fg-tertiary);
+  --buttons-fg-secondary-loading: var(--fg-primary);
+
+  --buttons-border-secondary-enabled: var(--border-secondary);
+  --buttons-border-secondary-hovered: var(--border-secondary);
+  --buttons-border-secondary-focused: var(--border-primary);
+  --buttons-border-secondary-pressed: var(--border-secondary);
+  --buttons-border-secondary-loading: var(--border-secondary);
+
+  /* ── Tertiary Button ───────────────────────────────────────── */
+  --buttons-bg-tertiary-enabled: var(--bg-soft-tertiary);
+  --buttons-bg-tertiary-hovered: var(--bg-tertiary);
+  --buttons-bg-tertiary-focused: var(--bg-primary);
+  --buttons-bg-tertiary-disabled: var(--bg-disabled);
+  --buttons-bg-tertiary-pressed: var(--bg-secondary);
+  --buttons-bg-tertiary-loading: var(--bg-soft-tertiary);
+
+  --buttons-fg-tertiary-enabled: var(--fg-primary);
+  --buttons-fg-tertiary-hovered: var(--fg-primary);
+  --buttons-fg-tertiary-focused: var(--fg-primary);
+  --buttons-fg-tertiary-disabled: var(--fg-disabled);
+  --buttons-fg-tertiary-pressed: var(--fg-tertiary);
+  --buttons-fg-tertiary-loading: var(--fg-primary);
+
+  --buttons-border-tertiary-focused: var(--border-tertiary);
+
+  /* ── Danger Primary Button ─────────────────────────────────── */
+  --buttons-bg-danger-primary-enabled: var(--bg-danger-primary);
+  --buttons-bg-danger-primary-hovered: var(--bg-interactive-danger-primary-hovered);
+  --buttons-bg-danger-primary-focused: var(--bg-danger-primary);
+  --buttons-bg-danger-primary-disabled: var(--bg-disabled);
+  --buttons-bg-danger-primary-pressed: var(--bg-interactive-danger-primary-pressed);
+  --buttons-bg-danger-primary-loading: var(--bg-danger-primary);
+
+  --buttons-fg-danger-primary-enabled: var(--fg-inverse-primary);
+  --buttons-fg-danger-primary-hovered: var(--fg-inverse-primary);
+  --buttons-fg-danger-primary-focused: var(--fg-inverse-primary);
+  --buttons-fg-danger-primary-disabled: var(--fg-disabled);
+  --buttons-fg-danger-primary-pressed: var(--fg-inverse-primary);
+  --buttons-fg-danger-primary-loading: var(--fg-inverse-primary);
+
+  --buttons-border-danger-primary-focused: var(--border-interactive-danger-primary-focused);
+
+  /* ── Danger Secondary Button ───────────────────────────────── */
+  --buttons-bg-danger-secondary-enabled: var(--bg-danger-secondary);
+  --buttons-bg-danger-secondary-hovered: var(--bg-interactive-danger-secondary-hovered);
+  --buttons-bg-danger-secondary-focused: var(--bg-secondary);
+  --buttons-bg-danger-secondary-disabled: var(--bg-disabled);
+  --buttons-bg-danger-secondary-pressed: var(--bg-interactive-danger-secondary-pressed);
+  --buttons-bg-danger-secondary-loading: var(--bg-danger-secondary);
+
+  --buttons-fg-danger-secondary-enabled: var(--fg-interactive-danger-secondary-enabled);
+  --buttons-fg-danger-secondary-hovered: var(--fg-interactive-danger-secondary-hovered);
+  --buttons-fg-danger-secondary-focused: var(--fg-interactive-danger-secondary-focused);
+  --buttons-fg-danger-secondary-disabled: var(--fg-disabled);
+  --buttons-fg-danger-secondary-pressed: var(--fg-interactive-danger-secondary-pressed);
+  --buttons-fg-danger-secondary-loading: var(--fg-interactive-danger-secondary-enabled);
+
+  --buttons-border-danger-secondary-enabled: var(--border-interactive-danger-secondary-enabled);
+  --buttons-border-danger-secondary-hovered: var(--border-interactive-danger-secondary-hovered);
+  --buttons-border-danger-secondary-focused: var(--border-interactive-danger-secondary-focused);
+  --buttons-border-danger-secondary-pressed: var(--border-interactive-danger-secondary-pressed);
+  --buttons-border-danger-secondary-loading: var(--border-interactive-danger-secondary-loading);
+
+  /* ── Danger Tertiary Button ────────────────────────────────── */
+  --buttons-bg-danger-tertiary-enabled: var(--bg-danger-secondary);
+  --buttons-bg-danger-tertiary-hovered: var(--bg-interactive-danger-tertiary-hovered);
+  --buttons-bg-danger-tertiary-focused: var(--bg-secondary);
+  --buttons-bg-danger-tertiary-disabled: var(--bg-disabled);
+  --buttons-bg-danger-tertiary-pressed: var(--bg-interactive-danger-tertiary-pressed);
+  --buttons-bg-danger-tertiary-loading: var(--bg-danger-secondary);
+
+  --buttons-fg-danger-tertiary-enabled: var(--fg-interactive-danger-tertiary-enabled);
+  --buttons-fg-danger-tertiary-hovered: var(--fg-interactive-danger-tertiary-hovered);
+  --buttons-fg-danger-tertiary-focused: var(--fg-interactive-danger-tertiary-focused);
+  --buttons-fg-danger-tertiary-disabled: var(--fg-disabled);
+  --buttons-fg-danger-tertiary-pressed: var(--fg-interactive-danger-tertiary-pressed);
+  --buttons-fg-danger-tertiary-loading: var(--fg-interactive-danger-tertiary-enabled);
+
+  --buttons-border-danger-tertiary-focused: var(--border-interactive-danger-tertiary-focused);
+
+  /* ── Link Button ───────────────────────────────────────────── */
+  --buttons-bg-link-enabled: var(--bg-soft-tertiary);
+  --buttons-bg-link-hovered: var(--bg-interactive-link-hovered);
+  --buttons-bg-link-focused: var(--bg-soft-tertiary);
+  --buttons-bg-link-disabled: var(--bg-soft-tertiary);
+  --buttons-bg-link-pressed: var(--bg-soft-tertiary);
+  --buttons-bg-link-loading: var(--bg-soft-tertiary);
+
+  --buttons-fg-link-enabled: var(--fg-interactive-link-enabled);
+  --buttons-fg-link-hovered: var(--fg-interactive-link-hovered);
+  --buttons-fg-link-focused: var(--fg-interactive-link-focused);
+  --buttons-fg-link-disabled: var(--fg-disabled);
+  --buttons-fg-link-pressed: var(--fg-interactive-link-pressed);
+  --buttons-fg-link-loading: var(--fg-interactive-link-enabled);
+
+  --buttons-border-link-focused: var(--border-interactive-link-focused);
+
+  /* ── Focus Shadows (shared across all variants) ────────────── */
+  --buttons-shadow-focus: 0px 0px 0px 2px var(--primitive-alpha-400);
+  --buttons-shadow-focus-danger: 0px 0px 0px 2px var(--primitive-red-300);
+  --buttons-shadow-focus-link: 0px 0px 0px 2px var(--primitive-blue-200);
+}

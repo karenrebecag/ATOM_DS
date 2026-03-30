@@ -1,0 +1,41 @@
+{
+  "Primitive": {
+    "Stroke": {
+      "$type": "dimension",
+      "weight": { "$value": "1px" },
+      "2xs":    { "$value": "0.5px" },
+      "s":      { "$value": "2px" },
+      "m":      { "$value": "4px" }
+    },
+    "Radius": {
+      "$type": "dimension",
+      "none":   { "$value": "0px" },
+      "xxs":    { "$value": "2px" },
+      "xs":     { "$value": "4px" },
+      "s":      { "$value": "8px" },
+      "sm":     { "$value": "12px" },
+      "m":      { "$value": "16px" },
+      "md":     { "$value": "20px" },
+      "l":      { "$value": "24px" },
+      "lg":     { "$value": "28px" },
+      "xl":     { "$value": "32px" },
+      "xxl":    { "$value": "36px" },
+      "2xxl":   { "$value": "40px" },
+      "3xxl":   { "$value": "44px" },
+      "4xxl":   { "$value": "48px" },
+      "5xxl":   { "$value": "52px" },
+      "pill":   { "$value": "1000px" },
+      "circle": { "$value": "50%" }
+    },
+    "RadiusEm": {
+      "$type": "dimension",
+      "xs":    { "$value": "0.125em" },
+      "s":     { "$value": "0.1875em" },
+      "m":     { "$value": "0.25em" },
+      "l":     { "$value": "0.4375em" },
+      "xl":    { "$value": "0.5em" },
+      "round": { "$value": "1em" },
+      "pill":  { "$value": "3em" }
+    }
+  }
+}

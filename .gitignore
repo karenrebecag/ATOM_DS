@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build outputs (generated — never commit)
+packages/tokens/build/
+packages/css/dist/
+packages/animations/dist/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Editor
+.DS_Store
+.vscode/settings.json
+*.log
+
+# Turbo cache
+.turbo/
+
+# Test coverage
+coverage/

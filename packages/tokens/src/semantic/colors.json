@@ -1,0 +1,182 @@
+{
+  "bg": {
+    "$type": "color",
+    "primary":            { "$value": "{Primitive.Neutral.0}" },
+    "secondary":          { "$value": "{Primitive.Zinc.50}" },
+    "tertiary":           { "$value": "{Primitive.Zinc.100}" },
+    "quaternary":         { "$value": "{Primitive.Zinc.200}" },
+    "disabled":           { "$value": "{Primitive.Zinc.100}" },
+    "inverse-primary":    { "$value": "{Primitive.Zinc.950}" },
+    "inverse-secondary":  { "$value": "{Primitive.Zinc.800}" },
+    "inverse-tertiary":   { "$value": "{Primitive.Zinc.600}" },
+    "soft-primary":       { "$value": "{Primitive.Alpha.950}" },
+    "soft-secondary":     { "$value": "{Primitive.Alpha.800}" },
+    "soft-tertiary":      { "$value": "{Primitive.Alpha.0}" },
+
+    "status-info":        { "$value": "{Primitive.Blue.50}" },
+    "status-success":     { "$value": "{Primitive.Esmerald.50}" },
+    "status-warning":     { "$value": "{Primitive.Yellow.50}" },
+    "status-error":       { "$value": "{Primitive.Red.50}" },
+    "status-neutral":     { "$value": "{Primitive.Zinc.200}" },
+    "status-brand":       { "$value": "{Primitive.Orange.50}" },
+    "status-ai":          { "$value": "{Primitive.Violet.100}" },
+
+    "interactive-primary-hovered":  { "$value": "{Primitive.Zinc.800}" },
+    "interactive-primary-pressed":  { "$value": "{Primitive.Zinc.900}" },
+    "interactive-secondary-hovered": { "$value": "{Primitive.Zinc.50}" },
+    "interactive-secondary-pressed": { "$value": "{Primitive.Zinc.100}" },
+    "interactive-tertiary-hovered":  { "$value": "{Primitive.Zinc.50}" },
+    "interactive-tertiary-pressed":  { "$value": "{Primitive.Zinc.100}" },
+    "interactive-link-hovered":      { "$value": "{Primitive.Blue.50}" },
+    "interactive-link-pressed":      { "$value": "{Primitive.Blue.100}" },
+    "interactive-danger-primary-hovered":    { "$value": "{Primitive.Red.400}" },
+    "interactive-danger-primary-pressed":    { "$value": "{Primitive.Red.600}" },
+    "interactive-danger-secondary-hovered":  { "$value": "{Primitive.Red.50}" },
+    "interactive-danger-secondary-pressed":  { "$value": "{Primitive.Red.100}" },
+    "interactive-danger-tertiary-hovered":   { "$value": "{Primitive.Red.50}" },
+    "interactive-danger-tertiary-pressed":   { "$value": "{Primitive.Red.100}" },
+    "interactive-item-default":              { "$value": "{Primitive.Zinc.50}" },
+    "interactive-item-hover":                { "$value": "{Primitive.Zinc.100}" },
+    "interactive-item-disabled":             { "$value": "{Primitive.Zinc.100}" },
+    "interactive-item-pressed":              { "$value": "{Primitive.Zinc.200}" },
+    "interactive-item-selected-default":     { "$value": "{Primitive.Zinc.900}" },
+    "interactive-item-selected-hover":       { "$value": "{Primitive.Zinc.800}" },
+    "interactive-item-selected-disabled":    { "$value": "{Primitive.Zinc.100}" },
+    "interactive-item-selected-pressed":     { "$value": "{Primitive.Zinc.950}" },
+
+    "accent-ai-primary":       { "$value": "{Primitive.Violet.600}" },
+    "accent-ai-secondary":     { "$value": "{Primitive.Violet.100}" },
+    "accent-ai-tertiary":      { "$value": "{Primitive.Pink.100}" },
+
+    "accent-inbox-new":              { "$value": "{Primitive.Green.50}" },
+    "accent-inbox-active":           { "$value": "{Primitive.Blue.50}" },
+    "accent-inbox-reassigned":       { "$value": "{Primitive.Amber.50}" },
+    "accent-inbox-return":           { "$value": "{Primitive.Cyan.50}" },
+    "accent-inbox-typification":     { "$value": "{Primitive.Orange.100}" },
+    "accent-inbox-bubble-sent":      { "$value": "{Primitive.Esmerald.100}" },
+    "accent-inbox-bubble-received":  { "$value": "{Primitive.Neutral.0}" },
+
+    "accent-notifications-primary":   { "$value": "{Primitive.Red.500}" },
+    "accent-notifications-secondary": { "$value": "{Primitive.Red.100}" },
+
+    "danger-primary":   { "$value": "{Primitive.Red.500}" },
+    "danger-secondary": { "$value": "{Primitive.Alpha.0}" }
+  },
+
+  "fg": {
+    "$type": "color",
+    "primary":             { "$value": "{Primitive.Zinc.900}" },
+    "secondary":           { "$value": "{Primitive.Zinc.800}" },
+    "tertiary":            { "$value": "{Primitive.Zinc.600}" },
+    "quaternary":          { "$value": "{Primitive.Zinc.500}" },
+    "disabled":            { "$value": "{Primitive.Zinc.400}" },
+    "inverse-primary":     { "$value": "{Primitive.Zinc.50}" },
+    "inverse-secondary":   { "$value": "{Primitive.Zinc.200}" },
+    "inverse-tertiary":    { "$value": "{Primitive.Zinc.400}" },
+    "inverse-disabled":    { "$value": "{Primitive.Zinc.300}" },
+    "brand":               { "$value": "{Primitive.Orange.500}" },
+
+    "status-info":         { "$value": "{Primitive.Blue.800}" },
+    "status-success":      { "$value": "{Primitive.Esmerald.800}" },
+    "status-warning":      { "$value": "{Primitive.Yellow.800}" },
+    "status-error":        { "$value": "{Primitive.Red.800}" },
+    "status-informative":  { "$value": "{Primitive.Blue.600}" },
+    "status-neutral":      { "$value": "{Primitive.Zinc.600}" },
+    "status-brand":        { "$value": "{Primitive.Orange.500}" },
+    "status-ai":           { "$value": "{Primitive.Purple.600}" },
+
+    "status-on-success":      { "$value": "{Primitive.Esmerald.700}" },
+    "status-on-warning":      { "$value": "{Primitive.Yellow.700}" },
+    "status-on-error":        { "$value": "{Primitive.Red.700}" },
+    "status-on-informative":  { "$value": "{Primitive.Blue.700}" },
+    "status-on-neutral":      { "$value": "{Primitive.Zinc.700}" },
+    "status-on-brand":        { "$value": "{Primitive.Orange.700}" },
+    "status-on-ai":           { "$value": "{Primitive.Purple.700}" },
+
+    "interactive-link-enabled":   { "$value": "{Primitive.Blue.500}" },
+    "interactive-link-hovered":   { "$value": "{Primitive.Blue.600}" },
+    "interactive-link-pressed":   { "$value": "{Primitive.Blue.700}" },
+    "interactive-link-focused":   { "$value": "{Primitive.Blue.500}" },
+    "interactive-link-disabled":  { "$value": "{Primitive.Blue.400}" },
+
+    "interactive-danger-secondary-enabled":  { "$value": "{Primitive.Red.500}" },
+    "interactive-danger-secondary-hovered":  { "$value": "{Primitive.Red.600}" },
+    "interactive-danger-secondary-pressed":  { "$value": "{Primitive.Red.700}" },
+    "interactive-danger-secondary-focused":  { "$value": "{Primitive.Red.500}" },
+    "interactive-danger-tertiary-enabled":   { "$value": "{Primitive.Red.500}" },
+    "interactive-danger-tertiary-hovered":   { "$value": "{Primitive.Red.600}" },
+    "interactive-danger-tertiary-pressed":   { "$value": "{Primitive.Red.700}" },
+    "interactive-danger-tertiary-focused":   { "$value": "{Primitive.Red.500}" },
+
+    "accent-ai-primary":      { "$value": "{Primitive.Zinc.50}" },
+    "accent-ai-secondary":    { "$value": "{Primitive.Violet.700}" },
+    "accent-ai-tertiary":     { "$value": "{Primitive.Pink.700}" },
+
+    "accent-inbox-new":              { "$value": "{Primitive.Green.800}" },
+    "accent-inbox-active":           { "$value": "{Primitive.Blue.800}" },
+    "accent-inbox-reassigned":       { "$value": "{Primitive.Amber.800}" },
+    "accent-inbox-return":           { "$value": "{Primitive.Cyan.950}" },
+    "accent-inbox-typificacion":     { "$value": "{Primitive.Orange.900}" },
+    "accent-inbox-message":          { "$value": "{Primitive.Sky.900}" },
+    "accent-inbox-message-read":     { "$value": "{Primitive.Blue.500}" },
+    "accent-inbox-message-sent":     { "$value": "{Primitive.Zinc.500}" },
+
+    "accent-notifications-primary":   { "$value": "{Primitive.Zinc.50}" },
+    "accent-notifications-secondary": { "$value": "{Primitive.Red.700}" },
+
+    "accent-indicators-online":  { "$value": "{Primitive.Green.500}" },
+    "accent-indicators-offline": { "$value": "{Primitive.Red.500}" }
+  },
+
+  "border": {
+    "$type": "color",
+    "primary":    { "$value": "{Primitive.Zinc.500}" },
+    "secondary":  { "$value": "{Primitive.Zinc.300}" },
+    "tertiary":   { "$value": "{Primitive.Zinc.200}" },
+    "disabled":   { "$value": "{Primitive.Zinc.100}" },
+    "brand":      { "$value": "{Primitive.Orange.300}" },
+
+    "status-info":     { "$value": "{Primitive.Blue.500}" },
+    "status-success":  { "$value": "{Primitive.Green.500}" },
+    "status-warning":  { "$value": "{Primitive.Yellow.500}" },
+    "status-error":    { "$value": "{Primitive.Red.500}" },
+
+    "interactive-secondary-hovered":  { "$value": "{Primitive.Zinc.400}" },
+    "interactive-secondary-pressed":  { "$value": "{Primitive.Zinc.500}" },
+    "interactive-secondary-focused":  { "$value": "{Primitive.Zinc.900}" },
+    "interactive-link-focused":       { "$value": "{Primitive.Blue.500}" },
+    "interactive-danger-primary-focused":     { "$value": "{Primitive.Red.50}" },
+    "interactive-danger-secondary-enabled":   { "$value": "{Primitive.Red.500}" },
+    "interactive-danger-secondary-hovered":   { "$value": "{Primitive.Red.600}" },
+    "interactive-danger-secondary-pressed":   { "$value": "{Primitive.Red.500}" },
+    "interactive-danger-secondary-focused":   { "$value": "{Primitive.Red.500}" },
+    "interactive-danger-secondary-loading":   { "$value": "{Primitive.Red.500}" },
+    "interactive-danger-tertiary-focused":    { "$value": "{Primitive.Red.500}" },
+
+    "accent-ai-primary":   { "$value": "{Primitive.Violet.300}" },
+    "accent-ai-secondary": { "$value": "{Primitive.Violet.600}" }
+  },
+
+  "brand": {
+    "$type": "color",
+    "primary":          { "$value": "{Primitive.Orange.500}" },
+    "secondary-orange": { "$value": "{Primitive.Orange.50}" },
+    "secondary-green":  { "$value": "{Primitive.Green.50}" },
+    "secondary-violet": { "$value": "{Primitive.Violet.50}" },
+    "secondary-blue":   { "$value": "{Primitive.Blue.50}" },
+    "secondary-rose":   { "$value": "{Primitive.Rose.50}" }
+  },
+
+  "dialog": {
+    "$type": "color",
+    "bg-default":     { "$value": "{Primitive.Neutral.0}" },
+    "border-default": { "$value": "{Primitive.Zinc.300}" },
+    "fg-primary":     { "$value": "{Primitive.Zinc.950}" },
+    "fg-secondary":   { "$value": "{Primitive.Zinc.600}" }
+  },
+
+  "backdrop": {
+    "$type": "color",
+    "overlay": { "$value": "rgba(0, 0, 0, 0.5)" }
+  }
+}

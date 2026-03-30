@@ -1,0 +1,58 @@
+{
+  "tags": {
+    "bg": {
+      "$type": "color",
+      "success": { "$value": "{bg.status-success}" },
+      "warning": { "$value": "{bg.status-warning}" },
+      "danger":  { "$value": "{bg.status-error}" },
+      "info":    { "$value": "{bg.status-info}" },
+      "neutral": { "$value": "{bg.status-neutral}" },
+      "brand":   { "$value": "{bg.status-brand}" },
+      "ai":      { "$value": "{bg.status-ai}" },
+
+      "filled-success": { "$value": "{bg.status-success}" },
+      "filled-warning": { "$value": "{bg.status-warning}" },
+      "filled-danger":  { "$value": "{bg.status-error}" },
+      "filled-info":    { "$value": "{bg.status-info}" },
+      "filled-neutral": { "$value": "{bg.status-neutral}" },
+      "filled-brand":   { "$value": "{bg.status-brand}" },
+      "filled-ai":      { "$value": "{bg.status-ai}" },
+
+      "outlined-success": { "$value": "{bg.soft-tertiary}" },
+      "outlined-warning": { "$value": "{bg.soft-tertiary}" },
+      "outlined-danger":  { "$value": "{bg.soft-tertiary}" },
+      "outlined-info":    { "$value": "{bg.soft-tertiary}" },
+      "outlined-neutral": { "$value": "{bg.soft-tertiary}" },
+      "outlined-brand":   { "$value": "{bg.soft-tertiary}" },
+      "outlined-ai":      { "$value": "{bg.soft-tertiary}" }
+    },
+    "fg": {
+      "$type": "color",
+      "filled-success": { "$value": "{fg.status-on-success}" },
+      "filled-warning": { "$value": "{fg.status-on-warning}" },
+      "filled-danger":  { "$value": "{fg.status-on-error}" },
+      "filled-info":    { "$value": "{fg.status-on-informative}" },
+      "filled-neutral": { "$value": "{fg.status-on-neutral}" },
+      "filled-brand":   { "$value": "{fg.status-on-brand}" },
+      "filled-ai":      { "$value": "{fg.status-on-ai}" },
+
+      "outlined-success": { "$value": "{fg.status-success}" },
+      "outlined-warning": { "$value": "{fg.status-warning}" },
+      "outlined-danger":  { "$value": "{fg.status-error}" },
+      "outlined-info":    { "$value": "{fg.status-informative}" },
+      "outlined-neutral": { "$value": "{fg.status-neutral}" },
+      "outlined-brand":   { "$value": "{fg.status-brand}" },
+      "outlined-ai":      { "$value": "{fg.status-ai}" }
+    },
+    "border": {
+      "$type": "color",
+      "outlined-success": { "$value": "{fg.status-success}" },
+      "outlined-warning": { "$value": "{fg.status-warning}" },
+      "outlined-danger":  { "$value": "{fg.status-error}" },
+      "outlined-info":    { "$value": "{fg.status-informative}" },
+      "outlined-neutral": { "$value": "{fg.status-neutral}" },
+      "outlined-brand":   { "$value": "{fg.status-on-brand}" },
+      "outlined-ai":      { "$value": "{fg.status-on-ai}" }
+    }
+  }
+}

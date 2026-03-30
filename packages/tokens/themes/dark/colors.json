@@ -1,0 +1,12 @@
+{
+  "$description": "Dark theme color overrides. Same token names as semantic/colors.json, different primitive references. Phase 5 will configure Style Dictionary to compile this into dark.css with [data-theme='dark'] selector.",
+
+  "fg": {
+    "$type": "color",
+    "primary":           { "$value": "{Primitive.Neutral.0}" },
+    "secondary":         { "$value": "{Primitive.Zinc.200}" },
+    "tertiary":          { "$value": "{Primitive.Zinc.300}" },
+    "inverse-primary":   { "$value": "{Primitive.Zinc.900}" },
+    "inverse-secondary": { "$value": "{Primitive.Zinc.800}" }
+  }
+}

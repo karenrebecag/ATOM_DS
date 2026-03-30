@@ -1,0 +1,87 @@
+{
+  "xxs":   { "$type": "dimension", "$value": "{Primitive.Spacing.xxs}" },
+  "xs":    { "$type": "dimension", "$value": "{Primitive.Spacing.xs}" },
+  "s":     { "$type": "dimension", "$value": "{Primitive.Spacing.s}" },
+  "sm":    { "$type": "dimension", "$value": "{Primitive.Spacing.sm}" },
+  "m":     { "$type": "dimension", "$value": "{Primitive.Spacing.m}" },
+  "md":    { "$type": "dimension", "$value": "{Primitive.Spacing.md}" },
+  "l":     { "$type": "dimension", "$value": "{Primitive.Spacing.l}" },
+  "lg":    { "$type": "dimension", "$value": "{Primitive.Spacing.lg}" },
+  "xl":    { "$type": "dimension", "$value": "{Primitive.Spacing.xl}" },
+  "xxl":   { "$type": "dimension", "$value": "{Primitive.Spacing.xxl}" },
+  "2xxl":  { "$type": "dimension", "$value": "{Primitive.Spacing.2xxl}" },
+  "3xxl":  { "$type": "dimension", "$value": "{Primitive.Spacing.3xxl}" },
+  "4xxl":  { "$type": "dimension", "$value": "{Primitive.Spacing.4xxl}" },
+  "5xxl":  { "$type": "dimension", "$value": "{Primitive.Spacing.5xxl}" },
+  "6xxl":  { "$type": "dimension", "$value": "{Primitive.Spacing.6xxl}" },
+  "7xxl":  { "$type": "dimension", "$value": "{Primitive.Spacing.7xxl}" },
+  "8xxl":  { "$type": "dimension", "$value": "{Primitive.Spacing.8xxl}" },
+  "9xxl":  { "$type": "dimension", "$value": "{Primitive.Spacing.9xxl}" },
+  "10xxl": { "$type": "dimension", "$value": "{Primitive.Spacing.10xxl}" },
+  "11xxl": { "$type": "dimension", "$value": "{Primitive.Spacing.11xxl}" },
+  "12xxl": { "$type": "dimension", "$value": "{Primitive.Spacing.12xxl}" },
+  "13xxl": { "$type": "dimension", "$value": "{Primitive.Spacing.13xxl}" },
+  "14xxl": { "$type": "dimension", "$value": "{Primitive.Spacing.14xxl}" },
+  "15xxl": { "$type": "dimension", "$value": "{Primitive.Spacing.15xxl}" },
+  "16xxl": { "$type": "dimension", "$value": "{Primitive.Spacing.16xxl}" },
+  "17xxl": { "$type": "dimension", "$value": "{Primitive.Spacing.17xxl}" },
+  "padding": {
+    "$type": "dimension",
+    "xl":        { "$value": "12.5em" },
+    "l":         { "$value": "10em" },
+    "m":         { "$value": "5em" },
+    "s":         { "$value": "3.75em" },
+    "xs":        { "$value": "2.5em" },
+    "container": { "$value": "1.875em" }
+  },
+  "gap": {
+    "$type": "dimension",
+    "xxl": { "$value": "2.5em" },
+    "xl":  { "$value": "2em" },
+    "l":   { "$value": "1.875em" },
+    "m":   { "$value": "1.5em" },
+    "sm":  { "$value": "1.25em" },
+    "s":   { "$value": "1em" },
+    "xs":  { "$value": "0.75em" },
+    "xxs": { "$value": "0.5em" }
+  },
+  "btn-height":   { "$type": "dimension", "$value": "2.5em" },
+  "input-height":  { "$type": "dimension", "$value": "3em" },
+  "nav-bar-height": { "$type": "dimension", "$value": "4.625em" },
+  "icon": {
+    "$type": "dimension",
+    "xs": { "$value": "{Primitive.Spacing.sm}", "$description": "12px" },
+    "s":  { "$value": "{Primitive.Spacing.m}", "$description": "16px" },
+    "m":  { "$value": "{Primitive.Spacing.md}", "$description": "20px" },
+    "l":  { "$value": "{Primitive.Spacing.l}", "$description": "24px" }
+  },
+  "input-height-sm": { "$type": "dimension", "$value": "2rem" },
+  "input-height-md": { "$type": "dimension", "$value": "2.5rem" },
+  "input-height-lg": { "$type": "dimension", "$value": "3rem" },
+  "container-width": {
+    "$type": "number",
+    "m":  { "$value": 0.825 },
+    "sm": { "$value": 0.65 },
+    "s":  { "$value": 0.5 }
+  },
+  "dialog-width": {
+    "$type": "dimension",
+    "s": { "$value": "400px" },
+    "m": { "$value": "560px" },
+    "l": { "$value": "800px" }
+  },
+  "content-width": {
+    "$type": "dimension",
+    "sm": { "$value": "600px" },
+    "md": { "$value": "800px" },
+    "lg": { "$value": "1000px" }
+  },
+  "aspect": {
+    "$type": "number",
+    "square":    { "$value": 1, "$description": "1/1" },
+    "video":     { "$value": 1.778, "$description": "16/9" },
+    "landscape": { "$value": 1.333, "$description": "4/3" },
+    "portrait":  { "$value": 0.75, "$description": "3/4" },
+    "wide":      { "$value": 2.333, "$description": "21/9" }
+  }
+}

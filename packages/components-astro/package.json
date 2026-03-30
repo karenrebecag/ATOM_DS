@@ -1,0 +1,22 @@
+{
+  "name": "@anthropic-atom/components-astro",
+  "version": "1.0.0",
+  "description": "ATOM Design System — Astro component library",
+  "exports": {
+    ".": "./src/index.ts",
+    "./atoms/*": "./src/atoms/*",
+    "./molecules/*": "./src/molecules/*",
+    "./organisms/*": "./src/organisms/*"
+  },
+  "files": [
+    "src/"
+  ],
+  "scripts": {
+    "build": "echo 'Astro components — no build step needed'"
+  },
+  "peerDependencies": {
+    "astro": ">=4.0.0",
+    "@anthropic-atom/css": "workspace:*"
+  },
+  "license": "MIT"
+}

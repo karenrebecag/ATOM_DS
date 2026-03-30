@@ -1,0 +1,46 @@
+/* ============================================
+   @anthropic-atom/css — skeleton.css
+   Depends on: @anthropic-atom/tokens (tokens.css)
+   Animations: @anthropic-atom/animations
+============================================ */
+
+:root {
+  /* ── Background ──────────────────────────────────────────────── */
+  --skeleton-bg: var(--bg-quaternary);           /* Zinc-200 */
+  --skeleton-bg-dark: var(--primitive-zinc-800);
+
+  /* ── Pulse animation ─────────────────────────────────────────── */
+  --skeleton-pulse-duration: var(--duration-shimmer);  /* 1.5s */
+  --skeleton-pulse-easing: var(--ease-standard);       /* ease */
+  --skeleton-pulse-opacity: var(--opacity-40);         /* 0.4 */
+
+  /* ── Radius ──────────────────────────────────────────────────── */
+  --skeleton-radius: var(--radius-s);
+  --skeleton-radius-circle: var(--radius-circle);
+  --skeleton-radius-line: var(--radius-xxs);
+  --skeleton-radius-card: var(--radius-sm);
+  --skeleton-radius-btn: var(--radius-s);
+
+  /* ── Text lines ──────────────────────────────────────────────── */
+  --skeleton-lines-gap: var(--gap-xxs);
+  --skeleton-line-height: var(--sm);          /* 12px — visible on white bg */
+  --skeleton-line-width-1: 100%;
+  --skeleton-line-width-2: 90%;
+  --skeleton-line-width-3: 75%;
+  --skeleton-line-width-4: 85%;
+  --skeleton-line-width-5: 60%;
+
+  /* ── Card composition ────────────────────────────────────────── */
+  --skeleton-card-padding: var(--gap-s);
+  --skeleton-card-gap: var(--gap-s);
+  --skeleton-card-border: var(--stroke-xs) solid var(--border-tertiary);
+  --skeleton-card-border-dark: var(--stroke-xs) solid var(--primitive-zinc-700);
+  --skeleton-card-bg-dark: var(--primitive-zinc-900);
+
+  /* ── Sizes (mapped to DS sizing) ─────────────────────────────── */
+  --skeleton-avatar-size: var(--input-height-lg);  /* 48px — avatar lg */
+  --skeleton-heading-h: var(--m);                  /* 16px — h-4 */
+  --skeleton-body-h: var(--sm);                    /* 12px — h-3 */
+  --skeleton-btn-h: var(--input-height-sm);        /* 32px — button sm */
+  --skeleton-btn-w: var(--12xxl);                  /* 80px — w-20 */
+}

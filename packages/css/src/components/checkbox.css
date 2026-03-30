@@ -1,0 +1,49 @@
+/* ============================================
+   @anthropic-atom/css — checkbox.css
+   Depends on: @anthropic-atom/tokens (tokens.css)
+   Animations: @anthropic-atom/animations
+============================================ */
+
+:root {
+  /* ── Checkbox: Background Colors ─────────────────────────────── */
+  /* Checked states */
+  --checkbox-bg-checked-enabled: var(--bg-inverse-primary);
+  --checkbox-bg-checked-hovered: var(--bg-inverse-secondary);
+  --checkbox-bg-checked-focused: var(--bg-inverse-primary);
+  --checkbox-bg-checked-disabled: var(--bg-disabled);
+
+  /* Indeterminate states */
+  --checkbox-bg-indeterminate-enabled: var(--bg-inverse-primary);
+  --checkbox-bg-indeterminate-hovered: var(--bg-inverse-secondary);
+  --checkbox-bg-indeterminate-focused: var(--bg-inverse-primary);
+  --checkbox-bg-indeterminate-disabled: var(--bg-disabled);
+
+  /* Unchecked states */
+  --checkbox-bg-enabled-enabled: var(--bg-primary);
+  --checkbox-bg-enabled-hovered: var(--bg-secondary);
+  --checkbox-bg-enabled-focused: var(--bg-primary);
+  --checkbox-bg-enabled-disabled: var(--bg-disabled);
+
+  /* ── Checkbox: Border Colors ─────────────────────────────────── */
+  --checkbox-border-enabled-default: var(--border-primary);
+  --checkbox-border-enabled-hovered: var(--border-primary);
+  --checkbox-border-enabled-focused: var(--border-primary);
+  --checkbox-border-enabled-disabled: var(--border-disabled);
+  --checkbox-border-enabled-error: var(--border-status-error);
+
+  /* ── Checkbox: Foreground (Icon) ─────────────────────────────── */
+  /* Checked icon colors */
+  --checkbox-fg-checked-enabled: var(--fg-inverse-primary);
+  --checkbox-fg-checked-hovered: var(--fg-inverse-primary);
+  --checkbox-fg-checked-focused: var(--fg-inverse-primary);
+  --checkbox-fg-checked-disabled: var(--fg-inverse-disabled);
+
+  /* Indeterminate icon colors */
+  --checkbox-fg-indeterminate-enabled: var(--fg-inverse-primary);
+  --checkbox-fg-indeterminate-hovered: var(--fg-inverse-primary);
+  --checkbox-fg-indeterminate-focused: var(--fg-inverse-primary);
+  --checkbox-fg-indeterminate-disabled: var(--fg-disabled);
+
+  /* ── Checkbox: Focus Shadow ──────────────────────────────────── */
+  --checkbox-shadow-focus: 0px 0px 0px 2px var(--primitive-alpha-400);
+}

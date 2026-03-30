@@ -1,0 +1,33 @@
+{
+  "name": "@anthropic-atom/css",
+  "version": "0.1.0",
+  "description": "ATOM Design System — Component styles and utilities",
+  "main": "./dist/atom.css",
+  "style": "./dist/atom.css",
+  "exports": {
+    ".": "./dist/atom.css",
+    "./atom.css": "./dist/atom.css"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite build --watch"
+  },
+  "peerDependencies": {
+    "@anthropic-atom/tokens": "workspace:*"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0",
+    "lightningcss": "^1.23.0"
+  },
+  "keywords": [
+    "css",
+    "design-system",
+    "atom",
+    "component-styles"
+  ],
+  "author": "ATOM Design System",
+  "license": "MIT"
+}

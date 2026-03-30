@@ -1,0 +1,42 @@
+{
+  "skeleton": {
+    "bg": {
+      "$type": "color",
+      "default": { "$value": "{bg.quaternary}" },
+      "dark":    { "$value": "{Primitive.Zinc.800}" }
+    },
+    "pulse": {
+      "duration": { "$type": "duration", "$value": "{Primitive.Duration.shimmer}" },
+      "easing":   { "$type": "cubicBezier", "$value": "{Primitive.Easing.standard}" },
+      "opacity":  { "$type": "number", "$value": "{Primitive.Opacity.40}" }
+    },
+    "radius": {
+      "$type": "dimension",
+      "default": { "$value": "{Primitive.Radius.s}" },
+      "circle":  { "$value": "{Primitive.Radius.circle}" },
+      "line":    { "$value": "{Primitive.Radius.xxs}" },
+      "card":    { "$value": "{Primitive.Radius.sm}" },
+      "btn":     { "$value": "{Primitive.Radius.s}" }
+    },
+    "lines-gap":    { "$type": "dimension", "$value": "{gap.xxs}", "$description": "Gap between skeleton text lines" },
+    "line-height":  { "$type": "dimension", "$value": "{Primitive.Spacing.sm}", "$description": "12px — line element height" },
+    "line-width": {
+      "$type": "dimension",
+      "1": { "$value": "100%", "$description": "Full width line" },
+      "2": { "$value": "90%" },
+      "3": { "$value": "75%" },
+      "4": { "$value": "85%" },
+      "5": { "$value": "60%", "$description": "Shortest line" }
+    },
+    "card": {
+      "padding":  { "$type": "dimension", "$value": "{gap.s}" },
+      "gap":      { "$type": "dimension", "$value": "{gap.s}" },
+      "bg-dark":  { "$type": "color", "$value": "{Primitive.Zinc.900}" }
+    },
+    "avatar-size": { "$type": "dimension", "$value": "{input-height-lg}", "$description": "48px — avatar large" },
+    "heading-h":   { "$type": "dimension", "$value": "{Primitive.Spacing.m}", "$description": "16px" },
+    "body-h":      { "$type": "dimension", "$value": "{Primitive.Spacing.sm}", "$description": "12px" },
+    "btn-h":       { "$type": "dimension", "$value": "{input-height-sm}", "$description": "32px — button small" },
+    "btn-w":       { "$type": "dimension", "$value": "{Primitive.Spacing.12xxl}", "$description": "80px" }
+  }
+}

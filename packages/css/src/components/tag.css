@@ -1,0 +1,61 @@
+/* ============================================
+   @anthropic-atom/css — tag.css
+   Depends on: @anthropic-atom/tokens (tokens.css)
+   Animations: @anthropic-atom/animations
+============================================ */
+
+:root {
+  /* ── tags / bg (generic — dot indicator reference) ─────────── */
+  --tags-bg-success: var(--bg-status-success);
+  --tags-bg-warning: var(--bg-status-warning);
+  --tags-bg-danger: var(--bg-status-error);
+  --tags-bg-info: var(--bg-status-info);
+  --tags-bg-neutral: var(--bg-status-neutral);
+  --tags-bg-brand: var(--bg-status-brand);
+  --tags-bg-ai: var(--bg-status-ai);
+
+  /* ── tags / bg / filled ────────────────────────────────────── */
+  --tags-bg-filled-success: var(--bg-status-success);
+  --tags-bg-filled-warning: var(--bg-status-warning);
+  --tags-bg-filled-danger: var(--bg-status-error);
+  --tags-bg-filled-info: var(--bg-status-info);
+  --tags-bg-filled-neutral: var(--bg-status-neutral);
+  --tags-bg-filled-brand: var(--bg-status-brand);
+  --tags-bg-filled-ai: var(--bg-status-ai);
+
+  /* ── tags / bg / outlined ──────────────────────────────────── */
+  --tags-bg-outlined-success: var(--bg-soft-tertiary);
+  --tags-bg-outlined-warning: var(--bg-soft-tertiary);
+  --tags-bg-outlined-danger: var(--bg-soft-tertiary);
+  --tags-bg-outlined-info: var(--bg-soft-tertiary);
+  --tags-bg-outlined-neutral: var(--bg-soft-tertiary);
+  --tags-bg-outlined-brand: var(--bg-soft-tertiary);
+  --tags-bg-outlined-ai: var(--bg-soft-tertiary);
+
+  /* ── tags / fg / filled ────────────────────────────────────── */
+  --tags-fg-filled-success: var(--fg-status-on-success);
+  --tags-fg-filled-warning: var(--fg-status-on-warning);
+  --tags-fg-filled-danger: var(--fg-status-on-error);
+  --tags-fg-filled-info: var(--fg-status-on-informative);
+  --tags-fg-filled-neutral: var(--fg-status-on-neutral);
+  --tags-fg-filled-brand: var(--fg-status-on-brand);
+  --tags-fg-filled-ai: var(--fg-status-on-ai);
+
+  /* ── tags / fg / outlined ──────────────────────────────────── */
+  --tags-fg-outlined-success: var(--fg-status-success);
+  --tags-fg-outlined-warning: var(--fg-status-warning);
+  --tags-fg-outlined-danger: var(--fg-status-error);
+  --tags-fg-outlined-info: var(--fg-status-informative);
+  --tags-fg-outlined-neutral: var(--fg-status-neutral);
+  --tags-fg-outlined-brand: var(--fg-status-brand);
+  --tags-fg-outlined-ai: var(--fg-status-ai);
+
+  /* ── tags / border / outlined ──────────────────────────────── */
+  --tags-border-outlined-success: var(--fg-status-success);
+  --tags-border-outlined-warning: var(--fg-status-warning);
+  --tags-border-outlined-danger: var(--fg-status-error);
+  --tags-border-outlined-info: var(--fg-status-informative);
+  --tags-border-outlined-neutral: var(--fg-status-neutral);
+  --tags-border-outlined-brand: var(--fg-status-on-brand);
+  --tags-border-outlined-ai: var(--fg-status-on-ai);
+}

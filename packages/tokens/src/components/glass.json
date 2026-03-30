@@ -1,0 +1,20 @@
+{
+  "frosted-glass": {
+    "blur":         { "$type": "dimension", "$value": "{Primitive.Glass.Blur.default}", "$description": "Backdrop blur for frosted glass" },
+    "shadow":       { "$type": "shadow", "$value": "{glass.shadow-default}", "$description": "Default frosted glass shadow" },
+    "shadow-hover": { "$type": "shadow", "$value": "{glass.shadow-hover}", "$description": "Hovered frosted glass shadow" },
+    "noise-scale":  { "$type": "number", "$value": "{Primitive.Glass.NoiseScale.medium}", "$description": "Noise texture scale" }
+  },
+  "glassmorphism": {
+    "blur":         { "$type": "dimension", "$value": "{Primitive.Glass.Blur.default}", "$description": "Backdrop blur for glassmorphism cards" },
+    "bg":           { "$type": "color", "$value": "#ffffff1a", "$description": "Glassmorphism background — rgba(255,255,255,0.1)" },
+    "border":       { "$type": "color", "$value": "#ffffff33", "$description": "Glassmorphism border — rgba(255,255,255,0.2)" },
+    "shadow":       { "$type": "shadow", "$value": "0 8px 32px rgba(0, 0, 0, 0.1)", "$description": "Glassmorphism outer shadow" },
+    "shadow-inset": { "$type": "shadow", "$value": "inset 0 0 0 1px rgba(255, 255, 255, 0.1)", "$description": "Glassmorphism inner border shadow" }
+  },
+  "acrylic": {
+    "blur":          { "$type": "dimension", "$value": "{Primitive.Glass.Blur.intense}", "$description": "Heavy backdrop blur for acrylic material" },
+    "tint-opacity":  { "$type": "number", "$value": 0.6, "$description": "Acrylic tint layer opacity" },
+    "noise-opacity": { "$type": "number", "$value": 0.05, "$description": "Acrylic noise texture opacity" }
+  }
+}

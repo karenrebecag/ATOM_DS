@@ -1,0 +1,18 @@
+{
+  "Primitive": {
+    "Easing": {
+      "$type": "cubicBezier",
+      "default":  { "$value": [0.625, 0.05, 0, 1], "$description": "Primary easing curve" },
+      "standard": { "$value": [0.25, 0.1, 0.25, 1], "$description": "CSS ease equivalent" }
+    },
+    "Duration": {
+      "$type": "duration",
+      "quarter":  { "$value": "150ms" },
+      "half":     { "$value": "300ms" },
+      "default":  { "$value": "600ms" },
+      "onehalf":  { "$value": "900ms" },
+      "double":   { "$value": "1200ms" },
+      "shimmer":  { "$value": "1500ms" }
+    }
+  }
+}

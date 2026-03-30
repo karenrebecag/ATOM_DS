@@ -1,0 +1,70 @@
+/* ============================================
+   @anthropic-atom/css — chip.css
+   Depends on: @anthropic-atom/tokens (tokens.css)
+   Animations: @anthropic-atom/animations
+============================================ */
+
+:root {
+  /* ── Chip: Background Colors ─────────────────────────────── */
+  /* Default */
+  --chip-bg-default: var(--bg-secondary);
+
+  /* Unselected states */
+  --chip-bg-unselected-enabled: var(--bg-interactive-item-default);
+  --chip-bg-unselected-hovered: var(--bg-interactive-item-hover);
+  --chip-bg-unselected-disabled: var(--bg-interactive-item-disabled);
+  --chip-bg-unselected-pressed: var(--bg-interactive-item-pressed);
+
+  /* Selected states */
+  --chip-bg-selected-enabled: var(--bg-interactive-item-selected-default);
+  --chip-bg-selected-hovered: var(--bg-interactive-item-selected-hover);
+  --chip-bg-selected-disabled: var(--bg-interactive-item-selected-disabled);
+  --chip-bg-selected-pressed: var(--bg-interactive-item-selected-pressed);
+
+  /* ── Chip: Foreground (Text/Icon) ────────────────────────── */
+  /* Unselected states */
+  --chip-fg-unselected-enabled: var(--fg-secondary);
+  --chip-fg-unselected-hovered: var(--fg-primary);
+  --chip-fg-unselected-disabled: var(--fg-disabled);
+  --chip-fg-unselected-pressed: var(--fg-primary);
+
+  /* Selected states */
+  --chip-fg-selected-enabled: var(--fg-brand);
+  --chip-fg-selected-hovered: var(--fg-brand);
+  --chip-fg-selected-disabled: var(--fg-disabled);
+  --chip-fg-selected-pressed: var(--fg-brand);
+
+  /* ── Chip: Border ────────────────────────────────────────── */
+  --chip-border-default: var(--border-secondary);
+
+  /* ── Chip: Focus Shadow ──────────────────────────────────── */
+  --chip-shadow-focus: 0px 0px 0px 2px rgba(161, 161, 161, 0.7);
+
+  /* ── Chip: Spacing (per size) ────────────────────────────── */
+  --chip-padding-xs: var(--xs, 4px) var(--s, 8px);
+  --chip-padding-s: var(--s, 8px);
+  --chip-padding-m: var(--sm, 12px);
+  --chip-padding-l: var(--m, 16px);
+  --chip-padding-xl: var(--m, 16px);
+
+  /* ── Chip: Typography ────────────────────────────────────── */
+  --chip-font-family-small: var(--font-family-titles, 'Inter', sans-serif);
+  --chip-font-family-large: var(--font-family-content, 'Inter', sans-serif);
+  --chip-font-weight: var(--font-weight-medium, 500);
+  --chip-font-size-small: 12px;
+  --chip-font-size-large: var(--font-sizes-caption, 16px);
+  --chip-line-height-small: var(--line-height-label, 16px);
+  --chip-line-height-large: var(--line-height-caption, 24px);
+
+  /* ── Chip: Border Radius ─────────────────────────────────── */
+  --chip-border-radius: var(--radius-pill, 1000px);
+
+  /* ── Chip: Border Width ──────────────────────────────────── */
+  --chip-border-width: var(--stroke-xs, 1px);
+
+  /* ── Chip: Icon Size ─────────────────────────────────────── */
+  --chip-icon-size: 16px;
+
+  /* ── Chip: Gap (between icons and label) ─────────────────── */
+  --chip-gap: var(--xs, 4px);
+}

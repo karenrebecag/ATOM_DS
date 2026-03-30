@@ -1,0 +1,37 @@
+{
+  "Primitive": {
+    "Spacing": {
+      "$type": "dimension",
+      "xxs":  { "$value": "2px" },
+      "xs":   { "$value": "4px" },
+      "s":    { "$value": "8px" },
+      "sm":   { "$value": "12px" },
+      "m":    { "$value": "16px" },
+      "md":   { "$value": "20px" },
+      "l":    { "$value": "24px" },
+      "lg":   { "$value": "28px" },
+      "xl":   { "$value": "32px" },
+      "xxl":  { "$value": "36px" },
+      "2xxl": { "$value": "40px" },
+      "3xxl": { "$value": "44px" },
+      "4xxl": { "$value": "48px" },
+      "5xxl": { "$value": "52px" },
+      "6xxl": { "$value": "56px" },
+      "7xxl": { "$value": "60px" },
+      "8xxl": { "$value": "64px" },
+      "9xxl": { "$value": "68px" },
+      "10xxl": { "$value": "72px" },
+      "11xxl": { "$value": "76px" },
+      "12xxl": { "$value": "80px" },
+      "13xxl": { "$value": "84px" },
+      "14xxl": { "$value": "88px" },
+      "15xxl": { "$value": "92px" },
+      "16xxl": { "$value": "96px" },
+      "17xxl": { "$value": "100px" }
+    },
+    "Stroke": {
+      "$type": "dimension",
+      "xs": { "$value": "1px" }
+    }
+  }
+}

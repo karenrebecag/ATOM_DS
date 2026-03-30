@@ -1,0 +1,16 @@
+/* ============================================
+   @anthropic-atom/css — utilities/motion.css
+   Motion composite shorthands
+   Deferred from @anthropic-atom/tokens (DTCG limitation)
+============================================ */
+
+:root {
+  /* Motion Composite Shorthands (duration + easing) */
+  --animation-quarter:     var(--duration-quarter) var(--ease-default);    /* 0.15s cubic-bezier(...) */
+  --animation-half:        var(--duration-half) var(--ease-default);       /* 0.3s cubic-bezier(...) */
+  --animation-default:     var(--duration-default) var(--ease-default);    /* 0.6s cubic-bezier(...) */
+  --animation-onehalf:     var(--duration-onehalf) var(--ease-default);    /* 0.9s cubic-bezier(...) */
+  --animation-double:      var(--duration-double) var(--ease-default);     /* 1.2s cubic-bezier(...) */
+  --animation-ease:        0.2s ease; /* optical adjustment */
+  --animation-ease-double: 0.4s ease; /* optical adjustment */
+}

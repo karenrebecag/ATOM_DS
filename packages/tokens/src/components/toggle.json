@@ -1,0 +1,42 @@
+{
+  "toggle": {
+    "structure": {
+      "track": {
+        "width": {
+          "s": { "$value": "36px", "$type": "dimension" },
+          "m": { "$value": "44px", "$type": "dimension" }
+        },
+        "height": {
+          "s": { "$value": "20px", "$type": "dimension" },
+          "m": { "$value": "24px", "$type": "dimension" }
+        }
+      },
+      "knob": {
+        "size": {
+          "s": { "$value": "16px", "$type": "dimension" },
+          "m": { "$value": "20px", "$type": "dimension" }
+        },
+        "radius": { "$value": "44px", "$type": "dimension" },
+        "shadow": { "$value": "0px 0px 4px 0px rgba(10, 13, 18, 0.1)", "$type": "shadow" }
+      },
+      "translate": {
+        "s": { "$value": "16px", "$type": "dimension" },
+        "m": { "$value": "20px", "$type": "dimension" }
+      }
+    },
+    "field": {
+      "font-size": {
+        "s": { "$value": "12px", "$type": "dimension" },
+        "m": { "$value": "16px", "$type": "dimension" }
+      },
+      "error-font-size": {
+        "s": { "$value": "10px", "$type": "dimension" },
+        "m": { "$value": "16px", "$type": "dimension" }
+      },
+      "icon-size": {
+        "s": { "$value": "12px", "$type": "dimension" },
+        "m": { "$value": "16px", "$type": "dimension" }
+      }
+    }
+  }
+}

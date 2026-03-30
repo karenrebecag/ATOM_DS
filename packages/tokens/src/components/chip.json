@@ -1,0 +1,62 @@
+{
+  "chip": {
+    "bg": {
+      "$type": "color",
+      "default":              { "$value": "{bg.secondary}" },
+      "unselected-enabled":   { "$value": "{bg.interactive-item-default}" },
+      "unselected-hovered":   { "$value": "{bg.interactive-item-hover}" },
+      "unselected-disabled":  { "$value": "{bg.interactive-item-disabled}" },
+      "unselected-pressed":   { "$value": "{bg.interactive-item-pressed}" },
+      "selected-enabled":     { "$value": "{bg.interactive-item-selected-default}" },
+      "selected-hovered":     { "$value": "{bg.interactive-item-selected-hover}" },
+      "selected-disabled":    { "$value": "{bg.interactive-item-selected-disabled}" },
+      "selected-pressed":     { "$value": "{bg.interactive-item-selected-pressed}" }
+    },
+    "fg": {
+      "$type": "color",
+      "unselected-enabled":  { "$value": "{fg.secondary}" },
+      "unselected-hovered":  { "$value": "{fg.primary}" },
+      "unselected-disabled": { "$value": "{fg.disabled}" },
+      "unselected-pressed":  { "$value": "{fg.primary}" },
+      "selected-enabled":    { "$value": "{fg.brand}" },
+      "selected-hovered":    { "$value": "{fg.brand}" },
+      "selected-disabled":   { "$value": "{fg.disabled}" },
+      "selected-pressed":    { "$value": "{fg.brand}" }
+    },
+    "border": {
+      "$type": "color",
+      "default": { "$value": "{border.secondary}" }
+    },
+    "shadow": {
+      "$type": "shadow",
+      "focus": { "$value": "0px 0px 0px 2px rgba(161, 161, 161, 0.7)" }
+    },
+    "padding": {
+      "$type": "dimension",
+      "s":  { "$value": "{Primitive.Spacing.s}", "$description": "8px" },
+      "m":  { "$value": "{Primitive.Spacing.sm}", "$description": "12px" },
+      "l":  { "$value": "{Primitive.Spacing.m}", "$description": "16px" },
+      "xl": { "$value": "{Primitive.Spacing.m}", "$description": "16px" }
+    },
+    "font-family": {
+      "$type": "fontFamily",
+      "small": { "$value": "{font-family-titles}", "$description": "Display font for small chips" },
+      "large": { "$value": "{font-body}", "$description": "Body font for large chips" }
+    },
+    "font-weight": { "$type": "fontWeight", "$value": "{font-weight-medium}", "$description": "500" },
+    "font-size": {
+      "$type": "dimension",
+      "small": { "$value": "12px" },
+      "large": { "$value": "{text-caption}", "$description": "16px" }
+    },
+    "line-height": {
+      "$type": "dimension",
+      "small": { "$value": "{line-height-label}", "$description": "16px" },
+      "large": { "$value": "{line-height-caption}", "$description": "24px" }
+    },
+    "border-radius": { "$type": "dimension", "$value": "{radius-pill}", "$description": "1000px — pill shape" },
+    "border-width":  { "$type": "dimension", "$value": "{stroke-xs}", "$description": "1px" },
+    "icon-size":     { "$type": "dimension", "$value": "{icon.s}", "$description": "16px" },
+    "gap":           { "$type": "dimension", "$value": "{Primitive.Spacing.xs}", "$description": "4px — between icon and label" }
+  }
+}

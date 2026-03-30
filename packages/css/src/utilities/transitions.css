@@ -1,0 +1,18 @@
+/* ============================================
+   @anthropic-atom/css — utilities/transitions.css
+   Page transition overlay for Barba.js
+   Migrated from ATOM_website utilities/_transitions.scss
+============================================ */
+
+/* ── Page Transition Overlay ────────────────────────────────────────── */
+/* Full-screen cover that prevents FOUC during Barba.js page swaps.
+   Lives outside [data-barba="container"] so it persists across navigations */
+.page-transition {
+  position: fixed;
+  inset: 0;
+  background: var(--primitive-zinc-100);
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+}

@@ -1,0 +1,49 @@
+/* ============================================
+   @anthropic-atom/css — utilities/glass.css
+   Glass/frosted effects with rgba() + var()
+   Deferred from @anthropic-atom/tokens (DTCG limitation)
+============================================ */
+
+:root {
+  /* ── Semantic glass (8 tokens) ────────────────────────────── */
+  /* Light theme glass backgrounds */
+  --glass-bg-light:              rgba(255, 255, 255, var(--primitive-glass-bg-opacity-light));
+  --glass-bg-light-hover:        rgba(255, 255, 255, var(--primitive-glass-bg-opacity-medium));
+
+  /* Dark theme glass backgrounds */
+  --glass-bg-dark:               rgba(0, 0, 0, var(--primitive-glass-bg-opacity-light));
+  --glass-bg-dark-hover:         rgba(0, 0, 0, var(--primitive-glass-bg-opacity-medium));
+
+  /* Light theme glass borders */
+  --glass-border-light:          rgba(255, 255, 255, var(--primitive-glass-border-opacity-medium));
+  --glass-border-light-strong:   rgba(255, 255, 255, var(--primitive-glass-border-opacity-strong));
+
+  /* Dark theme glass borders */
+  --glass-border-dark:           rgba(255, 255, 255, var(--primitive-glass-border-opacity-subtle));
+  --glass-border-dark-strong:    rgba(255, 255, 255, var(--primitive-glass-border-opacity-medium));
+
+  /* ── Component glass aliases (4 tokens) ────────────────────── */
+  --frosted-glass-bg:            var(--glass-bg-light);
+  --frosted-glass-bg-hover:      var(--glass-bg-light-hover);
+  --frosted-glass-border:        var(--glass-border-light);
+  --frosted-glass-border-hover:  var(--glass-border-light-strong);
+}
+
+/* ── Dark theme overrides ────────────────────────────────────── */
+[data-theme="dark"] {
+  --frosted-glass-bg:           var(--glass-bg-dark);
+  --frosted-glass-bg-hover:     var(--glass-bg-dark-hover);
+  --frosted-glass-border:       var(--glass-border-dark);
+  --frosted-glass-border-hover: var(--glass-border-dark-strong);
+  --glassmorphism-bg:           rgba(0, 0, 0, 0.3);
+  --glassmorphism-border:       rgba(255, 255, 255, 0.1);
+}
+
+/* ── Frosted glass SVG filters container ───────────────────────── */
+.frosted-filters {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  pointer-events: none;
+}

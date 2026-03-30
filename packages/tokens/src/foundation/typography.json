@@ -1,0 +1,70 @@
+{
+  "Primitive": {
+    "Font": {
+      "$type": "fontFamily",
+      "Display": { "$value": "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" },
+      "Body":    { "$value": "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" },
+      "Mono":    { "$value": "Haffer Mono, SF Mono, Fira Code, monospace" },
+      "Script":  { "$value": "Brisa Pro, Georgia, serif" },
+      "Median":  { "$value": "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" }
+    },
+    "Weight": {
+      "$type": "fontWeight",
+      "Regular": { "$value": 400 },
+      "Medium":  { "$value": 500 },
+      "Bold":    { "$value": 700 }
+    },
+    "Size": {
+      "$type": "dimension",
+      "DisplayXL":  { "$value": "4.5rem", "$description": "72px" },
+      "DisplayL":   { "$value": "4rem", "$description": "64px" },
+      "DisplayM":   { "$value": "3.5rem", "$description": "56px" },
+      "DisplayS":   { "$value": "3.25rem", "$description": "52px" },
+      "HugeTitle":  { "$value": "3rem", "$description": "48px" },
+      "H1":         { "$value": "2.75rem", "$description": "44px" },
+      "H2":         { "$value": "2.25rem", "$description": "36px" },
+      "H3":         { "$value": "2rem", "$description": "32px" },
+      "H4":         { "$value": "1.75rem", "$description": "28px" },
+      "Heading":    { "$value": "1.5rem", "$description": "24px" },
+      "Body":       { "$value": "1.25rem", "$description": "20px" },
+      "Caption":    { "$value": "1rem", "$description": "16px" },
+      "Label":      { "$value": "0.75rem", "$description": "12px" },
+      "LabelSmall": { "$value": "0.625rem", "$description": "10px" },
+      "Footnote":   { "$value": "0.5rem", "$description": "8px" },
+      "Scribble":   { "$value": "1.375rem", "$description": "22px — decorative script" }
+    },
+    "LineHeight": {
+      "$type": "dimension",
+      "DisplayXL":  { "$value": "88px" },
+      "DisplayL":   { "$value": "80px" },
+      "DisplayM":   { "$value": "72px" },
+      "DisplayS":   { "$value": "64px" },
+      "HugeTitle":  { "$value": "64px" },
+      "H1":         { "$value": "56px" },
+      "H2":         { "$value": "48px" },
+      "H3":         { "$value": "40px" },
+      "H4":         { "$value": "32px" },
+      "Heading":    { "$value": "32px" },
+      "Body":       { "$value": "24px" },
+      "Caption":    { "$value": "24px" },
+      "Label":      { "$value": "16px" },
+      "LabelSmall": { "$value": "16px" },
+      "Footnote":   { "$value": "16px" },
+      "None":       { "$value": "1" },
+      "Tight":      { "$value": "1.1" },
+      "Snug":       { "$value": "1.25" },
+      "Normal":     { "$value": "1.3" },
+      "Relaxed":    { "$value": "1.5" },
+      "Loose":      { "$value": "1.8" }
+    },
+    "Tracking": {
+      "$type": "dimension",
+      "Tighter": { "$value": "-0.06em" },
+      "Tight":   { "$value": "-0.04em" },
+      "Normal":  { "$value": "-0.02em" },
+      "Wide":    { "$value": "0" },
+      "Wider":   { "$value": "0.02em" },
+      "Widest":  { "$value": "0.06em" }
+    }
+  }
+}

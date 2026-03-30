@@ -1,0 +1,36 @@
+/* ============================================
+   @anthropic-atom/css — odometer.css
+   Depends on: @anthropic-atom/tokens (tokens.css)
+   Animations: @anthropic-atom/animations — initOdometer
+============================================ */
+
+/* ══════════════════════════════════════════════════════════
+   ODOMETER ANIMATION STYLES
+   Global styles for odometer/rolling number animations
+   Used by: Badge, PricingText, Stats
+══════════════════════════════════════════════════════════ */
+
+[data-odometer-element] {
+  display: inline-flex;
+  align-items: center;
+  font-variant-numeric: tabular-nums;
+}
+
+[data-odometer-part="mask"],
+[data-odometer-part="static"] {
+  display: inline-block;
+  overflow: clip;
+  padding: 0.05em; /* optical adjustment — fine-tuned for animation smoothness */
+  margin: -0.05em; /* optical adjustment — counteracts padding */
+}
+
+[data-odometer-part="roller"] {
+  display: block;
+  white-space: pre;
+  text-align: center;
+  will-change: transform;
+}
+
+[data-odometer-part="static"] {
+  display: inline-block;
+}

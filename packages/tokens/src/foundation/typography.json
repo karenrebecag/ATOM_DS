@@ -3,10 +3,7 @@
     "Font": {
       "$type": "fontFamily",
       "Display": { "$value": "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" },
-      "Body":    { "$value": "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" },
-      "Mono":    { "$value": "Haffer Mono, SF Mono, Fira Code, monospace" },
-      "Script":  { "$value": "Brisa Pro, Georgia, serif" },
-      "Median":  { "$value": "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" }
+      "Body":    { "$value": "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" }
     },
     "Weight": {
       "$type": "fontWeight",
@@ -21,8 +18,8 @@
       "DisplayM":   { "$value": "3.5rem", "$description": "56px" },
       "DisplayS":   { "$value": "3.25rem", "$description": "52px" },
       "HugeTitle":  { "$value": "3rem", "$description": "48px" },
-      "H1":         { "$value": "2.75rem", "$description": "44px" },
-      "H2":         { "$value": "2.25rem", "$description": "36px" },
+      "H1":         { "$value": "2.5rem", "$description": "40px" },
+      "H2":         { "$value": "2rem", "$description": "32px" },
       "H3":         { "$value": "2rem", "$description": "32px" },
       "H4":         { "$value": "1.75rem", "$description": "28px" },
       "Heading":    { "$value": "1.5rem", "$description": "24px" },
@@ -30,8 +27,7 @@
       "Caption":    { "$value": "1rem", "$description": "16px" },
       "Label":      { "$value": "0.75rem", "$description": "12px" },
       "LabelSmall": { "$value": "0.625rem", "$description": "10px" },
-      "Footnote":   { "$value": "0.5rem", "$description": "8px" },
-      "Scribble":   { "$value": "1.375rem", "$description": "22px — decorative script" }
+      "Footnote":   { "$value": "0.5rem", "$description": "8px" }
     },
     "LineHeight": {
       "$type": "dimension",

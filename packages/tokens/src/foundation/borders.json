@@ -2,7 +2,7 @@
   "Primitive": {
     "Stroke": {
       "$type": "dimension",
-      "weight": { "$value": "1px" },
+      "xs":     { "$value": "1px" },
       "2xs":    { "$value": "0.5px" },
       "s":      { "$value": "2px" },
       "m":      { "$value": "4px" }

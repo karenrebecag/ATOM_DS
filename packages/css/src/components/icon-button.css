@@ -1,11 +1,11 @@
 /* ============================================
-   @atomchat/css — button.css
+   @atomchat/css — icon-button.css
    Depends on: @atomchat/tokens (tokens.css)
-   Animations: @atomchat/animations (hover.ts, loading.ts)
+   Animations: @atomchat/animations (hover.ts)
 ============================================ */
 
-/* BUTTON SPINNER KEYFRAMES */
-@keyframes button-spin {
+/* ICON BUTTON SPINNER KEYFRAMES */
+@keyframes icon-button-spin {
   from {
     transform: rotate(0deg);
   }
@@ -14,35 +14,28 @@
   }
 }
 
-/* BUTTON — Primary interactive component */
-.button {
+/* ICON BUTTON — Icon-only interactive button */
+.icon-button {
   position: relative;
 
   /* Hover rotation angle (used by GSAP animation) */
-  --r: 20deg;
+  --r: 10deg;
 
   /* Layout */
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: var(--s);
 
   /* Structure */
   border: var(--stroke-xs) solid transparent;
   border-radius: var(--s);
   overflow: hidden;
 
-  /* Typography */
-  font-family: var(--font-body);
-  font-weight: var(--font-weight-medium);
-  font-size: var(--text-label-regular);
-  line-height: var(--line-height-label);
-  text-decoration: none;
-
   /* Interaction */
   cursor: pointer;
+  text-decoration: none;
 
-  /* Colors (set by variants) */
+  /* Colors (set by variants, same as Button) */
   background-color: var(--btn-bg);
   color: var(--btn-fg);
   box-shadow: var(--btn-shadow, none);
@@ -56,14 +49,14 @@
 }
 
 /* ── Hover ── */
-.button:hover:not(.button--disabled):not(.button--loading) {
+.icon-button:hover:not(.icon-button--disabled):not(.icon-button--loading) {
   --btn-bg: var(--btn-bg-hover);
   --btn-fg: var(--btn-fg-hover);
   border-color: var(--btn-border-hover-color, transparent);
 }
 
 /* ── Focus visible ── */
-.button:focus-visible {
+.icon-button:focus-visible {
   --btn-bg: var(--btn-bg-focus);
   --btn-fg: var(--btn-fg-focus);
   border-color: var(--btn-border-focus-color);
@@ -72,80 +65,78 @@
 }
 
 /* ── Pressed ── */
-.button:active:not(.button--disabled):not(.button--loading) {
+.icon-button:active:not(.icon-button--disabled):not(.icon-button--loading) {
   --btn-bg: var(--btn-bg-pressed);
   --btn-fg: var(--btn-fg-pressed);
   border-color: var(--btn-border-pressed-color, transparent);
 }
 
-/* ── Label wrap (grid for hover animation) ── */
-.button__label-wrap {
-  display: grid;
-  place-items: center;
-  overflow: hidden;
-}
-
-/* ── Label ── */
-.button__label {
-  grid-area: 1 / 1;
-  display: inline-flex;
-  align-items: center;
-  gap: var(--s);
-  white-space: nowrap;
-  transform-origin: 50% var(--y, 1100%);
-  transform: rotate(0deg);
-}
-
-.button__label--clone {
-  transform: rotate(calc(var(--r) * -1));
-  opacity: var(--opacity-0);
-}
-
-/* ── Icon ── */
-.button__icon {
-  display: inline-flex;
+/* ── Icon wrap (animation container) ── */
+.icon-button__icon-wrap {
+  position: relative;
+  display: flex;
   align-items: center;
   justify-content: center;
   width: var(--icon-s);
   height: var(--icon-s);
+  overflow: hidden;
+}
+
+/* ── Icon ── */
+.icon-button__icon {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-origin: 50% var(--y, 1100%);
+  transform: rotate(0deg);
   flex-shrink: 0;
 }
 
-.button__icon svg {
+.icon-button__icon svg {
   width: 100%;
   height: 100%;
 }
 
-/* ── Loading content (text + spinner inline) ── */
-.button__loading-content {
-  display: inline-flex;
+.icon-button__icon--clone {
+  position: absolute;
+  transform: rotate(calc(var(--r) * -1));
+  opacity: var(--opacity-0);
+}
+
+/* ── Loading state ── */
+.icon-button--loading .icon-button__icon-wrap {
+  opacity: var(--opacity-0);
+}
+
+.icon-button__loader {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
   align-items: center;
-  gap: var(--s);
-  white-space: nowrap;
+  justify-content: center;
 }
 
-.button__loading-text {
-  display: inline;
-}
-
-.button__spinner {
+.icon-button__spinner {
   width: var(--icon-s);
   height: var(--icon-s);
   border: var(--stroke-xs) solid currentColor;
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-circle);
   clip-path: polygon(50% 0%, 100% 0%, 100% 50%, 50% 50%);
-  animation: button-spin var(--duration-default) linear infinite;
+  animation: icon-button-spin var(--duration-default) linear infinite;
   flex-shrink: 0;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .button__spinner {
+  .icon-button__spinner {
     animation-duration: 1.5s;
   }
 }
 
-/* ── Disabled — ALL variants share the same disabled style per Figma ── */
-.button--disabled {
+/* ── Disabled — ALL variants share the same disabled style ── */
+.icon-button--disabled {
   background-color: var(--bg-disabled) !important;
   color: var(--fg-disabled) !important;
   border-color: transparent !important;
@@ -155,17 +146,17 @@
 }
 
 /* ── Loading ── */
-.button--loading {
+.icon-button--loading {
   --btn-bg: var(--btn-bg-loading);
   --btn-fg: var(--btn-fg-loading);
   cursor: wait;
 }
 
 /* ══════════════════════════════════════════════════════════
-   VARIANTS
+   VARIANTS (Uses same tokens as Button)
    ══════════════════════════════════════════════════════════ */
 
-.button--primary {
+.icon-button--primary {
   --btn-bg: var(--buttons-bg-primary-enabled);
   --btn-bg-hover: var(--buttons-bg-primary-hovered);
   --btn-bg-focus: var(--buttons-bg-primary-focused);
@@ -180,7 +171,7 @@
   --btn-shadow-focus: var(--buttons-shadow-focus);
 }
 
-.button--secondary {
+.icon-button--secondary {
   --btn-bg: var(--buttons-bg-secondary-enabled);
   --btn-bg-hover: var(--buttons-bg-secondary-hovered);
   --btn-bg-focus: var(--buttons-bg-secondary-focused);
@@ -198,11 +189,11 @@
   --btn-shadow-focus: var(--buttons-shadow-focus);
 }
 
-.button--secondary.button--loading {
+.icon-button--secondary.icon-button--loading {
   border-color: var(--buttons-border-secondary-loading);
 }
 
-.button--tertiary {
+.icon-button--tertiary {
   --btn-bg: var(--buttons-bg-tertiary-enabled);
   --btn-bg-hover: var(--buttons-bg-tertiary-hovered);
   --btn-bg-focus: var(--buttons-bg-tertiary-focused);
@@ -217,7 +208,7 @@
   --btn-shadow-focus: var(--buttons-shadow-focus);
 }
 
-.button--danger-primary {
+.icon-button--danger-primary {
   --btn-bg: var(--buttons-bg-danger-primary-enabled);
   --btn-bg-hover: var(--buttons-bg-danger-primary-hovered);
   --btn-bg-focus: var(--buttons-bg-danger-primary-focused);
@@ -232,7 +223,7 @@
   --btn-shadow-focus: var(--buttons-shadow-focus-danger);
 }
 
-.button--danger-secondary {
+.icon-button--danger-secondary {
   --btn-bg: var(--buttons-bg-danger-secondary-enabled);
   --btn-bg-hover: var(--buttons-bg-danger-secondary-hovered);
   --btn-bg-focus: var(--buttons-bg-danger-secondary-focused);
@@ -250,11 +241,11 @@
   --btn-shadow-focus: var(--buttons-shadow-focus-danger);
 }
 
-.button--danger-secondary.button--loading {
+.icon-button--danger-secondary.icon-button--loading {
   border-color: var(--buttons-border-danger-secondary-loading);
 }
 
-.button--danger-tertiary {
+.icon-button--danger-tertiary {
   --btn-bg: var(--buttons-bg-danger-tertiary-enabled);
   --btn-bg-hover: var(--buttons-bg-danger-tertiary-hovered);
   --btn-bg-focus: var(--buttons-bg-danger-tertiary-focused);
@@ -270,27 +261,25 @@
 }
 
 /* ══════════════════════════════════════════════════════════
-   SIZES (from Figma specifications)
+   SIZES (from Figma: xs=24px, s=32px, m=40px, l=48px, xl=56px)
    ══════════════════════════════════════════════════════════ */
 
-.button--xs {
-  padding: var(--xs) var(--s);
+.icon-button--xs {
+  padding: var(--xs);
 }
 
-.button--s {
+.icon-button--s {
   padding: var(--s);
 }
 
-.button--m {
+.icon-button--m {
   padding: var(--sm);
 }
 
-.button--l {
+.icon-button--l {
   padding: var(--m);
 }
 
-.button--xl {
-  padding: var(--m);
-  font-size: var(--text-caption-regular);
-  line-height: var(--line-height-caption);
+.icon-button--xl {
+  padding: var(--md);
 }

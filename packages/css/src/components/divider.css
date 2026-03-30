@@ -1,0 +1,22 @@
+/* ============================================
+   @atomchat/css — divider.css
+   Depends on: @atomchat/tokens (tokens.css)
+============================================ */
+
+:root {
+  /* ── Divider: Structure ──────────────────────────────────── */
+  --divider-height: var(--primitive-stroke-xs);
+  --divider-color: var(--border-tertiary);
+}
+
+/* ============================================
+   Divider Component Styles
+============================================ */
+
+.divider {
+  width: 100%;
+  height: var(--divider-height);
+  border: none;
+  background-color: var(--divider-color);
+  opacity: var(--divider-opacity, 1);
+}

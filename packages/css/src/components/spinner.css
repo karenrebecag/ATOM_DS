@@ -1,0 +1,62 @@
+/* ============================================
+   @atomchat/css — spinner.css
+   Depends on: @atomchat/tokens (tokens.css)
+============================================ */
+
+/* SPINNER — Loading indicator with continuous rotation */
+@keyframes spinner-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.spinner {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: var(--spinner-size);
+  height: var(--spinner-size);
+}
+
+.spinner__track {
+  position: absolute;
+  inset: 0;
+  border: var(--spinner-border-width) solid var(--spinner-color-track);
+  border-radius: 50%;
+}
+
+.spinner__indicator {
+  position: absolute;
+  inset: 0;
+  border: var(--spinner-border-width) solid transparent;
+  border-top-color: var(--spinner-color-primary);
+  border-radius: 50%;
+  animation: spinner-rotate var(--spinner-duration) linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spinner__indicator {
+    animation-duration: 1.5s;
+  }
+}
+
+/* SIZE VARIANTS */
+.spinner--xs {
+  --spinner-size: var(--spinner-size-xs);
+}
+
+.spinner--s {
+  --spinner-size: var(--spinner-size-s);
+}
+
+.spinner--m {
+  --spinner-size: var(--spinner-size-m);
+}
+
+.spinner--l {
+  --spinner-size: var(--spinner-size-l);
+}
+
+.spinner--xl {
+  --spinner-size: var(--spinner-size-xl);
+}

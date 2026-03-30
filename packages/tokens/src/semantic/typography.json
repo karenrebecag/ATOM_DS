@@ -1,9 +1,6 @@
 {
   "font-display":  { "$type": "fontFamily", "$value": "{Primitive.Font.Display}" },
   "font-body":     { "$type": "fontFamily", "$value": "{Primitive.Font.Body}" },
-  "font-mono":     { "$type": "fontFamily", "$value": "{Primitive.Font.Mono}" },
-  "font-script":   { "$type": "fontFamily", "$value": "{Primitive.Font.Script}" },
-  "font-median":   { "$type": "fontFamily", "$value": "{Primitive.Font.Median}" },
   "font-family-titles": { "$type": "fontFamily", "$value": "{Primitive.Font.Display}" },
 
   "font-weight-regular": { "$type": "fontWeight", "$value": "{Primitive.Weight.Regular}" },
@@ -25,7 +22,6 @@
   "text-label":     { "$type": "dimension", "$value": "{Primitive.Size.Label}" },
   "text-labelSmall": { "$type": "dimension", "$value": "{Primitive.Size.LabelSmall}" },
   "text-footnote":  { "$type": "dimension", "$value": "{Primitive.Size.Footnote}" },
-  "text-scribble":  { "$type": "dimension", "$value": "{Primitive.Size.Scribble}" },
 
   "line-height-none":     { "$type": "number", "$value": "{Primitive.LineHeight.None}" },
   "line-height-tight":    { "$type": "number", "$value": "{Primitive.LineHeight.Tight}" },
@@ -194,12 +190,12 @@
   "duration-double":    { "$type": "duration", "$value": "{Primitive.Duration.double}" },
   "duration-shimmer":   { "$type": "duration", "$value": "{Primitive.Duration.shimmer}" },
 
-  "stroke-weight": { "$type": "dimension", "$value": "{Primitive.Stroke.weight}" },
+  "stroke-weight": { "$type": "dimension", "$value": "{Primitive.Stroke.xs}" },
   "stroke-2xs":    { "$type": "dimension", "$value": "{Primitive.Stroke.2xs}" },
   "stroke-xs":     { "$type": "dimension", "$value": "{Primitive.Stroke.xs}" },
   "stroke-s":      { "$type": "dimension", "$value": "{Primitive.Stroke.s}" },
   "stroke-m":      { "$type": "dimension", "$value": "{Primitive.Stroke.m}" },
-  "border-thin":   { "$type": "dimension", "$value": "{Primitive.Stroke.weight}" },
+  "border-thin":   { "$type": "dimension", "$value": "{Primitive.Stroke.xs}" },
   "border-default": { "$type": "dimension", "$value": "2px" },
 
   "radius-none":   { "$type": "dimension", "$value": "{Primitive.Radius.none}" },

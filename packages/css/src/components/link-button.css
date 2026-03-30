@@ -1,0 +1,142 @@
+/**
+ * LINK BUTTON COMPONENT
+ * ──────────────────────────────────────────────────────────
+ * Interactive link styled as a button with icon support.
+ * States: enabled, hover, focus, pressed, disabled, loading
+ * Sizes: s (12px), l (16px)
+ */
+
+/* ── Base ────────────────────────────────────────────────── */
+
+.link-button {
+  /* Layout */
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--link-button-gap);
+  padding: var(--link-button-padding);
+
+  /* Border & Radius */
+  border: var(--link-button-border-width) solid transparent;
+  border-radius: var(--link-button-border-radius);
+
+  /* Colors */
+  background-color: var(--link-button-bg-enabled);
+  color: var(--link-button-fg-enabled);
+
+  /* Typography */
+  font-family: var(--font-family-titles);
+  font-weight: var(--font-weight-medium);
+  text-decoration: none;
+
+  /* Behavior */
+  cursor: pointer;
+  overflow: hidden;
+
+  /* Transitions */
+  transition:
+    background-color var(--duration-quarter),
+    color var(--duration-quarter),
+    border-color var(--duration-quarter),
+    box-shadow var(--duration-quarter);
+}
+
+/* ── Hover ───────────────────────────────────────────────── */
+
+.link-button:hover:not(.link-button--disabled):not(.link-button--loading) {
+  background-color: var(--link-button-bg-hovered);
+  color: var(--link-button-fg-hovered);
+}
+
+/* Icon nudge on hover (right icon only) */
+.link-button:hover:not(.link-button--disabled):not(.link-button--loading) .link-button__icon:last-child {
+  transform: translateX(var(--primitive-spacing-xxs));
+}
+
+/* ── Focus ───────────────────────────────────────────────── */
+
+.link-button:focus-visible {
+  background-color: var(--link-button-bg-focused);
+  color: var(--link-button-fg-focused);
+  border-color: var(--link-button-border-focused);
+  box-shadow: var(--link-button-shadow-focus);
+  outline: none;
+}
+
+/* ── Pressed ─────────────────────────────────────────────── */
+
+.link-button:active:not(.link-button--disabled):not(.link-button--loading) {
+  background-color: var(--link-button-bg-pressed);
+  color: var(--link-button-fg-pressed);
+}
+
+/* ── Disabled ────────────────────────────────────────────── */
+
+.link-button--disabled {
+  color: var(--link-button-fg-disabled);
+  background-color: var(--link-button-bg-disabled);
+  cursor: not-allowed;
+  pointer-events: none;
+  text-decoration: underline;
+}
+
+/* ── Loading ─────────────────────────────────────────────── */
+
+.link-button--loading {
+  color: var(--link-button-fg-loading);
+  background-color: var(--link-button-bg-loading);
+  cursor: wait;
+
+  /* Shimmer uses blue tones instead of default grays */
+  --shimmer-base: var(--primitive-blue-300);
+  --shimmer-highlight: var(--primitive-blue-700);
+}
+
+.link-button--loading .link-button__icon {
+  display: none;
+}
+
+/* ── Icon ────────────────────────────────────────────────── */
+
+.link-button__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--icon-size-s);
+  height: var(--icon-size-s);
+  flex-shrink: 0;
+  transition: transform var(--duration-quarter);
+}
+
+.link-button__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ── Label ───────────────────────────────────────────────── */
+
+.link-button__label {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+/* ── Loading Text ────────────────────────────────────────── */
+
+.link-button__loading-text {
+  text-decoration: underline;
+  display: inline-block;
+}
+
+/* ── Sizes ───────────────────────────────────────────────── */
+
+.link-button--s {
+  font-size: var(--link-button-font-size-s);
+  line-height: var(--link-button-font-line-height-s);
+}
+
+.link-button--l {
+  font-size: var(--link-button-font-size-l);
+  line-height: var(--link-button-font-line-height-l);
+}

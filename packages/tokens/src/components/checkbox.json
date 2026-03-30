@@ -2,13 +2,13 @@
   "checkbox": {
     "bg": {
       "$type": "color",
-      "checked-enabled":        { "$value": "{bg.inverse-primary}" },
-      "checked-hovered":        { "$value": "{bg.inverse-secondary}" },
-      "checked-focused":        { "$value": "{bg.inverse-primary}" },
+      "checked-enabled":        { "$value": "{bg.inverse.primary}" },
+      "checked-hovered":        { "$value": "{bg.inverse.secondary}" },
+      "checked-focused":        { "$value": "{bg.inverse.primary}" },
       "checked-disabled":       { "$value": "{bg.disabled}" },
-      "indeterminate-enabled":  { "$value": "{bg.inverse-primary}" },
-      "indeterminate-hovered":  { "$value": "{bg.inverse-secondary}" },
-      "indeterminate-focused":  { "$value": "{bg.inverse-primary}" },
+      "indeterminate-enabled":  { "$value": "{bg.inverse.primary}" },
+      "indeterminate-hovered":  { "$value": "{bg.inverse.secondary}" },
+      "indeterminate-focused":  { "$value": "{bg.inverse.primary}" },
       "indeterminate-disabled": { "$value": "{bg.disabled}" },
       "enabled-enabled":        { "$value": "{bg.primary}" },
       "enabled-hovered":        { "$value": "{bg.secondary}" },
@@ -21,17 +21,17 @@
       "enabled-hovered":  { "$value": "{border.primary}" },
       "enabled-focused":  { "$value": "{border.primary}" },
       "enabled-disabled": { "$value": "{border.disabled}" },
-      "enabled-error":    { "$value": "{border.status-error}" }
+      "enabled-error":    { "$value": "{border.status.error}" }
     },
     "fg": {
       "$type": "color",
-      "checked-enabled":        { "$value": "{fg.inverse-primary}" },
-      "checked-hovered":        { "$value": "{fg.inverse-primary}" },
-      "checked-focused":        { "$value": "{fg.inverse-primary}" },
-      "checked-disabled":       { "$value": "{fg.inverse-disabled}" },
-      "indeterminate-enabled":  { "$value": "{fg.inverse-primary}" },
-      "indeterminate-hovered":  { "$value": "{fg.inverse-primary}" },
-      "indeterminate-focused":  { "$value": "{fg.inverse-primary}" },
+      "checked-enabled":        { "$value": "{fg.inverse.primary}" },
+      "checked-hovered":        { "$value": "{fg.inverse.primary}" },
+      "checked-focused":        { "$value": "{fg.inverse.primary}" },
+      "checked-disabled":       { "$value": "{fg.inverse.disabled}" },
+      "indeterminate-enabled":  { "$value": "{fg.inverse.primary}" },
+      "indeterminate-hovered":  { "$value": "{fg.inverse.primary}" },
+      "indeterminate-focused":  { "$value": "{fg.inverse.primary}" },
       "indeterminate-disabled": { "$value": "{fg.disabled}" }
     },
     "shadow": {

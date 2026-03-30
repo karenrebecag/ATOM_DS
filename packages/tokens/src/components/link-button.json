@@ -1,0 +1,128 @@
+{
+  "link-button": {
+    "bg": {
+      "enabled": {
+        "$value": "transparent",
+        "$type": "color",
+        "$description": "Link button background — default transparent"
+      },
+      "hovered": {
+        "$value": "{bg.tertiary}",
+        "$type": "color",
+        "$description": "Link button background — hover state"
+      },
+      "focused": {
+        "$value": "{bg.tertiary}",
+        "$type": "color",
+        "$description": "Link button background — focus state"
+      },
+      "pressed": {
+        "$value": "{bg.quaternary}",
+        "$type": "color",
+        "$description": "Link button background — pressed/active state"
+      },
+      "disabled": {
+        "$value": "transparent",
+        "$type": "color",
+        "$description": "Link button background — disabled state"
+      },
+      "loading": {
+        "$value": "transparent",
+        "$type": "color",
+        "$description": "Link button background — loading state"
+      }
+    },
+    "fg": {
+      "enabled": {
+        "$value": "{fg.interactive.link.enabled}",
+        "$type": "color",
+        "$description": "Link button text — default blue"
+      },
+      "hovered": {
+        "$value": "{fg.interactive.link.hovered}",
+        "$type": "color",
+        "$description": "Link button text — hover state"
+      },
+      "focused": {
+        "$value": "{fg.interactive.link.focused}",
+        "$type": "color",
+        "$description": "Link button text — focus state"
+      },
+      "pressed": {
+        "$value": "{fg.interactive.link.pressed}",
+        "$type": "color",
+        "$description": "Link button text — pressed state"
+      },
+      "disabled": {
+        "$value": "{fg.disabled}",
+        "$type": "color",
+        "$description": "Link button text — disabled state"
+      },
+      "loading": {
+        "$value": "{fg.interactive.link.enabled}",
+        "$type": "color",
+        "$description": "Link button text — loading state"
+      }
+    },
+    "border": {
+      "focused": {
+        "$value": "{border.interactive.link.focused}",
+        "$type": "color",
+        "$description": "Link button border — focus state only"
+      }
+    },
+    "shadow": {
+      "focus": {
+        "$value": "0px 0px 0px 2px {Primitive.Blue.200}",
+        "$type": "shadow",
+        "$description": "Link button focus ring shadow"
+      }
+    },
+    "font": {
+      "size": {
+        "s": {
+          "$value": "{Primitive.Size.Label}",
+          "$type": "dimension",
+          "$description": "Link button font size — small (12px)"
+        },
+        "l": {
+          "$value": "{Primitive.Size.Caption}",
+          "$type": "dimension",
+          "$description": "Link button font size — large (16px)"
+        }
+      },
+      "line-height": {
+        "s": {
+          "$value": "{Primitive.LineHeight.Label}",
+          "$type": "dimension",
+          "$description": "Link button line height — small"
+        },
+        "l": {
+          "$value": "{Primitive.LineHeight.Caption}",
+          "$type": "dimension",
+          "$description": "Link button line height — large"
+        }
+      }
+    },
+    "padding": {
+      "$value": "{Primitive.Spacing.xxs}",
+      "$type": "dimension",
+      "$description": "Link button internal padding"
+    },
+    "gap": {
+      "$value": "{Primitive.Spacing.s}",
+      "$type": "dimension",
+      "$description": "Gap between icon and text"
+    },
+    "border-radius": {
+      "$value": "{Primitive.Radius.s}",
+      "$type": "dimension",
+      "$description": "Link button corner radius"
+    },
+    "border-width": {
+      "$value": "{Primitive.Stroke.xs}",
+      "$type": "dimension",
+      "$description": "Link button border width"
+    }
+  }
+}

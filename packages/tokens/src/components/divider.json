@@ -1,0 +1,13 @@
+{
+  "divider": {
+    "height": {
+      "$type": "dimension",
+      "$value": "{Primitive.Stroke.xs}",
+      "$description": "1px"
+    },
+    "color": {
+      "$type": "color",
+      "$value": "{border.tertiary}"
+    }
+  }
+}

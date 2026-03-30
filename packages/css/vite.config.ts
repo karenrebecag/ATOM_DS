@@ -3,16 +3,16 @@ import { resolve } from 'path'
 
 export default defineConfig({
   build: {
-    lib: {
-      entry: resolve(__dirname, 'src/index.js'),
-      formats: ['es'],
-      fileName: () => 'atom.js',
-    },
+    // Pure CSS asset build (NOT lib mode)
     outDir: 'dist',
     emptyOutDir: true,
     rollupOptions: {
+      input: {
+        atom: resolve(__dirname, 'src/index.css'),
+      },
       output: {
-        assetFileNames: 'atom.css',
+        assetFileNames: '[name].css',
+        entryFileNames: '[name].js',
       },
     },
   },

@@ -1,0 +1,13 @@
+{
+  "status-icon": {
+    "structure": {
+      "size": {
+        "$type": "dimension",
+        "xs": { "$value": "8px" },
+        "s": { "$value": "10px" },
+        "m": { "$value": "12px" },
+        "l": { "$value": "16px" }
+      }
+    }
+  }
+}

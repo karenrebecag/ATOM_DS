@@ -3,14 +3,14 @@
     "bg": {
       "$type": "color",
       "default":              { "$value": "{bg.secondary}" },
-      "unselected-enabled":   { "$value": "{bg.interactive-item-default}" },
-      "unselected-hovered":   { "$value": "{bg.interactive-item-hover}" },
-      "unselected-disabled":  { "$value": "{bg.interactive-item-disabled}" },
-      "unselected-pressed":   { "$value": "{bg.interactive-item-pressed}" },
-      "selected-enabled":     { "$value": "{bg.interactive-item-selected-default}" },
-      "selected-hovered":     { "$value": "{bg.interactive-item-selected-hover}" },
-      "selected-disabled":    { "$value": "{bg.interactive-item-selected-disabled}" },
-      "selected-pressed":     { "$value": "{bg.interactive-item-selected-pressed}" }
+      "unselected-enabled":   { "$value": "{bg.interactive.item.default}" },
+      "unselected-hovered":   { "$value": "{bg.interactive.item.hover}" },
+      "unselected-disabled":  { "$value": "{bg.interactive.item.disabled}" },
+      "unselected-pressed":   { "$value": "{bg.interactive.item.pressed}" },
+      "selected-enabled":     { "$value": "{bg.interactive.item.selected.default}" },
+      "selected-hovered":     { "$value": "{bg.interactive.item.selected.hover}" },
+      "selected-disabled":    { "$value": "{bg.interactive.item.selected.disabled}" },
+      "selected-pressed":     { "$value": "{bg.interactive.item.selected.pressed}" }
     },
     "fg": {
       "$type": "color",

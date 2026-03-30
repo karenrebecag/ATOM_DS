@@ -1,32 +1,71 @@
 {
   "radio": {
+    "bg": {
+      "$type": "color",
+      "enabled": { "$value": "{bg.primary}", "$description": "Radio background - unchecked default" },
+      "checked-enabled": { "$value": "{bg.inverse.primary}", "$description": "Radio background - checked default" },
+      "checked-hovered": { "$value": "{bg.interactive.primary.hovered}", "$description": "Radio background - checked hover" },
+      "enabled-hovered": { "$value": "{bg.secondary}", "$description": "Radio background - unchecked hover" },
+      "enabled-focused": { "$value": "{bg.primary}", "$description": "Radio background - unchecked focus" },
+      "checked-focused": { "$value": "{bg.inverse.primary}", "$description": "Radio background - checked focus" },
+      "checked-disabled": { "$value": "{bg.disabled}", "$description": "Radio background - checked disabled" },
+      "disabled": { "$value": "{bg.disabled}", "$description": "Radio background - unchecked disabled" }
+    },
+    "fg": {
+      "$type": "color",
+      "checked-enabled": { "$value": "{fg.inverse.primary}", "$description": "Radio dot color - checked" },
+      "checked-hovered": { "$value": "{fg.inverse.primary}", "$description": "Radio dot color - checked hover" },
+      "checked-focused": { "$value": "{fg.inverse.primary}", "$description": "Radio dot color - checked focus" },
+      "checked-disabled": { "$value": "{fg.disabled}", "$description": "Radio dot color - checked disabled" }
+    },
+    "border": {
+      "$type": "color",
+      "enabled": { "$value": "{border.primary}", "$description": "Radio border - unchecked default" },
+      "enabled-hovered": { "$value": "{border.secondary}", "$description": "Radio border - unchecked hover" },
+      "enabled-focused": { "$value": "{border.primary}", "$description": "Radio border - unchecked focus" },
+      "enabled-error": { "$value": "{border.status.error}", "$description": "Radio border - error state" },
+      "checked-focused": { "$value": "{border.interactive.link.focused}", "$description": "Radio border - checked focus" },
+      "disabled": { "$value": "{border.disabled}", "$description": "Radio border - disabled" }
+    },
+    "shadow": {
+      "$type": "shadow",
+      "focus": { "$value": "0px 0px 0px 2px {Primitive.Blue.200}", "$description": "Radio focus ring shadow" }
+    },
     "structure": {
       "circle": {
         "size": {
-          "s": { "$value": "16px", "$type": "dimension" },
-          "m": { "$value": "24px", "$type": "dimension" }
+          "$type": "dimension",
+          "s": { "$value": "16px" },
+          "m": { "$value": "24px" }
         },
-        "border-width": { "$value": "2px", "$type": "dimension" }
+        "border-width": {
+          "$type": "dimension",
+          "$value": "2px"
+        }
       },
       "dot": {
         "size": {
-          "s": { "$value": "6px", "$type": "dimension" },
-          "m": { "$value": "8px", "$type": "dimension" }
+          "$type": "dimension",
+          "s": { "$value": "6px" },
+          "m": { "$value": "8px" }
         }
       }
     },
     "field": {
       "font-size": {
-        "s": { "$value": "12px", "$type": "dimension" },
-        "m": { "$value": "16px", "$type": "dimension" }
+        "$type": "dimension",
+        "s": { "$value": "12px" },
+        "m": { "$value": "16px" }
       },
       "error-font-size": {
-        "s": { "$value": "10px", "$type": "dimension" },
-        "m": { "$value": "16px", "$type": "dimension" }
+        "$type": "dimension",
+        "s": { "$value": "10px" },
+        "m": { "$value": "16px" }
       },
       "icon-size": {
-        "s": { "$value": "12px", "$type": "dimension" },
-        "m": { "$value": "16px", "$type": "dimension" }
+        "$type": "dimension",
+        "s": { "$value": "12px" },
+        "m": { "$value": "16px" }
       }
     }
   }

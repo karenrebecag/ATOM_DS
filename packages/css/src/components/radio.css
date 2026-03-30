@@ -72,8 +72,8 @@
 }
 
 .radio__input:disabled:not(:checked) + .radio__circle {
-  background-color: var(--radio-bg-enabled-disabled);
-  border-color: var(--radio-border-enabled-disabled);
+  background-color: var(--radio-bg-disabled);
+  border-color: var(--radio-border-disabled);
 }
 
 .radio__input:disabled:checked + .radio__circle {
@@ -91,8 +91,8 @@
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  border: var(--radio-structure-circle-border-width) solid var(--radio-border-enabled-enabled);
-  background-color: var(--radio-bg-enabled-enabled);
+  border: var(--radio-structure-circle-border-width) solid var(--radio-border-enabled);
+  background-color: var(--radio-bg-enabled);
   transition: background-color 150ms, border-color 150ms, box-shadow 150ms;
   flex-shrink: 0;
 }

@@ -1,0 +1,23 @@
+{
+  "spinner": {
+    "size": {
+      "$type": "dimension",
+      "xs": { "$value": "{Primitive.Spacing.sm}" },
+      "s": { "$value": "{Primitive.Spacing.m}" },
+      "m": { "$value": "{Primitive.Spacing.md}" },
+      "l": { "$value": "{Primitive.Spacing.l}" },
+      "xl": { "$value": "{Primitive.Spacing.xl}" }
+    },
+    "border": {
+      "width": { "$value": "{stroke-xs}", "$type": "dimension" }
+    },
+    "color": {
+      "$type": "color",
+      "primary": { "$value": "{fg.primary}" },
+      "track": { "$value": "{border.tertiary}" }
+    },
+    "duration": {
+      "$value": "{Primitive.Duration.default}", "$type": "duration"
+    }
+  }
+}

@@ -239,10 +239,11 @@ export function initNumberOdometer() {
     const newWidthEm = el.getBoundingClientRect().width / fontSize;
     const widthChanged = Math.abs(oldWidthEm - newWidthEm) > 0.01;
 
-    // Lock to old width for smooth transition
-    if (widthChanged) {
-      gsap.set(el, { width: oldWidthEm + "em", overflow: "hidden" });
-    }
+    // Lock to old width for smooth transition and prevent vertical overflow
+    gsap.set(el, {
+      width: widthChanged ? oldWidthEm + "em" : "auto",
+      overflow: "hidden",
+    });
 
     const tl = gsap.timeline({
       onComplete() {
@@ -401,6 +402,8 @@ export function initNumberOdometer() {
       mask.setAttribute("data-odometer-part", "mask");
       mask.style.height = step + "em";
       mask.style.lineHeight = String(step);
+      mask.style.overflow = "hidden";
+      mask.style.display = "inline-block";
 
       const roller = document.createElement("span");
       roller.setAttribute("data-odometer-part", "roller");

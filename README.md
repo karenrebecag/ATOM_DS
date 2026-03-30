@@ -4,6 +4,18 @@ Sistema de diseño distribuible para ATOM, construido con tokens W3C DTCG, anima
 
 ---
 
+## 📚 Documentación de Arquitectura
+
+| Documento | Propósito | Audiencia |
+|-----------|-----------|-----------|
+| **[COMPONENT_ARCHITECTURE.md](./COMPONENT_ARCHITECTURE.md)** | Guía completa de arquitectura (600+ líneas) | Developers implementando componentes |
+| **[COMPONENT_QUICKSTART.md](./COMPONENT_QUICKSTART.md)** | Quick reference (~50 min por componente) | Developers con prisa |
+| **[ARCHITECTURE_DIAGRAM.md](./ARCHITECTURE_DIAGRAM.md)** | Diagramas visuales del sistema | Visual learners |
+| **[CLAUDE.md](./CLAUDE.md)** | Instrucciones del proyecto (para Claude Code) | AI context |
+| **[DEFERRED_TO_CSS.md](./DEFERRED_TO_CSS.md)** | Decisiones de tokens vs CSS | Token designers |
+
+---
+
 ## Arquitectura del monorepo
 
 El sistema está organizado como un monorepo con **Turborepo + pnpm workspaces**. Cada paquete es independiente, versionado y publicable en npm bajo el scope `@atomchat`.

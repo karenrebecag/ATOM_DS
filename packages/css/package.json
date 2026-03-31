@@ -1,6 +1,6 @@
 {
   "name": "@atomchat.io/css",
-  "version": "0.2.0",
+  "version": "0.2.2",
   "description": "ATOM Design System — Component styles and utilities",
   "main": "./dist/atom.css",
   "style": "./dist/atom.css",

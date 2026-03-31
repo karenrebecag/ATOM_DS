@@ -1,6 +1,6 @@
 {
   "name": "@atomchat.io/tokens",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "ATOM Design System tokens — W3C DTCG format, compiled via Style Dictionary",
   "main": "build/js/tokens.cjs",
   "module": "build/js/tokens.js",
@@ -34,6 +34,11 @@
   "devDependencies": {
     "style-dictionary": "^4.3.0"
   },
-  "keywords": ["design-tokens", "design-system", "w3c-dtcg", "css-variables"],
+  "keywords": [
+    "design-tokens",
+    "design-system",
+    "w3c-dtcg",
+    "css-variables"
+  ],
   "license": "MIT"
 }

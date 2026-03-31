@@ -1,5 +1,13 @@
 # @atomchat/components-astro
 
+## 2.0.3
+
+### Patch Changes
+
+- fix: correct Avatar import in AvatarGroup component
+
+  Fix import statement to use default import instead of named import. Avatar component exports as default, not as named export.
+
 ## 2.0.2
 
 ### Patch Changes

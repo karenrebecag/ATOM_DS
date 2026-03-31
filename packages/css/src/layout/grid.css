@@ -1,0 +1,135 @@
+/* ============================================
+   @atomchat/css — grid.css
+   Depends on: @atomchat/tokens (tokens.css)
+
+   Grid — CSS Grid layout primitive
+
+   Creates responsive grid layouts with consistent gap.
+   Use for card grids, image galleries, dashboard layouts.
+============================================ */
+
+/* ── Base Grid ──────────────────────────────────────── */
+.grid {
+  display: grid;
+}
+
+/* ── Column Variants ─────────────────────────────────── */
+
+.grid--cols-1 {
+  grid-template-columns: repeat(1, 1fr);
+}
+
+.grid--cols-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid--cols-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid--cols-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.grid--cols-5 {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.grid--cols-6 {
+  grid-template-columns: repeat(6, 1fr);
+}
+
+/* ── Auto-fit Responsive (fills available space) ───────── */
+
+.grid--auto-fit {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.grid--auto-fit-sm {
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+
+.grid--auto-fit-lg {
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+}
+
+/* ── Gap Variants ────────────────────────────────────── */
+
+.grid--gap-xs {
+  gap: var(--grid-gap-xs); /* 0.75em */
+}
+
+.grid--gap-s {
+  gap: var(--grid-gap-s); /* 1em */
+}
+
+.grid--gap-m {
+  gap: var(--grid-gap-m); /* 1.5em - Default */
+}
+
+.grid--gap-l {
+  gap: var(--grid-gap-l); /* 1.875em */
+}
+
+.grid--gap-xl {
+  gap: var(--grid-gap-xl); /* 2em */
+}
+
+/* ── Alignment Variants ──────────────────────────────── */
+
+.grid--align-start {
+  align-items: start;
+}
+
+.grid--align-center {
+  align-items: center;
+}
+
+.grid--align-end {
+  align-items: end;
+}
+
+.grid--align-stretch {
+  align-items: stretch; /* Default */
+}
+
+/* ── Justify Variants ────────────────────────────────── */
+
+.grid--justify-start {
+  justify-items: start;
+}
+
+.grid--justify-center {
+  justify-items: center;
+}
+
+.grid--justify-end {
+  justify-items: end;
+}
+
+.grid--justify-stretch {
+  justify-items: stretch; /* Default */
+}
+
+/* ── Responsive Behavior ──────────────────────────────── */
+
+@media (max-width: 599px) {
+  /* Stack on mobile unless explicitly set */
+  .grid--cols-2:not(.grid--preserve),
+  .grid--cols-3:not(.grid--preserve),
+  .grid--cols-4:not(.grid--preserve),
+  .grid--cols-5:not(.grid--preserve),
+  .grid--cols-6:not(.grid--preserve) {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 960px) {
+  /* 2 columns on tablet */
+  .grid--cols-3:not(.grid--preserve),
+  .grid--cols-4:not(.grid--preserve),
+  .grid--cols-5:not(.grid--preserve),
+  .grid--cols-6:not(.grid--preserve) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

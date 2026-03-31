@@ -61,27 +61,20 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: var(--radius-pill);
-  border: var(--avatar-structure-border-width) solid var(--bg-primary);
   box-sizing: border-box;
 }
 
+/* Verified badge: Custom styling (StatusIcon badges self-style) */
 .avatar__badge--verified {
   background-color: var(--primitive-blue-500);
   color: var(--primitive-neutral-0);
+  border-radius: var(--radius-pill);
+  border: var(--avatar-structure-border-width) solid var(--bg-primary);
 }
 
 .avatar__badge--verified svg {
   width: 100%;
   height: 100%;
-}
-
-.avatar__badge--online {
-  background-color: var(--fg-accent-indicators-online);
-}
-
-.avatar__badge--offline {
-  background-color: var(--fg-accent-indicators-offline);
 }
 
 /* TYPES */

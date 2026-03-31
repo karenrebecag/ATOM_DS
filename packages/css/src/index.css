@@ -9,6 +9,9 @@
 /* Foundation (reset, base, typography) */
 @import './foundation/index.css';
 
+/* Layout Primitives (container, stack, grid) */
+@import './layout/index.css';
+
 /* Components (buttons, forms, etc) */
 @import './components/index.css';
 

@@ -1,5 +1,20 @@
 # @atomchat/css
 
+## 0.2.3
+
+### Patch Changes
+
+- fix(exports): improve package.json exports configuration
+  - Reorder conditional exports following Node.js best practices (types → import → require → default)
+  - Add wildcard exports for direct path access to build/dist directories
+  - Fix missing exports that prevented importing with full paths
+  - All packages now support both shorthand and full path imports
+
+  Breaking: None. This is a backward-compatible enhancement.
+
+- Updated dependencies
+  - @atomchat.io/tokens@1.0.3
+
 ## 0.2.2
 
 ### Patch Changes

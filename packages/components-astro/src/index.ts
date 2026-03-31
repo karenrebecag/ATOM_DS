@@ -2,8 +2,16 @@
  * @atomchat/components-astro — Component exports
  *
  * Export all Astro components for easy imports:
- * import { Badge } from '@atomchat/components-astro'
+ * import { Badge, Container, Stack } from '@atomchat/components-astro'
  */
+
+// ── Layout Primitives ──────────────────────────────────────────
+export { default as Container } from './layout/Container.astro';
+export { default as Stack }     from './layout/Stack.astro';
+export { default as Inline }    from './layout/Inline.astro';
+export { default as Grid }      from './layout/Grid.astro';
+export { default as Section }   from './layout/Section.astro';
+export { default as Center }    from './layout/Center.astro';
 
 // ── Atoms ──────────────────────────────────────────────────────
 export { default as Avatar } from './atoms/Avatar.astro';

@@ -1,0 +1,72 @@
+---
+/**
+ * Center (Layout Primitive)
+ *
+ * Centers content both horizontally and vertically.
+ * Use for loading states, empty states, hero content, or modals.
+ * Can be full-height for viewport centering.
+ *
+ * @param {"row" | "column"} direction - Flex direction (default: "row")
+ * @param {"xs" | "s" | "m" | "l" | "xl"} gap - Space between children when direction is column (optional)
+ * @param {boolean} fullHeight - Make center container full viewport height (default: false)
+ * @param {boolean} fullWidth - Make center container full width (default: false)
+ * @param {boolean} inline - Use inline-flex instead of flex (default: false)
+ * @param {string} as - HTML element tag (default: "div")
+ * @param {string} class - Additional CSS classes
+ *
+ * Usage:
+ * <Center fullHeight>
+ *   <Spinner />
+ * </Center>
+ *
+ * <Center direction="column" gap="m" fullHeight>
+ *   <Logo />
+ *   <Heading>Welcome</Heading>
+ *   <Button>Get Started</Button>
+ * </Center>
+ *
+ * @see packages/css/src/layout/center.css
+ * @see packages/tokens/src/components/layout.json
+ */
+
+interface Props {
+  direction?: "row" | "column";
+  gap?: "xs" | "s" | "m" | "l" | "xl";
+  fullHeight?: boolean;
+  fullWidth?: boolean;
+  inline?: boolean;
+  as?: string;
+  class?: string;
+  [key: string]: any;
+}
+
+const {
+  direction = "row",
+  gap,
+  fullHeight = false,
+  fullWidth = false,
+  inline = false,
+  as = "div",
+  class: className = "",
+  ...rest
+} = Astro.props;
+
+const Element = as;
+---
+
+<Element
+  class:list={[
+    "center",
+    direction === "column" && "center--column",
+    direction === "row" && "center--row",
+    gap && `center--gap-${gap}`,
+    fullHeight && "center--full-height",
+    fullWidth && "center--full-width",
+    inline && "center--inline",
+    className
+  ]}
+  data-center
+  {...rest}
+>
+  <slot />
+</Element>

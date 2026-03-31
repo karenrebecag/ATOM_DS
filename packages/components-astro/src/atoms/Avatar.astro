@@ -11,8 +11,12 @@
  * @param {"circle" | "square"} shape - Avatar shape variant
  * @param {"image" | "image-border" | "initials" | "icon"} type - Avatar type (auto-detected from src)
  * @param {string} initials - Initials to display (e.g., "JD")
- * @param {"verified" | "online" | "offline" | "none"} badge - Status badge indicator
+ * @param {"verified" | "online" | "offline" | "idle" | "inactive" | "none"} badge - Status badge indicator
  * @param {string} class - Additional CSS classes
+ *
+ * Architecture:
+ * - Status badges (online/offline/idle/inactive) compose with StatusIcon atom
+ * - Verified badge renders custom SVG (different visual pattern)
  *
  * Auto-detection Logic:
  * - If src is provided → type defaults to "image-border"
@@ -28,6 +32,8 @@
  * <Avatar type="icon" size="l" badge="verified" />
  */
 
+import StatusIcon from './StatusIcon.astro';
+
 interface Props {
   src?: string;
   alt?: string;
@@ -35,7 +41,7 @@ interface Props {
   shape?: "circle" | "square";
   type?: "image" | "image-border" | "initials" | "icon";
   initials?: string;
-  badge?: "verified" | "online" | "offline" | "none";
+  badge?: "verified" | "online" | "offline" | "idle" | "inactive" | "none";
   class?: string;
   [key: string]: any;
 }
@@ -53,6 +59,17 @@ const {
 } = Astro.props;
 
 const hasIcon = Astro.slots.has("icon");
+
+// Map avatar size to StatusIcon size for consistent badge sizing
+const statusIconSizeMap: Record<string, "xs" | "s" | "m" | "l"> = {
+  xs: "s",  // Avatar XS (24px) → StatusIcon S (10px)
+  s: "s",   // Avatar S (32px) → StatusIcon S (10px)
+  m: "m",   // Avatar M (40px) → StatusIcon M (12px)
+  l: "l",   // Avatar L (48px) → StatusIcon L (16px)
+};
+
+const statusIconSize = statusIconSizeMap[size];
+const isStatusBadge = badge === "online" || badge === "offline" || badge === "idle" || badge === "inactive";
 
 // Compute aria-label for accessibility
 const ariaLabel = alt || initials || "Avatar";
@@ -105,6 +122,7 @@ const ariaLabel = alt || initials || "Avatar";
   )}
 
   {/* Badge Indicators */}
+  {/* Verified badge: Custom SVG icon (not a StatusIcon) */}
   {badge === "verified" && (
     <span
       class="avatar__badge avatar__badge--verified"
@@ -118,21 +136,15 @@ const ariaLabel = alt || initials || "Avatar";
     </span>
   )}
 
-  {badge === "online" && (
-    <span
-      class="avatar__badge avatar__badge--online"
+  {/* Status badges: Compose with StatusIcon atom for consistency */}
+  {isStatusBadge && (
+    <StatusIcon
+      status={badge as "online" | "offline" | "idle" | "inactive"}
+      size={statusIconSize}
+      hasBorder={true}
+      class="avatar__badge"
       data-avatar-badge
-      data-badge-type="online"
-      aria-label="Online"
-    />
-  )}
-
-  {badge === "offline" && (
-    <span
-      class="avatar__badge avatar__badge--offline"
-      data-avatar-badge
-      data-badge-type="offline"
-      aria-label="Offline"
+      data-badge-type={badge}
     />
   )}
 </span>

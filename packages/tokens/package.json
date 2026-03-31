@@ -1,6 +1,6 @@
 {
   "name": "@atomchat.io/tokens",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "ATOM Design System tokens — W3C DTCG format, compiled via Style Dictionary",
   "main": "build/js/tokens.cjs",
   "module": "build/js/tokens.js",
@@ -10,9 +10,10 @@
   },
   "exports": {
     ".": {
+      "types": "./build/js/tokens.d.ts",
       "import": "./build/js/tokens.js",
       "require": "./build/js/tokens.cjs",
-      "types": "./build/js/tokens.d.ts"
+      "default": "./build/js/tokens.js"
     },
     "./css": "./build/css/tokens.css",
     "./css/foundation": "./build/css/foundation.css",
@@ -20,7 +21,11 @@
     "./css/components": "./build/css/components.css",
     "./css/dark": "./build/css/dark.css",
     "./scss": "./build/scss/_tokens.scss",
-    "./json": "./build/json/tokens.json"
+    "./json": "./build/json/tokens.json",
+    "./build/css/*": "./build/css/*",
+    "./build/scss/*": "./build/scss/*",
+    "./build/js/*": "./build/js/*",
+    "./build/json/*": "./build/json/*"
   },
   "files": [
     "build/",

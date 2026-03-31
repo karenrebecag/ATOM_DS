@@ -1,0 +1,84 @@
+/* ============================================
+   @atomchat/css — inline.css
+   Depends on: @atomchat/tokens (tokens.css)
+
+   Inline — Horizontal flex layout primitive
+
+   Arranges children horizontally with consistent gap.
+   Use for tag lists, breadcrumbs, button groups, inline content.
+============================================ */
+
+/* ── Base Inline ────────────────────────────────────── */
+.inline {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+/* ── Gap Variants ────────────────────────────────────── */
+
+.inline--gap-xs {
+  gap: var(--inline-gap-xs); /* 0.75em */
+}
+
+.inline--gap-s {
+  gap: var(--inline-gap-s); /* 1em */
+}
+
+.inline--gap-m {
+  gap: var(--inline-gap-m); /* 1.5em - Default */
+}
+
+.inline--gap-l {
+  gap: var(--inline-gap-l); /* 1.875em */
+}
+
+.inline--gap-xl {
+  gap: var(--inline-gap-xl); /* 2em */
+}
+
+/* ── Alignment Variants ──────────────────────────────── */
+
+.inline--align-start {
+  align-items: flex-start;
+}
+
+.inline--align-center {
+  align-items: center; /* Default */
+}
+
+.inline--align-end {
+  align-items: flex-end;
+}
+
+.inline--align-baseline {
+  align-items: baseline;
+}
+
+/* ── Justify Variants ────────────────────────────────── */
+
+.inline--justify-start {
+  justify-content: flex-start; /* Default */
+}
+
+.inline--justify-center {
+  justify-content: center;
+}
+
+.inline--justify-end {
+  justify-content: flex-end;
+}
+
+.inline--justify-between {
+  justify-content: space-between;
+}
+
+.inline--justify-around {
+  justify-content: space-around;
+}
+
+/* ── No Wrap Variant ─────────────────────────────────── */
+
+.inline--nowrap {
+  flex-wrap: nowrap;
+}

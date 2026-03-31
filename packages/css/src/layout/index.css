@@ -1,0 +1,21 @@
+/**
+ * @atomchat/css — Layout Primitives
+ *
+ * Framework-agnostic layout components with semantic props.
+ * No hardcoded values — every measurement uses design tokens.
+ *
+ * Components:
+ * - Container: Max-width centered wrapper
+ * - Stack: Vertical flex layout
+ * - Inline: Horizontal flex layout
+ * - Grid: CSS Grid layout
+ * - Section: Semantic section with vertical padding
+ * - Center: Absolute centering
+ */
+
+@import './container.css';
+@import './stack.css';
+@import './inline.css';
+@import './grid.css';
+@import './section.css';
+@import './center.css';

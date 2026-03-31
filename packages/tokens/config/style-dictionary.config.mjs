@@ -16,6 +16,7 @@ const SEMANTIC_GROUPS = [
 const COMPONENT_GROUPS = [
   'badge', 'buttons', 'checkbox', 'radio', 'toggle', 'chip', 'tags', 'skeleton',
   'frosted-glass', 'glassmorphism', 'acrylic',
+  'container', 'stack', 'inline', 'grid', 'section',
 ];
 
 function isFoundation(token) {

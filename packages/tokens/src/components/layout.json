@@ -1,0 +1,134 @@
+{
+  "container": {
+    "width": {
+      "$type": "dimension",
+      "sm": {
+        "$value": "{content-width.sm}",
+        "$description": "600px - Small container"
+      },
+      "md": {
+        "$value": "{content-width.md}",
+        "$description": "800px - Medium container"
+      },
+      "lg": {
+        "$value": "{content-width.lg}",
+        "$description": "1000px - Large container (default)"
+      },
+      "xl": {
+        "$value": "1280px",
+        "$description": "Extra large container"
+      },
+      "2xl": {
+        "$value": "1536px",
+        "$description": "2X large container"
+      }
+    },
+    "padding": {
+      "$type": "dimension",
+      "x": {
+        "$value": "{padding.container}",
+        "$description": "Horizontal padding - 1.875em"
+      }
+    }
+  },
+  "stack": {
+    "gap": {
+      "$type": "dimension",
+      "xs": {
+        "$value": "{gap.xs}",
+        "$description": "0.75em"
+      },
+      "s": {
+        "$value": "{gap.s}",
+        "$description": "1em"
+      },
+      "m": {
+        "$value": "{gap.m}",
+        "$description": "1.5em - Default"
+      },
+      "l": {
+        "$value": "{gap.l}",
+        "$description": "1.875em"
+      },
+      "xl": {
+        "$value": "{gap.xl}",
+        "$description": "2em"
+      }
+    }
+  },
+  "inline": {
+    "gap": {
+      "$type": "dimension",
+      "xs": {
+        "$value": "{gap.xs}",
+        "$description": "0.75em"
+      },
+      "s": {
+        "$value": "{gap.s}",
+        "$description": "1em"
+      },
+      "m": {
+        "$value": "{gap.m}",
+        "$description": "1.5em - Default"
+      },
+      "l": {
+        "$value": "{gap.l}",
+        "$description": "1.875em"
+      },
+      "xl": {
+        "$value": "{gap.xl}",
+        "$description": "2em"
+      }
+    }
+  },
+  "grid": {
+    "gap": {
+      "$type": "dimension",
+      "xs": {
+        "$value": "{gap.xs}",
+        "$description": "0.75em"
+      },
+      "s": {
+        "$value": "{gap.s}",
+        "$description": "1em"
+      },
+      "m": {
+        "$value": "{gap.m}",
+        "$description": "1.5em - Default"
+      },
+      "l": {
+        "$value": "{gap.l}",
+        "$description": "1.875em"
+      },
+      "xl": {
+        "$value": "{gap.xl}",
+        "$description": "2em"
+      }
+    }
+  },
+  "section": {
+    "padding": {
+      "$type": "dimension",
+      "y-xs": {
+        "$value": "{padding.xs}",
+        "$description": "2.5em vertical"
+      },
+      "y-s": {
+        "$value": "{padding.s}",
+        "$description": "3.75em vertical"
+      },
+      "y-m": {
+        "$value": "{padding.m}",
+        "$description": "5em vertical - Default"
+      },
+      "y-l": {
+        "$value": "{padding.l}",
+        "$description": "10em vertical"
+      },
+      "y-xl": {
+        "$value": "{padding.xl}",
+        "$description": "12.5em vertical"
+      }
+    }
+  }
+}

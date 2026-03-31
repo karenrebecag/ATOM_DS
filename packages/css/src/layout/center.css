@@ -1,0 +1,64 @@
+/* ============================================
+   @atomchat/css — center.css
+   Depends on: @atomchat/tokens (tokens.css)
+
+   Center — Absolute centering utility
+
+   Centers content both horizontally and vertically.
+   Use for loading states, empty states, hero content.
+============================================ */
+
+/* ── Base Center ────────────────────────────────────── */
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Direction Variants ──────────────────────────────── */
+
+.center--column {
+  flex-direction: column;
+}
+
+.center--row {
+  flex-direction: row;
+}
+
+/* ── Gap Variants (for center--column) ────────────────── */
+
+.center--gap-xs {
+  gap: var(--gap-xs);
+}
+
+.center--gap-s {
+  gap: var(--gap-s);
+}
+
+.center--gap-m {
+  gap: var(--gap-m);
+}
+
+.center--gap-l {
+  gap: var(--gap-l);
+}
+
+.center--gap-xl {
+  gap: var(--gap-xl);
+}
+
+/* ── Full Height Variant ─────────────────────────────── */
+
+.center--full-height {
+  min-height: 100vh;
+}
+
+.center--full-width {
+  width: 100%;
+}
+
+/* ── Inline Variant ──────────────────────────────────── */
+
+.center--inline {
+  display: inline-flex;
+}

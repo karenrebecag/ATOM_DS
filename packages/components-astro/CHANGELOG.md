@@ -1,5 +1,20 @@
 # @atomchat/components-astro
 
+## 2.0.4
+
+### Patch Changes
+
+- fix(exports): improve package.json exports configuration
+  - Reorder conditional exports following Node.js best practices (types → import → require → default)
+  - Add wildcard exports for direct path access to build/dist directories
+  - Fix missing exports that prevented importing with full paths
+  - All packages now support both shorthand and full path imports
+
+  Breaking: None. This is a backward-compatible enhancement.
+
+- Updated dependencies
+  - @atomchat.io/css@0.2.3
+
 ## 2.0.3
 
 ### Patch Changes

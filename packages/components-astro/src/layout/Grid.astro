@@ -1,0 +1,79 @@
+---
+/**
+ * Grid (Layout Primitive)
+ *
+ * CSS Grid layout with responsive column system and consistent gap.
+ * Use for card grids, image galleries, dashboard layouts, or any grid-based content.
+ * Automatically stacks to 1 column on mobile (can be preserved).
+ *
+ * @param {1 | 2 | 3 | 4 | 5 | 6 | "auto-fit" | "auto-fit-sm" | "auto-fit-lg"} columns - Number of columns or auto-fit mode (default: 3)
+ * @param {"xs" | "s" | "m" | "l" | "xl"} gap - Space between grid items (default: "m")
+ * @param {"start" | "center" | "end" | "stretch"} align - Vertical alignment within cells (default: "stretch")
+ * @param {"start" | "center" | "end" | "stretch"} justify - Horizontal alignment within cells (default: "stretch")
+ * @param {boolean} preserve - Preserve column count on mobile (default: false)
+ * @param {string} as - HTML element tag (default: "div")
+ * @param {string} class - Additional CSS classes
+ *
+ * Usage:
+ * <Grid columns={3} gap="l">
+ *   <Card />
+ *   <Card />
+ *   <Card />
+ * </Grid>
+ *
+ * <Grid columns="auto-fit" gap="m">
+ *   <!-- Responsive grid with automatic column fitting -->
+ *   <ProductCard />
+ *   <ProductCard />
+ *   <ProductCard />
+ * </Grid>
+ *
+ * @see packages/css/src/layout/grid.css
+ * @see packages/tokens/src/components/layout.json
+ */
+
+interface Props {
+  columns?: 1 | 2 | 3 | 4 | 5 | 6 | "auto-fit" | "auto-fit-sm" | "auto-fit-lg";
+  gap?: "xs" | "s" | "m" | "l" | "xl";
+  align?: "start" | "center" | "end" | "stretch";
+  justify?: "start" | "center" | "end" | "stretch";
+  preserve?: boolean;
+  as?: string;
+  class?: string;
+  [key: string]: any;
+}
+
+const {
+  columns = 3,
+  gap = "m",
+  align = "stretch",
+  justify = "stretch",
+  preserve = false,
+  as = "div",
+  class: className = "",
+  ...rest
+} = Astro.props;
+
+const Element = as;
+
+// Build column class
+const columnClass = typeof columns === "number"
+  ? `grid--cols-${columns}`
+  : `grid--${columns}`;
+---
+
+<Element
+  class:list={[
+    "grid",
+    columnClass,
+    `grid--gap-${gap}`,
+    align !== "stretch" && `grid--align-${align}`,
+    justify !== "stretch" && `grid--justify-${justify}`,
+    preserve && "grid--preserve",
+    className
+  ]}
+  data-grid
+  {...rest}
+>
+  <slot />
+</Element>

@@ -1,6 +1,6 @@
 {
   "name": "@atomchat.io/components-astro",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "ATOM Design System — Astro component library",
   "publishConfig": {
     "access": "public"
@@ -9,7 +9,8 @@
     ".": "./src/index.ts",
     "./atoms/*": "./src/atoms/*",
     "./molecules/*": "./src/molecules/*",
-    "./organisms/*": "./src/organisms/*"
+    "./organisms/*": "./src/organisms/*",
+    "./src/*": "./src/*"
   },
   "files": [
     "src/"

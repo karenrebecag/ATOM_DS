@@ -41,11 +41,13 @@
   --chip-shadow-focus: 0px 0px 0px 2px rgba(161, 161, 161, 0.7);
 
   /* ── Chip: Spacing (per size) ────────────────────────────── */
-  --chip-padding-xs: var(--xs, 4px) var(--s, 8px);
-  --chip-padding-s: var(--s, 8px);
-  --chip-padding-m: var(--sm, 12px);
-  --chip-padding-l: var(--m, 16px);
-  --chip-padding-xl: var(--m, 16px);
+  /* XS uses asymmetric padding: vertical 4px (--chip-padding-xs), horizontal 8px (--primitive-spacing-s) */
+  --chip-padding-xs-y: var(--chip-padding-xs);
+  --chip-padding-xs-x: var(--primitive-spacing-s);
+  --chip-padding-s: var(--chip-padding-s);
+  --chip-padding-m: var(--chip-padding-m);
+  --chip-padding-l: var(--chip-padding-l);
+  --chip-padding-xl: var(--chip-padding-xl);
 
   /* ── Chip: Typography ────────────────────────────────────── */
   --chip-font-family-small: var(--font-family-titles, 'Inter', sans-serif);
@@ -108,7 +110,7 @@
 
 /* ── Size Variants ───────────────────────────────────────── */
 .chip[data-size="xs"] {
-  padding: var(--chip-padding-xs);
+  padding: var(--chip-padding-xs-y) var(--chip-padding-xs-x);
 }
 
 .chip[data-size="s"] {

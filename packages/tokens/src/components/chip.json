@@ -33,6 +33,8 @@
     },
     "padding": {
       "$type": "dimension",
+      "$description": "Note: xs uses asymmetric padding (different x/y), defined in CSS as shorthand",
+      "xs": { "$value": "{Primitive.Spacing.xs}", "$description": "4px vertical — horizontal defined in CSS" },
       "s":  { "$value": "{Primitive.Spacing.s}", "$description": "8px" },
       "m":  { "$value": "{Primitive.Spacing.sm}", "$description": "12px" },
       "l":  { "$value": "{Primitive.Spacing.m}", "$description": "16px" },
@@ -54,7 +56,7 @@
       "small": { "$value": "{line-height-label}", "$description": "16px" },
       "large": { "$value": "{line-height-caption}", "$description": "24px" }
     },
-    "border-radius": { "$type": "dimension", "$value": "{radius-pill}", "$description": "1000px — pill shape" },
+    "border-radius": { "$type": "dimension", "$value": "{Primitive.Radius.s}", "$description": "8px — rounded corners" },
     "border-width":  { "$type": "dimension", "$value": "{stroke-xs}", "$description": "1px" },
     "icon-size":     { "$type": "dimension", "$value": "{icon.s}", "$description": "16px" },
     "gap":           { "$type": "dimension", "$value": "{Primitive.Spacing.xs}", "$description": "4px — between icon and label" }

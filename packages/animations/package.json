@@ -14,6 +14,122 @@
       "import": "./dist/index.js",
       "types": "./dist/index.d.ts"
     },
+    "./about-card": {
+      "import": "./dist/about-card.js",
+      "types": "./dist/about-card.d.ts"
+    },
+    "./badge": {
+      "import": "./dist/badge.js",
+      "types": "./dist/badge.d.ts"
+    },
+    "./cursor": {
+      "import": "./dist/cursor.js",
+      "types": "./dist/cursor.d.ts"
+    },
+    "./draggable-marquee": {
+      "import": "./dist/draggable-marquee.js",
+      "types": "./dist/draggable-marquee.d.ts"
+    },
+    "./features": {
+      "import": "./dist/features.js",
+      "types": "./dist/features.d.ts"
+    },
+    "./flick-cards": {
+      "import": "./dist/flick-cards.js",
+      "types": "./dist/flick-cards.d.ts"
+    },
+    "./footer-logo": {
+      "import": "./dist/footer-logo.js",
+      "types": "./dist/footer-logo.d.ts"
+    },
+    "./hover": {
+      "import": "./dist/hover.js",
+      "types": "./dist/hover.d.ts"
+    },
+    "./layout-grid-flip": {
+      "import": "./dist/layout-grid-flip.js",
+      "types": "./dist/layout-grid-flip.d.ts"
+    },
+    "./loading": {
+      "import": "./dist/loading.js",
+      "types": "./dist/loading.d.ts"
+    },
+    "./logo-wall": {
+      "import": "./dist/logo-wall.js",
+      "types": "./dist/logo-wall.d.ts"
+    },
+    "./marquee": {
+      "import": "./dist/marquee.js",
+      "types": "./dist/marquee.d.ts"
+    },
+    "./motion": {
+      "import": "./dist/motion.js",
+      "types": "./dist/motion.d.ts"
+    },
+    "./odometer": {
+      "import": "./dist/odometer.js",
+      "types": "./dist/odometer.d.ts"
+    },
+    "./page-transition": {
+      "import": "./dist/page-transition.js",
+      "types": "./dist/page-transition.d.ts"
+    },
+    "./parallax": {
+      "import": "./dist/parallax.js",
+      "types": "./dist/parallax.d.ts"
+    },
+    "./parallax-transition": {
+      "import": "./dist/parallax-transition.js",
+      "types": "./dist/parallax-transition.d.ts"
+    },
+    "./pricing": {
+      "import": "./dist/pricing.js",
+      "types": "./dist/pricing.d.ts"
+    },
+    "./progress-nav": {
+      "import": "./dist/progress-nav.js",
+      "types": "./dist/progress-nav.d.ts"
+    },
+    "./reveal": {
+      "import": "./dist/reveal.js",
+      "types": "./dist/reveal.d.ts"
+    },
+    "./rotating-layers": {
+      "import": "./dist/rotating-layers.js",
+      "types": "./dist/rotating-layers.d.ts"
+    },
+    "./scroll-direction": {
+      "import": "./dist/scroll-direction.js",
+      "types": "./dist/scroll-direction.d.ts"
+    },
+    "./sidebar-wipe": {
+      "import": "./dist/sidebar-wipe.js",
+      "types": "./dist/sidebar-wipe.d.ts"
+    },
+    "./slider": {
+      "import": "./dist/slider.js",
+      "types": "./dist/slider.d.ts"
+    },
+    "./social-proof": {
+      "import": "./dist/social-proof.js",
+      "types": "./dist/social-proof.d.ts"
+    },
+    "./stats": {
+      "import": "./dist/stats.js",
+      "types": "./dist/stats.d.ts"
+    },
+    "./text": {
+      "import": "./dist/text.js",
+      "types": "./dist/text.d.ts"
+    },
+    "./toast": {
+      "import": "./dist/toast.js",
+      "types": "./dist/toast.d.ts"
+    },
+    "./vertical-slider": {
+      "import": "./dist/vertical-slider.js",
+      "types": "./dist/vertical-slider.d.ts"
+    },
     "./extras/smooth-scroll": {
       "import": "./dist/extras/smooth-scroll.js",
       "types": "./dist/extras/smooth-scroll.d.ts"

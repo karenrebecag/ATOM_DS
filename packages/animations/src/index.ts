@@ -77,12 +77,6 @@ import {
 import { initBadge, hideBadge, showBadge, animateBadgeEntry } from "./badge";
 import { initScrollDirection } from "./scroll-direction";
 import { runPageEnterAnimation } from "./page-transition";
-import {
-  initSmoothScroll,
-  getLenis,
-  destroySmoothScroll,
-} from "./smooth-scroll";
-import { initBarba } from "./transitions";
 import { initCursor, destroyCursor } from "./cursor";
 import { initNumberOdometer } from "./odometer";
 import {
@@ -204,9 +198,6 @@ export { initSidebarCollapse };
 // slider
 export { initRotationSlider };
 
-// smooth-scroll
-export { initSmoothScroll, getLenis, destroySmoothScroll };
-
 // social-proof
 export { initSocialProof };
 
@@ -233,9 +224,6 @@ export {
   initToastAnimations,
   cleanupToastAnimations,
 };
-
-// transitions
-export { initBarba };
 
 // vertical-slider
 export { initVerticalSlider };

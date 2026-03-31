@@ -29,9 +29,9 @@
 import barba from "@barba/core";
 // @ts-expect-error - Barba prefetch is an optional peer dependency
 import barbaPrefetch from "@barba/prefetch";
-import { gsap, ScrollTrigger, DURATION } from "./config";
-import { initAllAnimations } from "./index";
-import { runPageEnterAnimation } from "./page-transition";
+import { gsap, ScrollTrigger, DURATION } from "../config";
+import { initAllAnimations } from "../index";
+import { runPageEnterAnimation } from "../page-transition";
 import {
   initSmoothScroll,
   getLenis,

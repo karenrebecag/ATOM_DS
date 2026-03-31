@@ -121,10 +121,10 @@
         }
       },
       "item": {
-        "default": {
+        "enabled": {
           "$value": "{Primitive.Zinc.50}"
         },
-        "hover": {
+        "hovered": {
           "$value": "{Primitive.Zinc.100}"
         },
         "disabled": {
@@ -134,10 +134,10 @@
           "$value": "{Primitive.Zinc.200}"
         },
         "selected": {
-          "default": {
+          "enabled": {
             "$value": "{Primitive.Zinc.900}"
           },
-          "hover": {
+          "hovered": {
             "$value": "{Primitive.Zinc.800}"
           },
           "disabled": {

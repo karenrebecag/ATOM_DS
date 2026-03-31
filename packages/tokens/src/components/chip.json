@@ -3,12 +3,12 @@
     "bg": {
       "$type": "color",
       "default":              { "$value": "{bg.secondary}" },
-      "unselected-enabled":   { "$value": "{bg.interactive.item.default}" },
-      "unselected-hovered":   { "$value": "{bg.interactive.item.hover}" },
+      "unselected-enabled":   { "$value": "{bg.interactive.item.enabled}" },
+      "unselected-hovered":   { "$value": "{bg.interactive.item.hovered}" },
       "unselected-disabled":  { "$value": "{bg.interactive.item.disabled}" },
       "unselected-pressed":   { "$value": "{bg.interactive.item.pressed}" },
-      "selected-enabled":     { "$value": "{bg.interactive.item.selected.default}" },
-      "selected-hovered":     { "$value": "{bg.interactive.item.selected.hover}" },
+      "selected-enabled":     { "$value": "{bg.interactive.item.selected.enabled}" },
+      "selected-hovered":     { "$value": "{bg.interactive.item.selected.hovered}" },
       "selected-disabled":    { "$value": "{bg.interactive.item.selected.disabled}" },
       "selected-pressed":     { "$value": "{bg.interactive.item.selected.pressed}" }
     },

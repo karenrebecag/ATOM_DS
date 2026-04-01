@@ -1,5 +1,13 @@
 # @atomchat.io/components-angular
 
+## 2.0.1
+
+### Patch Changes
+
+- Include source files (src/) in npm packages for documentation fetching
+
+  This enables documentation sites to fetch component source code directly from npm via jsDelivr CDN, eliminating code duplication and ensuring docs always stay in sync with published packages.
+
 ## 2.0.0
 
 ### Major Changes

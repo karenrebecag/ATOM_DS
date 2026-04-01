@@ -1,5 +1,4 @@
-# Source files (only dist/ is published)
-src/
+# Config files (dist/ and src/ are published for documentation)
 tsconfig.json
 ng-package.json
 

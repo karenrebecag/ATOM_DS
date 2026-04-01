@@ -1,6 +1,6 @@
 {
   "name": "@atomchat.io/components-vue",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "ATOM Design System — Vue 3 component library",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -94,6 +94,7 @@
   },
   "files": [
     "dist",
+    "src",
     "README.md"
   ],
   "scripts": {

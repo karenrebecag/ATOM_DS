@@ -1,8 +1,0 @@
-/* ============================================
-   @atomchat/css — foundation/index.css
-   Foundation styles entry point
-============================================ */
-
-@import './reset.css';
-@import './base.css';
-@import './typography.css';

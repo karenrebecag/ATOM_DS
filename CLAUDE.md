@@ -375,54 +375,40 @@ Estos se implementan directamente en `@atomchat/css` como CSS puro.
 
 ### 🔴 Alta Prioridad (NEXT)
 
-| Task | Blocker | Next Action | ETA |
-|------|---------|-------------|-----|
-| **Docs: Fetch from npm** | ⚠️ Crítico | Refactor snippets para fetchear desde jsDelivr/npm | Hoy |
-| **Docs: Button refactor test** | 📝 Testing | Probar button.mdx con snippets locales | Hoy |
-| Crear snippet Vue Button | 📁 Falta archivo | Crear `src/snippets/button/vue.ts` desde monorepo | Hoy |
-| Push cambios de docs | 🎯 Ready | git push docs repo | Hoy |
+| Task | Status | Notes |
+|------|--------|-------|
+| **Docs: Fetch from npm** | ✅ DONE | Implemented FetchedCode.astro + fetchComponentSource utility |
+| **Docs: Button tested** | ✅ DONE | Build passes, fetches from jsDelivr successfully |
+| **Packages with src/** | ✅ PUBLISHED | React 2.0.1, Vue 1.0.1, Angular 2.0.1 |
+| Push cambios de docs | 🎯 NEXT | git push docs repo | Hoy |
+| Push branch `next` | 🎯 NEXT | git push origin next (monorepo) | Hoy |
 
-**🎯 Implementar fetch desde npm en docs:**
+**✅ IMPLEMENTADO: Fetch desde npm en docs**
 
-La documentación debe fetchear código desde npm en lugar de usar snippets locales duplicados.
+La documentación ahora fetcha código fuente directamente desde npm vía jsDelivr.
 
-**Opciones:**
-1. **Build-time fetch** (Recomendado para SSG):
+**Implementación:**
+
+1. **Utility creado**: `src/utils/fetchComponentSource.ts`
+   - Fetches desde jsDelivr en build-time
+   - Crea ComponentSource con metadata
+   - Soporta versiones específicas
+
+2. **Component wrapper**: `src/components/FetchedCode.astro`
    ```astro
-   ---
-   const reactSource = await fetch(
-     'https://cdn.jsdelivr.net/npm/@atomchat.io/components-react@2.0.0/src/atoms/Button.tsx'
-   ).then(r => r.text());
-   ---
-   <Code code={reactSource} lang="typescript" title="Button.tsx" />
+   <FetchedCode component="Button" framework="react" />
    ```
 
-2. **Monorepo import** (Solo para dev local):
-   ```typescript
-   import buttonSource from '../../../../packages/components-react/src/atoms/Button.tsx?raw';
-   ```
+3. **URLs activas** (v2.0.1/v1.0.1):
+   - React: `https://cdn.jsdelivr.net/npm/@atomchat.io/components-react@2.0.1/src/atoms/Button.tsx`
+   - Vue: `https://cdn.jsdelivr.net/npm/@atomchat.io/components-vue@1.0.1/src/atoms/Button.vue`
+   - Angular: `https://cdn.jsdelivr.net/npm/@atomchat.io/components-angular@2.0.1/src/atoms/button.component.ts`
 
-3. **Hybrid approach** (Mejor de ambos):
-   ```typescript
-   // Dev: import local, Prod: fetch from npm
-   const isDev = import.meta.env.DEV;
-   const source = isDev
-     ? await import('../../../packages/.../Button.tsx?raw')
-     : await fetch('https://cdn.jsdelivr.net/npm/...').then(r => r.text());
-   ```
-
-**URLs de jsDelivr:**
-- React: `https://cdn.jsdelivr.net/npm/@atomchat.io/components-react@2.0.0/src/atoms/Button.tsx`
-- Vue: `https://cdn.jsdelivr.net/npm/@atomchat.io/components-vue@1.0.0/src/atoms/Button.vue`
-- Angular: `https://cdn.jsdelivr.net/npm/@atomchat.io/components-angular@2.0.0/fesm2022/atomchat-io-components-angular.mjs`
-
-**Ventajas:**
-- ✅ Single source of truth
+**Resultado:**
+- ✅ Build exitoso (button.mdx generado)
+- ✅ Código fuente visible en HTML
 - ✅ Zero duplication
-- ✅ Auto-sync con npm
-- ✅ Docs siempre actualizadas
-
-**Próximo paso:** Crear utility `src/utils/fetchComponentSource.ts` en docs repo
+- ✅ Single source of truth (npm)
 
 ---
 

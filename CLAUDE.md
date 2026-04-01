@@ -356,44 +356,96 @@ Estos se implementan directamente en `@atomchat/css` como CSS puro.
 
 ## Next Steps (Roadmap)
 
-**Última actualización:** 2026-04-01
+**Última actualización:** 2026-04-01 16:30
 
-### ✅ Completado
+### ✅ Completado (2026-04-01)
 
-| Task | Status | URL |
-|------|--------|-----|
+| Task | Status | Package / URL |
+|------|--------|---------------|
 | Sitio docs con Astro Starlight | ✅ LIVE | https://atom-ds-documentation-brown.vercel.app/ |
-| Button cross-framework (React, Vue, Angular) | ✅ STAGED | 62 archivos listos para commit |
+| Button cross-framework (React, Vue, Angular) | ✅ COMMITTED | Main branch |
 | Accessibility fixes (tabindex) | ✅ APLICADO | React, Vue, Astro, Angular |
 | Animation support (label clone) | ✅ APLICADO | Angular fixed |
+| **Button published to npm** | ✅ PUBLISHED | `@atomchat.io/components-react@2.0.0` |
+| **Button published to npm** | ✅ PUBLISHED | `@atomchat.io/components-vue@1.0.0` |
+| **Button published to npm** | ✅ PUBLISHED | `@atomchat.io/components-angular@2.0.0` |
+| Build test de los 3 frameworks | ✅ PASSED | All builds successful |
+| Crear changeset | ✅ DONE | v1.0.0/v2.0.0 releases |
+| Commit inicial de frameworks | ✅ DONE | 2 commits pushed to main |
 
-### 🔴 Alta Prioridad (Pre-Publish)
+### 🔴 Alta Prioridad (NEXT)
 
-| Task | Blocker | Next Action |
-|------|---------|-------------|
-| **Build test de los 3 frameworks** | ⚠️ Crítico | `pnpm build` en React, Vue, Angular |
-| **Crear READMEs por framework** | 📝 Necesario | README.md para npm page (React, Vue, Angular) |
-| **Snippets feature en docs** | 📁 Pendiente | Crear `apps/docs/src/snippets/button/{astro,react,vue,angular}.md` |
-| **Crear changeset** | 📦 Necesario | `pnpm changeset` para versioning |
-| **Commit inicial de frameworks** | 🎯 Ready | git commit con mensaje conventional |
+| Task | Blocker | Next Action | ETA |
+|------|---------|-------------|-----|
+| **Docs: Fetch from npm** | ⚠️ Crítico | Refactor snippets para fetchear desde jsDelivr/npm | Hoy |
+| **Docs: Button refactor test** | 📝 Testing | Probar button.mdx con snippets locales | Hoy |
+| Crear snippet Vue Button | 📁 Falta archivo | Crear `src/snippets/button/vue.ts` desde monorepo | Hoy |
+| Push cambios de docs | 🎯 Ready | git push docs repo | Hoy |
 
-### 🟡 Media Prioridad (Post-Publish)
+**🎯 Implementar fetch desde npm en docs:**
 
-| Task | Notas |
-|------|-------|
-| Completar @atomchat/components-astro | Badge, Input, Card, Typography |
-| GitHub Actions CI/CD | Auto-publish con Changesets en version tags |
-| ESLint plugin | Bloquear hardcoded values en components |
-| Publish Button a npm | Primer release de `@atomchat/components-{react,vue,angular}` |
+La documentación debe fetchear código desde npm en lugar de usar snippets locales duplicados.
 
-### 🟢 Futura
+**Opciones:**
+1. **Build-time fetch** (Recomendado para SSG):
+   ```astro
+   ---
+   const reactSource = await fetch(
+     'https://cdn.jsdelivr.net/npm/@atomchat.io/components-react@2.0.0/src/atoms/Button.tsx'
+   ).then(r => r.text());
+   ---
+   <Code code={reactSource} lang="typescript" title="Button.tsx" />
+   ```
 
-| Task | Prioridad |
-|------|-----------|
-| Figma variables sync via Tokens Studio | Low |
-| Storybook addon para preview de tokens | Low |
-| Separate LinkButton component (Angular) | Low (workaround ng-content limitation) |
-| Standardize prop naming cross-framework | Low (considerar deprecar `isDisabled` de Vue) |
+2. **Monorepo import** (Solo para dev local):
+   ```typescript
+   import buttonSource from '../../../../packages/components-react/src/atoms/Button.tsx?raw';
+   ```
+
+3. **Hybrid approach** (Mejor de ambos):
+   ```typescript
+   // Dev: import local, Prod: fetch from npm
+   const isDev = import.meta.env.DEV;
+   const source = isDev
+     ? await import('../../../packages/.../Button.tsx?raw')
+     : await fetch('https://cdn.jsdelivr.net/npm/...').then(r => r.text());
+   ```
+
+**URLs de jsDelivr:**
+- React: `https://cdn.jsdelivr.net/npm/@atomchat.io/components-react@2.0.0/src/atoms/Button.tsx`
+- Vue: `https://cdn.jsdelivr.net/npm/@atomchat.io/components-vue@1.0.0/src/atoms/Button.vue`
+- Angular: `https://cdn.jsdelivr.net/npm/@atomchat.io/components-angular@2.0.0/fesm2022/atomchat-io-components-angular.mjs`
+
+**Ventajas:**
+- ✅ Single source of truth
+- ✅ Zero duplication
+- ✅ Auto-sync con npm
+- ✅ Docs siempre actualizadas
+
+**Próximo paso:** Crear utility `src/utils/fetchComponentSource.ts` en docs repo
+
+---
+
+### 🟡 Media Prioridad (Post-MVP)
+
+| Task | Notas | ETA |
+|------|-------|-----|
+| Completar @atomchat/components-astro | Badge, Input, Card, Typography | Semana 2 |
+| GitHub Actions CI/CD | Auto-publish con Changesets en version tags | Semana 2 |
+| ESLint plugin | Bloquear hardcoded values en components | Semana 3 |
+| Crear READMEs completos | Mejorar npm pages con ejemplos | Semana 2 |
+| Playground interactivo | Storybook o custom playground | Semana 3 |
+
+### 🟢 Futura (Backlog)
+
+| Task | Prioridad | Notas |
+|------|-----------|-------|
+| Figma variables sync via Tokens Studio | Low | Tokens bidirectional sync |
+| Storybook addon para preview de tokens | Low | Visual token browser |
+| Separate LinkButton component (Angular) | Low | Workaround ng-content limitation |
+| Standardize prop naming cross-framework | Low | Considerar deprecar `isDisabled` de Vue |
+| VSCode extension | Low | Autocomplete para tokens |
+| CLI tool | Low | `npx @atomchat/cli init` scaffolding |
 
 ---
 

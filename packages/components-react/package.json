@@ -1,6 +1,6 @@
 {
   "name": "@atomchat.io/components-react",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "ATOM Design System — React component library",
   "publishConfig": {
     "access": "public"

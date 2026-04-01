@@ -5,25 +5,10 @@ export default defineConfig({
     // Main entry
     index: 'src/index.ts',
 
-    // Atoms
-    'atoms/Avatar': 'src/atoms/Avatar.tsx',
-    'atoms/Badge': 'src/atoms/Badge.tsx',
+    // Atoms - Active development components
     'atoms/Button': 'src/atoms/Button.tsx',
-    'atoms/Checkbox': 'src/atoms/Checkbox.tsx',
-    'atoms/Chip': 'src/atoms/Chip.tsx',
-    'atoms/StatusIcon': 'src/atoms/StatusIcon.tsx',
-    'atoms/Tag': 'src/atoms/Tag.tsx',
-    'atoms/Text': 'src/atoms/Text.tsx',
-    'atoms/Toggle': 'src/atoms/Toggle.tsx',
-
-    // Molecules
-    'molecules/AvatarGroup': 'src/molecules/AvatarGroup.tsx',
-
-    // Layout
-    'layout/Container': 'src/layout/Container.tsx',
-    'layout/Stack': 'src/layout/Stack.tsx',
-    'layout/Grid': 'src/layout/Grid.tsx',
-    'layout/Inline': 'src/layout/Inline.tsx',
+    'atoms/Badge': 'src/atoms/Badge.tsx',
+    'atoms/Avatar': 'src/atoms/Avatar.tsx',
   },
 
   format: ['esm', 'cjs'],

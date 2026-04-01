@@ -15,7 +15,7 @@
 import { forwardRef, type HTMLAttributes } from 'react';
 import type { AvatarSize, AvatarShape, AvatarType, StatusType } from '../types';
 import { cn } from '../utils/cn';
-import { StatusIcon } from './StatusIcon';
+// import { StatusIcon } from './StatusIcon'; // TODO: Re-enable when StatusIcon is available
 
 export interface AvatarProps extends HTMLAttributes<HTMLSpanElement> {
   src?: string;
@@ -43,12 +43,13 @@ const VerifiedBadgeIcon = (
 );
 
 // ── Avatar Size to StatusIcon Size Mapping ────────────────
-const statusIconSizeMap: Record<AvatarSize, AvatarSize> = {
-  xs: 's',
-  s: 's',
-  m: 'm',
-  l: 'l',
-};
+// TODO: Re-enable when StatusIcon is available
+// const statusIconSizeMap: Record<AvatarSize, AvatarSize> = {
+//   xs: 's',
+//   s: 's',
+//   m: 'm',
+//   l: 'l',
+// };
 
 export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(
   (
@@ -69,8 +70,9 @@ export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(
     // Auto-detect type if not provided
     const type = typeProp ?? (src ? 'image-border' : 'initials');
 
-    const isStatusBadge = badge === 'online' || badge === 'offline' || badge === 'idle' || badge === 'inactive';
-    const statusIconSize = statusIconSizeMap[size];
+    // TODO: Re-enable when StatusIcon is available
+    // const isStatusBadge = badge === 'online' || badge === 'offline' || badge === 'idle' || badge === 'inactive';
+    // const statusIconSize = statusIconSizeMap[size];
 
     const ariaLabel = alt || initials || 'Avatar';
 
@@ -128,7 +130,8 @@ export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(
         )}
 
         {/* Status Badge (composed with StatusIcon) */}
-        {isStatusBadge && (
+        {/* TODO: Re-enable when StatusIcon is available */}
+        {/* {isStatusBadge && (
           <StatusIcon
             status={badge as 'online' | 'offline' | 'idle' | 'inactive'}
             size={statusIconSize}
@@ -137,7 +140,7 @@ export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(
             data-avatar-badge
             data-badge-type={badge}
           />
-        )}
+        )} */}
       </span>
     );
   }

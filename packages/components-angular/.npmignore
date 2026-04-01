@@ -1,0 +1,22 @@
+# Source files (only dist/ is published)
+src/
+tsconfig.json
+ng-package.json
+
+# Development
+.turbo/
+*.log
+*.tsbuildinfo
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore

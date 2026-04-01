@@ -86,6 +86,7 @@ const hasIconRight = Astro.slots.has("icon-right");
   data-button
   data-hover-rotate
   {...href ? { href } : { type }}
+  {...(disabled || loading) && href ? { tabindex: -1 } : {}}
   {...(disabled || loading) ? { disabled: true, "aria-disabled": "true" } : {}}
   {...loading ? { "aria-busy": "true" } : {}}
   {...rest}

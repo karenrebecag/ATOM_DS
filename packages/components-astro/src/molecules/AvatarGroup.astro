@@ -4,35 +4,53 @@
  *
  * Displays a horizontal group of overlapping avatars with an optional "+N" counter.
  * Commonly used to show multiple participants, collaborators, or members.
+ * Composes Avatar atoms with shared props passed to all children.
  *
- * @param {Array<{src: string, alt?: string}>} avatars - Array of avatar objects
+ * @param {Array<{src?: string, alt?: string, initials?: string, badge?: "verified" | "online" | "offline" | "idle" | "inactive" | "none"}>} avatars - Array of avatar objects
  * @param {number} max - Maximum number of avatars to display before showing "+N" (default: 5)
  * @param {"xs" | "s" | "m" | "l"} size - Size of avatars (default: "s")
+ * @param {"circle" | "square"} shape - Shape applied to all avatars (default: "circle")
+ * @param {"image" | "image-border" | "initials" | "icon"} type - Type applied to all avatars (default: "image-border")
  * @param {string} class - Additional CSS classes
+ *
+ * Avatar Item Props (per avatar in array):
+ * - src?: Image URL
+ * - alt?: Alt text for image
+ * - initials?: Initials to display (if no src)
+ * - badge?: Individual badge override (optional)
  *
  * Usage:
  * <AvatarGroup
  *   avatars={[
- *     {src: "/user1.jpg", alt: "User 1"},
+ *     {src: "/user1.jpg", alt: "User 1", badge: "online"},
  *     {src: "/user2.jpg", alt: "User 2"},
- *     {src: "/user3.jpg", alt: "User 3"}
+ *     {initials: "JD", alt: "John Doe"}
  *   ]}
  *   max={3}
  *   size="s"
+ *   shape="circle"
+ *   type="image-border"
  * />
+ *
+ * @see packages/css/src/components/avatar-group.css
+ * @see packages/components-astro/src/atoms/Avatar.astro
  */
 
 import Avatar from "../atoms/Avatar.astro";
 
 interface AvatarItem {
-  src: string;
+  src?: string;
   alt?: string;
+  initials?: string;
+  badge?: "verified" | "online" | "offline" | "idle" | "inactive" | "none";
 }
 
 interface Props {
   avatars: AvatarItem[];
   max?: number;
   size?: "xs" | "s" | "m" | "l";
+  shape?: "circle" | "square";
+  type?: "image" | "image-border" | "initials" | "icon";
   class?: string;
   [key: string]: any;
 }
@@ -41,6 +59,8 @@ const {
   avatars = [],
   max = 5,
   size = "s",
+  shape = "circle",
+  type = "image-border",
   class: className = "",
   ...rest
 } = Astro.props;
@@ -54,6 +74,8 @@ const showCounter = remainingCount > 0;
   class:list={["avatar-group", `avatar-group--${size}`, className]}
   data-avatar-group
   data-size={size}
+  data-shape={shape}
+  data-type={type}
   role="group"
   aria-label={`${avatars.length} ${avatars.length === 1 ? 'member' : 'members'}`}
   {...rest}
@@ -62,10 +84,11 @@ const showCounter = remainingCount > 0;
     <Avatar
       src={avatar.src}
       alt={avatar.alt}
+      initials={avatar.initials}
       size={size}
-      shape="circle"
-      type="image-border"
-      badge="none"
+      shape={shape}
+      type={avatar.src ? type : "initials"}
+      badge={avatar.badge || "none"}
       class="avatar-group__item"
       data-avatar-index={index}
     />
@@ -82,60 +105,3 @@ const showCounter = remainingCount > 0;
     </span>
   )}
 </div>
-
-<style>
-  .avatar-group {
-    display: flex;
-    align-items: center;
-    padding-right: 8px;
-  }
-
-  .avatar-group__item {
-    margin-right: -8px;
-  }
-
-  .avatar-group__counter {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    margin-right: -8px;
-    background-color: var(--bg-tertiary);
-    color: var(--fg-primary);
-    font-family: var(--font-body);
-    font-weight: var(--font-weight-regular);
-    font-size: var(--text-label-regular);
-    line-height: var(--line-height-label);
-    text-align: center;
-    white-space: nowrap;
-  }
-
-  /* Size-specific styles for counter */
-  .avatar-group--xs .avatar-group__counter {
-    width: 24px;
-    height: 24px;
-    border-radius: var(--radius-sm);
-    padding: 2px 4px;
-  }
-
-  .avatar-group--s .avatar-group__counter {
-    width: 32px;
-    height: 32px;
-    border-radius: var(--radius-m);
-    padding: 4px 8px;
-  }
-
-  .avatar-group--m .avatar-group__counter {
-    width: 40px;
-    height: 40px;
-    border-radius: var(--radius-md);
-    padding: 8px 12px;
-  }
-
-  .avatar-group--l .avatar-group__counter {
-    width: 48px;
-    height: 48px;
-    border-radius: var(--radius-l);
-    padding: 12px;
-  }
-</style>

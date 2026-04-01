@@ -1,0 +1,67 @@
+{
+  "name": "@atomchat.io/components-angular",
+  "version": "1.0.0",
+  "description": "ATOM Design System — Angular component library",
+  "author": "ATOM Design System",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "angular",
+    "design-system",
+    "components",
+    "ui",
+    "atom",
+    "tokens"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "esm2022": "./dist/esm2022/index.mjs",
+      "esm": "./dist/esm2022/index.mjs",
+      "default": "./dist/fesm2022/atomchat-io-components-angular.mjs"
+    },
+    "./atoms": {
+      "types": "./dist/atoms/index.d.ts",
+      "esm2022": "./dist/esm2022/atoms/index.mjs",
+      "esm": "./dist/esm2022/atoms/index.mjs",
+      "default": "./dist/fesm2022/atomchat-io-components-angular-atoms.mjs"
+    },
+    "./layout": {
+      "types": "./dist/layout/index.d.ts",
+      "esm2022": "./dist/esm2022/layout/index.mjs",
+      "esm": "./dist/esm2022/layout/index.mjs",
+      "default": "./dist/fesm2022/atomchat-io-components-angular-layout.mjs"
+    },
+    "./molecules": {
+      "types": "./dist/molecules/index.d.ts",
+      "esm2022": "./dist/esm2022/molecules/index.mjs",
+      "esm": "./dist/esm2022/molecules/index.mjs",
+      "default": "./dist/fesm2022/atomchat-io-components-angular-molecules.mjs"
+    },
+    "./organisms": {
+      "types": "./dist/organisms/index.d.ts",
+      "esm2022": "./dist/esm2022/organisms/index.mjs",
+      "esm": "./dist/esm2022/organisms/index.mjs",
+      "default": "./dist/fesm2022/atomchat-io-components-angular-organisms.mjs"
+    }
+  },
+  "peerDependencies": {
+    "@angular/common": "^21.0.0",
+    "@angular/core": "^21.0.0",
+    "@atomchat.io/css": "workspace:*"
+  },
+  "devDependencies": {
+    "@angular/compiler": "^21.0.0",
+    "@angular/compiler-cli": "^21.0.0",
+    "ng-packagr": "^20.3.2",
+    "tslib": "^2.8.1",
+    "typescript": "~5.9.0"
+  },
+  "scripts": {
+    "build": "ng-packagr -p ng-package.json",
+    "dev": "ng-packagr -p ng-package.json --watch"
+  },
+  "sideEffects": false
+}

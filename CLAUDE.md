@@ -13,19 +13,22 @@ Este es el **monorepo del Design System ATOM**, distribuible como paquetes npm i
 ```
 ATOM_DS/
 ├── packages/
-│   ├── tokens/          @atomchat/tokens          ✅ COMPLETO
-│   ├── animations/      @atomchat/animations      ✅ COMPLETO
-│   ├── css/             @atomchat/css             ✅ COMPLETO
-│   └── components-astro/ @atomchat/components-astro ❌ EN CONSTRUCCIÓN
+│   ├── tokens/              @atomchat/tokens              ✅ COMPLETO
+│   ├── animations/          @atomchat/animations          ✅ COMPLETO
+│   ├── css/                 @atomchat/css                 ✅ COMPLETO
+│   ├── components-astro/    @atomchat/components-astro    🚧 EN CONSTRUCCIÓN
+│   ├── components-react/    @atomchat/components-react    🎯 STAGED (Button ready)
+│   ├── components-vue/      @atomchat/components-vue      🎯 STAGED (Button ready)
+│   └── components-angular/  @atomchat/components-angular  🎯 STAGED (Button ready)
 ├── apps/
-│   └── docs/            Sitio de documentación     ❌ PENDIENTE
+│   └── docs/                Sitio de documentación         ❌ PENDIENTE
 ├── scripts/
-│   └── validate-tokens.js  Validador pre-build
-├── turbo.json           Pipeline de builds
-├── pnpm-workspace.yaml  Configuración workspace
-├── CLAUDE.md            Este archivo
-├── DEFERRED_TO_CSS.md   Decisiones de migración
-└── README.md            Documentación pública
+│   └── validate-tokens.js   Validador pre-build
+├── turbo.json               Pipeline de builds
+├── pnpm-workspace.yaml      Configuración workspace
+├── CLAUDE.md                Este archivo
+├── DEFERRED_TO_CSS.md       Decisiones de migración
+└── README.md                Documentación pública
 ```
 
 ---
@@ -124,15 +127,111 @@ ATOM_DS/
 
 ---
 
-### ❌ @atomchat/components-astro — EN CONSTRUCCIÓN
+### 🎯 @atomchat/components-react — STAGED (Button Ready)
 
-**Pendiente de implementar:**
-- Componentes Astro usando tokens + CSS
-- Peer deps: `@atomchat/tokens`, `@atomchat/css`
-- No tiene build step (Astro components son distribuidos como `.astro` source)
+**Estado:** 182 archivos en staging, listo para primer publish
 
-**Componentes planeados:**
-- Button, Badge, Chip, Tag, Toggle, Checkbox, Radio, Avatar, Skeleton, Input, Card, Typography
+**Arquitectura:**
+- TypeScript 5.8 + React 18/19 support
+- Build: tsup (ESM + CJS + declaraciones .d.ts)
+- Polymorphic components (Button as `<button>` o `<a>`)
+- Performance optimized (hoisted JSX, forwardRef, cn utility)
+
+**Componentes implementados:**
+- ✅ **Button** — 6 variants, 5 sizes, loading state, icons, polymorphic
+- ✅ Avatar, Badge, Checkbox, Chip, Radio, Skeleton, StatusIcon, Tag, Toggle
+- ✅ Layout: Container, Grid, Stack
+- ✅ Molecules: AvatarGroup
+
+**Fixes aplicados (2026-04-01):**
+- ✅ `tabindex="-1"` en links disabled (accessibility)
+- ✅ Label clone para hover rotate animation
+
+**Peer deps:**
+- `react: ^18.0.0 || ^19.0.0`
+- `react-dom: ^18.0.0 || ^19.0.0`
+- `@atomchat/css: workspace:*`
+
+---
+
+### 🎯 @atomchat/components-vue — STAGED (Button Ready)
+
+**Estado:** 63 archivos en staging, listo para primer publish
+
+**Arquitectura:**
+- Vue 3.5 + Composition API (`<script setup>`)
+- Build: Vite 6 + vite-plugin-dts
+- TypeScript 5.8 con vue-tsc
+- Naming: `isDisabled`/`isLoading` (convención Vue 3)
+
+**Componentes implementados:**
+- ✅ **Button** — 6 variants, 5 sizes, loading state, slots (iconLeft/iconRight)
+- ✅ Avatar, Badge, Skeleton, StatusIcon
+- ✅ Layout: Container, Grid, Stack
+- ✅ Molecules: AvatarGroup
+- ✅ Composables: useAvatarSize
+
+**Fixes aplicados (2026-04-01):**
+- ✅ `tabindex="-1"` en links disabled (accessibility)
+- ✅ Label clone para hover rotate animation
+
+**Peer deps:**
+- `vue: ^3.4.0`
+- `@atomchat/css: workspace:*`
+
+---
+
+### 🎯 @atomchat/components-angular — STAGED (Button Ready)
+
+**Estado:** 26 archivos en staging, listo para primer publish
+
+**Arquitectura:**
+- Angular 21 + Signals + Standalone components
+- Build: ng-packagr (APF format)
+- TypeScript 5.8 con control flow syntax (`@if`, `@let`)
+- OnPush change detection
+
+**Componentes implementados:**
+- ✅ **Button** — 6 variants, 5 sizes, loading state, ng-content projection
+- ✅ Avatar, StatusIcon
+- ✅ Layout: Container, Grid, Stack
+- ✅ Molecules: AvatarGroup
+
+**Fixes aplicados (2026-04-01):**
+- ✅ Label clone wrapper para hover rotate animation (CRÍTICO)
+- ✅ `tabindex="-1"` en links disabled (YA existía)
+
+**Known limitation:**
+- `ng-content` con `@if` solo proyecta en primera rama renderizada
+- Si `href` cambia dinámicamente, contenido puede no re-proyectarse
+- Documentado en comentarios del componente
+
+**Peer deps:**
+- `@angular/common: ^21.0.0`
+- `@angular/core: ^21.0.0`
+- `@atomchat/css: workspace:*`
+
+---
+
+### 🚧 @atomchat/components-astro — EN CONSTRUCCIÓN
+
+**Estado:** Parcialmente implementado, Button trackeado
+
+**Componentes implementados:**
+- ✅ **Button** — 6 variants, 5 sizes, loading state, slots
+- ✅ LinkButton, IconButton (variants)
+- ✅ Avatar, AvatarGroup
+- ⚠️ Otros componentes pendientes
+
+**Fixes aplicados (2026-04-01):**
+- ✅ `tabindex="-1"` en links disabled (accessibility)
+
+**Legacy support:**
+- ⚠️ Typo "Terceary" → "tertiary" mantenido para compatibilidad (viene de diseño)
+
+**Peer deps:**
+- `astro: ^5.0.0`
+- `@atomchat/css: workspace:*`
 
 ---
 
@@ -257,14 +356,44 @@ Estos se implementan directamente en `@atomchat/css` como CSS puro.
 
 ## Next Steps (Roadmap)
 
-| Prioridad | Task |
-|-----------|------|
-| 🔴 Alta | Build @atomchat/components-astro (Button, Badge, Input, Card, Typography) |
-| 🔴 Alta | Sitio docs con Astro Starlight — tabla de tokens estilo Atlassian |
-| 🟡 Media | GitHub Actions CI/CD — auto-publish con Changesets |
-| 🟡 Media | ESLint plugin para bloquear hardcoded values |
-| 🟢 Futura | Figma variables sync via Tokens Studio |
-| 🟢 Futura | Storybook addon para preview de tokens |
+**Última actualización:** 2026-04-01
+
+### ✅ Completado
+
+| Task | Status | URL |
+|------|--------|-----|
+| Sitio docs con Astro Starlight | ✅ LIVE | https://atom-ds-documentation-brown.vercel.app/ |
+| Button cross-framework (React, Vue, Angular) | ✅ STAGED | 62 archivos listos para commit |
+| Accessibility fixes (tabindex) | ✅ APLICADO | React, Vue, Astro, Angular |
+| Animation support (label clone) | ✅ APLICADO | Angular fixed |
+
+### 🔴 Alta Prioridad (Pre-Publish)
+
+| Task | Blocker | Next Action |
+|------|---------|-------------|
+| **Build test de los 3 frameworks** | ⚠️ Crítico | `pnpm build` en React, Vue, Angular |
+| **Crear READMEs por framework** | 📝 Necesario | README.md para npm page (React, Vue, Angular) |
+| **Snippets feature en docs** | 📁 Pendiente | Crear `apps/docs/src/snippets/button/{astro,react,vue,angular}.md` |
+| **Crear changeset** | 📦 Necesario | `pnpm changeset` para versioning |
+| **Commit inicial de frameworks** | 🎯 Ready | git commit con mensaje conventional |
+
+### 🟡 Media Prioridad (Post-Publish)
+
+| Task | Notas |
+|------|-------|
+| Completar @atomchat/components-astro | Badge, Input, Card, Typography |
+| GitHub Actions CI/CD | Auto-publish con Changesets en version tags |
+| ESLint plugin | Bloquear hardcoded values en components |
+| Publish Button a npm | Primer release de `@atomchat/components-{react,vue,angular}` |
+
+### 🟢 Futura
+
+| Task | Prioridad |
+|------|-----------|
+| Figma variables sync via Tokens Studio | Low |
+| Storybook addon para preview de tokens | Low |
+| Separate LinkButton component (Angular) | Low (workaround ng-content limitation) |
+| Standardize prop naming cross-framework | Low (considerar deprecar `isDisabled` de Vue) |
 
 ---
 

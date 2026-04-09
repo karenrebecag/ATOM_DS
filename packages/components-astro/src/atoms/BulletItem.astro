@@ -1,0 +1,42 @@
+---
+/**
+ * BulletItem
+ *
+ * List item with custom bullet point styling.
+ * Designed to be used inside <ul> elements for enhanced lists.
+ *
+ * @param {string} class - Additional CSS classes
+ * @param {string} bulletColor - Custom bullet color (optional, uses design token by default)
+ *
+ * Usage:
+ * <ul>
+ *   <BulletItem>First item</BulletItem>
+ *   <BulletItem>Second item</BulletItem>
+ * </ul>
+ *
+ * @see packages/css/src/atoms/bullet-item.css
+ */
+
+interface Props {
+  class?: string;
+  bulletColor?: string;
+  [key: string]: any;
+}
+
+const {
+  class: className = "",
+  bulletColor,
+  ...rest
+} = Astro.props;
+---
+
+<li
+  class:list={[
+    "bullet-item",
+    className
+  ]}
+  style={bulletColor ? `--bullet-color: ${bulletColor}` : undefined}
+  {...rest}
+>
+  <slot />
+</li>

@@ -1,0 +1,46 @@
+---
+/**
+ * NumberItem
+ *
+ * Numbered list item with custom number styling.
+ * Designed to be used inside <ol> elements for enhanced ordered lists.
+ *
+ * @param {number | string} number - The number to display
+ * @param {string} class - Additional CSS classes
+ * @param {string} numberColor - Custom number color (optional, uses design token by default)
+ *
+ * Usage:
+ * <ol>
+ *   <NumberItem number={1}>First step</NumberItem>
+ *   <NumberItem number={2}>Second step</NumberItem>
+ * </ol>
+ *
+ * @see packages/css/src/atoms/number-item.css
+ */
+
+interface Props {
+  number: number | string;
+  class?: string;
+  numberColor?: string;
+  [key: string]: any;
+}
+
+const {
+  number,
+  class: className = "",
+  numberColor,
+  ...rest
+} = Astro.props;
+---
+
+<li
+  class:list={[
+    "number-item",
+    className
+  ]}
+  style={numberColor ? `--number-color: ${numberColor}` : undefined}
+  data-number={number}
+  {...rest}
+>
+  <slot />
+</li>

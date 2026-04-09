@@ -1,0 +1,39 @@
+/* ============================================
+   @atomchat/css — legal-meta.css
+   Depends on: @atomchat/tokens (tokens.css)
+============================================ */
+
+/* LEGAL META — Metadata display for legal documents */
+.legal-meta {
+  /* Typography */
+  font-family: var(--font-body);
+  font-size: var(--text-caption);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-caption);
+  color: var(--fg-tertiary);
+
+  /* Layout */
+  margin-bottom: var(--spacing-xl);
+  padding-bottom: var(--spacing-l);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+/* Strong text for labels */
+.legal-meta strong {
+  font-weight: var(--font-weight-medium);
+  color: var(--fg-secondary);
+}
+
+/* Links within legal meta */
+.legal-meta a {
+  color: var(--fg-accent);
+  text-decoration: underline;
+  text-decoration-color: var(--border-subtle);
+  text-underline-offset: 0.2em;
+  transition: color var(--duration-fast), text-decoration-color var(--duration-fast);
+}
+
+.legal-meta a:hover {
+  color: var(--fg-accent-hover);
+  text-decoration-color: var(--fg-accent-hover);
+}

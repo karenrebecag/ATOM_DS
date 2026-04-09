@@ -6,6 +6,7 @@
 @import './avatar.css';
 @import './avatar-group.css';
 @import './badge.css';
+@import './bullet-item.css';
 @import './button.css';
 @import './caption.css';
 @import './checkbox.css';
@@ -14,7 +15,9 @@
 @import './heading.css';
 @import './icon-button.css';
 @import './label-text.css';
+@import './legal-meta.css';
 @import './link-button.css';
+@import './number-item.css';
 @import './odometer.css';
 @import './radio.css';
 @import './skeleton.css';

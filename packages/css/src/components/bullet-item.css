@@ -1,0 +1,60 @@
+/* ============================================
+   @atomchat/css — bullet-item.css
+   Depends on: @atomchat/tokens (tokens.css)
+============================================ */
+
+/* BULLET ITEM — Enhanced list item with custom bullet styling */
+.bullet-item {
+  /* Typography */
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-body);
+  color: var(--fg-secondary);
+
+  /* Layout */
+  list-style: none;
+  position: relative;
+  padding-left: var(--spacing-l);
+  margin-bottom: var(--spacing-s);
+
+  /* Reset */
+  margin-top: 0;
+}
+
+/* Bullet point */
+.bullet-item::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--bullet-color, var(--fg-accent));
+  font-weight: var(--font-weight-bold);
+  font-size: 1.25em;
+  line-height: 1;
+  top: 0.125em;
+}
+
+/* Strong text within bullet items */
+.bullet-item strong {
+  font-weight: var(--font-weight-medium);
+  color: var(--fg-primary);
+}
+
+/* Links within bullet items */
+.bullet-item a {
+  color: var(--fg-accent);
+  text-decoration: underline;
+  text-decoration-color: var(--border-subtle);
+  text-underline-offset: 0.2em;
+  transition: color var(--duration-fast), text-decoration-color var(--duration-fast);
+}
+
+.bullet-item a:hover {
+  color: var(--fg-accent-hover);
+  text-decoration-color: var(--fg-accent-hover);
+}
+
+/* Last item no margin */
+.bullet-item:last-child {
+  margin-bottom: 0;
+}

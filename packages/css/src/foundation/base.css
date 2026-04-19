@@ -81,7 +81,7 @@ body {
 
 a {
   color: var(--primitive-orange-300);
-  transition: color var(--animation-half);
+  transition: color var(--duration-half) var(--ease-default);
 }
 
 /* ── GPU Hints for animated elements ─────────────────────────────────── */

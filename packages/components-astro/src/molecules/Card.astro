@@ -1,0 +1,40 @@
+---
+/**
+ * Card — Composable container component
+ * @atomchat/components-astro
+ *
+ * Depends on:
+ *   @atomchat/tokens (--card-* tokens)
+ *   @atomchat/css (card.css)
+ *
+ * Props:
+ *   class?  string  - Additional CSS classes
+ *
+ * Slots:
+ *   default  Default slot for card content (CardHeader, CardBody, CardFooter)
+ *
+ * Usage:
+ *   <Card>
+ *     <CardHeader headline="Title" supportingText="Subtitle" />
+ *     <CardBody headline="Main headline" bodyText="Description..." />
+ *     <CardFooter variant="buttons" />
+ *   </Card>
+ *
+ * Notes:
+ *   - This is a composable wrapper. Use CardHeader, CardBody, CardFooter as children.
+ *   - All inner sections are optional and can be arranged in any order.
+ *   - Can also include custom content, images, or other components.
+ */
+
+interface Props {
+  class?: string;
+}
+
+const {
+  class: className = "",
+} = Astro.props;
+---
+
+<div class:list={["card", className]}>
+  <slot />
+</div>

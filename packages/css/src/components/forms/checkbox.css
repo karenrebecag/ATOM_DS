@@ -2,54 +2,10 @@
    @atomchat/css — checkbox.css
    Depends on: @atomchat/tokens (tokens.css)
    Animations: @atomchat/animations
-============================================ */
 
-:root {
-  /* ── Checkbox: Background Colors ─────────────────────────────── */
-  /* Checked states */
-  --checkbox-bg-checked-enabled: var(--bg-inverse-primary);
-  --checkbox-bg-checked-hovered: var(--bg-inverse-secondary);
-  --checkbox-bg-checked-focused: var(--bg-inverse-primary);
-  --checkbox-bg-checked-disabled: var(--bg-disabled);
-
-  /* Indeterminate states */
-  --checkbox-bg-indeterminate-enabled: var(--bg-inverse-primary);
-  --checkbox-bg-indeterminate-hovered: var(--bg-inverse-secondary);
-  --checkbox-bg-indeterminate-focused: var(--bg-inverse-primary);
-  --checkbox-bg-indeterminate-disabled: var(--bg-disabled);
-
-  /* Unchecked states */
-  --checkbox-bg-enabled-enabled: var(--bg-primary);
-  --checkbox-bg-enabled-hovered: var(--bg-secondary);
-  --checkbox-bg-enabled-focused: var(--bg-primary);
-  --checkbox-bg-enabled-disabled: var(--bg-disabled);
-
-  /* ── Checkbox: Border Colors ─────────────────────────────────── */
-  --checkbox-border-enabled-default: var(--border-primary);
-  --checkbox-border-enabled-hovered: var(--border-primary);
-  --checkbox-border-enabled-focused: var(--border-primary);
-  --checkbox-border-enabled-disabled: var(--border-disabled);
-  --checkbox-border-enabled-error: var(--border-status-error);
-
-  /* ── Checkbox: Foreground (Icon) ─────────────────────────────── */
-  /* Checked icon colors */
-  --checkbox-fg-checked-enabled: var(--fg-inverse-primary);
-  --checkbox-fg-checked-hovered: var(--fg-inverse-primary);
-  --checkbox-fg-checked-focused: var(--fg-inverse-primary);
-  --checkbox-fg-checked-disabled: var(--fg-inverse-disabled);
-
-  /* Indeterminate icon colors */
-  --checkbox-fg-indeterminate-enabled: var(--fg-inverse-primary);
-  --checkbox-fg-indeterminate-hovered: var(--fg-inverse-primary);
-  --checkbox-fg-indeterminate-focused: var(--fg-inverse-primary);
-  --checkbox-fg-indeterminate-disabled: var(--fg-disabled);
-
-  /* ── Checkbox: Focus Shadow ──────────────────────────────────── */
-  --checkbox-shadow-focus: 0px 0px 0px 2px var(--primitive-alpha-400);
-}
-
-/* ============================================
-   Checkbox Component Styles
+   Tokens consumed from @atomchat/tokens:
+   - Component tokens (Layer 3): --checkbox-bg-*, --checkbox-border-*, --checkbox-fg-*, --checkbox-shadow-focus
+   - Semantic tokens (Layer 2): --sm, --xs, --stroke-s, --radius-xxs, --duration-half
 ============================================ */
 
 .checkbox {
@@ -74,22 +30,29 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: var(--l);
-  height: var(--l);
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-xxs);
   background-color: var(--checkbox-bg-enabled-enabled);
-  border: var(--stroke-xs) solid var(--checkbox-border-enabled-default);
+  border: var(--stroke-s) solid var(--checkbox-border-enabled-default);
   transition:
     background-color var(--duration-half),
-    border-color var(--duration-half);
+    border-color var(--duration-half),
+    box-shadow var(--duration-half);
   flex-shrink: 0;
 }
 
 /* ── Checkmark Icon ──────────────────────────────────────────── */
 .checkbox__check {
-  width: var(--sm);
-  height: var(--sm);
   color: var(--checkbox-fg-checked-enabled);
+  opacity: 0;
+  transform: scale(0.5);
+  transition:
+    opacity var(--duration-half),
+    transform var(--duration-half);
+}
+
+/* ── Minus Icon (Indeterminate) ──────────────────────────────── */
+.checkbox__minus {
+  color: var(--checkbox-fg-indeterminate-enabled);
   opacity: 0;
   transform: scale(0.5);
   transition:
@@ -103,7 +66,46 @@
   line-height: var(--line-height-normal);
 }
 
-/* ── Checked State ───────────────────────────────────────────── */
+/* ══════════════════════════════════════════════════════════
+   SIZE VARIANTS (Figma: s=16px, m=24px)
+   ══════════════════════════════════════════════════════════ */
+
+.checkbox--s .checkbox__custom {
+  width: var(--checkbox-structure-size-s);
+  height: var(--checkbox-structure-size-s);
+  padding: var(--xxs);
+}
+
+.checkbox--s .checkbox__check {
+  width: var(--checkbox-structure-check-size-s);
+  height: var(--checkbox-structure-check-size-s);
+}
+
+.checkbox--s .checkbox__minus {
+  width: var(--checkbox-structure-check-size-s);
+  height: var(--checkbox-structure-check-size-s);
+}
+
+.checkbox--m .checkbox__custom {
+  width: var(--checkbox-structure-size-m);
+  height: var(--checkbox-structure-size-m);
+  padding: var(--xs);
+}
+
+.checkbox--m .checkbox__check {
+  width: var(--checkbox-structure-check-size-m);
+  height: var(--checkbox-structure-check-size-m);
+}
+
+.checkbox--m .checkbox__minus {
+  width: var(--checkbox-structure-check-size-m);
+  height: var(--checkbox-structure-check-size-m);
+}
+
+/* ══════════════════════════════════════════════════════════
+   CHECKED STATE
+   ══════════════════════════════════════════════════════════ */
+
 .checkbox__input:checked + .checkbox__custom {
   background-color: var(--checkbox-bg-checked-enabled);
   border-color: var(--checkbox-bg-checked-enabled);
@@ -114,13 +116,47 @@
   transform: scale(1);
 }
 
-/* ── Focus State ─────────────────────────────────────────────── */
-.checkbox__input:focus-visible + .checkbox__custom {
-  outline: 2px solid var(--checkbox-shadow-focus);
-  outline-offset: 2px;
+/* ══════════════════════════════════════════════════════════
+   INDETERMINATE STATE
+   ══════════════════════════════════════════════════════════ */
+
+.checkbox__input:indeterminate + .checkbox__custom {
+  background-color: var(--checkbox-bg-indeterminate-enabled);
+  border-color: var(--checkbox-bg-indeterminate-enabled);
 }
 
-/* ── Hover State ─────────────────────────────────────────────── */
+.checkbox__input:indeterminate + .checkbox__custom .checkbox__minus {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Hide check icon when indeterminate */
+.checkbox__input:indeterminate + .checkbox__custom .checkbox__check {
+  opacity: 0;
+}
+
+/* ══════════════════════════════════════════════════════════
+   FOCUS STATE (matches Figma box-shadow)
+   ══════════════════════════════════════════════════════════ */
+
+.checkbox__input:focus-visible + .checkbox__custom {
+  background-color: var(--checkbox-bg-enabled-focused);
+  box-shadow: var(--checkbox-shadow-focus);
+  outline: none;
+}
+
+.checkbox__input:checked:focus-visible + .checkbox__custom {
+  background-color: var(--checkbox-bg-checked-focused);
+}
+
+.checkbox__input:indeterminate:focus-visible + .checkbox__custom {
+  background-color: var(--checkbox-bg-indeterminate-focused);
+}
+
+/* ══════════════════════════════════════════════════════════
+   HOVER STATE
+   ══════════════════════════════════════════════════════════ */
+
 .checkbox:hover .checkbox__custom {
   background-color: var(--checkbox-bg-enabled-hovered);
 }
@@ -130,26 +166,47 @@
   border-color: var(--checkbox-bg-checked-hovered);
 }
 
-/* ── Dark Theme ──────────────────────────────────────────────── */
-.checkbox--dark .checkbox__custom {
-  background-color: var(--bg-inverse-tertiary);
+.checkbox__input:indeterminate:hover + .checkbox__custom {
+  background-color: var(--checkbox-bg-indeterminate-hovered);
+  border-color: var(--checkbox-bg-indeterminate-hovered);
 }
 
-.checkbox--dark .checkbox__label {
-  color: var(--fg-inverse-disabled);
+/* ══════════════════════════════════════════════════════════
+   DISABLED STATE
+   ══════════════════════════════════════════════════════════ */
+
+.checkbox__input:disabled + .checkbox__custom {
+  background-color: var(--checkbox-bg-enabled-disabled);
+  border-color: var(--checkbox-border-enabled-disabled);
+  cursor: not-allowed;
 }
 
-.checkbox--dark:hover .checkbox__custom {
-  border-color: var(--fg-inverse-tertiary);
-  background-color: var(--bg-inverse-tertiary);
+.checkbox__input:checked:disabled + .checkbox__custom {
+  background-color: var(--checkbox-bg-checked-disabled);
+  border-color: var(--checkbox-border-enabled-disabled);
 }
 
-.checkbox--dark .checkbox__input:checked + .checkbox__custom {
-  background-color: var(--checkbox-bg-checked-enabled);
-  border-color: var(--checkbox-bg-checked-enabled);
+.checkbox__input:checked:disabled + .checkbox__custom .checkbox__check {
+  color: var(--checkbox-fg-checked-disabled);
 }
 
-.checkbox--dark .checkbox__input:checked:hover + .checkbox__custom {
-  background-color: var(--checkbox-bg-checked-hovered);
-  border-color: var(--checkbox-bg-checked-hovered);
+.checkbox__input:indeterminate:disabled + .checkbox__custom {
+  background-color: var(--checkbox-bg-indeterminate-disabled);
+  border-color: var(--checkbox-border-enabled-disabled);
+}
+
+.checkbox__input:indeterminate:disabled + .checkbox__custom .checkbox__minus {
+  color: var(--checkbox-fg-indeterminate-disabled);
+}
+
+.checkbox:has(.checkbox__input:disabled) {
+  cursor: not-allowed;
+}
+
+/* ══════════════════════════════════════════════════════════
+   ERROR STATE
+   ══════════════════════════════════════════════════════════ */
+
+.checkbox--error .checkbox__custom {
+  border-color: var(--checkbox-border-enabled-error);
 }

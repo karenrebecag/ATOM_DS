@@ -2,6 +2,7 @@
   "chip": {
     "bg": {
       "$type": "color",
+      "$description": "Background colors - supports outlined, filled, and error states",
       "default":              { "$value": "{bg.secondary}" },
       "unselected-enabled":   { "$value": "{bg.interactive.item.enabled}" },
       "unselected-hovered":   { "$value": "{bg.interactive.item.hovered}" },
@@ -10,10 +11,21 @@
       "selected-enabled":     { "$value": "{bg.interactive.item.selected.enabled}" },
       "selected-hovered":     { "$value": "{bg.interactive.item.selected.hovered}" },
       "selected-disabled":    { "$value": "{bg.interactive.item.selected.disabled}" },
-      "selected-pressed":     { "$value": "{bg.interactive.item.selected.pressed}" }
+      "selected-pressed":     { "$value": "{bg.interactive.item.selected.pressed}" },
+      "outlined-enabled":     { "$value": "{figma.colors.primitive.neutral.0}", "$description": "White background for outlined chips" },
+      "outlined-hovered":     { "$value": "{bg.interactive.item.hovered}" },
+      "outlined-disabled":    { "$value": "{bg.interactive.item.disabled}" },
+      "outlined-pressed":     { "$value": "{bg.interactive.item.pressed}" },
+      "outlined-error":       { "$value": "{figma.colors.primitive.zinc.50}", "$description": "Light background for outlined error chips" },
+      "filled-enabled":       { "$value": "{figma.colors.primitive.zinc.100}", "$description": "Gray background for filled chips" },
+      "filled-hovered":       { "$value": "{bg.interactive.item.hovered}" },
+      "filled-disabled":      { "$value": "{bg.interactive.item.disabled}" },
+      "filled-pressed":       { "$value": "{bg.interactive.item.pressed}" },
+      "filled-error":         { "$value": "{figma.colors.primitive.zinc.50}", "$description": "Light background for filled error chips" }
     },
     "fg": {
       "$type": "color",
+      "$description": "Foreground (text/icon) colors",
       "unselected-enabled":  { "$value": "{fg.secondary}" },
       "unselected-hovered":  { "$value": "{fg.primary}" },
       "unselected-disabled": { "$value": "{fg.disabled}" },
@@ -21,11 +33,27 @@
       "selected-enabled":    { "$value": "{fg.brand}" },
       "selected-hovered":    { "$value": "{fg.brand}" },
       "selected-disabled":   { "$value": "{fg.disabled}" },
-      "selected-pressed":    { "$value": "{fg.brand}" }
+      "selected-pressed":    { "$value": "{fg.brand}" },
+      "outlined-enabled":    { "$value": "{fg.secondary}" },
+      "outlined-hovered":    { "$value": "{fg.primary}" },
+      "outlined-disabled":   { "$value": "{fg.disabled}" },
+      "outlined-pressed":    { "$value": "{fg.primary}" },
+      "outlined-error":      { "$value": "{figma.colors.primitive.red.700}", "$description": "Red text for outlined error chips" },
+      "filled-enabled":      { "$value": "{fg.secondary}" },
+      "filled-hovered":      { "$value": "{fg.primary}" },
+      "filled-disabled":     { "$value": "{fg.disabled}" },
+      "filled-pressed":      { "$value": "{fg.primary}" },
+      "filled-error":        { "$value": "{figma.colors.primitive.red.700}", "$description": "Red text for filled error chips" }
     },
     "border": {
       "$type": "color",
-      "default": { "$value": "{border.secondary}" }
+      "$description": "Border colors for outlined variant",
+      "default":         { "$value": "{border.secondary}" },
+      "outlined-enabled": { "$value": "{figma.colors.primitive.zinc.500}", "$description": "Gray border for outlined chips" },
+      "outlined-hovered": { "$value": "{figma.colors.primitive.zinc.600}" },
+      "outlined-disabled": { "$value": "{border.disabled}" },
+      "outlined-pressed": { "$value": "{figma.colors.primitive.zinc.600}" },
+      "outlined-error":   { "$value": "{figma.colors.primitive.red.700}", "$description": "Red border for outlined error chips" }
     },
     "shadow": {
       "$type": "shadow",

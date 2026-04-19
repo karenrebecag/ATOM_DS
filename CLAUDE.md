@@ -13,15 +13,17 @@ Este es el **monorepo del Design System ATOM**, distribuible como paquetes npm i
 ```
 ATOM_DS/
 ├── packages/
-│   ├── tokens/              @atomchat/tokens              ✅ COMPLETO
-│   ├── animations/          @atomchat/animations          ✅ COMPLETO
-│   ├── css/                 @atomchat/css                 ✅ COMPLETO
-│   ├── components-astro/    @atomchat/components-astro    🚧 EN CONSTRUCCIÓN
-│   ├── components-react/    @atomchat/components-react    🎯 STAGED (Button ready)
-│   ├── components-vue/      @atomchat/components-vue      🎯 STAGED (Button ready)
-│   └── components-angular/  @atomchat/components-angular  🎯 STAGED (Button ready)
+│   ├── tokens/              @atomchat.io/tokens              ✅ COMPLETO
+│   ├── animations/          @atomchat.io/animations          ✅ COMPLETO
+│   ├── css/                 @atomchat.io/css                 ✅ COMPLETO
+│   ├── components-astro/    @atomchat.io/components-astro    🚧 EN CONSTRUCCIÓN
+│   ├── components-react/    @atomchat.io/components-react    🎯 STAGED (Button ready)
+│   ├── components-vue/      @atomchat.io/components-vue      🎯 STAGED (Button ready)
+│   └── components-angular/  @atomchat.io/components-angular  🎯 STAGED (Button ready)
 ├── apps/
-│   └── docs/                Sitio de documentación         ❌ PENDIENTE
+│   └── docs/                Sitio de documentación           ✅ LIVE
+├── tools/
+│   └── figma-sync/          @atomchat.io/figma-sync          ✅ COMPLETO (Diff mode)
 ├── scripts/
 │   └── validate-tokens.js   Validador pre-build
 ├── turbo.json               Pipeline de builds
@@ -35,20 +37,29 @@ ATOM_DS/
 
 ## Estado de los Paquetes
 
-### ✅ @atomchat/tokens — COMPLETO
+### ✅ @atomchat.io/tokens@2.0.0 — COMPLETO
 
-**1,110 tokens W3C DTCG** organizados en 3 capas:
+**Versión actual:** 2.0.0 (publicado 2026-04-19)
 
-1. **Foundation (primitive):** 10 archivos JSON — colores, spacing, tipografía, motion, borders, opacity, elevations, glass, z-index, breakpoints
-2. **Semantic (aliases):** 4 archivos JSON — bg, fg, border, brand (referencian primitivos)
-3. **Component (scoped):** 9 archivos JSON — button, checkbox, radio, toggle, chip, tag, skeleton, avatar, glass
+**1,621 tokens W3C DTCG** organizados en 4 capas:
+
+1. **Figma Primitives (read-only):** Pull automático desde Figma — 7 colecciones (Colors, Typography, Spacing, Radius, Opacity, Stroke, Breakpoints)
+2. **Foundation:** 9 archivos JSON — bridges y primitivos manuales
+3. **Semantic (aliases):** 4 archivos JSON — bg, fg, border, brand (referencian foundation + figma)
+4. **Component (scoped):** 9 archivos JSON — button, checkbox, radio, toggle, chip, tag, skeleton, avatar, glass
+
+**Nueva arquitectura (v2.0.0):**
+- ✅ Pull automático desde Figma vía `/figma-pull` skill (MCP)
+- ✅ Source: `figma/primitives/` + `foundation/` + `semantic/` + `components/`
+- ✅ Style Dictionary excluye `figma/semantics/` y `figma/web-library/`
+- ✅ Validator actualizado para excluir archivos de Figma no canónicos
 
 **Build outputs:**
 
 | Archivo | Selector | Contenido |
 |---------|----------|-----------|
-| `build/css/tokens.css` | `:root` | Todos los 1,110 tokens (tema light) |
-| `build/css/dark.css` | `[data-theme="dark"]` | 5 overrides de color para dark theme |
+| `build/css/tokens.css` | `:root` | Todos los 1,621 tokens (tema light) |
+| `build/css/dark.css` | `[data-theme="dark"]` | Overrides de color para dark theme |
 | `build/css/foundation.css` | `:root` | Solo primitivos |
 | `build/css/semantic.css` | `:root` | Solo aliases semánticos |
 | `build/css/components.css` | `:root` | Solo tokens de componentes |
@@ -213,25 +224,121 @@ ATOM_DS/
 
 ---
 
-### 🚧 @atomchat/components-astro — EN CONSTRUCCIÓN
+### ✅ @atomchat.io/components-astro@5.0.1 — COMPLETO
 
-**Estado:** Parcialmente implementado, Button trackeado
+**Versión actual:** 5.0.1 (publicado 2026-04-19)
+
+**Estado:** 31 componentes Astro, integrado con nuevo pipeline de tokens
 
 **Componentes implementados:**
-- ✅ **Button** — 6 variants, 5 sizes, loading state, slots
-- ✅ LinkButton, IconButton (variants)
-- ✅ Avatar, AvatarGroup
-- ⚠️ Otros componentes pendientes
+- ✅ **Buttons** — Button, IconButton, LinkButton (6 variants, 5 sizes, loading state, slots)
+- ✅ **Forms** — Checkbox, Radio, Toggle
+- ✅ **Indicators** — Badge, Chip, Spinner, Tag
+- ✅ **Layout** — Divider, Center, Container, Grid, Inline, Section, Stack
+- ✅ **Lists** — BulletItem, NumberItem
+- ✅ **Media** — Avatar, AvatarGroup
+- ✅ **Typography** — Caption, Heading, LabelText, LegalMeta, Text
+- ✅ **Molecules** — LogoBadge, DropdownMenu, NavLanguageSwitcher
 
-**Fixes aplicados (2026-04-01):**
-- ✅ `tabindex="-1"` en links disabled (accessibility)
-
-**Legacy support:**
-- ⚠️ Typo "Terceary" → "tertiary" mantenido para compatibilidad (viene de diseño)
+**Arquitectura:**
+- Build: None (`.astro` files consumed directly)
+- TypeScript support con type checking
+- Consume tokens vía `@atomchat.io/css`
 
 **Peer deps:**
-- `astro: ^5.0.0`
-- `@atomchat/css: workspace:*`
+- `astro: >=4.0.0`
+- `@atomchat.io/css: workspace:*`
+
+---
+
+### ✅ @atomchat.io/figma-sync — COMPLETO (Pull mode)
+
+**Versión actual:** 1.0.0
+
+**Estado:** CLI funcional para pull automático de tokens desde Figma vía MCP
+
+**Descripción:**
+Herramienta que sincroniza tokens **desde Figma hacia el monorepo** usando el Plugin API vía MCP. Reemplaza el flujo manual de copy-paste con pull automático de variable collections.
+
+**Features implementadas:**
+- ✅ **Pull desde Figma** — Extrae variables vía Plugin API (funciona en todos los planes de Figma)
+- ✅ **Collection selector** — UI interactiva para elegir qué colecciones importar
+- ✅ **Auto-backup** — Crea backup timestamped antes de sobrescribir
+- ✅ **Dry-run mode** — Preview de cambios sin escribir archivos
+- ✅ **W3C DTCG output** — Genera JSON con formato `{$value, $type}`
+- ✅ **Integración con MCP** — Usa `mcp__figma-remote__use_figma` para acceso directo
+
+**Arquitectura:**
+```
+tools/figma-sync/
+├── src/
+│   ├── pull.tsx      # CLI principal (React Ink UI)
+│   └── types.ts      # TypeScript types
+├── package.json      # Dependencies + scripts
+├── tsconfig.json     # TypeScript config
+└── README.md         # Documentación completa
+```
+
+**Uso (vía skill):**
+```bash
+/figma-pull <figma-url>
+```
+
+**Uso (CLI directo):**
+```bash
+# Pull desde Figma con backup
+pnpm figma:pull -- --data <mcp-data.json> --backup
+
+# Preview sin escribir
+pnpm figma:pull -- --data <mcp-data.json> --dry-run
+
+# Auto-confirmar (CI/CD)
+pnpm figma:pull -- --data <mcp-data.json> --yes
+```
+
+**Output:**
+```
+packages/tokens/src/figma/primitives/
+├── colors.json       (23.8 kB, 220+ tokens)
+├── typography.json   (3.4 kB, 35 tokens)
+├── spacing.json      (2.1 kB, 27 tokens)
+├── radius.json       (1.2 kB, 16 tokens)
+├── opacity.json      (709 B, 9 tokens)
+├── stroke.json       (433 B, 5 tokens)
+└── breakpoints.json  (214 B, 2 tokens)
+```
+
+**Workflow típico:**
+1. Diseñador actualiza variables en Figma
+2. Ejecutar `/figma-pull <url>` en Claude Code
+3. Seleccionar colecciones a importar
+4. Review del diff + confirmar
+5. Auto-backup creado en `.backup-YYYY-MM-DD-HH-MM-SS/`
+6. `cd packages/tokens && pnpm build`
+7. Tokens actualizados y listos para usar
+
+**Tech stack:**
+- TypeScript 5.8
+- tsx (ejecutor TypeScript)
+- React Ink (CLI UI)
+- MCP Figma Plugin API
+
+**Dependencies:**
+```json
+{
+  "dependencies": {
+    "@atomchat.io/tokens": "workspace:*",
+    "ink": "^5.2.1",
+    "ink-spinner": "^5.0.0",
+    "react": "^18.3.1"
+  },
+  "devDependencies": {
+    "@figma/plugin-typings": "^1.102.0",
+    "tsx": "^4.21.0",
+    "typescript": "^5.8.3"
+  }
+}
+```
 
 ---
 
@@ -244,6 +351,9 @@ pnpm install
 # Build ALL (Turbo, respeta dependencias)
 pnpm build
 
+# Pull tokens desde Figma (vía Claude Code)
+/figma-pull <figma-url>
+
 # Validar tokens ANTES de build
 node scripts/validate-tokens.js
 
@@ -255,6 +365,10 @@ cd packages/css && pnpm build
 # Watch mode (desarrollo)
 cd packages/tokens && pnpm dev
 cd packages/css && pnpm dev
+
+# Publicar paquete individual
+cd packages/tokens && npm publish --access public
+cd packages/components-astro && npm publish --access public
 
 # Release workflow (Changesets)
 pnpm changeset         # Crear changeset

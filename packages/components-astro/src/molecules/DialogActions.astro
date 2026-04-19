@@ -1,0 +1,73 @@
+---
+/**
+ * DialogActions — Dialog footer with action buttons
+ * @atomchat/components-astro
+ *
+ * Depends on:
+ *   @atomchat/tokens (--dialog-* tokens)
+ *   @atomchat/css (dialog.css)
+ *
+ * Props:
+ *   variant?       "hug" | "fill"  - Button layout (default: "hug")
+ *   cancelText?    string          - Cancel button text (default: "Cancel")
+ *   actionText?    string          - Action button text (default: "Action")
+ *   counterText?   string          - Counter text on left side
+ *   class?         string          - Additional CSS classes
+ *
+ * Slots:
+ *   default  Custom action content (overrides cancelText/actionText)
+ *
+ * Usage:
+ *   <!-- Default (hug, right-aligned) -->
+ *   <DialogActions cancelText="Cancel" actionText="Confirm" />
+ *
+ *   <!-- Fill container (stretched buttons) -->
+ *   <DialogActions variant="fill" cancelText="No" actionText="Yes" />
+ *
+ *   <!-- With counter text -->
+ *   <DialogActions counterText="3 selected" actionText="Delete" />
+ *
+ *   <!-- Custom content -->
+ *   <DialogActions>
+ *     <Button variant="danger" size="xs">Delete permanently</Button>
+ *   </DialogActions>
+ */
+
+import Button from '../atoms/buttons/Button.astro';
+
+interface Props {
+  variant?: "hug" | "fill";
+  cancelText?: string;
+  actionText?: string;
+  counterText?: string;
+  class?: string;
+}
+
+const {
+  variant = "hug",
+  cancelText = "Cancel",
+  actionText = "Action",
+  counterText,
+  class: className = "",
+} = Astro.props;
+
+const hasDefaultSlot = Astro.slots.has("default");
+---
+
+<div class:list={[
+  "dialog-actions",
+  `dialog-actions--${variant}`,
+  className,
+]}>
+  {hasDefaultSlot ? (
+    <slot />
+  ) : (
+    <>
+      {counterText && (
+        <span class="dialog-actions__counter">{counterText}</span>
+      )}
+      <Button variant="secondary" size="xs">{cancelText}</Button>
+      <Button variant="primary" size="xs">{actionText}</Button>
+    </>
+  )}
+</div>

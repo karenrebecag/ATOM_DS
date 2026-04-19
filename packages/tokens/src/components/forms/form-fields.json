@@ -1,0 +1,104 @@
+{
+  "form-fields": {
+    "bg": {
+      "$type": "color",
+      "enabled": {
+        "$value": "{figma.colors.primitive.neutral.0}",
+        "$description": "white"
+      },
+      "disabled": {
+        "$value": "{figma.colors.primitive.zinc.100}",
+        "$description": "#f4f4f5"
+      }
+    },
+    "border": {
+      "$type": "color",
+      "enabled": {
+        "$value": "{figma.colors.primitive.zinc.300}",
+        "$description": "#d4d4d8"
+      },
+      "hovered": {
+        "$value": "{figma.colors.primitive.zinc.400}",
+        "$description": "#9f9fa9"
+      },
+      "focused": {
+        "$value": "{figma.colors.primitive.zinc.900}",
+        "$description": "#18181b"
+      },
+      "pressed": {
+        "$value": "{figma.colors.primitive.zinc.500}",
+        "$description": "#71717b"
+      },
+      "filled": {
+        "$value": "{figma.colors.primitive.zinc.300}",
+        "$description": "#d4d4d8"
+      },
+      "disabled": {
+        "$value": "{figma.colors.primitive.zinc.100}",
+        "$description": "#f4f4f5"
+      },
+      "error": {
+        "$value": "{figma.colors.primitive.red.700}",
+        "$description": "#c10008"
+      },
+      "error-focused": {
+        "$value": "{figma.colors.primitive.red.700}",
+        "$description": "#c10008"
+      },
+      "error-filled": {
+        "$value": "{figma.colors.primitive.red.700}",
+        "$description": "#c10008"
+      }
+    },
+    "fg": {
+      "$type": "color",
+      "enabled": {
+        "$value": "{figma.colors.primitive.zinc.600}",
+        "$description": "#52525c"
+      },
+      "hovered": {
+        "$value": "{figma.colors.primitive.zinc.800}",
+        "$description": "#27272a"
+      },
+      "focused": {
+        "$value": "{figma.colors.primitive.zinc.600}",
+        "$description": "#52525c"
+      },
+      "pressed": {
+        "$value": "{figma.colors.primitive.zinc.900}",
+        "$description": "#18181b"
+      },
+      "filled": {
+        "$value": "{figma.colors.primitive.zinc.800}",
+        "$description": "#27272a"
+      },
+      "disabled": {
+        "$value": "{figma.colors.primitive.zinc.400}",
+        "$description": "#9f9fa9"
+      },
+      "error-enabled": {
+        "$value": "{figma.colors.primitive.zinc.600}",
+        "$description": "#52525c - Same as enabled"
+      },
+      "error-focused": {
+        "$value": "{figma.colors.primitive.zinc.600}",
+        "$description": "#52525c - Same as focused"
+      },
+      "error-filled": {
+        "$value": "{figma.colors.primitive.zinc.800}",
+        "$description": "#27272a - Same as filled"
+      }
+    },
+    "shadow": {
+      "$type": "shadow",
+      "focus": {
+        "$value": "0px 0px 0px 2px {figma.colors.primitive.alpha.400}",
+        "$description": "Focus ring - rgba(161,161,161,0.7)"
+      },
+      "focus-error": {
+        "$value": "0px 0px 0px 2px {figma.colors.primitive.red.300}",
+        "$description": "Error focus ring - #ffa2a3"
+      }
+    }
+  }
+}

@@ -61,6 +61,16 @@
       "Wide":    { "$value": "0" },
       "Wider":   { "$value": "0.02em" },
       "Widest":  { "$value": "0.06em" }
+    },
+    "ParagraphSpacing": {
+      "$type": "dimension",
+      "$description": "Spacing after paragraphs and headings (from Figma)",
+      "H1": { "$value": "32px" },
+      "H2": { "$value": "26px" },
+      "H3": { "$value": "24px" },
+      "H4": { "$value": "20px" },
+      "Body": { "$value": "16px" },
+      "Caption": { "$value": "12px" }
     }
   }
 }

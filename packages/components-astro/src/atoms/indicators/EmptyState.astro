@@ -1,0 +1,136 @@
+---
+/**
+ * EmptyState — Display when there's no content to show
+ * @atomchat/components-astro
+ *
+ * Depends on:
+ *   @atomchat/tokens (semantic tokens)
+ *   @atomchat/css (empty-state.css)
+ *
+ * Props:
+ *   heading          string              (required) - Main heading text
+ *   supportingText   string              (required) - Supporting description text
+ *   resultText?      string              - Result/query text (Small size only, bold)
+ *   size?            "s" | "m"           - Component size (default: "s")
+ *   showButton?      boolean             - Show action button (Medium size only, default: false)
+ *   buttonText?      string              - Button label text (default: "Button")
+ *   buttonHref?      string              - Button link URL (makes it an anchor)
+ *   class?           string              - Additional CSS classes
+ *
+ * Slots:
+ *   icon             Optional custom icon (default: circle-slash FontAwesome icon)
+ *   button           Optional custom button content (overrides showButton/buttonText)
+ *
+ * Sizes:
+ *   - s: Small (297px width, 32px icon, label typography, 8px gap)
+ *   - m: Medium (400px width, larger icon, body/caption typography, 24px gap, optional button)
+ *
+ * Usage:
+ *   <!-- Small variant -->
+ *   <EmptyState
+ *     heading="No results found"
+ *     supportingText="Try adjusting your search"
+ *     resultText='"keyword"'
+ *     size="s"
+ *   />
+ *
+ *   <!-- Medium variant with button -->
+ *   <EmptyState
+ *     heading="No projects yet"
+ *     supportingText="Create your first project to get started"
+ *     size="m"
+ *     showButton
+ *     buttonText="Create Project"
+ *     buttonHref="/projects/new"
+ *   />
+ *
+ *   <!-- Custom icon -->
+ *   <EmptyState heading="No notifications" supportingText="You're all caught up">
+ *     <svg slot="icon">...</svg>
+ *   </EmptyState>
+ */
+
+interface Props {
+  heading: string;
+  supportingText: string;
+  resultText?: string;
+  size?: "s" | "m";
+  showButton?: boolean;
+  buttonText?: string;
+  buttonHref?: string;
+  class?: string;
+}
+
+const {
+  heading,
+  supportingText,
+  resultText,
+  size = "s",
+  showButton = false,
+  buttonText = "Button",
+  buttonHref,
+  class: className = "",
+} = Astro.props;
+
+const hasCustomIcon = Astro.slots.has("icon");
+const hasCustomButton = Astro.slots.has("button");
+const ButtonTag = buttonHref ? "a" : "button";
+---
+
+<div
+  class:list={[
+    "empty-state",
+    `empty-state--${size}`,
+    className
+  ]}
+>
+  <!-- Icon Container -->
+  <div class="empty-state__icon">
+    {hasCustomIcon ? (
+      <slot name="icon" />
+    ) : (
+      <!-- Default FontAwesome circle-slash icon -->
+      <svg viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M367.2 412.5L99.5 144.8C77.1 176.1 64 214.5 64 256c0 106 86 192 192 192c41.5 0 79.9-13.1 111.2-35.5zm45.3-45.3C434.9 335.9 448 297.5 448 256c0-106-86-192-192-192c-41.5 0-79.9 13.1-111.2 35.5L412.5 367.2zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256z"
+          fill="currentColor"
+        />
+      </svg>
+    )}
+  </div>
+
+  {size === "s" ? (
+    <!-- Small Size Layout -->
+    <>
+      <h3 class="empty-state__heading">{heading}</h3>
+
+      <div class="empty-state__supporting-group">
+        <p class="empty-state__supporting">{supportingText}</p>
+        {resultText && (
+          <p class="empty-state__result">{resultText}</p>
+        )}
+      </div>
+    </>
+  ) : (
+    <!-- Medium Size Layout -->
+    <>
+      <div class="empty-state__text-group">
+        <h3 class="empty-state__heading">{heading}</h3>
+        <p class="empty-state__supporting">{supportingText}</p>
+      </div>
+
+      {(showButton || hasCustomButton) && (
+        hasCustomButton ? (
+          <slot name="button" />
+        ) : (
+          <ButtonTag
+            class="button button--secondary button--m"
+            {...buttonHref ? { href: buttonHref } : { type: "button" }}
+          >
+            {buttonText}
+          </ButtonTag>
+        )
+      )}
+    </>
+  )}
+</div>

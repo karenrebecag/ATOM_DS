@@ -1,7 +1,7 @@
 {
   "name": "@atomchat.io/components-astro",
-  "version": "2.0.4",
-  "description": "ATOM Design System — Astro component library",
+  "version": "5.0.2",
+  "description": "ATOM Design System — Astro component library (requires Astro build pipeline)",
   "publishConfig": {
     "access": "public"
   },
@@ -9,7 +9,7 @@
     ".": "./src/index.ts",
     "./atoms/*": "./src/atoms/*",
     "./molecules/*": "./src/molecules/*",
-    "./organisms/*": "./src/organisms/*",
+    "./layout/*": "./src/layout/*",
     "./src/*": "./src/*"
   },
   "files": [
@@ -20,7 +20,7 @@
   },
   "peerDependencies": {
     "astro": ">=4.0.0",
-    "@atomchat.io/css": "workspace:*"
+    "@atomchat.io/css": "^0.6.0"
   },
   "license": "MIT"
 }

@@ -1,0 +1,82 @@
+/* ============================================
+   @atomchat/css — cluster.css
+   Depends on: @atomchat/tokens (tokens.css)
+
+   Cluster — Flex wrap layout primitive
+
+   Groups items horizontally with intelligent wrapping.
+   Items wrap to next line when they don't fit, maintaining
+   consistent spacing. Ideal for tags, chips, filters, or
+   navigation that adapts to available width.
+============================================ */
+
+/* ── Base Cluster ───────────────────────────────────── */
+.cluster {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Gap Variants ────────────────────────────────────── */
+
+.cluster--gap-xs {
+  gap: var(--gap-xs); /* 0.75em */
+}
+
+.cluster--gap-s {
+  gap: var(--gap-s); /* 1em */
+}
+
+.cluster--gap-m {
+  gap: var(--gap-m); /* 1.5em - Default */
+}
+
+.cluster--gap-l {
+  gap: var(--gap-l); /* 1.875em */
+}
+
+.cluster--gap-xl {
+  gap: var(--gap-xl); /* 2em */
+}
+
+/* ── Alignment Variants ──────────────────────────────── */
+
+.cluster--align-start {
+  align-items: flex-start;
+}
+
+.cluster--align-center {
+  align-items: center; /* Default */
+}
+
+.cluster--align-end {
+  align-items: flex-end;
+}
+
+.cluster--align-baseline {
+  align-items: baseline;
+}
+
+/* ── Justify Variants ────────────────────────────────── */
+
+.cluster--justify-start {
+  justify-content: flex-start;
+}
+
+.cluster--justify-center {
+  justify-content: center; /* Default */
+}
+
+.cluster--justify-end {
+  justify-content: flex-end;
+}
+
+.cluster--justify-between {
+  justify-content: space-between;
+}
+
+.cluster--justify-around {
+  justify-content: space-around;
+}

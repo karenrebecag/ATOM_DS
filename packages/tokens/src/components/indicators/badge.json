@@ -37,6 +37,7 @@
       }
     },
     "min-width":      { "$type": "dimension", "$value": "{m}", "$description": "16px" },
+    "max-width":      { "$type": "dimension", "$value": "35px", "$description": "Max badge width from Figma" },
     "padding-x":      { "$type": "dimension", "$value": "{xxs}", "$description": "2px" },
     "padding-y":      { "$type": "dimension", "$value": "0px" },
     "border-radius":  { "$type": "dimension", "$value": "{radius-pill}", "$description": "9999px" },

@@ -1,12 +1,345 @@
 {
-  "$description": "Dark theme color overrides. Same token names as semantic/colors.json, different primitive references. Phase 5 will configure Style Dictionary to compile this into dark.css with [data-theme='dark'] selector.",
+  "$description": "Dark theme color overrides matching Figma's dark mode. These override semantic/colors.json when data-theme='dark' is active.",
 
   "fg": {
     "$type": "color",
-    "primary":           { "$value": "{Primitive.Neutral.0}" },
-    "secondary":         { "$value": "{Primitive.Zinc.200}" },
-    "tertiary":          { "$value": "{Primitive.Zinc.300}" },
-    "inverse-primary":   { "$value": "{Primitive.Zinc.900}" },
-    "inverse-secondary": { "$value": "{Primitive.Zinc.800}" }
+    "$description": "Foreground colors - inverted from light theme",
+    "primary": {
+      "$value": "{figma.colors.primitive.neutral.0}",
+      "$description": "Light mode: black → Dark mode: white"
+    },
+    "secondary": {
+      "$value": "{figma.colors.primitive.zinc.200}",
+      "$description": "Light mode: Zinc.800 → Dark mode: Zinc.200"
+    },
+    "tertiary": {
+      "$value": "{figma.colors.primitive.zinc.300}",
+      "$description": "Light mode: Zinc.600 → Dark mode: Zinc.300"
+    },
+    "quaternary": {
+      "$value": "{figma.colors.primitive.zinc.400}",
+      "$description": "Light mode: Zinc.500 → Dark mode: Zinc.400"
+    },
+    "disabled": {
+      "$value": "{figma.colors.primitive.zinc.600}",
+      "$description": "Darker disabled text for dark backgrounds"
+    },
+    "inverse": {
+      "$type": "color",
+      "primary": {
+        "$value": "{figma.colors.primitive.zinc.900}",
+        "$description": "Inverted: white text needs dark inverse"
+      },
+      "secondary": {
+        "$value": "{figma.colors.primitive.zinc.800}"
+      },
+      "tertiary": {
+        "$value": "{figma.colors.primitive.zinc.700}"
+      },
+      "disabled": {
+        "$value": "{figma.colors.primitive.zinc.600}"
+      }
+    },
+    "brand": {
+      "$value": "{figma.colors.primitive.orange.400}",
+      "$description": "Lighter orange for better contrast on dark"
+    },
+    "status": {
+      "$type": "color",
+      "info": {
+        "$value": "{figma.colors.primitive.blue.300}",
+        "$description": "Lighter for dark backgrounds"
+      },
+      "success": {
+        "$value": "{figma.colors.primitive.esmerald.300}"
+      },
+      "warning": {
+        "$value": "{figma.colors.primitive.yellow.300}"
+      },
+      "error": {
+        "$value": "{figma.colors.primitive.red.300}"
+      },
+      "informative": {
+        "$value": "{figma.colors.primitive.blue.300}"
+      },
+      "neutral": {
+        "$value": "{figma.colors.primitive.zinc.300}"
+      },
+      "brand": {
+        "$value": "{figma.colors.primitive.orange.400}"
+      },
+      "ai": {
+        "$value": "{figma.colors.primitive.purple.300}"
+      }
+    },
+    "interactive": {
+      "$type": "color",
+      "link": {
+        "enabled": {
+          "$value": "{figma.colors.primitive.blue.400}"
+        },
+        "hovered": {
+          "$value": "{figma.colors.primitive.blue.300}"
+        },
+        "pressed": {
+          "$value": "{figma.colors.primitive.blue.500}"
+        }
+      }
+    }
+  },
+
+  "bg": {
+    "$type": "color",
+    "$description": "Background colors - dark surfaces",
+    "primary": {
+      "$value": "{figma.colors.primitive.zinc.950}",
+      "$description": "Main background - darkest"
+    },
+    "secondary": {
+      "$value": "{figma.colors.primitive.zinc.900}",
+      "$description": "Secondary surface - slightly lighter"
+    },
+    "tertiary": {
+      "$value": "{figma.colors.primitive.zinc.800}",
+      "$description": "Tertiary surface"
+    },
+    "quaternary": {
+      "$value": "{figma.colors.primitive.zinc.700}"
+    },
+    "disabled": {
+      "$value": "{figma.colors.primitive.zinc.900}"
+    },
+    "inverse": {
+      "$type": "color",
+      "primary": {
+        "$value": "{figma.colors.primitive.zinc.50}",
+        "$description": "Light surfaces on dark theme (inverted)"
+      },
+      "secondary": {
+        "$value": "{figma.colors.primitive.zinc.100}"
+      },
+      "tertiary": {
+        "$value": "{figma.colors.primitive.zinc.200}"
+      }
+    },
+    "soft": {
+      "$type": "color",
+      "$description": "Soft/translucent backgrounds",
+      "primary": {
+        "$value": "{figma.colors.primitive.alpha.950}"
+      },
+      "secondary": {
+        "$value": "{figma.colors.primitive.alpha.900}"
+      },
+      "tertiary": {
+        "$value": "{figma.colors.primitive.alpha.0}"
+      }
+    },
+    "status": {
+      "$type": "color",
+      "$description": "Status backgrounds - darker shades",
+      "info": {
+        "$value": "{figma.colors.primitive.blue.950}"
+      },
+      "success": {
+        "$value": "{figma.colors.primitive.esmerald.950}"
+      },
+      "warning": {
+        "$value": "{figma.colors.primitive.yellow.950}"
+      },
+      "error": {
+        "$value": "{figma.colors.primitive.red.950}"
+      },
+      "neutral": {
+        "$value": "{figma.colors.primitive.zinc.800}"
+      },
+      "brand": {
+        "$value": "{figma.colors.primitive.orange.950}"
+      },
+      "ai": {
+        "$value": "{figma.colors.primitive.violet.950}"
+      }
+    },
+    "interactive": {
+      "$type": "color",
+      "primary": {
+        "hovered": {
+          "$value": "{figma.colors.primitive.zinc.700}"
+        },
+        "pressed": {
+          "$value": "{figma.colors.primitive.zinc.600}"
+        }
+      },
+      "secondary": {
+        "hovered": {
+          "$value": "{figma.colors.primitive.zinc.800}"
+        },
+        "pressed": {
+          "$value": "{figma.colors.primitive.zinc.700}"
+        }
+      },
+      "link": {
+        "hovered": {
+          "$value": "{figma.colors.primitive.blue.950}"
+        },
+        "pressed": {
+          "$value": "{figma.colors.primitive.blue.900}"
+        }
+      },
+      "danger": {
+        "primary": {
+          "hovered": {
+            "$value": "{figma.colors.primitive.red.600}"
+          },
+          "pressed": {
+            "$value": "{figma.colors.primitive.red.700}"
+          }
+        },
+        "secondary": {
+          "hovered": {
+            "$value": "{figma.colors.primitive.red.950}"
+          },
+          "pressed": {
+            "$value": "{figma.colors.primitive.red.900}"
+          }
+        }
+      }
+    },
+    "accent": {
+      "$type": "color",
+      "ai": {
+        "primary": {
+          "$value": "{figma.colors.primitive.violet.800}"
+        },
+        "secondary": {
+          "$value": "{figma.colors.primitive.violet.950}"
+        },
+        "tertiary": {
+          "$value": "{figma.colors.primitive.pink.950}"
+        }
+      },
+      "inbox": {
+        "new": {
+          "$value": "{figma.colors.primitive.green.950}"
+        },
+        "active": {
+          "$value": "{figma.colors.primitive.blue.950}"
+        },
+        "reassigned": {
+          "$value": "{figma.colors.primitive.amber.950}"
+        },
+        "return": {
+          "$value": "{figma.colors.primitive.cyan.950}"
+        },
+        "typification": {
+          "$value": "{figma.colors.primitive.orange.950}"
+        }
+      }
+    }
+  },
+
+  "border": {
+    "$type": "color",
+    "$description": "Border colors - lighter for visibility on dark",
+    "primary": {
+      "$value": "{figma.colors.primitive.zinc.600}"
+    },
+    "secondary": {
+      "$value": "{figma.colors.primitive.zinc.700}"
+    },
+    "tertiary": {
+      "$value": "{figma.colors.primitive.zinc.800}"
+    },
+    "disabled": {
+      "$value": "{figma.colors.primitive.zinc.800}"
+    },
+    "brand": {
+      "$value": "{figma.colors.primitive.orange.600}"
+    },
+    "status": {
+      "$type": "color",
+      "info": {
+        "$value": "{figma.colors.primitive.blue.600}"
+      },
+      "success": {
+        "$value": "{figma.colors.primitive.esmerald.600}"
+      },
+      "warning": {
+        "$value": "{figma.colors.primitive.yellow.600}"
+      },
+      "error": {
+        "$value": "{figma.colors.primitive.red.600}"
+      }
+    },
+    "interactive": {
+      "$type": "color",
+      "secondary": {
+        "hovered": {
+          "$value": "{figma.colors.primitive.zinc.500}"
+        },
+        "pressed": {
+          "$value": "{figma.colors.primitive.zinc.400}"
+        },
+        "focused": {
+          "$value": "{figma.colors.primitive.zinc.50}"
+        }
+      },
+      "link": {
+        "focused": {
+          "$value": "{figma.colors.primitive.blue.400}"
+        }
+      },
+      "danger": {
+        "secondary": {
+          "enabled": {
+            "$value": "{figma.colors.primitive.red.600}"
+          },
+          "hovered": {
+            "$value": "{figma.colors.primitive.red.500}"
+          },
+          "focused": {
+            "$value": "{figma.colors.primitive.red.400}"
+          }
+        }
+      }
+    }
+  },
+
+  "brand": {
+    "$type": "color",
+    "primary": {
+      "$value": "{figma.colors.primitive.orange.400}",
+      "$description": "Lighter orange for better contrast"
+    }
+  },
+
+  "dialog": {
+    "$type": "color",
+    "bg": {
+      "default": {
+        "$value": "{figma.colors.primitive.zinc.900}"
+      }
+    },
+    "border": {
+      "default": {
+        "$value": "{figma.colors.primitive.zinc.700}"
+      }
+    },
+    "fg": {
+      "primary": {
+        "$value": "{figma.colors.primitive.zinc.50}"
+      },
+      "secondary": {
+        "$value": "{figma.colors.primitive.zinc.300}"
+      }
+    }
+  },
+
+  "backdrop": {
+    "$type": "color",
+    "overlay": {
+      "$value": "rgba(0, 0, 0, 0.7)",
+      "$description": "Darker overlay for dark theme"
+    }
   }
 }

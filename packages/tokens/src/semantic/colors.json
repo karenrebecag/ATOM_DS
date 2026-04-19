@@ -2,149 +2,158 @@
   "bg": {
     "$type": "color",
     "primary": {
-      "$value": "{Primitive.Neutral.0}"
+      "$value": "{figma.colors.primitive.neutral.0}"
     },
     "secondary": {
-      "$value": "{Primitive.Zinc.50}"
+      "$value": "{figma.colors.primitive.zinc.50}"
     },
     "tertiary": {
-      "$value": "{Primitive.Zinc.100}"
+      "$value": "{figma.colors.primitive.zinc.100}"
     },
     "quaternary": {
-      "$value": "{Primitive.Zinc.200}"
+      "$value": "{figma.colors.primitive.zinc.200}"
     },
     "disabled": {
-      "$value": "{Primitive.Zinc.100}"
+      "$value": "{figma.colors.primitive.zinc.100}"
     },
     "inverse": {
       "primary": {
-        "$value": "{Primitive.Zinc.950}"
+        "$value": "{figma.colors.primitive.zinc.950}"
       },
       "secondary": {
-        "$value": "{Primitive.Zinc.800}"
+        "$value": "{figma.colors.primitive.zinc.800}"
       },
       "tertiary": {
-        "$value": "{Primitive.Zinc.600}"
+        "$value": "{figma.colors.primitive.zinc.600}"
       }
     },
     "soft": {
       "primary": {
-        "$value": "{Primitive.Alpha.950}"
+        "$value": "{figma.colors.primitive.alpha.700}"
       },
       "secondary": {
-        "$value": "{Primitive.Alpha.800}"
+        "$value": "{figma.colors.primitive.alpha.0}"
       },
       "tertiary": {
-        "$value": "{Primitive.Alpha.0}"
+        "$value": "{figma.colors.primitive.alpha.0}"
       }
     },
     "status": {
       "info": {
-        "$value": "{Primitive.Blue.50}"
+        "$value": "{figma.colors.primitive.blue.50}"
       },
       "success": {
-        "$value": "{Primitive.Esmerald.50}"
+        "$value": "{figma.colors.primitive.esmerald.50}"
       },
       "warning": {
-        "$value": "{Primitive.Yellow.50}"
+        "$value": "{figma.colors.primitive.yellow.50}"
       },
       "error": {
-        "$value": "{Primitive.Red.50}"
+        "$value": "{figma.colors.primitive.red.50}"
       },
       "neutral": {
-        "$value": "{Primitive.Zinc.200}"
+        "$value": "{figma.colors.primitive.zinc.200}"
       },
       "brand": {
-        "$value": "{Primitive.Orange.50}"
+        "$value": "{figma.colors.primitive.orange.50}"
       },
       "ai": {
-        "$value": "{Primitive.Violet.100}"
+        "$value": "{figma.colors.primitive.violet.100}"
       }
     },
     "interactive": {
       "primary": {
         "hovered": {
-          "$value": "{Primitive.Zinc.800}"
+          "$value": "{figma.colors.primitive.zinc.800}"
         },
         "pressed": {
-          "$value": "{Primitive.Zinc.900}"
+          "$value": "{figma.colors.primitive.zinc.900}"
         }
       },
       "secondary": {
         "hovered": {
-          "$value": "{Primitive.Zinc.50}"
+          "$value": "{figma.colors.primitive.zinc.50}"
         },
         "pressed": {
-          "$value": "{Primitive.Zinc.100}"
+          "$value": "{figma.colors.primitive.zinc.100}"
         }
       },
       "tertiary": {
         "hovered": {
-          "$value": "{Primitive.Zinc.50}"
+          "$value": "{figma.colors.primitive.zinc.50}"
         },
         "pressed": {
-          "$value": "{Primitive.Zinc.100}"
+          "$value": "{figma.colors.primitive.zinc.100}"
         }
       },
       "link": {
         "hovered": {
-          "$value": "{Primitive.Blue.50}"
+          "$value": "{figma.colors.primitive.blue.50}"
         },
         "pressed": {
-          "$value": "{Primitive.Blue.100}"
+          "$value": "{figma.colors.primitive.blue.100}"
         }
       },
       "danger": {
         "primary": {
           "hovered": {
-            "$value": "{Primitive.Red.400}"
+            "$value": "{figma.colors.primitive.red.400}"
           },
           "pressed": {
-            "$value": "{Primitive.Red.600}"
+            "$value": "{figma.colors.primitive.red.600}"
           }
         },
         "secondary": {
           "hovered": {
-            "$value": "{Primitive.Red.50}"
+            "$value": "{figma.colors.primitive.red.50}"
           },
           "pressed": {
-            "$value": "{Primitive.Red.100}"
+            "$value": "{figma.colors.primitive.red.100}"
+          },
+          "focused": {
+            "$value": "{figma.colors.primitive.zinc.50}"
           }
         },
         "tertiary": {
           "hovered": {
-            "$value": "{Primitive.Red.50}"
+            "$value": "{figma.colors.primitive.red.50}"
           },
           "pressed": {
-            "$value": "{Primitive.Red.100}"
+            "$value": "{figma.colors.primitive.red.100}"
+          },
+          "focused": {
+            "$value": "{figma.colors.primitive.zinc.50}"
           }
+        },
+        "focused": {
+          "$value": "{figma.colors.primitive.red.500}"
         }
       },
       "item": {
         "enabled": {
-          "$value": "{Primitive.Zinc.50}"
+          "$value": "{figma.colors.primitive.zinc.50}"
         },
         "hovered": {
-          "$value": "{Primitive.Zinc.100}"
+          "$value": "{figma.colors.primitive.zinc.100}"
         },
         "disabled": {
-          "$value": "{Primitive.Zinc.100}"
+          "$value": "{figma.colors.primitive.zinc.100}"
         },
         "pressed": {
-          "$value": "{Primitive.Zinc.200}"
+          "$value": "{figma.colors.primitive.zinc.200}"
         },
         "selected": {
           "enabled": {
-            "$value": "{Primitive.Zinc.900}"
+            "$value": "{figma.colors.primitive.zinc.900}"
           },
           "hovered": {
-            "$value": "{Primitive.Zinc.800}"
+            "$value": "{figma.colors.primitive.zinc.800}"
           },
           "disabled": {
-            "$value": "{Primitive.Zinc.100}"
+            "$value": "{figma.colors.primitive.zinc.100}"
           },
           "pressed": {
-            "$value": "{Primitive.Zinc.950}"
+            "$value": "{figma.colors.primitive.zinc.950}"
           }
         }
       }
@@ -152,186 +161,209 @@
     "accent": {
       "ai": {
         "primary": {
-          "$value": "{Primitive.Violet.600}"
+          "$value": "{figma.colors.primitive.violet.600}"
         },
         "secondary": {
-          "$value": "{Primitive.Violet.100}"
+          "$value": "{figma.colors.primitive.violet.100}"
         },
         "tertiary": {
-          "$value": "{Primitive.Pink.100}"
+          "$value": "{figma.colors.primitive.pink.50}"
         }
       },
       "inbox": {
         "new": {
-          "$value": "{Primitive.Green.100}"
+          "$value": "{figma.colors.primitive.green.50}"
         },
         "active": {
-          "$value": "{Primitive.Blue.100}"
+          "$value": "{figma.colors.primitive.blue.50}"
         },
         "reassigned": {
-          "$value": "{Primitive.Amber.50}"
+          "$value": "{figma.colors.primitive.orange.50}"
         },
         "return": {
-          "$value": "{Primitive.Cyan.50}"
+          "$value": "{figma.colors.primitive.cyan.50}"
         },
-        "typification": {
-          "$value": "{Primitive.Orange.100}"
+        "tipificacion": {
+          "$value": "{figma.colors.primitive.orange.100}"
+        },
+        "message": {
+          "$value": "{figma.colors.primitive.indigo.100}"
         },
         "bubble": {
           "sent": {
-            "$value": "{Primitive.Esmerald.100}"
+            "$value": "{figma.colors.primitive.esmerald.100}"
           },
           "received": {
-            "$value": "{Primitive.Neutral.0}"
+            "$value": "{figma.colors.primitive.neutral.0}"
           }
         }
       },
       "notifications": {
         "primary": {
-          "$value": "{Primitive.Red.500}"
+          "$value": "{figma.colors.primitive.red.500}"
         },
         "secondary": {
-          "$value": "{Primitive.Red.100}"
+          "$value": "{figma.colors.primitive.red.100}"
+        }
+      },
+      "indicators": {
+        "online": {
+          "$value": "{figma.colors.primitive.green.500}"
+        },
+        "offline": {
+          "$value": "{figma.colors.primitive.red.500}"
         }
       }
     },
     "danger": {
       "primary": {
-        "$value": "{Primitive.Red.500}"
+        "$value": "{figma.colors.primitive.red.500}"
       },
       "secondary": {
-        "$value": "{Primitive.Alpha.0}"
+        "$value": "{figma.colors.primitive.alpha.0}"
       }
     }
   },
   "fg": {
     "$type": "color",
     "primary": {
-      "$value": "{Primitive.Zinc.900}"
+      "$value": "{figma.colors.primitive.zinc.900}"
     },
     "secondary": {
-      "$value": "{Primitive.Zinc.800}"
+      "$value": "{figma.colors.primitive.zinc.800}"
     },
     "tertiary": {
-      "$value": "{Primitive.Zinc.600}"
+      "$value": "{figma.colors.primitive.zinc.600}"
     },
     "quaternary": {
-      "$value": "{Primitive.Zinc.500}"
+      "$value": "{figma.colors.primitive.zinc.500}"
     },
     "disabled": {
-      "$value": "{Primitive.Zinc.400}"
+      "$value": "{figma.colors.primitive.zinc.400}"
     },
     "inverse": {
       "primary": {
-        "$value": "{Primitive.Zinc.50}"
+        "$value": "{figma.colors.primitive.zinc.50}"
       },
       "secondary": {
-        "$value": "{Primitive.Zinc.200}"
+        "$value": "{figma.colors.primitive.zinc.200}"
       },
       "tertiary": {
-        "$value": "{Primitive.Zinc.400}"
+        "$value": "{figma.colors.primitive.zinc.400}"
       },
       "disabled": {
-        "$value": "{Primitive.Zinc.300}"
+        "$value": "{figma.colors.primitive.zinc.300}"
       }
     },
     "brand": {
-      "$value": "{Primitive.Orange.500}"
+      "$value": "{figma.colors.primitive.orange.500}"
     },
     "status": {
       "info": {
-        "$value": "{Primitive.Blue.800}"
+        "$value": "{figma.colors.primitive.blue.800}"
       },
       "success": {
-        "$value": "{Primitive.Esmerald.600}"
+        "$value": "{figma.colors.primitive.esmerald.600}"
       },
       "warning": {
-        "$value": "{Primitive.Yellow.700}"
+        "$value": "{figma.colors.primitive.amber.800}"
       },
       "error": {
-        "$value": "{Primitive.Red.600}"
+        "$value": "{figma.colors.primitive.red.800}"
       },
       "informative": {
-        "$value": "{Primitive.Blue.600}"
+        "$value": "{figma.colors.primitive.blue.600}"
       },
       "neutral": {
-        "$value": "{Primitive.Zinc.600}"
+        "$value": "{figma.colors.primitive.zinc.600}"
       },
       "brand": {
-        "$value": "{Primitive.Orange.500}"
+        "$value": "{figma.colors.primitive.orange.500}"
       },
       "ai": {
-        "$value": "{Primitive.Purple.600}"
+        "$value": "{figma.colors.primitive.purple.600}"
       },
       "on": {
         "success": {
-          "$value": "{Primitive.Esmerald.700}"
+          "$value": "{figma.colors.primitive.esmerald.700}"
         },
         "warning": {
-          "$value": "{Primitive.Yellow.700}"
+          "$value": "{figma.colors.primitive.amber.800}"
         },
         "error": {
-          "$value": "{Primitive.Red.700}"
+          "$value": "{figma.colors.primitive.red.700}"
         },
         "informative": {
-          "$value": "{Primitive.Blue.700}"
+          "$value": "{figma.colors.primitive.blue.700}"
         },
         "neutral": {
-          "$value": "{Primitive.Zinc.700}"
+          "$value": "{figma.colors.primitive.zinc.700}"
         },
         "brand": {
-          "$value": "{Primitive.Orange.700}"
+          "$value": "{figma.colors.primitive.orange.700}"
         },
         "ai": {
-          "$value": "{Primitive.Purple.700}"
+          "$value": "{figma.colors.primitive.purple.700}"
         }
       }
     },
     "interactive": {
       "link": {
         "enabled": {
-          "$value": "{Primitive.Blue.500}"
+          "$value": "{figma.colors.primitive.blue.500}"
         },
         "hovered": {
-          "$value": "{Primitive.Blue.600}"
+          "$value": "{figma.colors.primitive.blue.600}"
         },
         "pressed": {
-          "$value": "{Primitive.Blue.700}"
+          "$value": "{figma.colors.primitive.blue.700}"
         },
         "focused": {
-          "$value": "{Primitive.Blue.500}"
+          "$value": "{figma.colors.primitive.blue.500}"
         },
         "disabled": {
-          "$value": "{Primitive.Blue.400}"
+          "$value": "{figma.colors.primitive.blue.400}"
         }
       },
       "danger": {
+        "primary": {
+          "$value": "{figma.colors.primitive.red.500}"
+        },
+        "hovered": {
+          "$value": "{figma.colors.primitive.red.600}"
+        },
+        "pressed": {
+          "$value": "{figma.colors.primitive.red.700}"
+        },
+        "focused": {
+          "$value": "{figma.colors.primitive.red.500}"
+        },
         "secondary": {
           "enabled": {
-            "$value": "{Primitive.Red.500}"
+            "$value": "{figma.colors.primitive.red.500}"
           },
           "hovered": {
-            "$value": "{Primitive.Red.600}"
+            "$value": "{figma.colors.primitive.red.600}"
           },
           "pressed": {
-            "$value": "{Primitive.Red.700}"
+            "$value": "{figma.colors.primitive.red.700}"
           },
           "focused": {
-            "$value": "{Primitive.Red.500}"
+            "$value": "{figma.colors.primitive.red.500}"
           }
         },
         "tertiary": {
           "enabled": {
-            "$value": "{Primitive.Red.500}"
+            "$value": "{figma.colors.primitive.red.500}"
           },
           "hovered": {
-            "$value": "{Primitive.Red.600}"
+            "$value": "{figma.colors.primitive.red.600}"
           },
           "pressed": {
-            "$value": "{Primitive.Red.700}"
+            "$value": "{figma.colors.primitive.red.700}"
           },
           "focused": {
-            "$value": "{Primitive.Red.500}"
+            "$value": "{figma.colors.primitive.red.500}"
           }
         }
       }
@@ -339,63 +371,63 @@
     "accent": {
       "ai": {
         "primary": {
-          "$value": "{Primitive.Zinc.50}"
+          "$value": "{figma.colors.primitive.zinc.50}"
         },
         "secondary": {
-          "$value": "{Primitive.Violet.700}"
+          "$value": "{figma.colors.primitive.violet.700}"
         },
         "tertiary": {
-          "$value": "{Primitive.Pink.700}"
+          "$value": "{figma.colors.primitive.pink.700}"
         }
       },
       "inbox": {
         "new": {
-          "$value": "{Primitive.Green.800}"
+          "$value": "{figma.colors.primitive.green.800}"
         },
         "active": {
-          "$value": "{Primitive.Blue.800}"
+          "$value": "{figma.colors.primitive.blue.800}"
         },
         "reassigned": {
-          "$value": "{Primitive.Amber.800}"
+          "$value": "{figma.colors.primitive.amber.800}"
         },
         "return": {
-          "$value": "{Primitive.Cyan.950}"
+          "$value": "{figma.colors.primitive.cyan.950}"
         },
-        "typificacion": {
-          "$value": "{Primitive.Orange.900}"
+        "tipificacion": {
+          "$value": "{figma.colors.primitive.orange.900}"
         },
         "message": {
           "default": {
-            "$value": "{Primitive.Sky.900}"
+            "$value": "{figma.colors.primitive.sky.900}"
           },
           "read": {
-            "$value": "{Primitive.Blue.500}"
+            "$value": "{figma.colors.primitive.blue.500}"
           },
           "sent": {
-            "$value": "{Primitive.Zinc.500}"
+            "$value": "{figma.colors.primitive.zinc.500}"
           }
         }
       },
       "notifications": {
         "primary": {
-          "$value": "{Primitive.Zinc.50}"
+          "$value": "{figma.colors.primitive.zinc.50}"
         },
         "secondary": {
-          "$value": "{Primitive.Red.700}"
+          "$value": "{figma.colors.primitive.red.700}"
         }
       },
       "indicators": {
         "online": {
-          "$value": "{Primitive.Green.500}"
+          "$value": "{figma.colors.primitive.green.500}"
         },
         "offline": {
-          "$value": "{Primitive.Red.500}"
+          "$value": "{figma.colors.primitive.red.500}"
         },
         "idle": {
-          "$value": "{Primitive.Yellow.500}"
+          "$value": "{figma.colors.primitive.yellow.500}"
         },
         "inactive": {
-          "$value": "{Primitive.Gray.500}"
+          "$value": "{figma.colors.primitive.gray.500}"
         }
       }
     }
@@ -403,88 +435,105 @@
   "border": {
     "$type": "color",
     "primary": {
-      "$value": "{Primitive.Zinc.500}"
+      "$value": "{figma.colors.primitive.zinc.300}"
     },
     "secondary": {
-      "$value": "{Primitive.Zinc.300}"
+      "$value": "{figma.colors.primitive.zinc.200}"
     },
     "tertiary": {
-      "$value": "{Primitive.Zinc.200}"
+      "$value": "{figma.colors.primitive.zinc.200}"
     },
     "disabled": {
-      "$value": "{Primitive.Zinc.100}"
+      "$value": "{figma.colors.primitive.zinc.100}"
     },
     "brand": {
-      "$value": "{Primitive.Orange.300}"
+      "$value": "{figma.colors.primitive.orange.300}"
     },
     "status": {
+      "informative": {
+        "$value": "{figma.colors.primitive.blue.500}"
+      },
       "info": {
-        "$value": "{Primitive.Blue.500}"
+        "$value": "{figma.colors.primitive.blue.500}"
       },
       "success": {
-        "$value": "{Primitive.Esmerald.600}"
+        "$value": "{figma.colors.primitive.green.500}"
       },
       "warning": {
-        "$value": "{Primitive.Yellow.600}"
+        "$value": "{figma.colors.primitive.amber.500}"
       },
       "error": {
-        "$value": "{Primitive.Red.600}"
+        "$value": "{figma.colors.primitive.red.500}"
       }
     },
     "interactive": {
+      "primary": {
+        "focused": {
+          "$value": "{figma.colors.primitive.zinc.50}"
+        }
+      },
       "secondary": {
+        "enabled": {
+          "$value": "{figma.colors.primitive.zinc.200}"
+        },
         "hovered": {
-          "$value": "{Primitive.Zinc.400}"
+          "$value": "{figma.colors.primitive.zinc.300}"
         },
         "pressed": {
-          "$value": "{Primitive.Zinc.500}"
+          "$value": "{figma.colors.primitive.zinc.200}"
         },
         "focused": {
-          "$value": "{Primitive.Zinc.900}"
+          "$value": "{figma.colors.primitive.zinc.200}"
+        },
+        "disabled": {
+          "$value": "{figma.colors.primitive.zinc.100}"
         }
       },
       "link": {
         "focused": {
-          "$value": "{Primitive.Blue.500}"
+          "$value": "{figma.colors.primitive.blue.500}"
         }
       },
       "danger": {
         "primary": {
           "focused": {
-            "$value": "{Primitive.Red.50}"
+            "$value": "{figma.colors.primitive.red.50}"
           }
         },
         "secondary": {
           "enabled": {
-            "$value": "{Primitive.Red.500}"
+            "$value": "{figma.colors.primitive.red.500}"
           },
           "hovered": {
-            "$value": "{Primitive.Red.600}"
+            "$value": "{figma.colors.primitive.red.600}"
           },
           "pressed": {
-            "$value": "{Primitive.Red.500}"
+            "$value": "{figma.colors.primitive.red.500}"
           },
           "focused": {
-            "$value": "{Primitive.Red.500}"
-          },
-          "loading": {
-            "$value": "{Primitive.Red.500}"
+            "$value": "{figma.colors.primitive.red.500}"
           }
         },
         "tertiary": {
+          "loading": {
+            "$value": "{figma.colors.primitive.red.500}"
+          },
           "focused": {
-            "$value": "{Primitive.Red.500}"
+            "$value": "{figma.colors.primitive.red.500}"
           }
         }
       }
     },
     "accent": {
+      "orange": {
+        "$value": "{figma.colors.primitive.orange.300}"
+      },
       "ai": {
         "primary": {
-          "$value": "{Primitive.Violet.300}"
+          "$value": "{figma.colors.primitive.violet.300}"
         },
         "secondary": {
-          "$value": "{Primitive.Violet.600}"
+          "$value": "{figma.colors.primitive.violet.500}"
         }
       }
     }
@@ -492,23 +541,31 @@
   "brand": {
     "$type": "color",
     "primary": {
-      "$value": "{Primitive.Orange.500}"
+      "$value": "{figma.colors.primitive.orange.500}"
     },
     "secondary": {
       "orange": {
-        "$value": "{Primitive.Orange.50}"
+        "$value": "{figma.colors.primitive.orange.50}"
       },
       "green": {
-        "$value": "{Primitive.Green.50}"
+        "$value": "{figma.colors.primitive.green.50}"
       },
       "violet": {
-        "$value": "{Primitive.Violet.50}"
+        "$value": "{figma.colors.primitive.violet.50}"
       },
       "blue": {
-        "$value": "{Primitive.Blue.50}"
+        "$value": "{figma.colors.primitive.blue.50}"
       },
       "rose": {
-        "$value": "{Primitive.Rose.50}"
+        "$value": "{figma.colors.primitive.rose.50}"
+      }
+    },
+    "partners": {
+      "facebook": {
+        "$value": "#0064df"
+      },
+      "whatsapp": {
+        "$value": "#22d366"
       }
     }
   },
@@ -516,20 +573,20 @@
     "$type": "color",
     "bg": {
       "default": {
-        "$value": "{Primitive.Neutral.0}"
+        "$value": "{figma.colors.primitive.neutral.0}"
       }
     },
     "border": {
       "default": {
-        "$value": "{Primitive.Zinc.300}"
+        "$value": "{figma.colors.primitive.zinc.300}"
       }
     },
     "fg": {
       "primary": {
-        "$value": "{Primitive.Zinc.950}"
+        "$value": "{figma.colors.primitive.zinc.950}"
       },
       "secondary": {
-        "$value": "{Primitive.Zinc.600}"
+        "$value": "{figma.colors.primitive.zinc.600}"
       }
     }
   },

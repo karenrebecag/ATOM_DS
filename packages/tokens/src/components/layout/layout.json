@@ -104,6 +104,21 @@
         "$value": "{gap.xl}",
         "$description": "2em"
       }
+    },
+    "min-column": {
+      "$type": "dimension",
+      "sm": {
+        "$value": "150px",
+        "$description": "Minimum column width for auto-fit small (150px)"
+      },
+      "md": {
+        "$value": "250px",
+        "$description": "Minimum column width for auto-fit default (250px)"
+      },
+      "lg": {
+        "$value": "350px",
+        "$description": "Minimum column width for auto-fit large (350px)"
+      }
     }
   },
   "section": {

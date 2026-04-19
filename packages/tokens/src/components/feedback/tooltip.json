@@ -1,0 +1,85 @@
+{
+  "tooltip": {
+    "plain": {
+      "bg": {
+        "$type": "color",
+        "$value": "rgba(10, 10, 10, 0.7)",
+        "$description": "Semi-transparent dark background with backdrop blur"
+      },
+      "fg": {
+        "$type": "color",
+        "$value": "{fg.inverse.primary}",
+        "$description": "White text for dark background"
+      },
+      "padding": {
+        "$type": "dimension",
+        "$value": "{Primitive.Spacing.s}",
+        "$description": "8px"
+      },
+      "max-width": {
+        "$type": "dimension",
+        "$value": "200px"
+      },
+      "min-height": {
+        "$type": "dimension",
+        "$value": "32px"
+      },
+      "max-height": {
+        "$type": "dimension",
+        "$value": "110px"
+      },
+      "backdrop-blur": {
+        "$type": "dimension",
+        "$value": "8px"
+      }
+    },
+    "rich": {
+      "bg": {
+        "$type": "color",
+        "$value": "{bg.primary}",
+        "$description": "Rich tooltip background"
+      },
+      "border": {
+        "color": {
+          "$type": "color",
+          "$value": "{border.secondary}",
+          "$description": "Rich tooltip border"
+        },
+        "width": {
+          "$type": "dimension",
+          "$value": "{Primitive.Stroke.s}",
+          "$description": "1px"
+        }
+      },
+      "shadow": {
+        "$type": "string",
+        "$value": "0px 6px 14px 0px rgba(9, 9, 11, 0.08)",
+        "$description": "Elevation shadow for rich tooltip"
+      },
+      "max-width": {
+        "$type": "dimension",
+        "$value": "280px"
+      },
+      "content-padding": {
+        "$type": "dimension",
+        "$value": "{Primitive.Spacing.m}",
+        "$description": "16px - Padding for content section"
+      },
+      "content-gap": {
+        "$type": "dimension",
+        "$value": "{Primitive.Spacing.s}",
+        "$description": "8px - Gap between headline and supporting text"
+      },
+      "action-padding": {
+        "$type": "dimension",
+        "$value": "{Primitive.Spacing.s}",
+        "$description": "8px - Padding for action section"
+      },
+      "gap": {
+        "$type": "dimension",
+        "$value": "0px",
+        "$description": "No gap between sections in rich tooltip"
+      }
+    }
+  }
+}

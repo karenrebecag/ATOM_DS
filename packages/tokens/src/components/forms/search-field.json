@@ -1,0 +1,82 @@
+{
+  "search-field": {
+    "padding": {
+      "$type": "dimension",
+      "x-s": {
+        "$value": "{Primitive.Spacing.sm}",
+        "$description": "12px"
+      },
+      "y-s": {
+        "$value": "{Primitive.Spacing.s}",
+        "$description": "8px"
+      },
+      "x-m": {
+        "$value": "{Primitive.Spacing.sm}",
+        "$description": "12px"
+      },
+      "y-m": {
+        "$value": "{Primitive.Spacing.sm}",
+        "$description": "12px"
+      },
+      "x-l": {
+        "$value": "{Primitive.Spacing.sm}",
+        "$description": "12px"
+      },
+      "y-l": {
+        "$value": "{Primitive.Spacing.m}",
+        "$description": "16px"
+      }
+    },
+    "gap": {
+      "$type": "dimension",
+      "inner": {
+        "$value": "{Primitive.Spacing.s}",
+        "$description": "8px - Gap between icon and text"
+      },
+      "container": {
+        "$value": "{Primitive.Spacing.sm}",
+        "$description": "12px - Gap in containers"
+      }
+    },
+    "border": {
+      "width": {
+        "$type": "dimension",
+        "$value": "{Primitive.Stroke.s}",
+        "$description": "1px"
+      },
+      "radius": {
+        "$type": "dimension",
+        "$value": "{Primitive.Radius.s}",
+        "$description": "8px"
+      }
+    },
+    "icon": {
+      "size": {
+        "$type": "dimension",
+        "$value": "16px"
+      }
+    },
+    "font": {
+      "size": {
+        "$type": "number",
+        "$value": "{figma.typography.font-sizes.label}",
+        "$description": "12px"
+      },
+      "line-height": {
+        "$type": "number",
+        "$value": "{figma.typography.line-height.label}",
+        "$description": "16px"
+      },
+      "family": {
+        "$type": "string",
+        "$value": "{figma.typography.font-family.content}",
+        "$description": "Inter"
+      },
+      "weight": {
+        "$type": "string",
+        "$value": "{figma.typography.font-weight.regular}",
+        "$description": "Regular"
+      }
+    }
+  }
+}

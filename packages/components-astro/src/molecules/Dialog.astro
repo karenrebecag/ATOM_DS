@@ -1,0 +1,74 @@
+---
+/**
+ * Dialog — Composable modal dialog surface
+ * @atomchat/components-astro
+ *
+ * Depends on:
+ *   @atomchat/tokens (--dialog-* tokens)
+ *   @atomchat/css (dialog.css)
+ *
+ * Props:
+ *   size?      "s" | "m" | "l"  - Dialog width (default: "s")
+ *   centered?  boolean          - Fixed centered positioning (default: false)
+ *   visible?   boolean          - Visibility state (default: false)
+ *   showBackdrop? boolean       - Show backdrop overlay (default: false)
+ *   id?        string           - Dialog ID for JS interaction
+ *   class?     string           - Additional CSS classes
+ *
+ * Slots:
+ *   default  Dialog content (DialogHeadline, DialogContent, DialogActions)
+ *
+ * Usage:
+ *   <Dialog size="s">
+ *     <DialogHeadline alignment="left" headline="Title" isClosable />
+ *     <DialogContent>
+ *       <p>Dialog body content</p>
+ *     </DialogContent>
+ *     <DialogActions />
+ *   </Dialog>
+ */
+
+interface Props {
+  size?: "s" | "m" | "l";
+  centered?: boolean;
+  visible?: boolean;
+  showBackdrop?: boolean;
+  id?: string;
+  class?: string;
+}
+
+const {
+  size = "s",
+  centered = false,
+  visible = false,
+  showBackdrop = false,
+  id,
+  class: className = "",
+} = Astro.props;
+---
+
+{showBackdrop && (
+  <div
+    class:list={[
+      "dialog-backdrop",
+      { "dialog-backdrop--visible": visible },
+      { "dialog-backdrop--hidden": !visible },
+    ]}
+    data-dialog-backdrop={id}
+  />
+)}
+
+<div
+  class:list={[
+    "dialog",
+    `dialog--${size}`,
+    { "dialog--centered": centered },
+    { "dialog--visible": visible },
+    className,
+  ]}
+  role="dialog"
+  aria-modal="true"
+  {...id ? { id, "data-dialog": id } : { "data-dialog": "" }}
+>
+  <slot />
+</div>

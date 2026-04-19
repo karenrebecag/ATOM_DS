@@ -1,0 +1,126 @@
+/* ============================================
+   @atomchat/css — empty-state.css
+   Depends on: @atomchat/tokens (tokens.css)
+   Empty state component for no results/data
+============================================ */
+
+/* EMPTY STATE — Display when there's no content to show */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* ICON CONTAINER */
+.empty-state__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background-color: var(--bg-quaternary);
+  border-radius: var(--radius-s);
+}
+
+.empty-state__icon svg {
+  color: var(--fg-secondary);
+}
+
+/* HEADING */
+.empty-state__heading {
+  font-family: var(--font-family-titles);
+  color: var(--fg-primary);
+  margin: 0;
+}
+
+/* TEXT GROUP (for medium size) */
+.empty-state__text-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--s);
+  width: 100%;
+}
+
+/* SUPPORTING TEXT */
+.empty-state__supporting {
+  font-family: var(--font-family-content);
+  font-weight: var(--font-weight-regular);
+  color: var(--fg-quaternary);
+  margin: 0;
+}
+
+/* RESULT TEXT (for small size - bold text below supporting) */
+.empty-state__result {
+  font-family: var(--font-family-titles);
+  font-weight: var(--font-weight-bold);
+  color: var(--fg-primary);
+  margin: 0;
+}
+
+/* SUPPORTING GROUP (for small size - contains supporting + result) */
+.empty-state__supporting-group {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* SIZE VARIANTS */
+
+/* Small */
+.empty-state--s {
+  gap: var(--s);
+  width: var(--empty-state-width-s);
+}
+
+.empty-state--s .empty-state__icon {
+  width: var(--xl);
+  height: var(--xl);
+}
+
+.empty-state--s .empty-state__icon svg {
+  width: var(--empty-state-icon-svg-s);
+  height: var(--empty-state-icon-svg-s);
+}
+
+.empty-state--s .empty-state__heading {
+  font-size: var(--font-sizes-label);
+  line-height: var(--line-height-label);
+  font-weight: var(--font-weight-bold);
+}
+
+.empty-state--s .empty-state__supporting {
+  font-size: var(--font-sizes-label);
+  line-height: var(--line-height-label);
+}
+
+.empty-state--s .empty-state__result {
+  font-size: var(--font-sizes-label);
+  line-height: var(--line-height-label);
+}
+
+/* Medium */
+.empty-state--m {
+  gap: var(--l);
+  width: var(--empty-state-width-m);
+}
+
+.empty-state--m .empty-state__icon {
+  padding: var(--sm);
+}
+
+.empty-state--m .empty-state__icon svg {
+  width: var(--empty-state-icon-svg-m);
+  height: var(--empty-state-icon-svg-m);
+}
+
+.empty-state--m .empty-state__heading {
+  font-size: var(--font-sizes-body);
+  line-height: var(--line-height-body);
+  font-weight: var(--font-weight-medium);
+}
+
+.empty-state--m .empty-state__supporting {
+  font-size: var(--font-sizes-caption);
+  line-height: var(--line-height-caption);
+}

@@ -1,0 +1,490 @@
+{
+  "figma": {
+    "semantic-dark-mode": {
+      "bg": {
+        "primary": {
+          "$type": "color",
+          "$value": "#FFFFFF"
+        },
+        "secondary": {
+          "$type": "color",
+          "$value": "#FFFFFF"
+        },
+        "quaternary": {
+          "$type": "color",
+          "$value": "#FFFFFF"
+        },
+        "tertiary": {
+          "$type": "color",
+          "$value": "#FFFFFF"
+        },
+        "soft-primary": {
+          "$type": "color",
+          "$value": "#FFFFFF"
+        },
+        "disabled": {
+          "$type": "color",
+          "$value": "#FFFFFF"
+        },
+        "status": {
+          "info": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          },
+          "success": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          },
+          "warning": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          },
+          "error": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          }
+        },
+        "accent": {
+          "ai": {
+            "primary": {
+              "$type": "color",
+              "$value": "#FFFFFF"
+            },
+            "secondary": {
+              "$type": "color",
+              "$value": "#FFFFFF"
+            },
+            "tertiary": {
+              "$type": "color",
+              "$value": "#FFFFFF"
+            }
+          },
+          "inbox": {
+            "new": {
+              "$type": "color",
+              "$value": "#FFFFFF"
+            },
+            "active": {
+              "$type": "color",
+              "$value": "#FFFFFF"
+            },
+            "return": {
+              "$type": "color",
+              "$value": "#FFFFFF"
+            },
+            "reassigned": {
+              "$type": "color",
+              "$value": "#FFFFFF"
+            },
+            "tipificacion": {
+              "$type": "color",
+              "$value": "#FFFFFF"
+            },
+            "message": {
+              "$type": "color",
+              "$value": "#FFFFFF"
+            }
+          },
+          "notifications": {
+            "primary": {
+              "$type": "color",
+              "$value": "#FFFFFF"
+            },
+            "secondary": {
+              "$type": "color",
+              "$value": "#FFFFFF"
+            }
+          }
+        },
+        "inverse-primary": {
+          "$type": "color",
+          "$value": "#FFFFFF"
+        },
+        "inverse-secondary": {
+          "$type": "color",
+          "$value": "#FFFFFF"
+        },
+        "inverse-tertiary": {
+          "$type": "color",
+          "$value": "#FFFFFF"
+        },
+        "indicators": {
+          "online": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          },
+          "offline": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          }
+        },
+        "soft-secondary": {
+          "$type": "color",
+          "$value": "#FFFFFF"
+        },
+        "interactive": {
+          "primary-hovered": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          },
+          "primary-pressed": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          },
+          "secondary-hovered": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          },
+          "secondary-pressed": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          },
+          "tertiary-hovered": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          },
+          "tertiary-pressed": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          },
+          "link-pressed": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          },
+          "link-hovered": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          },
+          "danger-primary-hovered": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          },
+          "danger-primary-pressed": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          },
+          "danger-secondary-hovered": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          },
+          "danger-secondary-pressed": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          },
+          "danger-tertiary-hovered": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          },
+          "danger-tertiary-pressed": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          },
+          "danger-primary-focused": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          },
+          "danger-secondary-focused": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          },
+          "danger-tertiary-focused": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          }
+        },
+        "danger-primary": {
+          "$type": "color",
+          "$value": "#FFFFFF"
+        },
+        "danger-secondary": {
+          "$type": "color",
+          "$value": "#FFFFFF"
+        }
+      },
+      "fg": {
+        "brand": {
+          "$type": "color",
+          "$value": "#FFFFFF"
+        },
+        "secondary": {
+          "$type": "color",
+          "$value": "#FFFFFF"
+        },
+        "tertiary": {
+          "$type": "color",
+          "$value": "#FFFFFF"
+        },
+        "disabled": {
+          "$type": "color",
+          "$value": "#FFFFFF"
+        },
+        "inverse-primary": {
+          "$type": "color",
+          "$value": "#FFFFFF"
+        },
+        "inverse-secondary": {
+          "$type": "color",
+          "$value": "#FFFFFF"
+        },
+        "status": {
+          "info": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          },
+          "success": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          },
+          "warning": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          },
+          "error": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          }
+        },
+        "accent": {
+          "ai-primary": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          },
+          "ai-secondary": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          },
+          "ai-tertiary": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          }
+        },
+        "inverse-tertiary": {
+          "$type": "color",
+          "$value": "#FFFFFF"
+        },
+        "inverse-disabled": {
+          "$type": "color",
+          "$value": "#FFFFFF"
+        },
+        "interactive": {
+          "link-primary": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          },
+          "link-disabled": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          },
+          "danger-primary": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          },
+          "danger-secondary": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          },
+          "danger-tertiary": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          },
+          "link-hovered": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          },
+          "link-pressed": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          },
+          "link-focused": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          },
+          "danger-primary-hovered": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          },
+          "danger-primary-pressed": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          },
+          "danger-secondary-hovered": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          },
+          "danger-secondary-pressed": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          },
+          "danger-tertiary-hovered": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          },
+          "danger-tertiary-pressed": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          },
+          "danger-primary-focused": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          },
+          "danger-secondary-focused": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          },
+          "danger-tertiary-focused": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          }
+        },
+        "primary": {
+          "$type": "color",
+          "$value": "#FFFFFF"
+        },
+        "quaternary": {
+          "$type": "color",
+          "$value": "#FFFFFF"
+        }
+      },
+      "border": {
+        "primary": {
+          "$type": "color",
+          "$value": "#FFFFFF"
+        },
+        "secondary": {
+          "$type": "color",
+          "$value": "#FFFFFF"
+        },
+        "disabled": {
+          "$type": "color",
+          "$value": "#FFFFFF"
+        },
+        "status": {
+          "informative": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          },
+          "success": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          },
+          "warning": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          },
+          "error": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          }
+        },
+        "accent": {
+          "orange": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          },
+          "ai-primary": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          },
+          "ai-secondary": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          }
+        },
+        "interactive": {
+          "link-focused": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          },
+          "danger-primary-focused": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          },
+          "danger-secondary-hovered": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          },
+          "danger-secondary-pressed": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          },
+          "danger-secondary-focused": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          },
+          "danger-tertiary-loading": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          },
+          "secondary-disabled": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          },
+          "secondary-focused": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          },
+          "secondary-pressed": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          },
+          "secondary-hovered": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          },
+          "secondary-enabled": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          },
+          "primary-focused": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          },
+          "danger-secondary-enabled": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          },
+          "danger-tertiary-focused": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          }
+        }
+      },
+      "brand": {
+        "primary": {
+          "$type": "color",
+          "$value": "#FFFFFF"
+        },
+        "partners": {
+          "facebook": {
+            "$type": "color",
+            "$value": "#0064DF"
+          },
+          "whatsapp": {
+            "$type": "color",
+            "$value": "#22D366"
+          }
+        },
+        "secondary-orange": {
+          "$type": "color",
+          "$value": "#FFFFFF"
+        },
+        "secondary-green": {
+          "$type": "color",
+          "$value": "#FFFFFF"
+        },
+        "secondary-violet": {
+          "$type": "color",
+          "$value": "#FFFFFF"
+        },
+        "secondary-blue": {
+          "$type": "color",
+          "$value": "#FFFFFF"
+        },
+        "secondary-rose": {
+          "$type": "color",
+          "$value": "#FFFFFF"
+        }
+      }
+    }
+  }
+}

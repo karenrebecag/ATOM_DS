@@ -1,0 +1,114 @@
+/* ============================================
+   @atomchat/css — dropdown-menu.css
+   Depends on: @atomchat/tokens (tokens.css)
+
+   Dropdown menu molecule
+   - Toggle button with icon
+   - Expandable panel
+   - State-driven visibility
+============================================ */
+
+/* DROPDOWN MENU — Container */
+.dropdown-menu {
+  position: relative;
+  display: inline-flex;
+}
+
+/* Toggle Button */
+.dropdown-menu__toggle {
+  /* Reset button styles */
+  background: none;
+  border: none;
+  padding: var(--xs) var(--s);
+  margin: 0;
+
+  /* Layout */
+  display: inline-flex;
+  align-items: center;
+  gap: var(--xs);
+
+  /* Typography */
+  font-family: var(--font-body);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--text-caption);
+  line-height: calc(var(--text-caption) * 1.5);
+  color: var(--nav-link-fg-default, inherit);
+
+  /* Structure */
+  border-radius: var(--radius-s);
+
+  /* Interaction */
+  cursor: pointer;
+
+  /* Transition */
+  transition: background-color var(--duration-quarter);
+}
+
+.dropdown-menu__toggle:hover {
+  background-color: var(--nav-link-bg-hover, rgba(255, 255, 255, 0.1));
+}
+
+.dropdown-menu__toggle:focus-visible {
+  outline: var(--stroke-xs) solid var(--accent-primary-default);
+  outline-offset: var(--xxs);
+}
+
+/* Label */
+.dropdown-menu__label {
+  white-space: nowrap;
+}
+
+/* Panel — Hidden by default */
+.dropdown-menu__panel {
+  /* Position */
+  position: absolute;
+  top: calc(100% + var(--xs));
+  left: 0;
+  z-index: var(--primitive-z-index-dropdown, 100);
+
+  /* Layout */
+  display: flex;
+  flex-direction: column;
+  gap: var(--xxs);
+  min-width: 180px;
+
+  /* Structure */
+  padding: var(--s);
+  border-radius: var(--radius-m);
+
+  /* Visual */
+  background-color: var(--bg-primary);
+  border: var(--stroke-xs) solid var(--border-primary);
+  box-shadow: var(--shadow-m);
+
+  /* Hidden by default */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+
+  /* Transition */
+  transition:
+    opacity var(--duration-quarter),
+    visibility var(--duration-quarter),
+    transform var(--duration-quarter);
+}
+
+/* Panel — Right alignment */
+.dropdown-menu[data-align="right"] .dropdown-menu__panel {
+  left: auto;
+  right: 0;
+}
+
+/* Panel — Active (open) */
+.dropdown-menu[data-active="true"] .dropdown-menu__panel {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .dropdown-menu__panel {
+    transition: none;
+  }
+}

@@ -11,6 +11,7 @@ packages/animations/dist/
 .env
 .env.local
 .env.*.local
+.env.figma
 
 # Editor
 .DS_Store

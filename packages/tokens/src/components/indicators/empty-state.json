@@ -1,0 +1,14 @@
+{
+  "empty-state": {
+    "width": {
+      "$type": "dimension",
+      "s": { "$value": "297px", "$description": "Small variant width" },
+      "m": { "$value": "400px", "$description": "Medium variant width" }
+    },
+    "icon-svg": {
+      "$type": "dimension",
+      "s": { "$value": "16.8px", "$description": "SVG icon size inside small container" },
+      "m": { "$value": "28.8px", "$description": "SVG icon size inside medium container" }
+    }
+  }
+}

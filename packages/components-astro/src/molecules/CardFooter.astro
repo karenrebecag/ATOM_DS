@@ -1,0 +1,86 @@
+---
+/**
+ * CardFooter — Card footer with buttons or tags
+ * @atomchat/components-astro
+ *
+ * Depends on:
+ *   @atomchat/tokens (--card-* tokens)
+ *   @atomchat/css (card.css)
+ *
+ * Props:
+ *   variant?         "buttons" | "tags"  - Footer layout variant (default: "buttons")
+ *   cancelText?      string              - Cancel button text (default: "Cancel")
+ *   actionText?      string              - Action button text (default: "Action")
+ *   tagLabel?        string              - Tag label text (default: "Label")
+ *   tagVariant?      string              - Tag variant (default: "success")
+ *   class?           string              - Additional CSS classes
+ *
+ * Slots:
+ *   default  Custom footer content (overrides variant prop)
+ *
+ * Usage:
+ *   <!-- Buttons variant (default) -->
+ *   <CardFooter />
+ *
+ *   <!-- Custom button labels -->
+ *   <CardFooter
+ *     variant="buttons"
+ *     cancelText="Dismiss"
+ *     actionText="Confirm"
+ *   />
+ *
+ *   <!-- Tags variant -->
+ *   <CardFooter
+ *     variant="tags"
+ *     tagLabel="Active"
+ *     tagVariant="success"
+ *   />
+ *
+ *   <!-- Custom content -->
+ *   <CardFooter>
+ *     <Button variant="secondary" size="xs">Cancel</Button>
+ *     <Button variant="primary" size="xs">Submit</Button>
+ *     <Button variant="tertiary" size="xs">More</Button>
+ *   </CardFooter>
+ */
+
+import Button from '../atoms/buttons/Button.astro';
+import Tag from '../atoms/indicators/Tag.astro';
+
+interface Props {
+  variant?: "buttons" | "tags";
+  cancelText?: string;
+  actionText?: string;
+  tagLabel?: string;
+  tagVariant?: "default" | "success" | "warning" | "error" | "info";
+  class?: string;
+}
+
+const {
+  variant = "buttons",
+  cancelText = "Cancel",
+  actionText = "Action",
+  tagLabel = "Label",
+  tagVariant = "success",
+  class: className = "",
+} = Astro.props;
+
+const hasDefaultSlot = Astro.slots.has("default");
+---
+
+<div class:list={[
+  "card-footer",
+  `card-footer--${variant}`,
+  className
+]}>
+  {hasDefaultSlot ? (
+    <slot />
+  ) : variant === "buttons" ? (
+    <>
+      <Button variant="secondary" size="xs">{cancelText}</Button>
+      <Button variant="primary" size="xs">{actionText}</Button>
+    </>
+  ) : variant === "tags" ? (
+    <Tag variant={tagVariant} outlined>{tagLabel}</Tag>
+  ) : null}
+</div>

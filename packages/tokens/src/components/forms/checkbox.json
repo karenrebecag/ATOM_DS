@@ -37,6 +37,18 @@
     "shadow": {
       "$type": "shadow",
       "focus": { "$value": "0px 0px 0px 2px {figma.colors.primitive.alpha.400}" }
+    },
+    "structure": {
+      "size": {
+        "$type": "dimension",
+        "s": { "$value": "16px", "$description": "Checkbox visual size - small" },
+        "m": { "$value": "24px", "$description": "Checkbox visual size - medium" }
+      },
+      "check-size": {
+        "$type": "dimension",
+        "s": { "$value": "10.67px", "$description": "Checkmark icon size - small" },
+        "m": { "$value": "16px", "$description": "Checkmark icon size - medium" }
+      }
     }
   }
 }

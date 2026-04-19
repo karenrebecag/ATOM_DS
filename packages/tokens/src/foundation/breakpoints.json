@@ -22,6 +22,37 @@
       "MD": { "$value": "1024px" },
       "LG": { "$value": "1280px" },
       "XL": { "$value": "1921px" }
+    },
+    "UIMetadata": {
+      "$description": "UI behavior configuration per breakpoint (from Figma). Controls responsive behavior like menu display.",
+      "XSmall": {
+        "$description": "Mobile: 0-599px",
+        "breakpoint-base": { "$value": 360, "$type": "number" },
+        "padding": { "$value": "24px", "$type": "dimension" },
+        "menu-icon": { "$value": true, "$type": "boolean", "$description": "Show hamburger menu icon" },
+        "menu-buttons": { "$value": false, "$type": "boolean", "$description": "Hide full menu buttons" }
+      },
+      "Small": {
+        "$description": "Tablet: 600-960px",
+        "breakpoint-base": { "$value": 600, "$type": "number" },
+        "padding": { "$value": "32px", "$type": "dimension" },
+        "menu-icon": { "$value": false, "$type": "boolean" },
+        "menu-buttons": { "$value": true, "$type": "boolean" }
+      },
+      "Medium": {
+        "$description": "Desktop: 961-1280px",
+        "breakpoint-base": { "$value": 1024, "$type": "number" },
+        "padding": { "$value": "88px", "$type": "dimension" },
+        "menu-icon": { "$value": false, "$type": "boolean" },
+        "menu-buttons": { "$value": true, "$type": "boolean" }
+      },
+      "Large": {
+        "$description": "Large Desktop: 1281px+",
+        "breakpoint-base": { "$value": 1280, "$type": "number" },
+        "padding": { "$value": "120px", "$type": "dimension" },
+        "menu-icon": { "$value": false, "$type": "boolean" },
+        "menu-buttons": { "$value": true, "$type": "boolean" }
+      }
     }
   }
 }

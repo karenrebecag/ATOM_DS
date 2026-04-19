@@ -1,0 +1,22 @@
+{
+  "figma": {
+    "variable-collection": {
+      "table": {
+        "header-cell": {
+          "--sort": {
+            "$type": "string",
+            "$value": ""
+          },
+          "--sort-asc": {
+            "$type": "string",
+            "$value": ""
+          },
+          "--sort-desc": {
+            "$type": "string",
+            "$value": ""
+          }
+        }
+      }
+    }
+  }
+}

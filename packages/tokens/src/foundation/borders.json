@@ -25,7 +25,11 @@
       "4xxl":   { "$value": "48px" },
       "5xxl":   { "$value": "52px" },
       "pill":   { "$value": "1000px" },
-      "circle": { "$value": "50%" }
+      "circle": { "$value": "50%" },
+      "multi-value-example": {
+        "$value": "4px 8px",
+        "$description": "Multi-value radius example from Figma. You can have multiple values in a single radius token. Read more: https://docs.tokens.studio/available-tokens/border-radius-tokens#single--multiple-values"
+      }
     },
     "RadiusEm": {
       "$type": "dimension",

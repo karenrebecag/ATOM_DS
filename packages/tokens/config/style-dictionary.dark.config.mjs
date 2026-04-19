@@ -79,9 +79,19 @@ export default {
     },
   },
   source: [
-    'src/**/*.json',
+    // Canónicos — siempre en source
+    'src/foundation/**/*.json',
+    'src/semantic/**/*.json',
+    'src/components/**/*.json',
+    'src/component/**/*.json',     // legacy singular form
+
+    // Figma primitivos — valores crudos que foundation/ referencia
+    'src/figma/primitives/**/*.json',
+
+    // Dark theme overrides — merged last (wins in SD merge)
     'themes/dark/**/*.json',
   ],
+  // Excluded: figma/semantics/, figma/web-library/ (not canonical tokens)
   platforms: {
     css: {
       transforms: CSS_TRANSFORMS,

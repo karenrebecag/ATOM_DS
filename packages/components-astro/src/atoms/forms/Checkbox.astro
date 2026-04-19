@@ -4,38 +4,72 @@
  * @atomchat/components-astro
  *
  * Depends on:
- *   @atomchat/tokens (--checkbox-* custom properties)
+ *   @atomchat/tokens (--checkbox-* component tokens)
  *   @atomchat/css (checkbox.css)
  *
  * Props:
- *   name      string   (required) - Form input name
- *   value?    string   - Input value attribute
- *   checked?  boolean  - Checked state (default: false)
- *   theme?    "light" | "dark" - Visual theme (default: "light")
- *   class?    string   - Additional CSS classes
+ *   name         string            (required) - Form input name
+ *   value?       string            - Input value attribute
+ *   checked?     boolean           - Checked state (default: false)
+ *   indeterminate? boolean         - Indeterminate state (default: false)
+ *   size?        "s" | "m"         - Checkbox size (default: "m")
+ *   disabled?    boolean           - Disabled state (default: false)
+ *   error?       boolean           - Error state (default: false)
+ *   class?       string            - Additional CSS classes
+ *
+ * States:
+ *   - Unchecked: default state
+ *   - Checked: when checked prop is true
+ *   - Indeterminate: when indeterminate prop is true (overrides checked)
+ *   - Disabled: when disabled prop is true
+ *   - Error: when error prop is true
+ *   - Focused: keyboard focus state
+ *   - Hovered: mouse hover state
+ *
+ * Sizes (from Figma):
+ *   - s: 16px × 16px
+ *   - m: 24px × 24px
+ *
+ * Usage:
+ *   <Checkbox name="agree" size="m">I agree to the terms</Checkbox>
+ *   <Checkbox name="feature" checked size="s">Enable feature</Checkbox>
+ *   <Checkbox name="selectAll" indeterminate size="m">Select all</Checkbox>
  */
 
 interface Props {
   name: string;
   value?: string;
   checked?: boolean;
-  theme?: "light" | "dark";
+  indeterminate?: boolean;
+  size?: "s" | "m";
+  disabled?: boolean;
+  error?: boolean;
   class?: string;
+  [key: string]: any;
 }
 
 const {
   name,
   value,
   checked = false,
-  theme = "light",
+  indeterminate = false,
+  size = "m",
+  disabled = false,
+  error = false,
   class: className = "",
+  ...rest
 } = Astro.props;
 
-const id = `${name}-${value || "default"}`;
+const id = `checkbox-${name}-${value || "default"}`;
 ---
 
 <label
-  class:list={["checkbox", `checkbox--${theme}`, className]}
+  class:list={[
+    "checkbox",
+    `checkbox--${size}`,
+    { "checkbox--error": error },
+    className
+  ]}
   for={id}
   data-checkbox
 >
@@ -46,8 +80,12 @@ const id = `${name}-${value || "default"}`;
     name={name}
     value={value}
     checked={checked}
+    disabled={disabled}
+    {...indeterminate ? { "data-indeterminate": "true" } : {}}
+    {...rest}
   />
   <span class="checkbox__custom" aria-hidden="true" data-checkbox-custom>
+    <!-- Check icon (shown when checked) -->
     <svg
       class="checkbox__check"
       viewBox="0 0 12 10"
@@ -62,8 +100,31 @@ const id = `${name}-${value || "default"}`;
         stroke-linejoin="round"
       />
     </svg>
+    <!-- Minus icon (shown when indeterminate) -->
+    <svg
+      class="checkbox__minus"
+      viewBox="0 0 12 2"
+      fill="none"
+      data-checkbox-minus
+    >
+      <path
+        d="M1 1H11"
+        stroke="currentColor"
+        stroke-width="1.5"
+        stroke-linecap="round"
+      />
+    </svg>
   </span>
   <span class="checkbox__label">
     <slot />
   </span>
 </label>
+
+<script>
+  // Set indeterminate property (can't be set via HTML attribute)
+  document.querySelectorAll('[data-indeterminate="true"]').forEach((input) => {
+    if (input instanceof HTMLInputElement) {
+      input.indeterminate = true;
+    }
+  });
+</script>

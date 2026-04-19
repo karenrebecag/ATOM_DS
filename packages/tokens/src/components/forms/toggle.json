@@ -46,7 +46,7 @@
           "m": { "$value": "20px" }
         },
         "radius": { "$value": "44px", "$type": "dimension" },
-        "shadow": { "$value": "0px 0px 4px 0px rgba(10, 13, 18, 0.1)", "$type": "shadow" }
+        "shadow": { "$value": "0px 2px 4px 0px rgba(9, 9, 11, 0.08)", "$type": "shadow", "$description": "Toggle knob shadow (light theme)" }
       },
       "translate": {
         "$type": "dimension",

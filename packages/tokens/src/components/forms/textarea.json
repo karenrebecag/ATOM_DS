@@ -1,0 +1,177 @@
+{
+  "textarea": {
+    "padding": {
+      "$type": "dimension",
+      "x-m": {
+        "$value": "{Primitive.Spacing.sm}",
+        "$description": "12px"
+      },
+      "y-m": {
+        "$value": "{Primitive.Spacing.sm}",
+        "$description": "12px"
+      },
+      "x-xl": {
+        "$value": "{Primitive.Spacing.sm}",
+        "$description": "12px"
+      },
+      "y-xl": {
+        "$value": "{Primitive.Spacing.md}",
+        "$description": "20px"
+      }
+    },
+    "height": {
+      "$type": "dimension",
+      "m": {
+        "$value": "56px",
+        "$description": "Medium height"
+      },
+      "xl": {
+        "$value": "88px",
+        "$description": "Extra large height"
+      }
+    },
+    "gap": {
+      "$type": "dimension",
+      "vertical": {
+        "$value": "{Primitive.Spacing.s}",
+        "$description": "8px - Gap between label, field, and bottom"
+      }
+    },
+    "border": {
+      "width": {
+        "$type": "dimension",
+        "$value": "{Primitive.Stroke.s}",
+        "$description": "1px"
+      },
+      "radius": {
+        "$type": "dimension",
+        "$value": "{Primitive.Radius.s}",
+        "$description": "8px"
+      }
+    },
+    "scrollbar": {
+      "width": {
+        "$type": "dimension",
+        "$value": "4px"
+      },
+      "radius": {
+        "$type": "dimension",
+        "$value": "24px",
+        "$description": "Pill shaped"
+      }
+    },
+    "font": {
+      "size": {
+        "m": {
+          "$type": "number",
+          "$value": "{figma.typography.font-sizes.label}",
+          "$description": "12px"
+        },
+        "xl": {
+          "$type": "number",
+          "$value": "{figma.typography.font-sizes.caption}",
+          "$description": "16px"
+        }
+      },
+      "line-height": {
+        "m": {
+          "$type": "number",
+          "$value": "{figma.typography.line-height.label}",
+          "$description": "16px"
+        },
+        "xl": {
+          "$type": "number",
+          "$value": "{figma.typography.line-height.caption}",
+          "$description": "24px"
+        }
+      },
+      "family": {
+        "$type": "string",
+        "$value": "{figma.typography.font-family.content}",
+        "$description": "Inter"
+      },
+      "weight": {
+        "$type": "string",
+        "$value": "{figma.typography.font-weight.regular}",
+        "$description": "Regular"
+      }
+    },
+    "label": {
+      "font-size": {
+        "m": {
+          "$type": "number",
+          "$value": "{figma.typography.font-sizes.label}",
+          "$description": "12px"
+        },
+        "xl": {
+          "$type": "number",
+          "$value": "{figma.typography.font-sizes.caption}",
+          "$description": "16px"
+        }
+      },
+      "line-height": {
+        "m": {
+          "$type": "number",
+          "$value": "{figma.typography.line-height.label}",
+          "$description": "16px"
+        },
+        "xl": {
+          "$type": "number",
+          "$value": "{figma.typography.line-height.caption}",
+          "$description": "24px"
+        }
+      },
+      "font-family": {
+        "$type": "string",
+        "$value": "{figma.typography.font-family.titles}",
+        "$description": "Inter"
+      },
+      "font-weight": {
+        "$type": "string",
+        "$value": "{figma.typography.font-weight.medium}",
+        "$description": "Medium"
+      }
+    },
+    "supportive-text": {
+      "font-size": {
+        "m": {
+          "$type": "number",
+          "$value": "{figma.typography.font-sizes.labelsmall}",
+          "$description": "10px"
+        },
+        "xl": {
+          "$type": "number",
+          "$value": "{figma.typography.font-sizes.label}",
+          "$description": "12px"
+        }
+      },
+      "line-height": {
+        "m": {
+          "$type": "number",
+          "$value": "{figma.typography.line-height.label-small}",
+          "$description": "16px"
+        },
+        "xl": {
+          "$type": "number",
+          "$value": "{figma.typography.line-height.label}",
+          "$description": "16px"
+        }
+      },
+      "icon-size": {
+        "m": {
+          "$type": "dimension",
+          "$value": "12px"
+        },
+        "xl": {
+          "$type": "dimension",
+          "$value": "16px"
+        }
+      },
+      "gap": {
+        "$type": "dimension",
+        "$value": "{Primitive.Spacing.s}",
+        "$description": "8px - Gap between icon and text"
+      }
+    }
+  }
+}

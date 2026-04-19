@@ -1,0 +1,37 @@
+---
+/**
+ * DialogContent — Flexible dialog content area
+ * @atomchat/components-astro
+ *
+ * Depends on:
+ *   @atomchat/css (dialog.css)
+ *
+ * Props:
+ *   class?  string  - Additional CSS classes
+ *
+ * Slots:
+ *   default  Any content: forms, lists, confirmations, tables, etc.
+ *
+ * Usage:
+ *   <DialogContent>
+ *     <p>Are you sure you want to proceed?</p>
+ *   </DialogContent>
+ *
+ *   <DialogContent>
+ *     <form>
+ *       <TextField name="email" label="Email" />
+ *       <TextField name="password" label="Password" type="password" />
+ *     </form>
+ *   </DialogContent>
+ */
+
+interface Props {
+  class?: string;
+}
+
+const { class: className = "" } = Astro.props;
+---
+
+<div class:list={["dialog-content", className]}>
+  <slot />
+</div>

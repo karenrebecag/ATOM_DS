@@ -1,0 +1,74 @@
+{
+  "figma": {
+    "semantics-color-(test)": {
+      "color": {
+        "text": {
+          "primary": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          },
+          "secondary": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          },
+          "tertiary": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          },
+          "inverse": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          }
+        },
+        "background": {
+          "canvas": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          },
+          "surface": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          },
+          "subtle": {
+            "$type": "color",
+            "$value": "#F5F5F5"
+          }
+        },
+        "border": {
+          "default": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          },
+          "strong": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          }
+        },
+        "feedback": {
+          "success": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          },
+          "warning": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          },
+          "error": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          },
+          "info": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          }
+        },
+        "brand": {
+          "primary": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          }
+        }
+      }
+    }
+  }
+}

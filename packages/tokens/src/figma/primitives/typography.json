@@ -1,0 +1,164 @@
+{
+  "figma": {
+    "typography": {
+      "font-family": {
+        "titles": {
+          "$type": "string",
+          "$value": "Inter"
+        },
+        "content": {
+          "$type": "string",
+          "$value": "Inter"
+        },
+        "icon-pack": {
+          "classic": {
+            "$type": "string",
+            "$value": "Font Awesome 7 Pro"
+          },
+          "brands": {
+            "$type": "string",
+            "$value": "Font Awesome 7 Brands"
+          }
+        }
+      },
+      "font-weight": {
+        "bold": {
+          "$type": "string",
+          "$value": "Bold"
+        },
+        "medium": {
+          "$type": "string",
+          "$value": "Medium"
+        },
+        "regular": {
+          "$type": "string",
+          "$value": "Regular"
+        }
+      },
+      "line-height": {
+        "display-xl": {
+          "$type": "number",
+          "$value": "88"
+        },
+        "display-l": {
+          "$type": "number",
+          "$value": "80"
+        },
+        "display-m": {
+          "$type": "number",
+          "$value": "72"
+        },
+        "display-s": {
+          "$type": "number",
+          "$value": "64"
+        },
+        "title-huge": {
+          "$type": "number",
+          "$value": "64"
+        },
+        "h1": {
+          "$type": "number",
+          "$value": "56"
+        },
+        "h2": {
+          "$type": "number",
+          "$value": "48"
+        },
+        "h3": {
+          "$type": "number",
+          "$value": "40"
+        },
+        "h4": {
+          "$type": "number",
+          "$value": "32"
+        },
+        "heading": {
+          "$type": "number",
+          "$value": "32"
+        },
+        "body": {
+          "$type": "number",
+          "$value": "24"
+        },
+        "caption": {
+          "$type": "number",
+          "$value": "24"
+        },
+        "label": {
+          "$type": "number",
+          "$value": "16"
+        },
+        "label-small": {
+          "$type": "number",
+          "$value": "16"
+        },
+        "footnote": {
+          "$type": "number",
+          "$value": "16"
+        }
+      },
+      "font-sizes": {
+        "caption": {
+          "$type": "number",
+          "$value": "16"
+        },
+        "label": {
+          "$type": "number",
+          "$value": "12"
+        },
+        "labelsmall": {
+          "$type": "number",
+          "$value": "10"
+        },
+        "displayxl": {
+          "$type": "number",
+          "$value": "72"
+        },
+        "displayl": {
+          "$type": "number",
+          "$value": "64"
+        },
+        "displaym": {
+          "$type": "number",
+          "$value": "56"
+        },
+        "displays": {
+          "$type": "number",
+          "$value": "52"
+        },
+        "hugetitle": {
+          "$type": "number",
+          "$value": "48"
+        },
+        "h1": {
+          "$type": "number",
+          "$value": "44"
+        },
+        "h2": {
+          "$type": "number",
+          "$value": "36"
+        },
+        "h3": {
+          "$type": "number",
+          "$value": "32"
+        },
+        "h4": {
+          "$type": "number",
+          "$value": "28"
+        },
+        "heading": {
+          "$type": "number",
+          "$value": "24"
+        },
+        "body": {
+          "$type": "number",
+          "$value": "20"
+        },
+        "footnote": {
+          "$type": "number",
+          "$value": "8"
+        }
+      }
+    }
+  }
+}

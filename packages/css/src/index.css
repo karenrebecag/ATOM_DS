@@ -6,14 +6,11 @@
    Load order: foundation → components → utilities
 ============================================ */
 
-/* Foundation (reset, base, typography) */
+/* Foundation (reset, base, typography, responsive) */
 @import './foundation/index.css';
 
 /* Layout Primitives (container, stack, grid) */
 @import './layout/index.css';
 
-/* Components (buttons, forms, etc) */
+/* Components (buttons, forms, navigation, feedback, etc) */
 @import './components/index.css';
-
-/* Utilities (motion, glass, responsive, helpers) */
-@import './utilities/index.css';

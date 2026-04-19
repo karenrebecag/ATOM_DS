@@ -1,0 +1,60 @@
+/* ============================================
+   @atomchat/css — avatar-group.css
+   Depends on: @atomchat/tokens (tokens.css)
+   Molecule component that composes Avatar atoms
+============================================ */
+
+/* AVATAR GROUP — Overlapping avatars with counter */
+.avatar-group {
+  display: flex;
+  align-items: center;
+  padding-right: var(--s);
+}
+
+.avatar-group__item {
+  margin-right: calc(var(--s) * -1);
+}
+
+.avatar-group__counter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-right: calc(var(--s) * -1);
+  background-color: var(--bg-tertiary);
+  color: var(--fg-primary);
+  font-family: var(--font-body);
+  font-weight: var(--font-weight-regular);
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Size-specific styles for counter (matches avatar sizes) */
+/* Note: XS not in Figma design, only S, M, L */
+
+.avatar-group--s .avatar-group__counter {
+  width: var(--avatar-structure-size-s);
+  height: var(--avatar-structure-size-s);
+  border-radius: var(--radius-m);
+  padding: var(--s) var(--xs);
+  font-size: var(--text-label-regular);
+  line-height: var(--line-height-label);
+}
+
+.avatar-group--m .avatar-group__counter {
+  width: var(--avatar-structure-size-m);
+  height: var(--avatar-structure-size-m);
+  border-radius: var(--radius-md);
+  padding: var(--sm) var(--xs);
+  font-size: var(--text-label-regular);
+  line-height: var(--line-height-label);
+}
+
+.avatar-group--l .avatar-group__counter {
+  width: var(--avatar-structure-size-l);
+  height: var(--avatar-structure-size-l);
+  border-radius: var(--radius-l);
+  padding: var(--sm) var(--xs);
+  font-size: var(--text-caption-regular);
+  line-height: var(--line-height-caption);
+}

@@ -1,0 +1,229 @@
+/* ============================================
+   @atomchat/css — segment-control.css
+   Depends on: @atomchat/tokens (tokens.css)
+
+   Tokens consumed from @atomchat/tokens:
+   - Component tokens (Layer 3): --segment-control-bg-*, --segment-control-fg-*, --segment-control-border-*, --segment-control-shadow-focus
+   - Semantic tokens (Layer 2): --xs, --s, --sm, --m, --stroke-xs, --icon-s, --icon-l, --duration-quarter
+============================================ */
+
+/* ══════════════════════════════════════════════════════════
+   CONTAINER — Wraps multiple segment items
+   ══════════════════════════════════════════════════════════ */
+
+.segment-control {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s);
+  border-radius: var(--sm);
+}
+
+/* ══════════════════════════════════════════════════════════
+   ITEM — Individual segment button
+   ══════════════════════════════════════════════════════════ */
+
+.segment-control__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--s);
+  border: var(--stroke-xs) solid transparent;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition:
+    background-color var(--duration-quarter),
+    border-color var(--duration-quarter),
+    box-shadow var(--duration-quarter),
+    color var(--duration-quarter);
+}
+
+/* ── Tab Contents (inner flex) ──────────────────────────── */
+.segment-control__content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--xs);
+  border-radius: var(--s);
+}
+
+/* ── Icon ───────────────────────────────────────────────── */
+.segment-control__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: clip;
+  flex-shrink: 0;
+  color: var(--segment-control-fg-enabled);
+}
+
+.segment-control__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ── Label ──────────────────────────────────────────────── */
+.segment-control__label {
+  font-family: var(--font-body);
+  font-weight: var(--font-weight-regular);
+  white-space: nowrap;
+  text-align: center;
+  color: var(--segment-control-fg-enabled);
+}
+
+/* ── Info Icon (trailing) ───────────────────────────────── */
+.segment-control__info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: clip;
+  flex-shrink: 0;
+  color: var(--segment-control-fg-enabled);
+}
+
+.segment-control__info svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ══════════════════════════════════════════════════════════
+   SIZE VARIANTS
+   ══════════════════════════════════════════════════════════ */
+
+/* ── Extra Small (24px) ─────────────────────────────────── */
+.segment-control--xs .segment-control__item {
+  padding: var(--xs);
+}
+
+.segment-control--xs .segment-control__icon,
+.segment-control--xs .segment-control__info {
+  width: var(--icon-s);
+  height: var(--icon-s);
+}
+
+.segment-control--xs .segment-control__label {
+  font-size: var(--text-label);
+  line-height: var(--line-height-label);
+}
+
+/* ── Small (32px) ───────────────────────────────────────── */
+.segment-control--s .segment-control__item {
+  padding: var(--s);
+}
+
+.segment-control--s .segment-control__icon,
+.segment-control--s .segment-control__info {
+  width: var(--icon-s);
+  height: var(--icon-s);
+}
+
+.segment-control--s .segment-control__label {
+  font-size: var(--text-label);
+  line-height: var(--line-height-label);
+}
+
+/* ── Medium (40px) ──────────────────────────────────────── */
+.segment-control--m .segment-control__item {
+  padding: var(--sm);
+}
+
+.segment-control--m .segment-control__icon,
+.segment-control--m .segment-control__info {
+  width: var(--icon-s);
+  height: var(--icon-s);
+}
+
+.segment-control--m .segment-control__label {
+  font-size: var(--text-label);
+  line-height: var(--line-height-label);
+}
+
+/* ── Large (48px) ───────────────────────────────────────── */
+.segment-control--l .segment-control__item {
+  padding: var(--m);
+}
+
+.segment-control--l .segment-control__icon,
+.segment-control--l .segment-control__info {
+  width: var(--icon-s);
+  height: var(--icon-s);
+}
+
+.segment-control--l .segment-control__label {
+  font-size: var(--text-label);
+  line-height: var(--line-height-label);
+}
+
+/* ── Extra Large (56px) ─────────────────────────────────── */
+.segment-control--xl .segment-control__item {
+  padding: var(--m);
+}
+
+.segment-control--xl .segment-control__icon,
+.segment-control--xl .segment-control__info {
+  width: var(--icon-l);
+  height: var(--icon-l);
+}
+
+.segment-control--xl .segment-control__label {
+  font-size: var(--text-body);
+  line-height: var(--line-height-body);
+}
+
+/* ══════════════════════════════════════════════════════════
+   SELECTED STATE
+   ══════════════════════════════════════════════════════════ */
+
+.segment-control__item--selected {
+  background-color: var(--segment-control-bg-selected);
+  border-color: var(--segment-control-border-selected);
+}
+
+/* Only icon changes color when selected, label stays at enabled */
+.segment-control__item--selected .segment-control__icon {
+  color: var(--segment-control-fg-selected);
+}
+
+/* ══════════════════════════════════════════════════════════
+   HOVER STATE
+   ══════════════════════════════════════════════════════════ */
+
+.segment-control__item:hover {
+  background-color: var(--segment-control-bg-hovered);
+}
+
+.segment-control__item:hover .segment-control__icon,
+.segment-control__item:hover .segment-control__label,
+.segment-control__item:hover .segment-control__info {
+  color: var(--segment-control-fg-hovered);
+}
+
+/* ══════════════════════════════════════════════════════════
+   FOCUS STATE
+   ══════════════════════════════════════════════════════════ */
+
+.segment-control__item:focus-visible {
+  background-color: var(--segment-control-bg-enabled);
+  box-shadow: var(--segment-control-shadow-focus);
+  outline: none;
+}
+
+/* ══════════════════════════════════════════════════════════
+   DISABLED STATE
+   ══════════════════════════════════════════════════════════ */
+
+.segment-control__item--disabled {
+  background-color: var(--segment-control-bg-disabled);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.segment-control__item--disabled .segment-control__icon,
+.segment-control__item--disabled .segment-control__label,
+.segment-control__item--disabled .segment-control__info {
+  color: var(--segment-control-fg-disabled);
+}
+
+.segment-control__item--disabled.segment-control__item--selected {
+  border-color: var(--segment-control-border-disabled);
+}

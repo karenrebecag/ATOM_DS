@@ -1,0 +1,130 @@
+/* ============================================
+   @atomchat/css — tooltip.css
+   Depends on: @atomchat/tokens (tokens.css)
+   Tooltip component for contextual information
+============================================ */
+
+/* TOOLTIP — Contextual information overlay */
+.tooltip {
+  display: flex;
+  border-radius: var(--s);
+  position: relative;
+}
+
+/* PLAIN VARIANT — Simple dark tooltip with text */
+.tooltip--plain {
+  align-items: center;
+  justify-content: center;
+  max-width: var(--tooltip-plain-max-width);
+  min-height: var(--tooltip-plain-min-height);
+  max-height: var(--tooltip-plain-max-height);
+  padding: var(--tooltip-plain-padding);
+  background-color: var(--tooltip-plain-bg);
+  backdrop-filter: blur(var(--tooltip-plain-backdrop-blur));
+  -webkit-backdrop-filter: blur(var(--tooltip-plain-backdrop-blur));
+}
+
+.tooltip--plain .tooltip__text {
+  flex: 1 1 0;
+  min-width: 1px;
+  font-family: var(--font-family-titles);
+  font-size: var(--font-sizes-label);
+  line-height: var(--line-height-label);
+  font-weight: var(--font-weight-medium);
+  color: var(--tooltip-plain-fg);
+  text-align: center;
+}
+
+/* RICH VARIANT — Complex tooltip with multiple sections */
+.tooltip--rich {
+  flex-direction: column;
+  gap: var(--tooltip-rich-gap);
+  max-width: var(--tooltip-rich-max-width);
+  width: var(--tooltip-rich-max-width);
+  padding-bottom: var(--tooltip-rich-action-padding);
+  background-color: var(--tooltip-rich-bg);
+  border: var(--tooltip-rich-border-width) solid var(--tooltip-rich-border-color);
+  box-shadow: var(--tooltip-rich-shadow);
+}
+
+/* Rich tooltip sections */
+.tooltip__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--tooltip-rich-content-gap);
+  padding: var(--tooltip-rich-content-padding);
+  width: 100%;
+}
+
+.tooltip__headline {
+  font-family: var(--font-family-titles);
+  font-size: var(--font-sizes-label);
+  line-height: var(--line-height-label);
+  font-weight: var(--font-weight-bold);
+  color: var(--fg-primary);
+  margin: 0;
+  width: 100%;
+}
+
+.tooltip__supporting {
+  font-family: var(--font-family-content);
+  font-size: var(--font-sizes-label);
+  line-height: var(--line-height-label);
+  font-weight: var(--font-weight-regular);
+  color: var(--fg-quaternary);
+  margin: 0;
+  width: 100%;
+}
+
+/* Extra content slot */
+.tooltip__extra {
+  width: 100%;
+  flex-shrink: 0;
+}
+
+/* Action section (button container) */
+.tooltip__action {
+  display: flex;
+  gap: var(--m);
+  align-items: center;
+  padding-left: var(--tooltip-rich-action-padding);
+  padding-right: var(--tooltip-rich-action-padding);
+  width: 100%;
+}
+
+/* Positioning classes (for positioning the tooltip) */
+.tooltip--top {
+  /* Position above trigger element */
+}
+
+.tooltip--bottom {
+  /* Position below trigger element */
+}
+
+.tooltip--left {
+  /* Position to the left of trigger element */
+}
+
+.tooltip--right {
+  /* Position to the right of trigger element */
+}
+
+/* Animations */
+@keyframes tooltip-fade-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.tooltip--visible {
+  animation: tooltip-fade-in var(--duration-quarter) var(--ease-standard);
+}
+
+.tooltip--hidden {
+  display: none;
+}

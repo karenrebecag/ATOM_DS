@@ -1,0 +1,40 @@
+{
+  "pagination": {
+    "bg": {
+      "enabled": {
+        "$type": "color",
+        "$value": "{bg.primary}",
+        "$description": "Pagination background"
+      }
+    },
+    "border": {
+      "color": {
+        "$type": "color",
+        "$value": "{border.primary}",
+        "$description": "Top border color (table border)"
+      },
+      "width": {
+        "$type": "dimension",
+        "$value": "0.5px",
+        "$description": "Top border width"
+      }
+    },
+    "height": {
+      "$type": "dimension",
+      "$value": "48px",
+      "$description": "Total pagination bar height"
+    },
+    "skeleton": {
+      "select-width": {
+        "$type": "dimension",
+        "$value": "70px",
+        "$description": "Skeleton placeholder width for select"
+      },
+      "info-width": {
+        "$type": "dimension",
+        "$value": "90px",
+        "$description": "Skeleton placeholder width for page info"
+      }
+    }
+  }
+}

@@ -1,0 +1,99 @@
+---
+/**
+ * CardHeader — Card header with optional image, text, and action
+ * @atomchat/components-astro
+ *
+ * Depends on:
+ *   @atomchat/tokens (--card-* tokens)
+ *   @atomchat/css (card.css)
+ *
+ * Props:
+ *   headline          string   - Header headline text (required)
+ *   supportingText?   string   - Supporting text below headline
+ *   hasLeadImage?     boolean  - Show leading image/avatar (default: false)
+ *   hasAction?        boolean  - Show action button (default: false)
+ *   actionIcon?       string   - Icon for action button (default: ellipsis)
+ *   class?            string   - Additional CSS classes
+ *
+ * Slots:
+ *   image   Custom image/avatar content (overrides hasLeadImage)
+ *   action  Custom action button (overrides hasAction)
+ *
+ * Usage:
+ *   <!-- Basic header with text only -->
+ *   <CardHeader headline="Headline" />
+ *
+ *   <!-- With supporting text -->
+ *   <CardHeader headline="Headline" supportingText="Supporting text" />
+ *
+ *   <!-- With image and action -->
+ *   <CardHeader
+ *     headline="User Name"
+ *     supportingText="@username"
+ *     hasLeadImage
+ *     hasAction
+ *   />
+ *
+ *   <!-- With custom image slot -->
+ *   <CardHeader headline="Custom">
+ *     <Avatar slot="image" size="m" src="/avatar.jpg" />
+ *   </CardHeader>
+ */
+
+import Avatar from '../atoms/media/Avatar.astro';
+import IconButton from '../atoms/buttons/IconButton.astro';
+
+interface Props {
+  headline: string;
+  supportingText?: string;
+  hasLeadImage?: boolean;
+  hasAction?: boolean;
+  actionIcon?: string;
+  class?: string;
+}
+
+const {
+  headline,
+  supportingText,
+  hasLeadImage = false,
+  hasAction = false,
+  actionIcon = "\uF142", // ellipsis-vertical
+  class: className = "",
+} = Astro.props;
+
+const hasImageSlot = Astro.slots.has("image");
+const hasActionSlot = Astro.slots.has("action");
+const showImage = hasLeadImage || hasImageSlot;
+const showAction = hasAction || hasActionSlot;
+---
+
+<div class:list={["card-header", className]}>
+  <div class="card-header__content">
+    {showImage && (
+      <div class="card-header__image">
+        {hasImageSlot ? (
+          <slot name="image" />
+        ) : (
+          <Avatar size="m" icon={"\uE269"} />
+        )}
+      </div>
+    )}
+
+    <div class="card-header__text">
+      <h3 class="card-header__headline">{headline}</h3>
+      {supportingText && (
+        <p class="card-header__supporting">{supportingText}</p>
+      )}
+    </div>
+  </div>
+
+  {showAction && (
+    <div class="card-header__action">
+      {hasActionSlot ? (
+        <slot name="action" />
+      ) : (
+        <IconButton variant="tertiary" size="s" icon={actionIcon} />
+      )}
+    </div>
+  )}
+</div>

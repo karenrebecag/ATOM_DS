@@ -94,7 +94,18 @@ export default {
       brokenReferences: 'console',
     },
   },
-  source: ['src/**/*.json'],
+  source: [
+    // Canónicos — siempre en source
+    'src/foundation/**/*.json',
+    'src/semantic/**/*.json',
+    'src/components/**/*.json',
+    'src/component/**/*.json',     // legacy singular form
+    'src/themes/**/*.json',
+
+    // Figma primitivos — valores crudos que foundation/ referencia
+    'src/figma/primitives/**/*.json',
+  ],
+  // Excluded: figma/semantics/, figma/web-library/ (not canonical tokens)
   platforms: {
     // ── CSS Custom Properties ──────────────────────────────────
     css: {

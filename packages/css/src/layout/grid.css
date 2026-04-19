@@ -42,15 +42,15 @@
 /* ── Auto-fit Responsive (fills available space) ───────── */
 
 .grid--auto-fit {
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(var(--grid-min-column-md), 1fr));
 }
 
 .grid--auto-fit-sm {
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(var(--grid-min-column-sm), 1fr));
 }
 
 .grid--auto-fit-lg {
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(var(--grid-min-column-lg), 1fr));
 }
 
 /* ── Gap Variants ────────────────────────────────────── */

@@ -1,0 +1,30 @@
+{
+  "card": {
+    "bg": {
+      "default": {
+        "$type": "color",
+        "$value": "{bg.primary}",
+        "$description": "Card background"
+      }
+    },
+    "border": {
+      "default": {
+        "$type": "color",
+        "$value": "{border.primary}",
+        "$description": "Card border"
+      }
+    },
+    "fg": {
+      "primary": {
+        "$type": "color",
+        "$value": "{fg.primary}",
+        "$description": "Primary text (headlines)"
+      },
+      "secondary": {
+        "$type": "color",
+        "$value": "{fg.quaternary}",
+        "$description": "Secondary text (supporting, body)"
+      }
+    }
+  }
+}

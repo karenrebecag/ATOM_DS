@@ -24,12 +24,19 @@ let tokenCount = 0;
 const allTokenPaths = new Set();
 const allReferences = [];
 
-function collectJsonFiles(dir) {
+function collectJsonFiles(dir, excludePaths = []) {
   const files = [];
   for (const entry of readdirSync(dir)) {
     const full = join(dir, entry);
+    const rel = relative(TOKENS_DIR, full);
+
+    // Skip excluded paths
+    if (excludePaths.some(exclude => rel.startsWith(exclude))) {
+      continue;
+    }
+
     if (statSync(full).isDirectory()) {
-      files.push(...collectJsonFiles(full));
+      files.push(...collectJsonFiles(full, excludePaths));
     } else if (entry.endsWith('.json')) {
       files.push(full);
     }
@@ -122,8 +129,13 @@ function validateFile(filePath) {
 console.log('\n  ATOM Token Validator');
 console.log('  ─────────────────────────────');
 
-const files = collectJsonFiles(TOKENS_DIR);
-console.log(`  Scanning ${files.length} JSON files...\n`);
+const EXCLUDE_PATHS = [
+  'figma/semantics',    // Figma semantic aliases with broken refs
+  'figma/web-library',  // Figma metadata, not tokens
+];
+
+const files = collectJsonFiles(TOKENS_DIR, EXCLUDE_PATHS);
+console.log(`  Scanning ${files.length} JSON files (excluding ${EXCLUDE_PATHS.join(', ')})...\n`);
 
 for (const file of files) {
   validateFile(file);

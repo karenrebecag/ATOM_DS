@@ -2,6 +2,7 @@
   "tags": {
     "bg": {
       "$type": "color",
+      "$description": "Background colors for all variants and states",
       "success": { "$value": "{bg.status.success}" },
       "warning": { "$value": "{bg.status.warning}" },
       "danger":  { "$value": "{bg.status.error}" },
@@ -17,6 +18,7 @@
       "filled-neutral": { "$value": "{bg.status.neutral}" },
       "filled-brand":   { "$value": "{bg.status.brand}" },
       "filled-ai":      { "$value": "{bg.status.ai}" },
+      "filled-disabled": { "$value": "{bg.disabled}", "$description": "Disabled filled background" },
 
       "outlined-success": { "$value": "{bg.soft.tertiary}" },
       "outlined-warning": { "$value": "{bg.soft.tertiary}" },
@@ -24,10 +26,21 @@
       "outlined-info":    { "$value": "{bg.soft.tertiary}" },
       "outlined-neutral": { "$value": "{bg.soft.tertiary}" },
       "outlined-brand":   { "$value": "{bg.soft.tertiary}" },
-      "outlined-ai":      { "$value": "{bg.soft.tertiary}" }
+      "outlined-ai":      { "$value": "{bg.soft.tertiary}" },
+      "outlined-disabled": { "$value": "{bg.soft.tertiary}", "$description": "Disabled outlined background" },
+
+      "ghost-success": { "$value": "transparent", "$description": "Transparent background for ghost variant" },
+      "ghost-warning": { "$value": "transparent" },
+      "ghost-danger":  { "$value": "transparent" },
+      "ghost-info":    { "$value": "transparent" },
+      "ghost-neutral": { "$value": "transparent" },
+      "ghost-brand":   { "$value": "transparent" },
+      "ghost-ai":      { "$value": "transparent" },
+      "ghost-disabled": { "$value": "transparent", "$description": "Transparent background for ghost disabled" }
     },
     "fg": {
       "$type": "color",
+      "$description": "Foreground (text) colors for all variants",
       "filled-success": { "$value": "{fg.status.on.success}" },
       "filled-warning": { "$value": "{fg.status.on.warning}" },
       "filled-danger":  { "$value": "{fg.status.on.error}" },
@@ -35,6 +48,7 @@
       "filled-neutral": { "$value": "{fg.status.on.neutral}" },
       "filled-brand":   { "$value": "{fg.status.on.brand}" },
       "filled-ai":      { "$value": "{fg.status.on.ai}" },
+      "filled-disabled": { "$value": "{fg.disabled}", "$description": "Disabled filled text" },
 
       "outlined-success": { "$value": "{fg.status.success}" },
       "outlined-warning": { "$value": "{fg.status.warning}" },
@@ -42,17 +56,77 @@
       "outlined-info":    { "$value": "{fg.status.informative}" },
       "outlined-neutral": { "$value": "{fg.status.neutral}" },
       "outlined-brand":   { "$value": "{fg.status.brand}" },
-      "outlined-ai":      { "$value": "{fg.status.ai}" }
+      "outlined-ai":      { "$value": "{fg.status.ai}" },
+      "outlined-disabled": { "$value": "{fg.disabled}", "$description": "Disabled outlined text" },
+
+      "ghost-success": { "$value": "{fg.status.success}", "$description": "Ghost uses same colors as filled" },
+      "ghost-warning": { "$value": "{fg.status.warning}" },
+      "ghost-danger":  { "$value": "{fg.status.error}" },
+      "ghost-info":    { "$value": "{fg.status.informative}" },
+      "ghost-neutral": { "$value": "{fg.status.neutral}" },
+      "ghost-brand":   { "$value": "{fg.status.brand}" },
+      "ghost-ai":      { "$value": "{fg.status.ai}" },
+      "ghost-disabled": { "$value": "{fg.disabled}", "$description": "Disabled ghost text" }
     },
     "border": {
       "$type": "color",
+      "$description": "Border colors for outlined variant",
       "outlined-success": { "$value": "{fg.status.success}" },
       "outlined-warning": { "$value": "{fg.status.warning}" },
       "outlined-danger":  { "$value": "{fg.status.error}" },
       "outlined-info":    { "$value": "{fg.status.informative}" },
       "outlined-neutral": { "$value": "{fg.status.neutral}" },
       "outlined-brand":   { "$value": "{fg.status.on.brand}" },
-      "outlined-ai":      { "$value": "{fg.status.on.ai}" }
+      "outlined-ai":      { "$value": "{fg.status.on.ai}" },
+      "outlined-disabled": { "$value": "{border.disabled}", "$description": "Disabled outlined border" }
+    },
+    "padding": {
+      "$type": "dimension",
+      "$description": "Padding values for size variants (note: asymmetric, defined in CSS)",
+      "x-xs": { "$value": "{Primitive.Spacing.xs}", "$description": "4px horizontal for xs" },
+      "y-xs": { "$value": "0px", "$description": "0px vertical for xs (no token for 0)" },
+      "x-s":  { "$value": "{Primitive.Spacing.xs}", "$description": "4px horizontal for s" },
+      "y-s":  { "$value": "{Primitive.Spacing.xxs}", "$description": "2px vertical for s" },
+      "x-m":  { "$value": "{Primitive.Spacing.s}", "$description": "8px horizontal for m" },
+      "y-m":  { "$value": "{Primitive.Spacing.xs}", "$description": "4px vertical for m" }
+    },
+    "gap": {
+      "$type": "dimension",
+      "$description": "Gap between elements",
+      "xs": { "$value": "{Primitive.Spacing.xs}", "$description": "4px" },
+      "s":  { "$value": "{Primitive.Spacing.xs}", "$description": "4px" },
+      "m":  { "$value": "{Primitive.Spacing.s}", "$description": "8px" }
+    },
+    "font-size": {
+      "$type": "dimension",
+      "$description": "Font sizes for different tag sizes",
+      "xs": { "$value": "8px" },
+      "s":  { "$value": "10px" },
+      "m":  { "$value": "12px" }
+    },
+    "line-height": {
+      "$type": "dimension",
+      "$description": "Line heights for different tag sizes",
+      "xs": { "$value": "{line-height-footnote}", "$description": "16px" },
+      "s":  { "$value": "{line-height-label}", "$description": "16px" },
+      "m":  { "$value": "{line-height-label}", "$description": "16px" }
+    },
+    "max-width": {
+      "$type": "dimension",
+      "$description": "Maximum width to prevent overflow",
+      "xs": { "$value": "200px" },
+      "s":  { "$value": "200px" },
+      "m":  { "$value": "400px" }
+    },
+    "border-radius": {
+      "$type": "dimension",
+      "$value": "{radius-pill}",
+      "$description": "Pill-shaped border radius (1000px)"
+    },
+    "border-width": {
+      "$type": "dimension",
+      "$value": "{stroke-xs}",
+      "$description": "1px border for outlined variant"
     }
   }
 }

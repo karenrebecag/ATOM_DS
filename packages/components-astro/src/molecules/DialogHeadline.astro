@@ -1,0 +1,100 @@
+---
+/**
+ * DialogHeadline — Dialog header with headline, back/close buttons
+ * @atomchat/components-astro
+ *
+ * Depends on:
+ *   @atomchat/tokens (--dialog-* tokens)
+ *   @atomchat/css (dialog.css)
+ *
+ * Props:
+ *   headline        string            - Headline text (required)
+ *   supportingText? string            - Supporting text (Center variant only)
+ *   alignment?      "left" | "center" - Layout alignment (default: "left")
+ *   hasBack?        boolean           - Show back button (default: false)
+ *   isClosable?     boolean           - Show close button (default: true)
+ *   class?          string            - Additional CSS classes
+ *
+ * Slots:
+ *   icon   Custom icon for Center variant (replaces default icon)
+ *
+ * Usage:
+ *   <!-- Left aligned (compact) -->
+ *   <DialogHeadline headline="Edit profile" isClosable />
+ *
+ *   <!-- Left with back button -->
+ *   <DialogHeadline headline="Step 2" hasBack isClosable />
+ *
+ *   <!-- Center aligned with supporting text -->
+ *   <DialogHeadline
+ *     alignment="center"
+ *     headline="Confirm action"
+ *     supportingText="This action cannot be undone"
+ *     isClosable
+ *   />
+ *
+ *   <!-- Center with custom icon -->
+ *   <DialogHeadline alignment="center" headline="Upload files">
+ *     <span slot="icon">📁</span>
+ *   </DialogHeadline>
+ */
+
+import IconButton from '../atoms/buttons/IconButton.astro';
+
+interface Props {
+  headline: string;
+  supportingText?: string;
+  alignment?: "left" | "center";
+  hasBack?: boolean;
+  isClosable?: boolean;
+  class?: string;
+}
+
+const {
+  headline,
+  supportingText,
+  alignment = "left",
+  hasBack = false,
+  isClosable = true,
+  class: className = "",
+} = Astro.props;
+
+const hasIconSlot = Astro.slots.has("icon");
+const isLeft = alignment === "left";
+const isCenter = alignment === "center";
+---
+
+<div class:list={[
+  "dialog-headline",
+  `dialog-headline--${alignment}`,
+  className,
+]}>
+  {/* Center: icon slot */}
+  {isCenter && hasIconSlot && (
+    <div class="dialog-headline__icon">
+      <slot name="icon" />
+    </div>
+  )}
+
+  {/* Back button */}
+  {hasBack && (
+    <div class="dialog-headline__back">
+      <IconButton variant="tertiary" size="s" icon={"\uF053"} />
+    </div>
+  )}
+
+  {/* Headline text */}
+  <h2 class="dialog-headline__title">{headline}</h2>
+
+  {/* Center: supporting text */}
+  {isCenter && supportingText && (
+    <p class="dialog-headline__supporting">{supportingText}</p>
+  )}
+
+  {/* Close button */}
+  {isClosable && (
+    <div class="dialog-headline__close">
+      <IconButton variant="tertiary" size="s" icon={"\uF00D"} />
+    </div>
+  )}
+</div>

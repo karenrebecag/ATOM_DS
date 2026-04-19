@@ -97,7 +97,7 @@
   background-color: var(--toggle-bg-off-enabled);
   padding: var(--xxs);
   overflow: hidden;
-  transition: background-color 150ms, box-shadow 150ms;
+  transition: background-color var(--duration-quarter), box-shadow var(--duration-quarter);
   flex-shrink: 0;
 }
 
@@ -106,7 +106,7 @@
   border-radius: var(--toggle-structure-knob-radius);
   background-color: var(--toggle-fg-off-enabled);
   box-shadow: var(--toggle-structure-knob-shadow);
-  transition: transform 150ms, background-color 150ms;
+  transition: transform var(--duration-quarter), background-color var(--duration-quarter);
   flex-shrink: 0;
 }
 

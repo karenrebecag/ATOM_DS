@@ -1,0 +1,297 @@
+{
+  "text-field": {
+    "padding": {
+      "$type": "dimension",
+      "x-xs": {
+        "$value": "{Primitive.Spacing.sm}",
+        "$description": "12px"
+      },
+      "y-xs": {
+        "$value": "{Primitive.Spacing.xs}",
+        "$description": "4px"
+      },
+      "x-s": {
+        "$value": "{Primitive.Spacing.sm}",
+        "$description": "12px"
+      },
+      "y-s": {
+        "$value": "{Primitive.Spacing.s}",
+        "$description": "8px"
+      },
+      "x-m": {
+        "$value": "{Primitive.Spacing.sm}",
+        "$description": "12px"
+      },
+      "y-m": {
+        "$value": "{Primitive.Spacing.sm}",
+        "$description": "12px"
+      },
+      "x-l": {
+        "$value": "{Primitive.Spacing.sm}",
+        "$description": "12px"
+      },
+      "y-l": {
+        "$value": "{Primitive.Spacing.sm}",
+        "$description": "12px"
+      },
+      "x-xl": {
+        "$value": "{Primitive.Spacing.sm}",
+        "$description": "12px"
+      },
+      "y-xl": {
+        "$value": "{Primitive.Spacing.md}",
+        "$description": "20px"
+      }
+    },
+    "gap": {
+      "$type": "dimension",
+      "vertical": {
+        "$value": "{Primitive.Spacing.s}",
+        "$description": "8px - Gap between label, field, and bottom"
+      },
+      "inner-xs": {
+        "$value": "{Primitive.Spacing.s}",
+        "$description": "8px - Gap between leading/trailing items for XS/S"
+      },
+      "inner-m": {
+        "$value": "{Primitive.Spacing.sm}",
+        "$description": "12px - Gap between leading/trailing items for M/L/XL"
+      }
+    },
+    "border": {
+      "width": {
+        "$type": "dimension",
+        "$value": "{Primitive.Stroke.s}",
+        "$description": "1px"
+      },
+      "radius": {
+        "$type": "dimension",
+        "$value": "{Primitive.Radius.s}",
+        "$description": "8px"
+      }
+    },
+    "icon": {
+      "size-xs": {
+        "$type": "dimension",
+        "$value": "16px"
+      },
+      "size-s": {
+        "$type": "dimension",
+        "$value": "16px"
+      },
+      "size-m": {
+        "$type": "dimension",
+        "$value": "16px"
+      },
+      "size-l": {
+        "$type": "dimension",
+        "$value": "16px"
+      },
+      "size-xl": {
+        "$type": "dimension",
+        "$value": "24px"
+      }
+    },
+    "font": {
+      "size-xs": {
+        "$type": "number",
+        "$value": "{figma.typography.font-sizes.label}",
+        "$description": "12px"
+      },
+      "size-s": {
+        "$type": "number",
+        "$value": "{figma.typography.font-sizes.label}",
+        "$description": "12px"
+      },
+      "size-m": {
+        "$type": "number",
+        "$value": "{figma.typography.font-sizes.label}",
+        "$description": "12px"
+      },
+      "size-l": {
+        "$type": "number",
+        "$value": "{figma.typography.font-sizes.label}",
+        "$description": "12px"
+      },
+      "size-xl": {
+        "$type": "number",
+        "$value": "{figma.typography.font-sizes.caption}",
+        "$description": "16px"
+      },
+      "line-height-xs": {
+        "$type": "number",
+        "$value": "{figma.typography.line-height.label}",
+        "$description": "16px"
+      },
+      "line-height-s": {
+        "$type": "number",
+        "$value": "{figma.typography.line-height.label}",
+        "$description": "16px"
+      },
+      "line-height-m": {
+        "$type": "number",
+        "$value": "{figma.typography.line-height.label}",
+        "$description": "16px"
+      },
+      "line-height-l": {
+        "$type": "number",
+        "$value": "{figma.typography.line-height.label}",
+        "$description": "16px"
+      },
+      "line-height-xl": {
+        "$type": "number",
+        "$value": "{figma.typography.line-height.caption}",
+        "$description": "24px"
+      },
+      "family": {
+        "$type": "string",
+        "$value": "{figma.typography.font-family.content}",
+        "$description": "Inter"
+      },
+      "weight": {
+        "$type": "string",
+        "$value": "{figma.typography.font-weight.regular}",
+        "$description": "Regular"
+      }
+    },
+    "label": {
+      "font-size-xs": {
+        "$type": "number",
+        "$value": "{figma.typography.font-sizes.label}",
+        "$description": "12px"
+      },
+      "font-size-s": {
+        "$type": "number",
+        "$value": "{figma.typography.font-sizes.label}",
+        "$description": "12px"
+      },
+      "font-size-m": {
+        "$type": "number",
+        "$value": "{figma.typography.font-sizes.label}",
+        "$description": "12px"
+      },
+      "font-size-l": {
+        "$type": "number",
+        "$value": "{figma.typography.font-sizes.label}",
+        "$description": "12px"
+      },
+      "font-size-xl": {
+        "$type": "number",
+        "$value": "{figma.typography.font-sizes.caption}",
+        "$description": "16px"
+      },
+      "line-height-xs": {
+        "$type": "number",
+        "$value": "{figma.typography.line-height.label}",
+        "$description": "16px"
+      },
+      "line-height-s": {
+        "$type": "number",
+        "$value": "{figma.typography.line-height.label}",
+        "$description": "16px"
+      },
+      "line-height-m": {
+        "$type": "number",
+        "$value": "{figma.typography.line-height.label}",
+        "$description": "16px"
+      },
+      "line-height-l": {
+        "$type": "number",
+        "$value": "{figma.typography.line-height.label}",
+        "$description": "16px"
+      },
+      "line-height-xl": {
+        "$type": "number",
+        "$value": "{figma.typography.line-height.caption}",
+        "$description": "24px"
+      },
+      "font-family": {
+        "$type": "string",
+        "$value": "{figma.typography.font-family.titles}",
+        "$description": "Inter"
+      },
+      "font-weight": {
+        "$type": "string",
+        "$value": "{figma.typography.font-weight.medium}",
+        "$description": "Medium"
+      }
+    },
+    "supportive-text": {
+      "font-size-xs": {
+        "$type": "number",
+        "$value": "{figma.typography.font-sizes.labelsmall}",
+        "$description": "10px"
+      },
+      "font-size-s": {
+        "$type": "number",
+        "$value": "{figma.typography.font-sizes.labelsmall}",
+        "$description": "10px"
+      },
+      "font-size-m": {
+        "$type": "number",
+        "$value": "{figma.typography.font-sizes.labelsmall}",
+        "$description": "10px"
+      },
+      "font-size-l": {
+        "$type": "number",
+        "$value": "{figma.typography.font-sizes.labelsmall}",
+        "$description": "10px"
+      },
+      "font-size-xl": {
+        "$type": "number",
+        "$value": "{figma.typography.font-sizes.label}",
+        "$description": "12px"
+      },
+      "line-height-xs": {
+        "$type": "number",
+        "$value": "{figma.typography.line-height.label-small}",
+        "$description": "16px"
+      },
+      "line-height-s": {
+        "$type": "number",
+        "$value": "{figma.typography.line-height.label-small}",
+        "$description": "16px"
+      },
+      "line-height-m": {
+        "$type": "number",
+        "$value": "{figma.typography.line-height.label-small}",
+        "$description": "16px"
+      },
+      "line-height-l": {
+        "$type": "number",
+        "$value": "{figma.typography.line-height.label-small}",
+        "$description": "16px"
+      },
+      "line-height-xl": {
+        "$type": "number",
+        "$value": "{figma.typography.line-height.label}",
+        "$description": "16px"
+      },
+      "icon-size-xs": {
+        "$type": "dimension",
+        "$value": "12px"
+      },
+      "icon-size-s": {
+        "$type": "dimension",
+        "$value": "12px"
+      },
+      "icon-size-m": {
+        "$type": "dimension",
+        "$value": "12px"
+      },
+      "icon-size-l": {
+        "$type": "dimension",
+        "$value": "12px"
+      },
+      "icon-size-xl": {
+        "$type": "dimension",
+        "$value": "16px"
+      },
+      "gap": {
+        "$type": "dimension",
+        "$value": "{Primitive.Spacing.s}",
+        "$description": "8px - Gap between icon and text"
+      }
+    }
+  }
+}

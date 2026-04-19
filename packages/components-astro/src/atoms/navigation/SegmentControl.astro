@@ -1,0 +1,209 @@
+---
+/**
+ * SegmentControl — Tabbed segment selection control
+ * @atomchat/components-astro
+ *
+ * Depends on:
+ *   @atomchat/tokens (--segment-control-* tokens)
+ *   @atomchat/css (segment-control.css)
+ *
+ * Props:
+ *   size?          "xs" | "s" | "m" | "l" | "xl" - Control size (default: "m")
+ *   items          SegmentItem[]                  - Array of segment items (required)
+ *   selectedIndex? number                         - Index of selected segment (default: 0)
+ *   disabled?      boolean                        - Disable all segments (default: false)
+ *   name?          string                         - Name for ARIA labelling
+ *   class?         string                         - Additional CSS classes
+ *
+ * SegmentItem:
+ *   label?    string  - Text label (omit for icon-only)
+ *   icon?     string  - SVG markup string for leading icon
+ *   info?     string  - SVG markup string for trailing info icon
+ *   disabled? boolean - Disable individual segment
+ *
+ * Accessibility:
+ *   - Uses role="tablist" with role="tab" children
+ *   - Arrow keys navigate between segments (via script)
+ *   - Selected segment has aria-selected="true"
+ *   - Disabled segments have aria-disabled="true"
+ *
+ * Usage:
+ *   <SegmentControl
+ *     size="m"
+ *     selectedIndex={0}
+ *     items={[
+ *       { label: "Tab 1" },
+ *       { label: "Tab 2" },
+ *       { label: "Tab 3" }
+ *     ]}
+ *   />
+ *
+ *   <!-- Icon-only -->
+ *   <SegmentControl
+ *     size="s"
+ *     selectedIndex={1}
+ *     items={[
+ *       { icon: '<svg>...</svg>' },
+ *       { icon: '<svg>...</svg>' }
+ *     ]}
+ *   />
+ *
+ *   <!-- With leading icon + label -->
+ *   <SegmentControl
+ *     size="l"
+ *     items={[
+ *       { label: "Home", icon: '<svg>...</svg>' },
+ *       { label: "Settings", icon: '<svg>...</svg>' }
+ *     ]}
+ *   />
+ */
+
+interface SegmentItem {
+  label?: string;
+  icon?: string;
+  info?: string;
+  disabled?: boolean;
+}
+
+interface Props {
+  size?: "xs" | "s" | "m" | "l" | "xl";
+  items: SegmentItem[];
+  selectedIndex?: number;
+  disabled?: boolean;
+  name?: string;
+  class?: string;
+  [key: string]: any;
+}
+
+const {
+  size = "m",
+  items,
+  selectedIndex = 0,
+  disabled = false,
+  name,
+  class: className = "",
+  ...rest
+} = Astro.props;
+---
+
+<div
+  class:list={[
+    "segment-control",
+    `segment-control--${size}`,
+    className
+  ]}
+  role="tablist"
+  aria-label={name}
+  data-segment-control
+  {...rest}
+>
+  {items.map((item, index) => {
+    const isSelected = index === selectedIndex;
+    const isDisabled = disabled || item.disabled;
+    const isIconOnly = item.icon && !item.label;
+
+    return (
+      <button
+        class:list={[
+          "segment-control__item",
+          { "segment-control__item--selected": isSelected },
+          { "segment-control__item--disabled": isDisabled }
+        ]}
+        role="tab"
+        type="button"
+        aria-selected={isSelected}
+        aria-disabled={isDisabled}
+        tabindex={isSelected ? 0 : -1}
+        disabled={isDisabled}
+        data-segment-index={index}
+      >
+        <div class="segment-control__content">
+          {item.icon && (
+            <span class="segment-control__icon" aria-hidden="true" set:html={item.icon} />
+          )}
+          {item.label && (
+            <span class="segment-control__label">{item.label}</span>
+          )}
+          {item.info && (
+            <span class="segment-control__info" aria-hidden="true" set:html={item.info} />
+          )}
+        </div>
+      </button>
+    );
+  })}
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const controls = document.querySelectorAll("[data-segment-control]");
+
+    controls.forEach((control) => {
+      const items = control.querySelectorAll<HTMLButtonElement>("[data-segment-index]");
+
+      // Click handler — select segment
+      items.forEach((item) => {
+        item.addEventListener("click", () => {
+          if (item.disabled) return;
+
+          // Update selected state
+          items.forEach((i) => {
+            i.classList.remove("segment-control__item--selected");
+            i.setAttribute("aria-selected", "false");
+            i.setAttribute("tabindex", "-1");
+          });
+
+          item.classList.add("segment-control__item--selected");
+          item.setAttribute("aria-selected", "true");
+          item.setAttribute("tabindex", "0");
+
+          // Dispatch custom event
+          const event = new CustomEvent("segmentchange", {
+            detail: {
+              index: parseInt(item.getAttribute("data-segment-index") || "0"),
+            },
+            bubbles: true,
+          });
+          control.dispatchEvent(event);
+        });
+      });
+
+      // Keyboard navigation (arrow keys)
+      control.addEventListener("keydown", (e) => {
+        const event = e as KeyboardEvent;
+        const enabledItems = Array.from(items).filter((i) => !i.disabled);
+        const currentIndex = enabledItems.findIndex(
+          (i) => i.getAttribute("aria-selected") === "true"
+        );
+
+        let nextIndex = currentIndex;
+
+        switch (event.key) {
+          case "ArrowRight":
+          case "ArrowDown":
+            event.preventDefault();
+            nextIndex = (currentIndex + 1) % enabledItems.length;
+            break;
+          case "ArrowLeft":
+          case "ArrowUp":
+            event.preventDefault();
+            nextIndex =
+              (currentIndex - 1 + enabledItems.length) % enabledItems.length;
+            break;
+          case "Home":
+            event.preventDefault();
+            nextIndex = 0;
+            break;
+          case "End":
+            event.preventDefault();
+            nextIndex = enabledItems.length - 1;
+            break;
+          default:
+            return;
+        }
+
+        enabledItems[nextIndex]?.click();
+        enabledItems[nextIndex]?.focus();
+      });
+    });
+  });
+</script>

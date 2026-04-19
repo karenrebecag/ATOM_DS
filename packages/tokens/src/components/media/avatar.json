@@ -40,9 +40,6 @@
       },
       "icon-size": {
         "l": { "$value": "28px", "$type": "dimension" }
-      },
-      "padding": {
-        "l-circle": { "$value": "6px", "$type": "dimension" }
       }
     }
   }

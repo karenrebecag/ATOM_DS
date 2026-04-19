@@ -1,0 +1,26 @@
+{
+  "segment-control": {
+    "bg": {
+      "$type": "color",
+      "enabled":  { "$value": "{bg.primary}", "$description": "Default background (transparent-like white)" },
+      "selected": { "$value": "{bg.secondary}", "$description": "Selected segment background" },
+      "hovered":  { "$value": "{bg.tertiary}", "$description": "Hovered segment background" },
+      "disabled": { "$value": "{bg.disabled}", "$description": "Disabled segment background" }
+    },
+    "fg": {
+      "$type": "color",
+      "enabled":  { "$value": "{fg.tertiary}", "$description": "Default text/icon color" },
+      "selected": { "$value": "{fg.primary}", "$description": "Selected icon color (label stays enabled)" },
+      "hovered":  { "$value": "{fg.primary}", "$description": "Hovered text/icon color" },
+      "disabled": { "$value": "{fg.disabled}", "$description": "Disabled text/icon color" }
+    },
+    "border": {
+      "$type": "color",
+      "selected": { "$value": "{figma.colors.primitive.zinc.500}", "$description": "Selected segment border" },
+      "disabled": { "$value": "{border.secondary}", "$description": "Disabled selected segment border" }
+    },
+    "shadow": {
+      "focus": { "$type": "shadow", "$value": "0px 0px 0px 2px rgba(161, 161, 161, 0.7)", "$description": "Focus ring" }
+    }
+  }
+}

@@ -8,8 +8,10 @@
  *   @atomchat/css (chip.css)
  *
  * Props:
+ *   variant?    "outlined" | "filled" - Chip variant (default: "filled")
  *   size?       "xs" | "s" | "m" | "l" | "xl" - Chip size (default: "m")
  *   selected?   boolean - Selected state (default: false)
+ *   error?      boolean - Error state with red colors (default: false)
  *   disabled?   boolean - Disabled state (default: false)
  *   dismissible? boolean - Show close icon (default: false)
  *   class?      string - Additional CSS classes
@@ -21,16 +23,23 @@
  *   icon-start   - Leading icon (optional, replaces default filter icon)
  *   icon-end     - Trailing icon (optional, only shown if not dismissible)
  *
+ * Variants:
+ *   - outlined: White background with visible border
+ *   - filled: Gray background without visible border
+ *
  * Design Notes (from Figma):
  *   - Border radius: 8px (not pill-shaped)
  *   - XS size uses asymmetric padding: 4px vertical, 8px horizontal
  *   - Focus state shows 1px border + 2px shadow ring
  *   - Default icons: filter (leading) + close X (trailing for dismissible)
+ *   - Error state: Red text and border (outlined) or red text only (filled)
  */
 
 interface Props {
+  variant?: "outlined" | "filled";
   size?: "xs" | "s" | "m" | "l" | "xl";
   selected?: boolean;
+  error?: boolean;
   disabled?: boolean;
   dismissible?: boolean;
   class?: string;
@@ -40,8 +49,10 @@ interface Props {
 }
 
 const {
+  variant = "filled",
   size = "m",
   selected = false,
+  error = false,
   disabled = false,
   dismissible = false,
   class: className = "",
@@ -58,8 +69,10 @@ const hasLabel = Astro.slots.has("default");
 <button
   class:list={["chip", className]}
   data-chip
+  data-variant={variant}
   data-size={size}
   data-selected={selected}
+  data-error={error}
   disabled={disabled}
   type="button"
   onclick={onclick}

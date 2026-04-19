@@ -1,0 +1,78 @@
+---
+/**
+ * CardBody — Flexible card content area
+ * @atomchat/components-astro
+ *
+ * Depends on:
+ *   @atomchat/tokens (--card-* tokens)
+ *   @atomchat/css (card.css)
+ *
+ * Props:
+ *   headline?    string  - Body headline (bold, larger)
+ *   subhead?     string  - Subheadline below headline (bold, smaller)
+ *   bodyText?    string  - Body text content (regular, secondary color)
+ *   class?       string  - Additional CSS classes
+ *
+ * Slots:
+ *   default  Custom content slot (overrides headline/subhead/bodyText)
+ *
+ * Usage:
+ *   <!-- With default props -->
+ *   <CardBody
+ *     headline="Headline"
+ *     subhead="Subhead"
+ *     bodyText="Body text for descriptions"
+ *   />
+ *
+ *   <!-- With custom content slot -->
+ *   <CardBody>
+ *     <ul>
+ *       <li>Custom list item 1</li>
+ *       <li>Custom list item 2</li>
+ *     </ul>
+ *     <p>Pricing: $49/month</p>
+ *   </CardBody>
+ *
+ *   <!-- Mixed: headline + custom content -->
+ *   <CardBody headline="Features">
+ *     <ul>
+ *       <li>Feature 1</li>
+ *       <li>Feature 2</li>
+ *     </ul>
+ *   </CardBody>
+ */
+
+interface Props {
+  headline?: string;
+  subhead?: string;
+  bodyText?: string;
+  class?: string;
+}
+
+const {
+  headline,
+  subhead,
+  bodyText,
+  class: className = "",
+} = Astro.props;
+
+const hasDefaultSlot = Astro.slots.has("default");
+const showHeadGroup = headline || subhead;
+---
+
+<div class:list={["card-body", className]}>
+  {showHeadGroup && (
+    <div class="card-body__head">
+      {headline && <h4 class="card-body__headline">{headline}</h4>}
+      {subhead && <p class="card-body__subhead">{subhead}</p>}
+    </div>
+  )}
+
+  {hasDefaultSlot ? (
+    <div class="card-body__content">
+      <slot />
+    </div>
+  ) : bodyText ? (
+    <p class="card-body__text">{bodyText}</p>
+  ) : null}
+</div>

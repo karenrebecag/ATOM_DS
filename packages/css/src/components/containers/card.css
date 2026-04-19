@@ -1,0 +1,165 @@
+/* ============================================
+   @atomchat/css — card.css
+   Depends on: @atomchat/tokens (tokens.css)
+   Composable card system with header, body, footer
+============================================ */
+
+/* CARD WRAPPER — Container with border and background */
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--card-bg-default);
+  border: var(--stroke-xs) solid var(--card-border-default);
+  border-radius: var(--s);
+  overflow: clip;
+  width: 100%;
+}
+
+/* CARD HEADER — Optional header with image, text, and action */
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: var(--m);
+  padding: var(--sm) var(--xs) var(--sm) var(--m);
+  width: 100%;
+  flex-shrink: 0;
+}
+
+/* Header content (image + text) */
+.card-header__content {
+  display: flex;
+  flex: 1 0 0;
+  align-items: center;
+  gap: var(--m);
+  min-width: 1px;
+}
+
+/* Header image container (for avatar or icon) */
+.card-header__image {
+  flex-shrink: 0;
+}
+
+/* Header text group */
+.card-header__text {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 0;
+  gap: var(--xs);
+  min-width: 1px;
+  line-height: 0;
+}
+
+.card-header__headline {
+  font-family: var(--font-family-titles);
+  font-size: var(--font-sizes-caption);
+  line-height: var(--line-height-caption);
+  font-weight: var(--font-weight-bold);
+  color: var(--card-fg-primary);
+  margin: 0;
+  width: 100%;
+}
+
+.card-header__supporting {
+  font-family: var(--font-family-content);
+  font-size: var(--font-sizes-label);
+  line-height: var(--line-height-label);
+  font-weight: var(--font-weight-regular);
+  color: var(--card-fg-secondary);
+  margin: 0;
+  width: 100%;
+}
+
+/* Header action button container */
+.card-header__action {
+  flex-shrink: 0;
+}
+
+/* CARD BODY — Flexible content area with default layout */
+.card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 0;
+  gap: var(--m);
+  padding: var(--s) var(--sm);
+  min-height: 1px;
+  width: 100%;
+}
+
+/* Body head group (headline + subhead) */
+.card-body__head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--xs);
+  width: 100%;
+  flex-shrink: 0;
+  font-family: var(--font-family-titles);
+  font-weight: var(--font-weight-bold);
+  color: var(--card-fg-primary);
+}
+
+.card-body__headline {
+  font-size: var(--font-sizes-body);
+  line-height: var(--line-height-body);
+  margin: 0;
+  width: 100%;
+}
+
+.card-body__subhead {
+  font-size: var(--font-sizes-label);
+  line-height: var(--line-height-label);
+  margin: 0;
+  width: 100%;
+}
+
+/* Body text content */
+.card-body__text {
+  font-family: var(--font-family-content);
+  font-size: var(--font-sizes-label);
+  line-height: var(--line-height-label);
+  font-weight: var(--font-weight-regular);
+  color: var(--card-fg-secondary);
+  margin: 0;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+/* Body custom content slot */
+.card-body__content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* CARD FOOTER — Optional footer with buttons or tags */
+.card-footer {
+  display: flex;
+  align-items: center;
+  gap: var(--s);
+  padding: var(--s) var(--sm);
+  width: 100%;
+  flex-shrink: 0;
+}
+
+/* Footer variant: buttons (right-aligned) */
+.card-footer--buttons {
+  justify-content: flex-end;
+}
+
+/* Footer variant: tags (left-aligned) */
+.card-footer--tags {
+  justify-content: flex-start;
+}
+
+/* IMAGE SLOT — Optional decorative image between sections */
+.card__image-slot {
+  width: 100%;
+  flex-shrink: 0;
+  overflow: clip;
+}
+
+.card__image-slot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}

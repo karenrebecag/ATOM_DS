@@ -169,7 +169,7 @@ async function fetchFileMetadata(fileKey: string, token: string): Promise<{ name
     throw new Error(apiErrorMessage(response.status, text))
   }
 
-  const data = await response.json()
+  const data = await response.json() as { name: string }
   return { name: data.name }
 }
 
@@ -183,7 +183,7 @@ async function fetchVariables(fileKey: string, token: string): Promise<FigmaVari
     throw new Error(apiErrorMessage(response.status, text))
   }
 
-  return response.json()
+  return response.json() as Promise<FigmaVariablesResponse>
 }
 
 function apiErrorMessage(status: number, body: string): string {
@@ -533,7 +533,9 @@ function CollectionRow({ result, folderName }: { result: CollectionResult; folde
         </Box>
       ))}
       {result.changes.length > 5 && (
-        <Text dimColor marginLeft={2}>  ...and {result.changes.length - 5} more</Text>
+        <Box marginLeft={2}>
+          <Text dimColor>  ...and {result.changes.length - 5} more</Text>
+        </Box>
       )}
     </Box>
   )
@@ -562,7 +564,9 @@ function SummaryView({ fileName, fileKey, collections, totalAdded, totalUpdated,
       </Box>
 
       <Box flexDirection="column">
-        <Text bold color="cyan" marginBottom={1}>Collections:</Text>
+        <Box marginBottom={1}>
+          <Text bold color="cyan">Collections:</Text>
+        </Box>
         {collections.map((col, i) => (
           <CollectionRow key={i} result={col} folderName={folderName} />
         ))}
@@ -847,7 +851,9 @@ function App({ url, dryRun, skipConfirm, enableBackup, dataPath }: {
             folderName={folderName}
           />
           {phase.totalAdded + phase.totalUpdated === 0 && (
-            <Text color="green" marginTop={1}>All files are already up to date.</Text>
+            <Box marginTop={1}>
+              <Text color="green">All files are already up to date.</Text>
+            </Box>
           )}
         </Box>
       )}
@@ -938,5 +944,5 @@ if (!url && !dataPath) {
 
 const isTTY = process.stdin.isTTY ?? false
 const effectiveSkipConfirm = skipConfirm || !isTTY
-const renderOptions = !isTTY ? { stdin: new PassThrough() } : {}
+const renderOptions = !isTTY ? { stdin: new PassThrough() as any } : {}
 render(<App url={url} dryRun={dryRun} skipConfirm={effectiveSkipConfirm} enableBackup={enableBackup} dataPath={dataPath} />, renderOptions)

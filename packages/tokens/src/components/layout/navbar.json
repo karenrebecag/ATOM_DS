@@ -1,0 +1,41 @@
+{
+  "navbar": {
+    "height": {
+      "$type": "dimension",
+      "$value": "72px",
+      "$description": "Standard navbar height"
+    },
+    "padding-outer": {
+      "$type": "dimension",
+      "$value": "{Primitive.Spacing.m}",
+      "$description": "Navbar outer padding (default state)"
+    },
+    "padding-outer-scrolled": {
+      "$type": "dimension",
+      "$value": "{Primitive.Spacing.s}",
+      "$description": "Navbar outer padding when scrolled (reduced)"
+    },
+    "pill-radius": {
+      "$type": "dimension",
+      "$value": "{Primitive.Radius.l}",
+      "$description": "Border radius for pill-style navbar"
+    },
+    "z-index": {
+      "$type": "number",
+      "$value": 1000,
+      "$description": "Z-index for fixed navbar positioning"
+    }
+  },
+  "nav-link": {
+    "fg-default": {
+      "$type": "color",
+      "$value": "inherit",
+      "$description": "Default text color (inherits from parent)"
+    },
+    "bg-hover": {
+      "$type": "color",
+      "$value": "rgba(255, 255, 255, 0.15)",
+      "$description": "Background color on hover (light semi-transparent)"
+    }
+  }
+}

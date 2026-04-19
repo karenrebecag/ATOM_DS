@@ -36,7 +36,7 @@
     },
     "shadow": {
       "$type": "shadow",
-      "focus": { "$value": "0px 0px 0px 2px {Primitive.Alpha.400}" }
+      "focus": { "$value": "0px 0px 0px 2px {figma.colors.primitive.alpha.400}" }
     }
   }
 }

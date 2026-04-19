@@ -3,7 +3,7 @@
     "bg": {
       "$type": "color",
       "default": { "$value": "{bg.quaternary}" },
-      "dark":    { "$value": "{Primitive.Zinc.800}" }
+      "dark":    { "$value": "{figma.colors.primitive.zinc.800}" }
     },
     "pulse": {
       "duration": { "$type": "duration", "$value": "{Primitive.Duration.shimmer}" },
@@ -31,7 +31,7 @@
     "card": {
       "padding":  { "$type": "dimension", "$value": "{gap.s}" },
       "gap":      { "$type": "dimension", "$value": "{gap.s}" },
-      "bg-dark":  { "$type": "color", "$value": "{Primitive.Zinc.900}" }
+      "bg-dark":  { "$type": "color", "$value": "{figma.colors.primitive.zinc.900}" }
     },
     "avatar-size": { "$type": "dimension", "$value": "{input-height-lg}", "$description": "48px — avatar large" },
     "heading-h":   { "$type": "dimension", "$value": "{Primitive.Spacing.m}", "$description": "16px" },

@@ -119,16 +119,16 @@
       "danger-secondary-hovered":  { "$value": "{border.interactive.danger.secondary.hovered}" },
       "danger-secondary-focused":  { "$value": "{border.interactive.danger.secondary.focused}" },
       "danger-secondary-pressed":  { "$value": "{border.interactive.danger.secondary.pressed}" },
-      "danger-secondary-loading":  { "$value": "{border.interactive.danger.secondary.loading}" },
+      "danger-secondary-loading":  { "$value": "{border.interactive.danger.secondary.enabled}" },
       "danger-tertiary-focused":   { "$value": "{border.interactive.danger.tertiary.focused}" },
 
       "link-focused": { "$value": "{border.interactive.link.focused}" }
     },
     "shadow": {
       "$type": "shadow",
-      "focus":        { "$value": "0px 0px 0px 2px {Primitive.Alpha.400}" },
-      "focus-danger": { "$value": "0px 0px 0px 2px {Primitive.Red.300}" },
-      "focus-link":   { "$value": "0px 0px 0px 2px {Primitive.Blue.200}" }
+      "focus":        { "$value": "0px 0px 0px 2px {figma.colors.primitive.alpha.400}" },
+      "focus-danger": { "$value": "0px 0px 0px 2px {figma.colors.primitive.red.300}" },
+      "focus-link":   { "$value": "0px 0px 0px 2px {figma.colors.primitive.blue.200}" }
     }
   }
 }

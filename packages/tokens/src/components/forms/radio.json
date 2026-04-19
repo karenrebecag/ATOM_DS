@@ -29,7 +29,7 @@
     },
     "shadow": {
       "$type": "shadow",
-      "focus": { "$value": "0px 0px 0px 2px {Primitive.Blue.200}", "$description": "Radio focus ring shadow" }
+      "focus": { "$value": "0px 0px 0px 2px {figma.colors.primitive.blue.200}", "$description": "Radio focus ring shadow" }
     },
     "structure": {
       "circle": {

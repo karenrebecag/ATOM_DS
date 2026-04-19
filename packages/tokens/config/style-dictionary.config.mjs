@@ -49,7 +49,9 @@ const SEMANTIC_GROUPS = [
 ]
 
 const COMPONENT_GROUPS = [
-  'badge', 'buttons', 'checkbox', 'radio', 'toggle', 'chip', 'tags', 'skeleton',
+  'avatar', 'badge', 'buttons', 'checkbox', 'chip', 'divider',
+  'link-button', 'navbar', 'nav-link', 'radio', 'skeleton',
+  'spinner', 'status-icon', 'tags', 'toggle',
   'frosted-glass', 'glassmorphism', 'acrylic',
   'container', 'stack', 'inline', 'grid', 'section',
 ]

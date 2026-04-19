@@ -42,5 +42,5 @@
   --skeleton-heading-h: var(--m);                  /* 16px — h-4 */
   --skeleton-body-h: var(--sm);                    /* 12px — h-3 */
   --skeleton-btn-h: var(--input-height-sm);        /* 32px — button sm */
-  --skeleton-btn-w: var(--12xxl);                  /* 80px — w-20 */
+  --skeleton-btn-w: var(--12xl);                   /* 80px — w-20 */
 }

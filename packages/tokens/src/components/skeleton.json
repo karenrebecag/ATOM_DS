@@ -37,6 +37,6 @@
     "heading-h":   { "$type": "dimension", "$value": "{Primitive.Spacing.m}", "$description": "16px" },
     "body-h":      { "$type": "dimension", "$value": "{Primitive.Spacing.sm}", "$description": "12px" },
     "btn-h":       { "$type": "dimension", "$value": "{input-height-sm}", "$description": "32px — button small" },
-    "btn-w":       { "$type": "dimension", "$value": "{Primitive.Spacing.12xxl}", "$description": "80px" }
+    "btn-w":       { "$type": "dimension", "$value": "{Primitive.Spacing.12xl}", "$description": "80px" }
   }
 }

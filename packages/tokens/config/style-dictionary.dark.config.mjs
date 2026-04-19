@@ -8,58 +8,83 @@
  *    wrapped in [data-theme="dark"] selector
  */
 
-import { readdirSync, readFileSync } from 'node:fs';
-import { join, resolve } from 'node:path';
+import './transforms.mjs'
+import { readdirSync, readFileSync } from 'node:fs'
+import { join, resolve } from 'node:path'
 
 // ── Collect dark theme token paths ────────────────────────────
 
 function walkTokens(obj, path, paths) {
   for (const [key, value] of Object.entries(obj)) {
-    if (key.startsWith('$')) continue;
-    const newPath = [...path, key];
+    if (key.startsWith('$')) continue
+    const newPath = [...path, key]
     if (value && typeof value === 'object' && '$value' in value) {
-      paths.add(newPath.join('.'));
+      paths.add(newPath.join('.'))
     } else if (value && typeof value === 'object') {
-      walkTokens(value, newPath, paths);
+      walkTokens(value, newPath, paths)
     }
   }
 }
 
 function collectDarkPaths() {
-  const darkDir = resolve(import.meta.dirname, '..', 'themes', 'dark');
-  const paths = new Set();
+  const darkDir = resolve(import.meta.dirname, '..', 'themes', 'dark')
+  const paths = new Set()
 
   try {
-    const files = readdirSync(darkDir).filter(f => f.endsWith('.json'));
+    const files = readdirSync(darkDir).filter(f => f.endsWith('.json'))
     for (const file of files) {
-      const data = JSON.parse(readFileSync(join(darkDir, file), 'utf-8'));
-      walkTokens(data, [], paths);
+      const data = JSON.parse(readFileSync(join(darkDir, file), 'utf-8'))
+      walkTokens(data, [], paths)
     }
   } catch {
     // No dark theme files — dark.css will be empty
   }
 
-  return paths;
+  return paths
 }
 
-const darkPaths = collectDarkPaths();
+const darkPaths = collectDarkPaths()
 
 function isDarkOverride(token) {
-  return darkPaths.has(token.path.join('.'));
+  return darkPaths.has(token.path.join('.'))
 }
 
 // ── Config ────────────────────────────────────────────────────
 
+const CSS_TRANSFORMS = [
+  'attribute/cti',
+  'name/kebab',
+  'atom/spacing/canonical-name',
+  'time/seconds',
+  'html/icon',
+  'size/rem',
+  'atom/spacing/px',
+  'color/css',
+  'asset/url',
+  'fontFamily/css',
+  'cubicBezier/css',
+  'strokeStyle/css/shorthand',
+  'border/css/shorthand',
+  'typography/css/shorthand',
+  'transition/css/shorthand',
+  'shadow/css/shorthand',
+]
+
 export default {
-  // Source order matters: light tokens first, dark overrides second.
-  // SD merges by token path — later source wins for matching paths.
+  log: {
+    warnings: 'warn',
+    verbosity: 'default',
+    errors: {
+      brokenReferences: 'console',
+    },
+  },
   source: [
     'src/**/*.json',
     'themes/dark/**/*.json',
   ],
   platforms: {
     css: {
-      transformGroup: 'css',
+      transforms: CSS_TRANSFORMS,
       buildPath: 'build/css/',
       files: [
         {
@@ -74,4 +99,4 @@ export default {
       ],
     },
   },
-};
+}

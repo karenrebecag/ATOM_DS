@@ -1,6 +1,6 @@
 {
   "name": "@atomchat.io/components-astro",
-  "version": "5.0.2",
+  "version": "5.1.0",
   "description": "ATOM Design System — Astro component library (requires Astro build pipeline)",
   "publishConfig": {
     "access": "public"
@@ -20,7 +20,7 @@
   },
   "peerDependencies": {
     "astro": ">=4.0.0",
-    "@atomchat.io/css": "^0.6.0"
+    "@atomchat.io/css": "^1.0.0"
   },
   "license": "MIT"
 }

@@ -59,7 +59,6 @@ Manual primitives. The base design scale.
 
 | File | Source | Notes |
 |------|--------|-------|
-| `colors.json` | **Hardcoded hex** | Original manual palette (Primitive.Red.500, etc.) |
 | `colors-from-figma.json` | **Bridge to figma** | Aliases `primitive.*` -> `{figma.colors.*}` |
 | `spacing.json` | Manual values | 30 tokens, xxs-17xl (cleaned in this PR) |
 | `typography.json` | Manual values | Font families, weights, sizes, line heights |
@@ -93,30 +92,23 @@ Legacy root files (duplicates of subfolder files) still exist but are deprecated
 
 ## Legacy Sources
 
-### Problem: Two parallel color systems
+### Color chain
+
+Figma is the source of truth for colors. The chain is:
 
 ```
-foundation/colors.json          ← hardcoded hex: "#FB2C37"
-foundation/colors-from-figma.json ← bridge alias: "{figma.colors.primitive.stone.50}"
+figma/primitives/colors.json        ← synced from Figma ({figma.colors.primitive.*})
+      |
+foundation/colors-from-figma.json   ← bridge aliases ({primitive.*} → {figma.colors.*})
+      |
+semantic/colors.json                ← references {figma.colors.primitive.*} directly
+      |
+components/**/*.json                ← references semantic ({bg.*}, {fg.*}, {border.*})
 ```
 
-Both produce `Primitive.*` tokens. SD merges them (last source wins).
-
-### Problem: Semantic skips foundation
-
-```
-semantic/colors.json references {figma.colors.primitive.*} directly
-                     NOT {Primitive.*}
-```
-
-This means `foundation/colors.json` (hardcoded hex) is effectively dead
-for color tokens. The chain is:
-
-```
-Expected:  figma → foundation → semantic → component
-Actual:    figma ─────────────→ semantic → component
-                 foundation (orphaned for colors)
-```
+`colors-from-figma.json` exists as a bridge layer for tokens that
+reference `{primitive.*}` paths. Semantic colors bypass it and
+reference `{figma.colors.primitive.*}` directly — both work.
 
 ### Resolved: Duplicate component files
 

@@ -1,0 +1,466 @@
+/* ============================================
+   @atomchat/css — text-field.css
+   Depends on: @atomchat/tokens (tokens.css)
+   Single-line text input component
+============================================ */
+
+/* TEXT FIELD — Single-line text input with label and character counter */
+.text-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--text-field-gap-vertical);
+  width: 100%;
+}
+
+/* LABEL */
+.text-field__label {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  font-family: var(--text-field-label-font-family);
+  font-weight: var(--text-field-label-font-weight);
+  color: var(--fg-secondary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition: color var(--duration-quarter);
+}
+
+.text-field--error .text-field__label {
+  color: var(--fg-status-error);
+}
+
+.text-field--disabled .text-field__label {
+  color: var(--fg-disabled);
+}
+
+/* FIELD CONTAINER */
+.text-field__field {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: var(--text-field-border-width) solid var(--form-fields-border-enabled);
+  border-radius: var(--text-field-border-radius);
+  background-color: var(--form-fields-bg-enabled);
+  transition: border-color var(--duration-quarter), box-shadow var(--duration-quarter), background-color var(--duration-quarter);
+}
+
+/* LEADING SECTION */
+.text-field__leading {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* TRAILING SECTION */
+.text-field__trailing {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* INPUT ELEMENT */
+.text-field__input {
+  flex: 1 1 0;
+  min-width: 1px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  font-family: var(--text-field-font-family);
+  font-weight: var(--text-field-font-weight);
+  color: var(--form-fields-fg-enabled);
+  outline: none;
+  transition: color var(--duration-quarter);
+}
+
+.text-field__input::placeholder {
+  color: var(--form-fields-fg-enabled);
+  opacity: 1;
+}
+
+/* BOTTOM SECTION */
+.text-field__bottom {
+  display: flex;
+  gap: var(--s);
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* SUPPORTIVE TEXT */
+.text-field__supportive {
+  display: flex;
+  flex: 1 1 0;
+  gap: var(--text-field-supportive-text-gap);
+  align-items: center;
+  min-width: 1px;
+  font-family: var(--text-field-font-family);
+  font-weight: var(--text-field-font-weight);
+  color: var(--fg-tertiary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition: color var(--duration-quarter);
+}
+
+.text-field__supportive-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--fg-tertiary);
+  transition: color var(--duration-quarter);
+}
+
+.text-field__supportive-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* SVG stroke — supportive icon paths (moved from inline SVG attributes) */
+.text-field__supportive-icon path:not([fill]) {
+  stroke: var(--fg-inverse-primary);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.text-field__supportive-text {
+  flex: 1 1 0;
+  min-width: 1px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* CHARACTER COUNTER */
+.text-field__counter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-family: var(--text-field-font-family);
+  font-weight: var(--text-field-font-weight);
+  color: var(--fg-tertiary);
+  text-align: right;
+  transition: color var(--duration-quarter);
+}
+
+/* STATE MODIFIERS */
+
+/* Hover */
+.text-field__field:hover:not(:has(input:disabled)):not(.text-field--error .text-field__field) {
+  border-color: var(--form-fields-border-hovered);
+}
+
+.text-field__field:hover:not(:has(input:disabled)) .text-field__input {
+  color: var(--form-fields-fg-hovered);
+}
+
+.text-field__field:hover:not(:has(input:disabled)) .text-field__input::placeholder {
+  color: var(--form-fields-fg-hovered);
+}
+
+/* Focus */
+.text-field__field:has(input:focus):not(.text-field--error .text-field__field) {
+  border-color: var(--form-fields-border-focused);
+  box-shadow: var(--form-fields-shadow-focus);
+}
+
+.text-field__field:has(input:focus) .text-field__input {
+  color: var(--form-fields-fg-focused);
+}
+
+.text-field__field:has(input:focus) .text-field__input::placeholder {
+  color: var(--form-fields-fg-focused);
+}
+
+/* Filled (has value) */
+.text-field--filled .text-field__field {
+  border-color: var(--form-fields-border-filled);
+}
+
+.text-field--filled .text-field__input {
+  color: var(--form-fields-fg-filled);
+}
+
+/* Disabled */
+.text-field--disabled .text-field__field {
+  border-color: var(--form-fields-border-disabled);
+  background-color: var(--form-fields-bg-disabled);
+  cursor: not-allowed;
+}
+
+.text-field--disabled .text-field__input {
+  color: var(--form-fields-fg-disabled);
+  cursor: not-allowed;
+}
+
+.text-field--disabled .text-field__input::placeholder {
+  color: var(--form-fields-fg-disabled);
+}
+
+.text-field--disabled .text-field__supportive,
+.text-field--disabled .text-field__supportive-icon,
+.text-field--disabled .text-field__counter {
+  color: var(--fg-disabled);
+}
+
+/* Error */
+.text-field--error .text-field__field {
+  border-color: var(--form-fields-border-error);
+}
+
+.text-field--error .text-field__input {
+  color: var(--form-fields-fg-error-enabled);
+}
+
+.text-field--error.text-field--filled .text-field__field {
+  border-color: var(--form-fields-border-error-filled);
+}
+
+.text-field--error.text-field--filled .text-field__input {
+  color: var(--form-fields-fg-error-filled);
+}
+
+.text-field--error .text-field__field:has(input:focus) {
+  border-color: var(--form-fields-border-error-focused);
+  box-shadow: var(--form-fields-shadow-focus-error);
+}
+
+.text-field--error .text-field__field:has(input:focus) .text-field__input {
+  color: var(--form-fields-fg-error-focused);
+}
+
+.text-field--error .text-field__supportive,
+.text-field--error .text-field__supportive-icon {
+  color: var(--fg-status-on-error);
+}
+
+/* SIZE VARIANTS */
+
+/* Extra Small */
+.text-field--xs .text-field__label {
+  font-size: var(--text-field-label-font-size-xs);
+  line-height: var(--text-field-label-line-height-xs);
+}
+
+.text-field--xs .text-field__field {
+  gap: var(--text-field-gap-inner-xs);
+  padding: var(--text-field-padding-y-xs) var(--text-field-padding-x-xs);
+}
+
+.text-field--xs .text-field__leading {
+  gap: var(--text-field-gap-inner-xs);
+}
+
+.text-field--xs .text-field__trailing {
+  gap: var(--text-field-gap-inner-xs);
+}
+
+.text-field--xs .text-field__leading svg,
+.text-field--xs .text-field__trailing svg {
+  width: var(--text-field-icon-size-xs);
+  height: var(--text-field-icon-size-xs);
+}
+
+.text-field--xs .text-field__input {
+  font-size: var(--text-field-font-size-xs);
+  line-height: var(--text-field-font-line-height-xs);
+}
+
+.text-field--xs .text-field__supportive {
+  font-size: var(--text-field-supportive-text-font-size-xs);
+  line-height: var(--text-field-supportive-text-line-height-xs);
+}
+
+.text-field--xs .text-field__supportive-icon {
+  width: var(--text-field-supportive-text-icon-size-xs);
+  height: var(--text-field-supportive-text-icon-size-xs);
+}
+
+.text-field--xs .text-field__counter {
+  font-size: var(--text-field-supportive-text-font-size-xs);
+  line-height: var(--text-field-supportive-text-line-height-xs);
+}
+
+/* Small */
+.text-field--s .text-field__label {
+  font-size: var(--text-field-label-font-size-s);
+  line-height: var(--text-field-label-line-height-s);
+}
+
+.text-field--s .text-field__field {
+  gap: var(--text-field-gap-inner-xs);
+  padding: var(--text-field-padding-y-s) var(--text-field-padding-x-s);
+}
+
+.text-field--s .text-field__leading {
+  gap: var(--text-field-gap-inner-xs);
+}
+
+.text-field--s .text-field__trailing {
+  gap: var(--text-field-gap-inner-xs);
+}
+
+.text-field--s .text-field__leading svg,
+.text-field--s .text-field__trailing svg {
+  width: var(--text-field-icon-size-s);
+  height: var(--text-field-icon-size-s);
+}
+
+.text-field--s .text-field__input {
+  font-size: var(--text-field-font-size-s);
+  line-height: var(--text-field-font-line-height-s);
+}
+
+.text-field--s .text-field__supportive {
+  font-size: var(--text-field-supportive-text-font-size-s);
+  line-height: var(--text-field-supportive-text-line-height-s);
+}
+
+.text-field--s .text-field__supportive-icon {
+  width: var(--text-field-supportive-text-icon-size-s);
+  height: var(--text-field-supportive-text-icon-size-s);
+}
+
+.text-field--s .text-field__counter {
+  font-size: var(--text-field-supportive-text-font-size-s);
+  line-height: var(--text-field-supportive-text-line-height-s);
+}
+
+/* Medium */
+.text-field--m .text-field__label {
+  font-size: var(--text-field-label-font-size-m);
+  line-height: var(--text-field-label-line-height-m);
+}
+
+.text-field--m .text-field__field {
+  gap: var(--text-field-gap-inner-m);
+  padding: var(--text-field-padding-y-m) var(--text-field-padding-x-m);
+}
+
+.text-field--m .text-field__leading {
+  gap: var(--text-field-gap-inner-m);
+}
+
+.text-field--m .text-field__trailing {
+  gap: var(--text-field-gap-inner-m);
+}
+
+.text-field--m .text-field__leading svg,
+.text-field--m .text-field__trailing svg {
+  width: var(--text-field-icon-size-m);
+  height: var(--text-field-icon-size-m);
+}
+
+.text-field--m .text-field__input {
+  font-size: var(--text-field-font-size-m);
+  line-height: var(--text-field-font-line-height-m);
+}
+
+.text-field--m .text-field__supportive {
+  font-size: var(--text-field-supportive-text-font-size-m);
+  line-height: var(--text-field-supportive-text-line-height-m);
+}
+
+.text-field--m .text-field__supportive-icon {
+  width: var(--text-field-supportive-text-icon-size-m);
+  height: var(--text-field-supportive-text-icon-size-m);
+}
+
+.text-field--m .text-field__counter {
+  font-size: var(--text-field-supportive-text-font-size-m);
+  line-height: var(--text-field-supportive-text-line-height-m);
+}
+
+/* Large */
+.text-field--l .text-field__label {
+  font-size: var(--text-field-label-font-size-l);
+  line-height: var(--text-field-label-line-height-l);
+}
+
+.text-field--l .text-field__field {
+  gap: var(--text-field-gap-inner-m);
+  padding: var(--text-field-padding-y-l) var(--text-field-padding-x-l);
+}
+
+.text-field--l .text-field__leading {
+  gap: var(--text-field-gap-inner-m);
+}
+
+.text-field--l .text-field__trailing {
+  gap: var(--text-field-gap-inner-m);
+}
+
+.text-field--l .text-field__leading svg,
+.text-field--l .text-field__trailing svg {
+  width: var(--text-field-icon-size-l);
+  height: var(--text-field-icon-size-l);
+}
+
+.text-field--l .text-field__input {
+  font-size: var(--text-field-font-size-l);
+  line-height: var(--text-field-font-line-height-l);
+}
+
+.text-field--l .text-field__supportive {
+  font-size: var(--text-field-supportive-text-font-size-l);
+  line-height: var(--text-field-supportive-text-line-height-l);
+}
+
+.text-field--l .text-field__supportive-icon {
+  width: var(--text-field-supportive-text-icon-size-l);
+  height: var(--text-field-supportive-text-icon-size-l);
+}
+
+.text-field--l .text-field__counter {
+  font-size: var(--text-field-supportive-text-font-size-l);
+  line-height: var(--text-field-supportive-text-line-height-l);
+}
+
+/* Extra Large */
+.text-field--xl .text-field__label {
+  font-size: var(--text-field-label-font-size-xl);
+  line-height: var(--text-field-label-line-height-xl);
+}
+
+.text-field--xl .text-field__field {
+  gap: var(--text-field-gap-inner-m);
+  padding: var(--text-field-padding-y-xl) var(--text-field-padding-x-xl);
+}
+
+.text-field--xl .text-field__leading {
+  gap: var(--text-field-gap-inner-m);
+}
+
+.text-field--xl .text-field__trailing {
+  gap: var(--text-field-gap-inner-m);
+}
+
+.text-field--xl .text-field__leading svg,
+.text-field--xl .text-field__trailing svg {
+  width: var(--text-field-icon-size-xl);
+  height: var(--text-field-icon-size-xl);
+}
+
+.text-field--xl .text-field__input {
+  font-size: var(--text-field-font-size-xl);
+  line-height: var(--text-field-font-line-height-xl);
+}
+
+.text-field--xl .text-field__supportive {
+  font-size: var(--text-field-supportive-text-font-size-xl);
+  line-height: var(--text-field-supportive-text-line-height-xl);
+}
+
+.text-field--xl .text-field__supportive-icon {
+  width: var(--text-field-supportive-text-icon-size-xl);
+  height: var(--text-field-supportive-text-icon-size-xl);
+}
+
+.text-field--xl .text-field__counter {
+  font-size: var(--text-field-supportive-text-font-size-xl);
+  line-height: var(--text-field-supportive-text-line-height-xl);
+}

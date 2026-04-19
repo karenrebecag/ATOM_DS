@@ -166,6 +166,9 @@
   "opacity-disabled":    { "$type": "number", "$value": "{Primitive.Opacity.40}" },
   "opacity-placeholder": { "$type": "number", "$value": "{Primitive.Opacity.50}" },
   "opacity-hover":       { "$type": "number", "$value": "{Primitive.Opacity.80}" },
+  "opacity-muted":       { "$type": "number", "$value": "{Primitive.Opacity.60}" },
+  "opacity-subdued":     { "$type": "number", "$value": "{Primitive.Opacity.70}" },
+  "opacity-prominent":   { "$type": "number", "$value": "{Primitive.Opacity.90}" },
 
   "elevation-card":    { "$type": "shadow", "$value": "{Primitive.Elevation.card}" },
   "elevation-popover": { "$type": "shadow", "$value": "{Primitive.Elevation.popover}" },

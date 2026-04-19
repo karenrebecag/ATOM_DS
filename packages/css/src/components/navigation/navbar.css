@@ -1,0 +1,66 @@
+/* ============================================
+   @atomchat/css — navbar.css
+   Depends on: @atomchat/tokens (tokens.css)
+
+   Navbar positioning utilities
+   - Fixed and sticky positioning
+   - Pill-style padding with scroll animation
+   - Uses navbar tokens for consistency
+============================================ */
+
+/* ── Navbar Positioning ─────────────────────────────────────── */
+
+/* Fixed — Position navbar at top of viewport */
+.navbar-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--navbar-z-index);
+}
+
+/* Sticky — Position navbar at top when scrolling */
+.navbar-sticky {
+  position: sticky;
+  top: 0;
+  /* semantic --z-sticky = 200; original design was 900 — update z-index.json if higher value needed */
+  z-index: var(--z-sticky);
+}
+
+/* ── Navbar Pill Style ──────────────────────────────────────── */
+
+/* Pill — Default state with normal padding */
+.navbar-pill {
+  padding: var(--navbar-padding-outer, var(--m));
+  transition: padding var(--duration-half);
+}
+
+/* Pill — Scrolled state with reduced padding */
+.navbar-pill[data-nav-scrolled="true"] {
+  padding: var(--navbar-padding-outer-scrolled, var(--s)) var(--navbar-padding-outer, var(--m));
+}
+
+/* ── Navbar Hide/Show Animation (Mobile) ────────────────────── */
+
+/* Hide — Slide up out of view */
+.navbar-pill[data-nav-hidden="true"] {
+  transform: translateY(-100%);
+  transition: transform var(--duration-half);
+}
+
+/* Show — Slide down into view */
+.navbar-pill[data-nav-hidden="false"] {
+  transform: translateY(0);
+  transition: transform var(--duration-half);
+}
+
+/* ── Reduced Motion ─────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .navbar-pill,
+  .navbar-pill[data-nav-scrolled="true"],
+  .navbar-pill[data-nav-hidden="true"],
+  .navbar-pill[data-nav-hidden="false"] {
+    transition: none;
+  }
+}

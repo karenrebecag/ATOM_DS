@@ -1,0 +1,53 @@
+/* ============================================
+   @atomchat/css — logo-badge.css
+   Depends on: @atomchat/tokens (tokens.css)
+
+   Logo badge with light/dark theme support.
+   Uses inline --logo-height / --logo-width from component.
+============================================ */
+
+/* LOGO BADGE — Container for themed logo images */
+.logo-badge {
+  position: relative;
+  display: inline-block;
+  height: var(--logo-height);
+  width: var(--logo-width);
+}
+
+/* IMAGE — Shared styles for both theme variants */
+.logo-badge__image {
+  display: block;
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  transition: opacity var(--duration-quarter);
+}
+
+/* DARK — Hidden by default, shown on inverted theme */
+.logo-badge__image--dark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
+/* LIGHT — Visible by default */
+.logo-badge__image--light {
+  opacity: 1;
+}
+
+/* THEME INVERSION — Swap visibility */
+[data-nav-theme="inverted"] .logo-badge__image--light {
+  opacity: 0;
+}
+
+[data-nav-theme="inverted"] .logo-badge__image--dark {
+  opacity: 1;
+}
+
+/* REDUCED MOTION — Disable transition */
+@media (prefers-reduced-motion: reduce) {
+  .logo-badge__image {
+    transition: none;
+  }
+}

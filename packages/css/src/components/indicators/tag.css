@@ -1,0 +1,226 @@
+/* ============================================
+   @atomchat/css — tag.css
+   Depends on: @atomchat/tokens (tokens.css)
+============================================ */
+
+/* TAG — Status indicator with semantic colors */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--tags-gap-m);
+  padding: var(--tags-padding-y-m) var(--tags-padding-x-m);
+  max-width: var(--tags-max-width-m);
+  border-radius: var(--tags-border-radius);
+  border: var(--tags-border-width) solid transparent;
+  font-family: var(--font-family-content);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--tags-font-size-m);
+  line-height: var(--tags-line-height-m);
+  white-space: nowrap;
+}
+
+/* TEXT — Overflow handling */
+.tag__text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}
+
+/* DOT — Status indicator */
+.tag__dot {
+  width: var(--s);
+  height: var(--s);
+  border-radius: var(--radius-circle);
+  flex-shrink: 0;
+}
+
+/* AVATAR — Avatar slot */
+.tag__avatar {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  width: var(--l);
+  height: var(--l);
+}
+
+/* When avatar is present, reduce left padding */
+.tag:has(.tag__avatar) {
+  padding-left: var(--xs);
+}
+
+/* ICON — Icon slot */
+.tag__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--m);
+  height: var(--m);
+  flex-shrink: 0;
+}
+
+.tag__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ============================================
+   SIZE VARIANTS
+============================================ */
+
+.tag--xs {
+  gap: var(--tags-gap-xs);
+  padding: var(--tags-padding-y-xs) var(--tags-padding-x-xs);
+  max-width: var(--tags-max-width-xs);
+  font-size: var(--tags-font-size-xs);
+  line-height: var(--tags-line-height-xs);
+}
+
+.tag--s {
+  gap: var(--tags-gap-s);
+  padding: var(--tags-padding-y-s) var(--tags-padding-x-s);
+  max-width: var(--tags-max-width-s);
+  font-size: var(--tags-font-size-s);
+  line-height: var(--tags-line-height-s);
+}
+
+.tag--m {
+  gap: var(--tags-gap-m);
+  padding: var(--tags-padding-y-m) var(--tags-padding-x-m);
+  max-width: var(--tags-max-width-m);
+  font-size: var(--tags-font-size-m);
+  line-height: var(--tags-line-height-m);
+}
+
+/* ============================================
+   TYPE VARIANTS — Consume internal vars
+============================================ */
+
+.tag--filled {
+  background-color: var(--_tag-bg-filled);
+  color: var(--_tag-fg-filled);
+  border-color: transparent;
+}
+
+.tag--filled .tag__dot {
+  background-color: var(--_tag-fg-filled);
+}
+
+.tag--filled .tag__icon {
+  color: var(--_tag-fg-filled);
+}
+
+.tag--outlined {
+  background-color: var(--_tag-bg-outlined);
+  color: var(--_tag-fg-outlined);
+  border-color: var(--_tag-border-outlined);
+}
+
+.tag--outlined .tag__dot {
+  background-color: var(--_tag-fg-outlined);
+}
+
+.tag--outlined .tag__icon {
+  color: var(--_tag-fg-outlined);
+}
+
+.tag--ghost {
+  background-color: var(--_tag-bg-ghost);
+  color: var(--_tag-fg-ghost);
+  border-color: transparent;
+}
+
+.tag--ghost .tag__dot {
+  background-color: var(--_tag-fg-ghost);
+}
+
+.tag--ghost .tag__icon {
+  color: var(--_tag-fg-ghost);
+}
+
+/* ============================================
+   SEMANTIC STATES — Set internal vars
+============================================ */
+
+.tag--success {
+  --_tag-bg-filled: var(--tags-bg-filled-success);
+  --_tag-bg-outlined: var(--tags-bg-outlined-success);
+  --_tag-bg-ghost: var(--tags-bg-ghost-success);
+  --_tag-fg-filled: var(--tags-fg-filled-success);
+  --_tag-fg-outlined: var(--tags-fg-outlined-success);
+  --_tag-fg-ghost: var(--tags-fg-ghost-success);
+  --_tag-border-outlined: var(--tags-border-outlined-success);
+}
+
+.tag--warning {
+  --_tag-bg-filled: var(--tags-bg-filled-warning);
+  --_tag-bg-outlined: var(--tags-bg-outlined-warning);
+  --_tag-bg-ghost: var(--tags-bg-ghost-warning);
+  --_tag-fg-filled: var(--tags-fg-filled-warning);
+  --_tag-fg-outlined: var(--tags-fg-outlined-warning);
+  --_tag-fg-ghost: var(--tags-fg-ghost-warning);
+  --_tag-border-outlined: var(--tags-border-outlined-warning);
+}
+
+.tag--danger {
+  --_tag-bg-filled: var(--tags-bg-filled-danger);
+  --_tag-bg-outlined: var(--tags-bg-outlined-danger);
+  --_tag-bg-ghost: var(--tags-bg-ghost-danger);
+  --_tag-fg-filled: var(--tags-fg-filled-danger);
+  --_tag-fg-outlined: var(--tags-fg-outlined-danger);
+  --_tag-fg-ghost: var(--tags-fg-ghost-danger);
+  --_tag-border-outlined: var(--tags-border-outlined-danger);
+}
+
+.tag--info {
+  --_tag-bg-filled: var(--tags-bg-filled-info);
+  --_tag-bg-outlined: var(--tags-bg-outlined-info);
+  --_tag-bg-ghost: var(--tags-bg-ghost-info);
+  --_tag-fg-filled: var(--tags-fg-filled-info);
+  --_tag-fg-outlined: var(--tags-fg-outlined-info);
+  --_tag-fg-ghost: var(--tags-fg-ghost-info);
+  --_tag-border-outlined: var(--tags-border-outlined-info);
+}
+
+.tag--neutral {
+  --_tag-bg-filled: var(--tags-bg-filled-neutral);
+  --_tag-bg-outlined: var(--tags-bg-outlined-neutral);
+  --_tag-bg-ghost: var(--tags-bg-ghost-neutral);
+  --_tag-fg-filled: var(--tags-fg-filled-neutral);
+  --_tag-fg-outlined: var(--tags-fg-outlined-neutral);
+  --_tag-fg-ghost: var(--tags-fg-ghost-neutral);
+  --_tag-border-outlined: var(--tags-border-outlined-neutral);
+}
+
+.tag--brand {
+  --_tag-bg-filled: var(--tags-bg-filled-brand);
+  --_tag-bg-outlined: var(--tags-bg-outlined-brand);
+  --_tag-bg-ghost: var(--tags-bg-ghost-brand);
+  --_tag-fg-filled: var(--tags-fg-filled-brand);
+  --_tag-fg-outlined: var(--tags-fg-outlined-brand);
+  --_tag-fg-ghost: var(--tags-fg-ghost-brand);
+  --_tag-border-outlined: var(--tags-border-outlined-brand);
+}
+
+.tag--ai {
+  --_tag-bg-filled: var(--tags-bg-filled-ai);
+  --_tag-bg-outlined: var(--tags-bg-outlined-ai);
+  --_tag-bg-ghost: var(--tags-bg-ghost-ai);
+  --_tag-fg-filled: var(--tags-fg-filled-ai);
+  --_tag-fg-outlined: var(--tags-fg-outlined-ai);
+  --_tag-fg-ghost: var(--tags-fg-ghost-ai);
+  --_tag-border-outlined: var(--tags-border-outlined-ai);
+}
+
+.tag--disabled {
+  --_tag-bg-filled: var(--tags-bg-filled-disabled);
+  --_tag-bg-outlined: var(--tags-bg-outlined-disabled);
+  --_tag-bg-ghost: var(--tags-bg-ghost-disabled);
+  --_tag-fg-filled: var(--tags-fg-filled-disabled);
+  --_tag-fg-outlined: var(--tags-fg-outlined-disabled);
+  --_tag-fg-ghost: var(--tags-fg-ghost-disabled);
+  --_tag-border-outlined: var(--tags-border-outlined-disabled);
+  cursor: not-allowed;
+  opacity: var(--opacity-muted);
+}

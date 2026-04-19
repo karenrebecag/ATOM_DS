@@ -1,0 +1,26 @@
+/* ============================================
+   @atomchat/css — divider.css
+   Depends on: @atomchat/tokens (tokens.css)
+============================================ */
+
+/* ============================================
+   Divider Component Styles
+============================================ */
+
+/* Horizontal divider (default) */
+.divider {
+  --divider-height: var(--stroke-xs);
+  --divider-color: var(--border-tertiary);
+
+  width: 100%;
+  height: var(--divider-height);
+  border: none;
+  background-color: var(--divider-color);
+  opacity: var(--divider-opacity, 1);
+}
+
+/* Vertical divider variant */
+.divider--vertical {
+  width: var(--divider-height);
+  height: 100%;
+}

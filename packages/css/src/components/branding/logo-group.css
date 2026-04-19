@@ -29,23 +29,33 @@
 }
 
 /* RESPONSIVE GRID */
+/* --breakpoint-sm = 600px (CSS spec limitation: custom properties not allowed in @media) */
 @media (min-width: 600px) {
   .logo-group {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
+/* --breakpoint-md ≈ 961px */
 @media (min-width: 961px) {
   .logo-group {
     grid-template-columns: repeat(4, 1fr);
   }
 }
 
+/* --breakpoint-lg ≈ 1281px */
 @media (min-width: 1281px) {
   .logo-group {
     grid-template-columns: repeat(5, 1fr);
   }
 }
+
+/* SIZE VARIANTS — Scoped size custom properties */
+.logo-group--xs { --_logo-max-h: 20px; --_logo-max-w: 80px; }
+.logo-group--s  { --_logo-max-h: 24px; --_logo-max-w: 92px; }
+.logo-group--m  { --_logo-max-h: 33px; --_logo-max-w: 128px; }
+.logo-group--l  { --_logo-max-h: 50px; --_logo-max-w: 192px; }
+.logo-group--xl { --_logo-max-h: 66px; --_logo-max-w: 256px; }
 
 /* LOGO ITEM */
 .logo-group__item {
@@ -53,68 +63,16 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  max-height: 33px;
+  max-height: var(--_logo-max-h, 33px);
   padding: var(--gap-s);
 }
 
 /* LOGO IMAGE */
 .logo-group__img {
-  max-width: 128px;
-  max-height: 33px;
+  max-width: var(--_logo-max-w, 128px);
+  max-height: var(--_logo-max-h, 33px);
   width: auto;
   height: auto;
   object-fit: contain;
   display: block;
-}
-
-/* SIZE VARIANTS — From Figma */
-
-/* Extra Small */
-.logo-group--xs .logo-group__item {
-  max-height: 20px;
-}
-
-.logo-group--xs .logo-group__img {
-  max-height: 20px;
-  max-width: 80px;
-}
-
-/* Small */
-.logo-group--s .logo-group__item {
-  max-height: 24px;
-}
-
-.logo-group--s .logo-group__img {
-  max-height: 24px;
-  max-width: 92px;
-}
-
-/* Medium (Default) */
-.logo-group--m .logo-group__item {
-  max-height: 33px;
-}
-
-.logo-group--m .logo-group__img {
-  max-height: 33px;
-  max-width: 128px;
-}
-
-/* Large */
-.logo-group--l .logo-group__item {
-  max-height: 50px;
-}
-
-.logo-group--l .logo-group__img {
-  max-height: 50px;
-  max-width: 192px;
-}
-
-/* Extra Large */
-.logo-group--xl .logo-group__item {
-  max-height: 66px;
-}
-
-.logo-group--xl .logo-group__img {
-  max-height: 66px;
-  max-width: 256px;
 }

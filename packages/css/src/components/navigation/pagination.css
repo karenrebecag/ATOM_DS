@@ -1,0 +1,181 @@
+/* ============================================
+   @atomchat/css — pagination.css
+   Depends on: @atomchat/tokens (tokens.css)
+   Table pagination component
+============================================ */
+
+/* PAGINATION — Table footer with page navigation */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--pagination-height);
+  padding: var(--s) var(--m);
+  background-color: var(--pagination-bg-enabled);
+  border-top: var(--pagination-border-width) solid var(--pagination-border-color);
+  overflow: hidden;
+}
+
+/* LEFT SECTION — Records per page selector */
+.pagination__left {
+  display: flex;
+  align-items: center;
+  gap: var(--m);
+  flex-shrink: 0;
+}
+
+.pagination__label {
+  font-family: var(--font-family-content);
+  font-size: var(--font-sizes-label);
+  line-height: var(--line-height-label);
+  font-weight: var(--font-weight-regular);
+  color: var(--fg-primary);
+  white-space: nowrap;
+}
+
+/* Page size select (uses form-field styling) */
+.pagination__select {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--sm);
+  padding: var(--s) var(--sm);
+  border: var(--stroke-xs) solid var(--form-fields-border-enabled);
+  border-radius: var(--radius-s);
+  background-color: var(--form-fields-bg-enabled);
+  font-family: var(--font-family-content);
+  font-size: var(--font-sizes-label);
+  line-height: var(--line-height-label);
+  font-weight: var(--font-weight-regular);
+  color: var(--form-fields-fg-enabled);
+  cursor: pointer;
+  transition: border-color var(--duration-quarter);
+}
+
+.pagination__select:hover:not(:disabled) {
+  border-color: var(--form-fields-border-hovered);
+}
+
+.pagination__select:disabled {
+  background-color: var(--form-fields-bg-disabled);
+  border-color: var(--form-fields-border-disabled);
+  color: var(--form-fields-fg-disabled);
+  cursor: not-allowed;
+}
+
+.pagination__select-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--icon-s);
+  height: var(--icon-s);
+  flex-shrink: 0;
+}
+
+.pagination__select-icon svg {
+  width: 100%;
+  height: 100%;
+  color: currentColor;
+}
+
+/* CENTER SECTION — Page info text */
+.pagination__center {
+  font-family: var(--font-family-content);
+  font-size: var(--font-sizes-label);
+  line-height: var(--line-height-label);
+  font-weight: var(--font-weight-regular);
+  color: var(--fg-primary);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* RIGHT SECTION — Navigation buttons */
+.pagination__nav {
+  display: flex;
+  align-items: center;
+  gap: var(--s);
+  flex-shrink: 0;
+}
+
+/* Navigation button (icon-only button secondary style) */
+.pagination__nav-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--s);
+  border: var(--stroke-xs) solid transparent;
+  border-radius: var(--radius-s);
+  background-color: var(--buttons-bg-secondary-enabled);
+  color: var(--buttons-fg-secondary-enabled);
+  cursor: pointer;
+  transition:
+    background-color var(--duration-quarter),
+    border-color var(--duration-quarter),
+    color var(--duration-quarter);
+}
+
+.pagination__nav-button:not(:disabled) {
+  border-color: var(--buttons-border-secondary-enabled);
+}
+
+.pagination__nav-button:hover:not(:disabled) {
+  background-color: var(--buttons-bg-secondary-hovered);
+  border-color: var(--buttons-border-secondary-hovered);
+  color: var(--buttons-fg-secondary-hovered);
+}
+
+.pagination__nav-button:active:not(:disabled) {
+  background-color: var(--buttons-bg-secondary-pressed);
+  border-color: var(--buttons-border-secondary-pressed);
+  color: var(--buttons-fg-secondary-pressed);
+}
+
+.pagination__nav-button:disabled {
+  background-color: var(--buttons-bg-secondary-disabled);
+  border-color: transparent;
+  color: var(--buttons-fg-secondary-disabled);
+  cursor: not-allowed;
+}
+
+.pagination__nav-button-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--icon-s);
+  height: var(--icon-s);
+}
+
+.pagination__nav-button-icon svg {
+  width: 100%;
+  height: 100%;
+  color: currentColor;
+}
+
+/* SKELETON — Inline pointer-events override (from Astro skeleton slots) */
+.pagination__select--skeleton,
+.pagination__center--skeleton {
+  pointer-events: none;
+}
+
+/* LOADING STATE — Skeleton placeholders */
+.pagination--loading .pagination__select,
+.pagination--loading .pagination__center {
+  background-color: var(--bg-tertiary);
+  border-radius: var(--radius-s);
+  color: transparent;
+  pointer-events: none;
+}
+
+.pagination--loading .pagination__select {
+  width: var(--pagination-skeleton-select-width);
+  height: var(--xl);
+}
+
+.pagination--loading .pagination__center {
+  width: var(--pagination-skeleton-info-width);
+  height: var(--m);
+}
+
+.pagination--loading .pagination__nav-button {
+  pointer-events: none;
+}

@@ -1,0 +1,182 @@
+---
+/**
+ * SearchField — Search input with icon and keyboard shortcut
+ * @atomchat/components-astro
+ *
+ * Depends on:
+ *   @atomchat/tokens (--search-field-*, --form-fields-* component tokens)
+ *   @atomchat/css (search-field.css)
+ *
+ * Props:
+ *   name         string                  (required) - Form input name
+ *   placeholder? string                  - Placeholder text (default: "Search...")
+ *   value?       string                  - Input value
+ *   size?        "s" | "m" | "l"         - Field size (default: "m")
+ *   disabled?    boolean                 - Disabled state (default: false)
+ *   shortcut?    string                  - Keyboard shortcut text (default: "⌘K")
+ *   showClear?   boolean                 - Show clear button when filled (default: true)
+ *   id?          string                  - Custom input ID
+ *   class?       string                  - Additional CSS classes
+ *
+ * States:
+ *   - Enabled: default state
+ *   - Hovered: mouse hover state
+ *   - Focused: keyboard focus state
+ *   - Pressed: active/pressed state
+ *   - Filled: when input has value (shows clear button)
+ *   - Disabled: when disabled prop is true
+ *
+ * Sizes (from Figma):
+ *   - s: Small (8px vertical padding)
+ *   - m: Medium (12px all padding)
+ *   - l: Large (16px vertical padding)
+ *
+ * Usage:
+ *   <SearchField name="search" size="m" />
+ *   <SearchField name="query" placeholder="Find..." size="l" />
+ *   <SearchField name="filter" value="Campaign" showClear size="s" />
+ */
+
+interface Props {
+  name: string;
+  placeholder?: string;
+  value?: string;
+  size?: "s" | "m" | "l";
+  disabled?: boolean;
+  shortcut?: string;
+  showClear?: boolean;
+  id?: string;
+  class?: string;
+  [key: string]: any;
+}
+
+const {
+  name,
+  placeholder = "Search...",
+  value = "",
+  size = "m",
+  disabled = false,
+  shortcut = "⌘K",
+  showClear = true,
+  id,
+  class: className = "",
+  ...rest
+} = Astro.props;
+
+const inputId = id || `search-field-${name}`;
+const isFilled = value && value.length > 0;
+---
+
+<div
+  class:list={[
+    "search-field",
+    `search-field--${size}`,
+    { "search-field--filled": isFilled },
+    className
+  ]}
+  data-search-field
+>
+  <div class="search-field__field">
+    <!-- Leading icon -->
+    <div class="search-field__leading">
+      <div class="search-field__icon" aria-hidden="true">
+        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M7.33333 12.6667C10.2789 12.6667 12.6667 10.2789 12.6667 7.33333C12.6667 4.38781 10.2789 2 7.33333 2C4.38781 2 2 4.38781 2 7.33333C2 10.2789 4.38781 12.6667 7.33333 12.6667Z"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M14 14L11.1 11.1"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </div>
+    </div>
+
+    <!-- Input -->
+    <input
+      class="search-field__input"
+      type="search"
+      id={inputId}
+      name={name}
+      placeholder={placeholder}
+      value={value}
+      disabled={disabled}
+      autocomplete="off"
+      {...rest}
+    />
+
+    <!-- Trailing (shortcut or clear button) -->
+    <div class="search-field__trailing">
+      <!-- Keyboard shortcut (shown when empty) -->
+      {!isFilled && shortcut && (
+        <span class="search-field__shortcut" aria-label="Keyboard shortcut">
+          {shortcut}
+        </span>
+      )}
+
+      <!-- Clear button (shown when filled) -->
+      {isFilled && showClear && (
+        <button
+          class="search-field__clear"
+          type="button"
+          aria-label="Clear search"
+          data-clear-button
+        >
+          <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M8 14C11.3137 14 14 11.3137 14 8C14 4.68629 11.3137 2 8 2C4.68629 2 2 4.68629 2 8C2 11.3137 4.68629 14 8 14Z"
+              fill="currentColor"
+            />
+            <path
+              d="M10 6L6 10M6 6L10 10"
+            />
+          </svg>
+        </button>
+      )}
+    </div>
+  </div>
+</div>
+
+<script>
+  // Handle clear button clicks
+  document.addEventListener("DOMContentLoaded", () => {
+    const searchFields = document.querySelectorAll("[data-search-field]");
+
+    searchFields.forEach((field) => {
+      const input = field.querySelector(".search-field__input") as HTMLInputElement;
+      const clearButton = field.querySelector("[data-clear-button]") as HTMLButtonElement;
+
+      if (clearButton && input) {
+        clearButton.addEventListener("click", () => {
+          input.value = "";
+          input.focus();
+          // Dispatch input event to notify form libraries
+          input.dispatchEvent(new Event("input", { bubbles: true }));
+          input.dispatchEvent(new Event("change", { bubbles: true }));
+        });
+      }
+
+      // Toggle filled state based on input value
+      if (input) {
+        const updateFilledState = () => {
+          if (input.value.length > 0) {
+            field.classList.add("search-field--filled");
+          } else {
+            field.classList.remove("search-field--filled");
+          }
+        };
+
+        input.addEventListener("input", updateFilledState);
+        // Check initial state
+        updateFilledState();
+      }
+    });
+  });
+</script>

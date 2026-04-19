@@ -36,7 +36,7 @@ interface Props {
   size?: "display-xl" | "display-l" | "display-m" | "display-s" | "huge-title" | "h1" | "h2" | "h3" | "h4" | "heading";
   weight?: "regular" | "medium" | "bold";
   tracking?: "tighter" | "tight" | "normal" | "wide" | "wider" | "widest";
-  color?: string;
+  color?: "primary" | "secondary" | "tertiary" | "disabled" | "inherit" | `var(--${string})`;
   align?: "left" | "center" | "right";
   balance?: boolean;
   animate?: "masked-lines" | "masked-words" | "masked-chars" | "scramble-load" | "fade-up-load" | "scramble-scroll" | "highlight-scroll" | false;
@@ -60,6 +60,12 @@ const {
   class: className = "",
   ...rest
 } = Astro.props;
+
+// ── Validate color value ──
+const semanticColors = ["primary", "secondary", "tertiary", "disabled"] as const;
+const isSemanticColor = semanticColors.includes(color as typeof semanticColors[number]);
+const isVarRef = color.startsWith("var(--");
+const safeColor = (color === "inherit" || isSemanticColor || isVarRef) ? color : "inherit";
 
 // ── Level → Size Auto-Mapping ──
 const defaultSizeMap = {
@@ -91,9 +97,10 @@ const Tag = `h${level}` as any;
     `heading--${tracking}`,
     `heading--${align}`,
     { "heading--balance": balance },
+    { [`heading--${safeColor}`]: isSemanticColor },
     className,
   ]}
-  style={color !== "inherit" ? `color: ${color}` : undefined}
+  style={safeColor !== "inherit" && !isSemanticColor ? `color: ${safeColor}` : undefined}
   data-text
   data-text-animate={animate || undefined}
   data-text-trigger={animate ? trigger : undefined}

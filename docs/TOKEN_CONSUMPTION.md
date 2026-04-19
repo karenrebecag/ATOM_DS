@@ -611,15 +611,46 @@ cd packages/tokens && pnpm build
 
 Some values have **no semantic equivalent** and must use primitives. These are documented gaps.
 
-### Known Gaps (3 total)
+### Known Gaps (4 total)
 
 | File | Line | Primitive | Reason | Solution |
 |------|------|-----------|--------|----------|
 | `skeleton.css` | 37 | `--primitive-zinc-700` | No `--border-inverse-subtle` semantic | Needs dark border token in semantic layer |
 | `skeleton.css` | 38 | `--primitive-zinc-900` | Falls between `--bg-inverse-primary` (950) and `--bg-inverse-secondary` (800) | Needs `--bg-inverse-surface` semantic |
 | `checkbox.css` | 48 | `--primitive-alpha-400` | No semantic for focus ring alpha color | Needs `--focus-ring-color` semantic |
+| `page-transition.css` | 13 | `--primitive-zinc-100` | No `--bg-transition` semantic for transition overlay | Needs transition background token |
 
 **These gaps require Figma design decisions** — adding new semantic tokens to the design system.
+
+---
+
+### Accepted Raw Values (NOT violations)
+
+The following patterns are intentional and do NOT require token replacement:
+
+| Pattern | Example | Reason |
+|---------|---------|--------|
+| Binary opacity (`0` / `1`) | `opacity: 0; opacity: 1` | Behavioral show/hide, not a design scale value |
+| Transform states | `transform: scale(0)` / `scale(1)` | Animation start/end states |
+| Position origin | `top: 0; left: 0` | CSS position anchoring |
+| Fill parent | `height: 100%; width: 100%` | Structural fill behavior |
+| Explicit no-radius | `border-radius: 0` | Reset/override, not a design decision |
+| Pseudo-element optical | `font-size: 1.25em; top: 0.125em` | Fine-tuning relative to parent em |
+| Underline offset | `text-underline-offset: 0.2em` | Optical fine-tuning |
+| Local stacking | `z-index: 1` | Component-internal layering (not global z-index) |
+| Media query breakpoints | `@media (min-width: 600px)` | CSS spec limitation: custom properties not allowed in media queries |
+| Flexbox min-width trick | `min-width: 1px` | Prevents overflow in flex children |
+| Number reset | `line-height: 1` | Structural 1:1 ratio, not a design scale value |
+
+---
+
+### Deferred to CSS
+
+Some values are **composite shorthands** that cannot be expressed as individual DTCG tokens. These are defined directly in component CSS as scoped custom properties.
+
+**Example:** `skeleton.css` `:root {}` block contains composite values like `var(--stroke-xs) solid var(--border-tertiary)` which combine multiple tokens into a single shorthand. These are acceptable as "Deferred to CSS" patterns.
+
+See also: `DEFERRED_TO_CSS.md` for the full list of deferred patterns.
 
 ---
 
@@ -675,6 +706,7 @@ Install **CSS Variable Autocomplete** extension for token autocomplete in CSS fi
 
 | Date | Change | Impact |
 |------|--------|--------|
+| 2026-04-19 | Token consumption audit fix (66+ violations) | 16 CSS files fixed, 11 Astro files updated, 3 canonical opacity tokens added |
 | 2026-04-19 | Spacing transform layer implemented | Figma names cleaned (2xxl → 2xl) |
 | 2026-04-19 | CSS token cleanup | 7 files fixed, 3 gaps documented |
 | 2026-04-19 | Astro StatusIcon eliminated | Integrated into Avatar, CSS moved to avatar.css |

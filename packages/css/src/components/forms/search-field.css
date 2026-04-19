@@ -1,0 +1,220 @@
+/* ============================================
+   @atomchat/css — search-field.css
+   Depends on: @atomchat/tokens (tokens.css)
+   Form input component for search functionality
+============================================ */
+
+/* SEARCH FIELD — Search input with icon and keyboard shortcut */
+.search-field {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.search-field__field {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  overflow: hidden;
+  border: var(--search-field-border-width) solid var(--form-fields-border-enabled);
+  border-radius: var(--search-field-border-radius);
+  background-color: var(--form-fields-bg-enabled);
+  transition: border-color var(--duration-quarter), box-shadow var(--duration-quarter);
+}
+
+.search-field__leading {
+  display: flex;
+  align-items: center;
+  gap: var(--search-field-gap-inner);
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.search-field__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--search-field-icon-size);
+  height: var(--search-field-icon-size);
+  color: var(--form-fields-fg-enabled);
+  flex-shrink: 0;
+  transition: color var(--duration-quarter);
+}
+
+.search-field__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.search-field__input {
+  flex: 1 1 0;
+  min-width: 1px;
+  border: none;
+  background: transparent;
+  font-family: var(--search-field-font-family);
+  font-size: var(--search-field-font-size);
+  font-weight: var(--search-field-font-weight);
+  line-height: var(--search-field-font-line-height);
+  color: var(--form-fields-fg-enabled);
+  outline: none;
+  transition: color var(--duration-quarter);
+}
+
+.search-field__input::placeholder {
+  color: var(--form-fields-fg-enabled);
+  opacity: 1;
+}
+
+.search-field__trailing {
+  display: flex;
+  align-items: center;
+  gap: var(--search-field-gap-inner);
+  flex-shrink: 0;
+}
+
+.search-field__shortcut {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: var(--search-field-font-family);
+  font-size: var(--search-field-font-size);
+  font-weight: var(--search-field-font-weight);
+  line-height: var(--search-field-font-line-height);
+  color: var(--form-fields-fg-enabled);
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: color var(--duration-quarter);
+}
+
+.search-field__clear {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: var(--search-field-icon-size);
+  height: var(--search-field-icon-size);
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--form-fields-fg-enabled);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: color var(--duration-quarter);
+}
+
+.search-field__clear svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* SVG stroke — clear icon X paths (moved from inline SVG attributes) */
+.search-field__clear path:not([fill]) {
+  stroke: var(--fg-inverse-primary);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* STATES */
+
+/* Hover */
+.search-field__field:hover:not(:has(:disabled)) {
+  border-color: var(--form-fields-border-hovered);
+}
+
+.search-field__field:hover:not(:has(:disabled)) .search-field__icon,
+.search-field__field:hover:not(:has(:disabled)) .search-field__input,
+.search-field__field:hover:not(:has(:disabled)) .search-field__shortcut,
+.search-field__field:hover:not(:has(:disabled)) .search-field__clear {
+  color: var(--form-fields-fg-hovered);
+}
+
+.search-field__field:hover:not(:has(:disabled)) .search-field__input::placeholder {
+  color: var(--form-fields-fg-hovered);
+}
+
+/* Focus */
+.search-field__field:has(:focus) {
+  border-color: var(--form-fields-border-focused);
+  box-shadow: var(--form-fields-shadow-focus);
+}
+
+.search-field__field:has(:focus) .search-field__icon,
+.search-field__field:has(:focus) .search-field__input,
+.search-field__field:has(:focus) .search-field__shortcut,
+.search-field__field:has(:focus) .search-field__clear {
+  color: var(--form-fields-fg-focused);
+}
+
+.search-field__field:has(:focus) .search-field__input::placeholder {
+  color: var(--form-fields-fg-focused);
+}
+
+/* Active/Pressed */
+.search-field__field:has(:active):not(:has(:disabled)) {
+  border-color: var(--form-fields-border-pressed);
+}
+
+.search-field__field:has(:active):not(:has(:disabled)) .search-field__icon,
+.search-field__field:has(:active):not(:has(:disabled)) .search-field__input,
+.search-field__field:has(:active):not(:has(:disabled)) .search-field__clear {
+  color: var(--form-fields-fg-pressed);
+}
+
+/* Filled (has value) */
+.search-field--filled .search-field__field {
+  border-color: var(--form-fields-border-filled);
+}
+
+.search-field--filled .search-field__icon,
+.search-field--filled .search-field__input,
+.search-field--filled .search-field__clear {
+  color: var(--form-fields-fg-filled);
+}
+
+.search-field--filled .search-field__shortcut {
+  display: none;
+}
+
+.search-field--filled .search-field__clear {
+  display: flex;
+}
+
+/* Disabled */
+.search-field__field:has(:disabled) {
+  border-color: var(--form-fields-border-disabled);
+  background-color: var(--form-fields-bg-disabled);
+  cursor: not-allowed;
+}
+
+.search-field__field:has(:disabled) .search-field__icon,
+.search-field__field:has(:disabled) .search-field__input,
+.search-field__field:has(:disabled) .search-field__shortcut,
+.search-field__field:has(:disabled) .search-field__clear {
+  color: var(--form-fields-fg-disabled);
+  cursor: not-allowed;
+}
+
+.search-field__field:has(:disabled) .search-field__input::placeholder {
+  color: var(--form-fields-fg-disabled);
+}
+
+/* SIZE VARIANTS */
+
+/* Small — 8px vertical padding */
+.search-field--s .search-field__field {
+  gap: var(--search-field-gap-container);
+  padding: var(--search-field-padding-y-s) var(--search-field-padding-x-s);
+}
+
+/* Medium — 12px all around padding */
+.search-field--m .search-field__field {
+  gap: var(--search-field-gap-container);
+  padding: var(--search-field-padding-y-m) var(--search-field-padding-x-m);
+}
+
+/* Large — 16px vertical padding */
+.search-field--l .search-field__field {
+  gap: var(--search-field-gap-container);
+  padding: var(--search-field-padding-y-l) var(--search-field-padding-x-l);
+}

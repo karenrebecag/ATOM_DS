@@ -1,0 +1,270 @@
+---
+/**
+ * Pagination — Table pagination with page navigation
+ * @atomchat/components-astro
+ *
+ * Depends on:
+ *   @atomchat/tokens (--pagination-*, --buttons-*, --form-fields-* tokens)
+ *   @atomchat/css (pagination.css)
+ *
+ * Props:
+ *   currentPage      number              (required) - Current page number (1-indexed)
+ *   totalPages       number              (required) - Total number of pages
+ *   pageSize?        number              - Items per page (default: 10)
+ *   pageSizeOptions? number[]            - Available page size options (default: [10, 25, 50, 100])
+ *   loading?         boolean             - Loading state (default: false)
+ *   onPageChange?    string              - JavaScript function name to call on page change
+ *   onPageSizeChange? string             - JavaScript function name to call on page size change
+ *   class?           string              - Additional CSS classes
+ *
+ * States:
+ *   - normal: Standard pagination state
+ *   - first-page: On first page (prev buttons disabled)
+ *   - last-page: On last page (next buttons disabled)
+ *   - single-page: Only one page (all nav buttons disabled)
+ *   - no-data: No pages (all controls disabled)
+ *   - loading: Skeleton loading state
+ *
+ * Usage:
+ *   <Pagination
+ *     currentPage={3}
+ *     totalPages={10}
+ *     pageSize={25}
+ *     pageSizeOptions={[10, 25, 50]}
+ *   />
+ */
+
+interface Props {
+  currentPage: number;
+  totalPages: number;
+  pageSize?: number;
+  pageSizeOptions?: number[];
+  loading?: boolean;
+  onPageChange?: string;
+  onPageSizeChange?: string;
+  class?: string;
+}
+
+const {
+  currentPage,
+  totalPages,
+  pageSize = 10,
+  pageSizeOptions = [10, 25, 50, 100],
+  loading = false,
+  onPageChange,
+  onPageSizeChange,
+  class: className = "",
+} = Astro.props;
+
+// Determine state
+const isFirstPage = currentPage === 1;
+const isLastPage = currentPage === totalPages;
+const isSinglePage = totalPages === 1;
+const isNoData = totalPages === 0;
+
+// Disable states for buttons
+const disablePrev = isFirstPage || isSinglePage || isNoData || loading;
+const disableNext = isLastPage || isSinglePage || isNoData || loading;
+const disableSelect = isNoData || loading;
+
+// Page info text
+const pageInfo = isNoData
+  ? "Página 0 de 0"
+  : `Página ${currentPage} de ${totalPages}`;
+---
+
+<div
+  class:list={[
+    "pagination",
+    { "pagination--loading": loading },
+    className
+  ]}
+  data-pagination
+  data-current-page={currentPage}
+  data-total-pages={totalPages}
+>
+  <!-- Left Section: Records per page selector -->
+  <div class="pagination__left">
+    <span class="pagination__label">Registros por página</span>
+
+    {loading ? (
+      <!-- Skeleton placeholder -->
+      <div class="pagination__select pagination__select--skeleton"></div>
+    ) : (
+      <button
+        type="button"
+        class="pagination__select"
+        disabled={disableSelect}
+        data-page-size-select
+        aria-label="Seleccionar registros por página"
+      >
+        <span>{isNoData ? "0" : pageSize}</span>
+        <div class="pagination__select-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M6 9L12 15L18 9"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </div>
+      </button>
+    )}
+  </div>
+
+  <!-- Center Section: Page info -->
+  {loading ? (
+    <div class="pagination__center pagination__center--skeleton"></div>
+  ) : (
+    <span class="pagination__center">{pageInfo}</span>
+  )}
+
+  <!-- Right Section: Navigation buttons -->
+  <nav class="pagination__nav" aria-label="Navegación de páginas">
+    <!-- First page button -->
+    <button
+      type="button"
+      class="pagination__nav-button"
+      disabled={disablePrev}
+      data-nav-button="first"
+      aria-label="Ir a la primera página"
+    >
+      <div class="pagination__nav-button-icon">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M11 5L4 12L11 19M4 12H20"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </div>
+    </button>
+
+    <!-- Previous page button -->
+    <button
+      type="button"
+      class="pagination__nav-button"
+      disabled={disablePrev}
+      data-nav-button="prev"
+      aria-label="Ir a la página anterior"
+    >
+      <div class="pagination__nav-button-icon">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M15 18L9 12L15 6"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </div>
+    </button>
+
+    <!-- Next page button -->
+    <button
+      type="button"
+      class="pagination__nav-button"
+      disabled={disableNext}
+      data-nav-button="next"
+      aria-label="Ir a la página siguiente"
+    >
+      <div class="pagination__nav-button-icon">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M9 18L15 12L9 6"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </div>
+    </button>
+
+    <!-- Last page button -->
+    <button
+      type="button"
+      class="pagination__nav-button"
+      disabled={disableNext}
+      data-nav-button="last"
+      aria-label="Ir a la última página"
+    >
+      <div class="pagination__nav-button-icon">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M13 5L20 12L13 19M20 12H4"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </div>
+    </button>
+  </nav>
+</div>
+
+<script>
+  // Handle pagination navigation
+  document.addEventListener("DOMContentLoaded", () => {
+    const paginations = document.querySelectorAll("[data-pagination]");
+
+    paginations.forEach((pagination) => {
+      const navButtons = pagination.querySelectorAll("[data-nav-button]");
+      const currentPage = parseInt(pagination.getAttribute("data-current-page") || "1");
+      const totalPages = parseInt(pagination.getAttribute("data-total-pages") || "1");
+
+      navButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const action = button.getAttribute("data-nav-button");
+          let newPage = currentPage;
+
+          switch (action) {
+            case "first":
+              newPage = 1;
+              break;
+            case "prev":
+              newPage = Math.max(1, currentPage - 1);
+              break;
+            case "next":
+              newPage = Math.min(totalPages, currentPage + 1);
+              break;
+            case "last":
+              newPage = totalPages;
+              break;
+          }
+
+          if (newPage !== currentPage) {
+            // Dispatch custom event for page change
+            const event = new CustomEvent("pagechange", {
+              detail: { page: newPage },
+              bubbles: true,
+            });
+            pagination.dispatchEvent(event);
+
+            // If callback function is provided, call it
+            const onPageChange = pagination.getAttribute("data-on-page-change");
+            if (onPageChange && typeof window[onPageChange] === "function") {
+              window[onPageChange](newPage);
+            }
+          }
+        });
+      });
+
+      // Page size selector (placeholder - would need dropdown implementation)
+      const pageSizeSelect = pagination.querySelector("[data-page-size-select]");
+      if (pageSizeSelect) {
+        pageSizeSelect.addEventListener("click", () => {
+          // This would open a dropdown menu to select page size
+          // For now, just log to console
+          console.log("Page size selector clicked");
+        });
+      }
+    });
+  });
+</script>

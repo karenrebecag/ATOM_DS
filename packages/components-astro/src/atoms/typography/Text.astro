@@ -37,7 +37,7 @@ interface Props {
   as?: "p" | "span" | "div" | "li";
   size?: "body" | "caption" | "label" | "label-small" | "footnote";
   weight?: "regular" | "medium" | "bold";
-  color?: string;
+  color?: "primary" | "secondary" | "tertiary" | "disabled" | "inherit" | `var(--${string})`;
   align?: "left" | "center" | "right";
   truncate?: boolean | number;
   balance?: boolean;
@@ -63,9 +63,15 @@ const {
   ...rest
 } = Astro.props;
 
+// ── Validate color value ──
+const semanticColors = ["primary", "secondary", "tertiary", "disabled"] as const;
+const isSemanticColor = semanticColors.includes(color as typeof semanticColors[number]);
+const isVarRef = color.startsWith("var(--");
+const safeColor = (color === "inherit" || isSemanticColor || isVarRef) ? color : "inherit";
+
 // ── Build inline style for clamp lines ──
 const clampStyle = typeof truncate === "number" ? `--text-clamp-lines: ${truncate}` : undefined;
-const colorStyle = color !== "inherit" ? `color: ${color}` : undefined;
+const colorStyle = safeColor !== "inherit" && !isSemanticColor ? `color: ${safeColor}` : undefined;
 const inlineStyle = [clampStyle, colorStyle].filter(Boolean).join("; ") || undefined;
 
 // ── Dynamic HTML Tag ──
@@ -81,6 +87,7 @@ const Tag = as;
     { "text--truncate": truncate === true },
     { "text--clamp": typeof truncate === "number" },
     { "text--balance": balance },
+    { [`text--${safeColor}`]: isSemanticColor },
     className,
   ]}
   style={inlineStyle}

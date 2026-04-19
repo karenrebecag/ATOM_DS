@@ -90,20 +90,20 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
+  border-radius: var(--radius-circle);
   border: var(--radio-structure-circle-border-width) solid var(--radio-border-enabled);
   background-color: var(--radio-bg-enabled);
-  transition: background-color 150ms, border-color 150ms, box-shadow 150ms;
+  transition: background-color var(--duration-quarter), border-color var(--duration-quarter), box-shadow var(--duration-quarter);
   flex-shrink: 0;
 }
 
 .radio__dot {
   display: block;
-  border-radius: 50%;
+  border-radius: var(--radius-circle);
   background-color: transparent;
   opacity: 0;
   transform: scale(0);
-  transition: opacity 150ms, transform 150ms, background-color 150ms;
+  transition: opacity var(--duration-quarter), transform var(--duration-quarter), background-color var(--duration-quarter);
 }
 
 .radio--disabled {

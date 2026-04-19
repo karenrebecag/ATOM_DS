@@ -1,0 +1,173 @@
+---
+/**
+ * Tooltip — Contextual information overlay
+ * @atomchat/components-astro
+ *
+ * Depends on:
+ *   @atomchat/tokens (--tooltip-* tokens)
+ *   @atomchat/css (tooltip.css)
+ *
+ * Props:
+ *   variant?         "plain" | "rich"    - Tooltip style (default: "plain")
+ *   text?            string              - Text for plain tooltip
+ *   headline?        string              - Headline for rich tooltip
+ *   supportingText?  string              - Supporting text for rich tooltip
+ *   showAction?      boolean             - Show action button in rich tooltip (default: false)
+ *   buttonText?      string              - Action button text (default: "Button")
+ *   buttonHref?      string              - Action button link
+ *   position?        "top" | "bottom" | "left" | "right" - Tooltip position (default: "top")
+ *   visible?         boolean             - Control visibility (default: false)
+ *   class?           string              - Additional CSS classes
+ *
+ * Slots:
+ *   default          Slot for plain tooltip text (overrides text prop)
+ *   extra            Slot for rich tooltip extra content (charts, lists, etc.)
+ *   action           Slot for rich tooltip custom action (overrides showAction/buttonText)
+ *
+ * Variants:
+ *   - plain: Simple dark tooltip with white text (for icon buttons)
+ *   - rich: Complex white tooltip with headline, text, extra content, and action button
+ *
+ * Usage:
+ *   <!-- Plain tooltip -->
+ *   <Tooltip variant="plain" text="Edit profile" />
+ *
+ *   <!-- Rich tooltip with headline and text -->
+ *   <Tooltip
+ *     variant="rich"
+ *     headline="Feature name"
+ *     supportingText="This feature helps you accomplish X, Y, and Z"
+ *     showAction
+ *     buttonText="Learn more"
+ *     buttonHref="/docs/feature"
+ *   />
+ *
+ *   <!-- Rich tooltip with extra content -->
+ *   <Tooltip variant="rich" headline="5 channels in total">
+ *     <div slot="extra">
+ *       <!-- Custom rich content like lists, charts, etc. -->
+ *     </div>
+ *   </Tooltip>
+ */
+
+interface Props {
+  variant?: "plain" | "rich";
+  text?: string;
+  headline?: string;
+  supportingText?: string;
+  showAction?: boolean;
+  buttonText?: string;
+  buttonHref?: string;
+  position?: "top" | "bottom" | "left" | "right";
+  visible?: boolean;
+  class?: string;
+}
+
+const {
+  variant = "plain",
+  text = "Tooltip",
+  headline = "Headline",
+  supportingText = "Supporting text",
+  showAction = false,
+  buttonText = "Button",
+  buttonHref,
+  position = "top",
+  visible = false,
+  class: className = "",
+} = Astro.props;
+
+const hasDefaultSlot = Astro.slots.has("default");
+const hasExtraSlot = Astro.slots.has("extra");
+const hasActionSlot = Astro.slots.has("action");
+
+const ButtonTag = buttonHref ? "a" : "button";
+---
+
+<div
+  class:list={[
+    "tooltip",
+    `tooltip--${variant}`,
+    `tooltip--${position}`,
+    { "tooltip--visible": visible },
+    { "tooltip--hidden": !visible },
+    className
+  ]}
+  role="tooltip"
+  data-tooltip
+>
+  {variant === "plain" ? (
+    <!-- Plain Tooltip Content -->
+    <div class="tooltip__text">
+      {hasDefaultSlot ? <slot /> : text}
+    </div>
+  ) : (
+    <!-- Rich Tooltip Content -->
+    <>
+      <!-- Content Section (headline + supporting text) -->
+      {(headline || supportingText) && (
+        <div class="tooltip__content">
+          {headline && (
+            <h4 class="tooltip__headline">{headline}</h4>
+          )}
+          {supportingText && (
+            <p class="tooltip__supporting">{supportingText}</p>
+          )}
+        </div>
+      )}
+
+      <!-- Extra Content Slot -->
+      {hasExtraSlot && (
+        <div class="tooltip__extra">
+          <slot name="extra" />
+        </div>
+      )}
+
+      <!-- Action Section -->
+      {(showAction || hasActionSlot) && (
+        <div class="tooltip__action">
+          {hasActionSlot ? (
+            <slot name="action" />
+          ) : (
+            <ButtonTag
+              class="button button--tertiary button--xs"
+              {...buttonHref ? { href: buttonHref } : { type: "button" }}
+            >
+              {buttonText}
+            </ButtonTag>
+          )}
+        </div>
+      )}
+    </>
+  )}
+</div>
+
+<!-- Styles handled by @atomchat/css (tooltip.css) -->
+
+<script>
+  // Tooltip positioning logic (basic implementation)
+  // In a real application, you'd want to use a library like Floating UI
+  // or implement more sophisticated positioning logic
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const tooltips = document.querySelectorAll("[data-tooltip]");
+
+    tooltips.forEach((tooltip) => {
+      // Basic show/hide logic
+      // You can enhance this with mouse events, focus events, etc.
+
+      // Example: Show on hover of trigger element
+      const trigger = tooltip.previousElementSibling;
+      if (trigger) {
+        trigger.addEventListener("mouseenter", () => {
+          tooltip.classList.remove("tooltip--hidden");
+          tooltip.classList.add("tooltip--visible");
+        });
+
+        trigger.addEventListener("mouseleave", () => {
+          tooltip.classList.add("tooltip--hidden");
+          tooltip.classList.remove("tooltip--visible");
+        });
+      }
+    });
+  });
+</script>

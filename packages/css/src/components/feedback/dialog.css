@@ -1,0 +1,201 @@
+/* ============================================
+   @atomchat/css — dialog.css
+   Depends on: @atomchat/tokens (tokens.css)
+   Composable dialog system: headline, content, actions
+============================================ */
+
+/* DIALOG BACKDROP — Overlay behind dialog */
+.dialog-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-dialog-backdrop);
+  background-color: var(--backdrop-overlay);
+}
+
+/* DIALOG WRAPPER — Container surface */
+.dialog {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--dialog-bg-default);
+  border: var(--stroke-xs) solid var(--dialog-border-default);
+  border-radius: var(--sm);
+  box-shadow: var(--elevation-dialog);
+  overflow: clip;
+  position: relative;
+  z-index: var(--z-dialog);
+}
+
+/* Size variants */
+.dialog--s { width: var(--dialog-width-s); }
+.dialog--m { width: var(--dialog-width-m); }
+.dialog--l { width: var(--dialog-width-l); }
+
+/* Centered positioning (when used with backdrop) */
+.dialog--centered {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* DIALOG HEADLINE — Header section */
+.dialog-headline {
+  display: flex;
+  width: 100%;
+  flex-shrink: 0;
+  position: relative;
+}
+
+/* Headline Left alignment */
+.dialog-headline--left {
+  align-items: center;
+  gap: var(--s);
+  padding: var(--m) var(--m) var(--m) var(--m);
+}
+
+/* Headline Center alignment */
+.dialog-headline--center {
+  flex-direction: column;
+  align-items: center;
+  gap: var(--m);
+  padding: var(--l) var(--l) var(--l) var(--l);
+}
+
+/* Headline icon (Center variant) */
+.dialog-headline__icon {
+  flex-shrink: 0;
+}
+
+/* Headline text */
+.dialog-headline__title {
+  font-family: var(--font-family-titles);
+  font-size: var(--font-sizes-body);
+  line-height: var(--line-height-body);
+  font-weight: var(--font-weight-bold);
+  color: var(--dialog-fg-primary);
+  margin: 0;
+}
+
+/* Left: title fills space */
+.dialog-headline--left .dialog-headline__title {
+  flex: 1 0 0;
+  min-width: 1px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Center: title centered */
+.dialog-headline--center .dialog-headline__title {
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Supporting text (Center variant) */
+.dialog-headline__supporting {
+  font-family: var(--font-family-content);
+  font-size: var(--font-sizes-caption);
+  line-height: var(--line-height-caption);
+  font-weight: var(--font-weight-regular);
+  color: var(--dialog-fg-secondary);
+  text-align: center;
+  margin: 0;
+  min-width: 100%;
+}
+
+/* Back button */
+.dialog-headline__back {
+  flex-shrink: 0;
+}
+
+/* Close button */
+.dialog-headline__close {
+  flex-shrink: 0;
+}
+
+/* Center variant: position back/close absolutely */
+.dialog-headline--center .dialog-headline__back {
+  position: absolute;
+  top: var(--m);
+  left: var(--l);
+}
+
+.dialog-headline--center .dialog-headline__close {
+  position: absolute;
+  top: var(--m);
+  right: var(--m);
+}
+
+/* DIALOG CONTENT — Flexible content area */
+.dialog-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  flex: 1 0 0;
+  min-height: 1px;
+}
+
+/* DIALOG ACTIONS — Footer with buttons */
+.dialog-actions {
+  display: flex;
+  gap: var(--s);
+  padding: var(--m);
+  width: 100%;
+  flex-shrink: 0;
+}
+
+/* Actions: hug contents (right-aligned buttons) */
+.dialog-actions--hug {
+  align-items: center;
+  justify-content: flex-end;
+}
+
+/* Actions: fill container (stretch buttons) */
+.dialog-actions--fill {
+  align-items: stretch;
+}
+
+.dialog-actions--fill .button {
+  flex: 1 0 0;
+  min-width: 1px;
+}
+
+/* Counter text (left side) */
+.dialog-actions__counter {
+  flex: 1 0 0;
+  min-width: 1px;
+  font-family: var(--font-family-content);
+  font-size: var(--font-sizes-caption);
+  line-height: var(--line-height-caption);
+  font-weight: var(--font-weight-regular);
+  color: var(--dialog-fg-secondary);
+}
+
+/* ANIMATION — Entrance animation */
+@keyframes dialog-enter {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes backdrop-enter {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.dialog--centered.dialog--visible {
+  animation: dialog-enter var(--duration-quarter) var(--ease-standard);
+}
+
+.dialog-backdrop--visible {
+  animation: backdrop-enter var(--duration-quarter) var(--ease-standard);
+}
+
+.dialog-backdrop--hidden {
+  display: none;
+}

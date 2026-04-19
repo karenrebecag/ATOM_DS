@@ -1,0 +1,235 @@
+---
+/**
+ * TextField — Single-line text input with label and character counter
+ * @atomchat/components-astro
+ *
+ * Depends on:
+ *   @atomchat/tokens (--text-field-*, --form-fields-* component tokens)
+ *   @atomchat/css (text-field.css)
+ *
+ * Props:
+ *   name             string                           (required) - Form input name
+ *   type?            string                           - Input type (default: "text")
+ *   label?           string                           - Label text
+ *   placeholder?     string                           - Placeholder text
+ *   value?           string                           - Input value
+ *   size?            "xs" | "s" | "m" | "l" | "xl"   - Field size (default: "m")
+ *   disabled?        boolean                          - Disabled state (default: false)
+ *   error?           boolean                          - Error state (default: false)
+ *   showSupportive?  boolean                          - Show supportive text (default: true)
+ *   supportiveText?  string                           - Supportive text message
+ *   maxLength?       number                           - Maximum character count (default: 200)
+ *   showCounter?     boolean                          - Show character counter (default: false)
+ *   id?              string                           - Custom input ID
+ *   class?           string                           - Additional CSS classes
+ *
+ * Slots:
+ *   leading          Optional leading content (icon, text, etc.)
+ *   trailing         Optional trailing content (icon, text, etc.)
+ *
+ * States:
+ *   - Enabled: default state
+ *   - Hovered: mouse hover state
+ *   - Focused: keyboard focus state
+ *   - Filled: when input has value
+ *   - Disabled: when disabled prop is true
+ *   - Error: when error prop is true (red border, error icon)
+ *
+ * Sizes (from Figma):
+ *   - xs: Extra Small (padding: 4px 12px, 12px font, 16px icon)
+ *   - s: Small (padding: 8px 12px, 12px font, 16px icon)
+ *   - m: Medium (padding: 12px, 12px font, 16px icon)
+ *   - l: Large (padding: 12px, 12px font, 16px icon)
+ *   - xl: Extra Large (padding: 20px 12px, 16px font, 24px icon)
+ *
+ * Usage:
+ *   <TextField name="email" label="Email" size="m" />
+ *   <TextField name="phone" placeholder="Enter phone number" size="xl" />
+ *   <TextField name="amount" value="100" showCounter maxLength={50} size="l">
+ *     <span slot="leading">$</span>
+ *     <svg slot="trailing">...</svg>
+ *   </TextField>
+ */
+
+interface Props {
+  name: string;
+  type?: string;
+  label?: string;
+  placeholder?: string;
+  value?: string;
+  size?: "xs" | "s" | "m" | "l" | "xl";
+  disabled?: boolean;
+  error?: boolean;
+  showSupportive?: boolean;
+  supportiveText?: string;
+  maxLength?: number;
+  showCounter?: boolean;
+  id?: string;
+  class?: string;
+  [key: string]: any;
+}
+
+const {
+  name,
+  type = "text",
+  label,
+  placeholder,
+  value = "",
+  size = "m",
+  disabled = false,
+  error = false,
+  showSupportive = true,
+  supportiveText = error ? "Supportive text negative" : "Supportive text",
+  maxLength = 200,
+  showCounter = false,
+  id,
+  class: className = "",
+  ...rest
+} = Astro.props;
+
+const inputId = id || `text-field-${name}`;
+const isFilled = value && value.length > 0;
+const charCount = value ? value.length : 0;
+
+// Check if leading or trailing slots are present
+const hasLeading = Astro.slots.has("leading");
+const hasTrailing = Astro.slots.has("trailing");
+---
+
+<div
+  class:list={[
+    "text-field",
+    `text-field--${size}`,
+    { "text-field--filled": isFilled },
+    { "text-field--error": error },
+    { "text-field--disabled": disabled },
+    className
+  ]}
+  data-text-field
+  data-max-length={maxLength}
+>
+  <!-- Label -->
+  {label && (
+    <label class="text-field__label" for={inputId}>
+      {label}
+    </label>
+  )}
+
+  <!-- Field Container -->
+  <div class="text-field__field">
+    <!-- Leading Content -->
+    {hasLeading && (
+      <div class="text-field__leading">
+        <slot name="leading" />
+      </div>
+    )}
+
+    <!-- Input -->
+    <input
+      class="text-field__input"
+      type={type}
+      id={inputId}
+      name={name}
+      placeholder={placeholder}
+      value={value}
+      disabled={disabled}
+      maxlength={maxLength}
+      {...rest}
+    />
+
+    <!-- Trailing Content -->
+    {hasTrailing && (
+      <div class="text-field__trailing">
+        <slot name="trailing" />
+      </div>
+    )}
+  </div>
+
+  <!-- Bottom Section (Supportive Text + Counter) -->
+  {(showSupportive || showCounter) && (
+    <div class="text-field__bottom">
+      <!-- Supportive Text -->
+      {showSupportive && (
+        <div class="text-field__supportive">
+          <!-- Icon -->
+          <div class="text-field__supportive-icon" aria-hidden="true">
+            {error ? (
+              <!-- Error icon -->
+              <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M6 11C8.76142 11 11 8.76142 11 6C11 3.23858 8.76142 1 6 1C3.23858 1 1 3.23858 1 6C1 8.76142 3.23858 11 6 11Z"
+                  fill="currentColor"
+                />
+                <path
+                  d="M7.5 4.5L4.5 7.5M4.5 4.5L7.5 7.5"
+                />
+              </svg>
+            ) : (
+              <!-- Info icon -->
+              <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M6 11C8.76142 11 11 8.76142 11 6C11 3.23858 8.76142 1 6 1C3.23858 1 1 3.23858 1 6C1 8.76142 3.23858 11 6 11Z"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                />
+                <path
+                  d="M6 6V8.5M6 3.5H6.005V3.505H6V3.5Z"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            )}
+          </div>
+          <!-- Text -->
+          <span class="text-field__supportive-text">
+            {supportiveText}
+          </span>
+        </div>
+      )}
+
+      <!-- Character Counter -->
+      {showCounter && (
+        <div class="text-field__counter" data-counter>
+          <span data-current>{charCount}</span>/<span data-max>{maxLength}</span>
+        </div>
+      )}
+    </div>
+  )}
+</div>
+
+<script>
+  // Handle character counting and filled state
+  document.addEventListener("DOMContentLoaded", () => {
+    const textFields = document.querySelectorAll("[data-text-field]");
+
+    textFields.forEach((wrapper) => {
+      const input = wrapper.querySelector("input");
+      const counter = wrapper.querySelector("[data-counter]");
+      const currentSpan = counter?.querySelector("[data-current]");
+
+      if (!input) return;
+
+      const updateState = () => {
+        // Update filled state
+        if (input.value.length > 0) {
+          wrapper.classList.add("text-field--filled");
+        } else {
+          wrapper.classList.remove("text-field--filled");
+        }
+
+        // Update character count
+        if (currentSpan) {
+          currentSpan.textContent = String(input.value.length);
+        }
+      };
+
+      // Listen for input events
+      input.addEventListener("input", updateState);
+
+      // Initialize state
+      updateState();
+    });
+  });
+</script>

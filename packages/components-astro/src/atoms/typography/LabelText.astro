@@ -28,7 +28,7 @@ interface Props {
   weight?: "regular" | "medium" | "bold";
   required?: boolean;
   disabled?: boolean;
-  color?: string;
+  color?: "primary" | "secondary" | "tertiary" | "disabled" | "inherit" | `var(--${string})`;
   class?: string;
   [key: string]: any;
 }
@@ -43,6 +43,12 @@ const {
   class: className = "",
   ...rest
 } = Astro.props;
+
+// ── Validate color value ──
+const semanticColors = ["primary", "secondary", "tertiary", "disabled"] as const;
+const isSemanticColor = semanticColors.includes(color as typeof semanticColors[number]);
+const isVarRef = color.startsWith("var(--");
+const safeColor = (color === "inherit" || isSemanticColor || isVarRef) ? color : "inherit";
 ---
 
 <label
@@ -51,9 +57,10 @@ const {
     `label-text--${size}`,
     `label-text--${weight}`,
     { "label-text--disabled": disabled },
+    { [`label-text--${safeColor}`]: isSemanticColor },
     className,
   ]}
-  style={color !== "inherit" ? `color: ${color}` : undefined}
+  style={safeColor !== "inherit" && !isSemanticColor ? `color: ${safeColor}` : undefined}
   for={htmlFor}
   data-text
   {...rest}

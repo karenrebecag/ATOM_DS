@@ -1,0 +1,322 @@
+/* ============================================
+   @atomchat/css — textarea.css
+   Depends on: @atomchat/tokens (tokens.css)
+   Multi-line text input component
+============================================ */
+
+/* TEXTAREA — Multi-line text input with label and character counter */
+.textarea {
+  display: flex;
+  flex-direction: column;
+  gap: var(--textarea-gap-vertical);
+  width: 100%;
+}
+
+/* LABEL */
+.textarea__label {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  font-family: var(--textarea-label-font-family);
+  font-weight: var(--textarea-label-font-weight);
+  color: var(--fg-secondary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition: color var(--duration-quarter);
+}
+
+.textarea--error .textarea__label {
+  color: var(--fg-status-error);
+}
+
+.textarea--disabled .textarea__label {
+  color: var(--fg-disabled);
+}
+
+/* FIELD CONTAINER */
+.textarea__field {
+  display: flex;
+  gap: var(--xs);
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: var(--textarea-border-width) solid var(--form-fields-border-enabled);
+  border-radius: var(--textarea-border-radius);
+  background-color: var(--form-fields-bg-enabled);
+  transition: border-color var(--duration-quarter), box-shadow var(--duration-quarter), background-color var(--duration-quarter);
+}
+
+/* TEXTAREA ELEMENT */
+.textarea__input {
+  flex: 1 1 0;
+  min-width: 1px;
+  height: 100%;
+  padding: 0;
+  border: none;
+  background: transparent;
+  font-family: var(--textarea-font-family);
+  font-weight: var(--textarea-font-weight);
+  color: var(--form-fields-fg-enabled);
+  resize: none;
+  outline: none;
+  overflow-y: auto;
+  line-height: 0;
+  transition: color var(--duration-quarter);
+
+  /* Hide scrollbar (custom scrollbar will be shown separately) */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.textarea__input::-webkit-scrollbar {
+  display: none;
+}
+
+.textarea__input::placeholder {
+  color: var(--form-fields-fg-enabled);
+  opacity: 1;
+}
+
+/* SCROLLBAR */
+.textarea__scrollbar {
+  flex-shrink: 0;
+  width: var(--textarea-scrollbar-width);
+  height: 100%;
+  position: relative;
+  border-radius: var(--textarea-scrollbar-radius);
+  background-color: var(--bg-tertiary);
+}
+
+.textarea__scrollbar-thumb {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--2xl);
+  border-radius: var(--textarea-scrollbar-radius);
+  background-color: var(--bg-quaternary);
+}
+
+/* BOTTOM SECTION */
+.textarea__bottom {
+  display: flex;
+  gap: var(--s);
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* SUPPORTIVE TEXT */
+.textarea__supportive {
+  display: flex;
+  flex: 1 1 0;
+  gap: var(--textarea-supportive-text-gap);
+  align-items: center;
+  min-width: 1px;
+  font-family: var(--textarea-font-family);
+  font-weight: var(--textarea-font-weight);
+  color: var(--fg-tertiary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition: color var(--duration-quarter);
+}
+
+.textarea__supportive-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--fg-tertiary);
+  transition: color var(--duration-quarter);
+}
+
+.textarea__supportive-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* SVG stroke — supportive icon paths (moved from inline SVG attributes) */
+.textarea__supportive-icon path:not([fill]) {
+  stroke: var(--fg-inverse-primary);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.textarea__supportive-text {
+  flex: 1 1 0;
+  min-width: 1px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* CHARACTER COUNTER */
+.textarea__counter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-family: var(--textarea-font-family);
+  font-weight: var(--textarea-font-weight);
+  color: var(--fg-tertiary);
+  text-align: right;
+  transition: color var(--duration-quarter);
+}
+
+/* STATE MODIFIERS */
+
+/* Hover */
+.textarea__field:hover:not(:has(textarea:disabled)):not(.textarea--error .textarea__field) {
+  border-color: var(--form-fields-border-hovered);
+}
+
+.textarea__field:hover:not(:has(textarea:disabled)) .textarea__input {
+  color: var(--form-fields-fg-hovered);
+}
+
+.textarea__field:hover:not(:has(textarea:disabled)) .textarea__input::placeholder {
+  color: var(--form-fields-fg-hovered);
+}
+
+/* Focus */
+.textarea__field:has(textarea:focus):not(.textarea--error .textarea__field) {
+  border-color: var(--form-fields-border-focused);
+  box-shadow: var(--form-fields-shadow-focus);
+}
+
+.textarea__field:has(textarea:focus) .textarea__input {
+  color: var(--form-fields-fg-focused);
+}
+
+.textarea__field:has(textarea:focus) .textarea__input::placeholder {
+  color: var(--form-fields-fg-focused);
+}
+
+/* Filled (has value) */
+.textarea--filled .textarea__field {
+  border-color: var(--form-fields-border-filled);
+}
+
+.textarea--filled .textarea__input {
+  color: var(--form-fields-fg-filled);
+}
+
+/* Disabled */
+.textarea--disabled .textarea__field {
+  border-color: var(--form-fields-border-disabled);
+  background-color: var(--form-fields-bg-disabled);
+  cursor: not-allowed;
+}
+
+.textarea--disabled .textarea__input {
+  color: var(--form-fields-fg-disabled);
+  cursor: not-allowed;
+}
+
+.textarea--disabled .textarea__input::placeholder {
+  color: var(--form-fields-fg-disabled);
+}
+
+.textarea--disabled .textarea__supportive,
+.textarea--disabled .textarea__supportive-icon,
+.textarea--disabled .textarea__counter {
+  color: var(--fg-disabled);
+}
+
+/* Error */
+.textarea--error .textarea__field {
+  border-color: var(--form-fields-border-error);
+}
+
+.textarea--error .textarea__input {
+  color: var(--form-fields-fg-error-enabled);
+}
+
+.textarea--error.textarea--filled .textarea__field {
+  border-color: var(--form-fields-border-error-filled);
+}
+
+.textarea--error.textarea--filled .textarea__input {
+  color: var(--form-fields-fg-error-filled);
+}
+
+.textarea--error .textarea__field:has(textarea:focus) {
+  border-color: var(--form-fields-border-error-focused);
+  box-shadow: var(--form-fields-shadow-focus-error);
+}
+
+.textarea--error .textarea__field:has(textarea:focus) .textarea__input {
+  color: var(--form-fields-fg-error-focused);
+}
+
+.textarea--error .textarea__supportive,
+.textarea--error .textarea__supportive-icon {
+  color: var(--fg-status-on-error);
+}
+
+/* SIZE VARIANTS */
+
+/* Medium */
+.textarea--m .textarea__label {
+  font-size: var(--textarea-label-font-size-m);
+  line-height: var(--textarea-label-line-height-m);
+}
+
+.textarea--m .textarea__field {
+  height: var(--textarea-height-m);
+  padding: var(--textarea-padding-y-m) var(--textarea-padding-x-m);
+}
+
+.textarea--m .textarea__input {
+  font-size: var(--textarea-font-size-m);
+  line-height: var(--textarea-font-line-height-m);
+}
+
+.textarea--m .textarea__supportive {
+  font-size: var(--textarea-supportive-text-font-size-m);
+  line-height: var(--textarea-supportive-text-line-height-m);
+}
+
+.textarea--m .textarea__supportive-icon {
+  width: var(--textarea-supportive-text-icon-size-m);
+  height: var(--textarea-supportive-text-icon-size-m);
+}
+
+.textarea--m .textarea__counter {
+  font-size: var(--textarea-supportive-text-font-size-m);
+  line-height: var(--textarea-supportive-text-line-height-m);
+}
+
+/* Extra Large */
+.textarea--xl .textarea__label {
+  font-size: var(--textarea-label-font-size-xl);
+  line-height: var(--textarea-label-line-height-xl);
+}
+
+.textarea--xl .textarea__field {
+  height: var(--textarea-height-xl);
+  padding: var(--textarea-padding-y-xl) var(--textarea-padding-x-xl);
+}
+
+.textarea--xl .textarea__input {
+  font-size: var(--textarea-font-size-xl);
+  line-height: var(--textarea-font-line-height-xl);
+}
+
+.textarea--xl .textarea__supportive {
+  font-size: var(--textarea-supportive-text-font-size-xl);
+  line-height: var(--textarea-supportive-text-line-height-xl);
+}
+
+.textarea--xl .textarea__supportive-icon {
+  width: var(--textarea-supportive-text-icon-size-xl);
+  height: var(--textarea-supportive-text-icon-size-xl);
+}
+
+.textarea--xl .textarea__counter {
+  font-size: var(--textarea-supportive-text-font-size-xl);
+  line-height: var(--textarea-supportive-text-line-height-xl);
+}

@@ -1,0 +1,254 @@
+/* ============================================
+   @atomchat/css — chip.css
+   Depends on: @atomchat/tokens (tokens.css)
+   Animations: @atomchat/animations
+
+   Tokens consumed from @atomchat/tokens:
+   - --chip-bg-* (colors)
+   - --chip-fg-* (colors)
+   - --chip-border-* (colors)
+   - --chip-shadow-focus
+   - --chip-padding-* (spacing)
+   - --chip-font-* (typography)
+   - --chip-border-radius, --chip-border-width
+   - --chip-icon-size, --chip-gap
+============================================ */
+
+/* ============================================
+   Chip Component Styles
+============================================ */
+
+.chip {
+  /* Layout */
+  display: inline-flex;
+  align-items: center;
+  gap: var(--chip-gap);
+  overflow: hidden;
+
+  /* Spacing */
+  padding: var(--chip-padding-m);
+
+  /* Visual */
+  background-color: var(--chip-bg-unselected-enabled);
+  color: var(--chip-fg-unselected-enabled);
+  border: var(--chip-border-width) solid transparent;
+  border-radius: var(--chip-border-radius);
+
+  /* Typography */
+  font-family: var(--chip-font-family-small);
+  font-size: var(--chip-font-size-small);
+  font-weight: var(--chip-font-weight);
+  line-height: var(--chip-line-height-small);
+  white-space: nowrap;
+
+  /* Interaction */
+  cursor: pointer;
+  user-select: none;
+  transition:
+    background-color var(--duration-quarter),
+    color var(--duration-quarter),
+    border-color var(--duration-quarter),
+    box-shadow var(--duration-quarter);
+}
+
+/* ── Size Variants ───────────────────────────────────────── */
+.chip[data-size="xs"] {
+  padding: var(--chip-padding-xs) var(--s);
+}
+
+.chip[data-size="s"] {
+  padding: var(--chip-padding-s);
+}
+
+.chip[data-size="m"] {
+  padding: var(--chip-padding-m);
+}
+
+.chip[data-size="l"] {
+  padding: var(--chip-padding-l);
+}
+
+.chip[data-size="xl"] {
+  padding: var(--chip-padding-xl);
+  font-family: var(--chip-font-family-large);
+  font-size: var(--chip-font-size-large);
+  line-height: var(--chip-line-height-large);
+}
+
+/* ── States (Unselected) ─────────────────────────────────── */
+.chip:hover:not(:disabled):not([data-selected="true"]) {
+  background-color: var(--chip-bg-unselected-hovered);
+  color: var(--chip-fg-unselected-hovered);
+}
+
+.chip:active:not(:disabled):not([data-selected="true"]) {
+  background-color: var(--chip-bg-unselected-pressed);
+  color: var(--chip-fg-unselected-pressed);
+}
+
+.chip:disabled:not([data-selected="true"]) {
+  background-color: var(--chip-bg-unselected-disabled);
+  color: var(--chip-fg-unselected-disabled);
+  cursor: not-allowed;
+}
+
+/* ── States (Selected) ───────────────────────────────────── */
+.chip[data-selected="true"] {
+  background-color: var(--chip-bg-selected-enabled);
+  color: var(--chip-fg-selected-enabled);
+}
+
+.chip[data-selected="true"]:hover:not(:disabled) {
+  background-color: var(--chip-bg-selected-hovered);
+  color: var(--chip-fg-selected-hovered);
+}
+
+.chip[data-selected="true"]:active:not(:disabled) {
+  background-color: var(--chip-bg-selected-pressed);
+  color: var(--chip-fg-selected-pressed);
+}
+
+.chip[data-selected="true"]:disabled {
+  background-color: var(--chip-bg-selected-disabled);
+  color: var(--chip-fg-selected-disabled);
+  cursor: not-allowed;
+}
+
+/* ── Focus State ─────────────────────────────────────────── */
+.chip:focus-visible {
+  border-color: var(--chip-border-default);
+  box-shadow: var(--chip-shadow-focus);
+  outline: none;
+}
+
+/* ── Icon ────────────────────────────────────────────────── */
+.chip__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--chip-icon-size);
+  height: var(--chip-icon-size);
+  flex-shrink: 0;
+}
+
+.chip__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ── Label ───────────────────────────────────────────────── */
+.chip__label {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* ── Dismiss Button ──────────────────────────────────────── */
+.chip__dismiss {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--chip-icon-size);
+  height: var(--chip-icon-size);
+  flex-shrink: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  color: currentColor;
+  cursor: pointer;
+  transition: opacity var(--duration-quarter);
+}
+
+.chip__dismiss:hover:not(:disabled) {
+  opacity: var(--opacity-subdued);
+}
+
+.chip__dismiss:disabled {
+  cursor: not-allowed;
+  opacity: var(--opacity-medium);
+}
+
+.chip__dismiss svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   VARIANT: OUTLINED (with visible border)
+══════════════════════════════════════════════════════════════ */
+
+.chip[data-variant="outlined"] {
+  background-color: var(--chip-bg-outlined-enabled);
+  color: var(--chip-fg-outlined-enabled);
+  border-color: var(--chip-border-outlined-enabled);
+}
+
+.chip[data-variant="outlined"]:hover:not(:disabled):not([data-error="true"]) {
+  background-color: var(--chip-bg-outlined-hovered);
+  color: var(--chip-fg-outlined-hovered);
+  border-color: var(--chip-border-outlined-hovered);
+}
+
+.chip[data-variant="outlined"]:active:not(:disabled):not([data-error="true"]) {
+  background-color: var(--chip-bg-outlined-pressed);
+  color: var(--chip-fg-outlined-pressed);
+  border-color: var(--chip-border-outlined-pressed);
+}
+
+.chip[data-variant="outlined"]:disabled {
+  background-color: var(--chip-bg-outlined-disabled);
+  color: var(--chip-fg-outlined-disabled);
+  border-color: var(--chip-border-outlined-disabled);
+}
+
+.chip[data-variant="outlined"]:focus-visible {
+  border-color: var(--chip-border-outlined-enabled);
+}
+
+/* ── Outlined + Error ────────────────────────────────────── */
+.chip[data-variant="outlined"][data-error="true"] {
+  background-color: var(--chip-bg-outlined-error);
+  color: var(--chip-fg-outlined-error);
+  border-color: var(--chip-border-outlined-error);
+}
+
+.chip[data-variant="outlined"][data-error="true"]:hover:not(:disabled) {
+  opacity: var(--opacity-prominent);
+}
+
+.chip[data-variant="outlined"][data-error="true"]:focus-visible {
+  border-color: var(--chip-border-outlined-error);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   VARIANT: FILLED (no visible border, solid background)
+══════════════════════════════════════════════════════════════ */
+
+.chip[data-variant="filled"] {
+  background-color: var(--chip-bg-filled-enabled);
+  color: var(--chip-fg-filled-enabled);
+}
+
+.chip[data-variant="filled"]:hover:not(:disabled):not([data-error="true"]) {
+  background-color: var(--chip-bg-filled-hovered);
+  color: var(--chip-fg-filled-hovered);
+}
+
+.chip[data-variant="filled"]:active:not(:disabled):not([data-error="true"]) {
+  background-color: var(--chip-bg-filled-pressed);
+  color: var(--chip-fg-filled-pressed);
+}
+
+.chip[data-variant="filled"]:disabled {
+  background-color: var(--chip-bg-filled-disabled);
+  color: var(--chip-fg-filled-disabled);
+}
+
+/* ── Filled + Error ──────────────────────────────────────── */
+.chip[data-variant="filled"][data-error="true"] {
+  background-color: var(--chip-bg-filled-error);
+  color: var(--chip-fg-filled-error);
+}
+
+.chip[data-variant="filled"][data-error="true"]:hover:not(:disabled) {
+  opacity: var(--opacity-prominent);
+}

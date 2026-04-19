@@ -27,7 +27,7 @@
 interface Props {
   size?: "caption" | "label" | "footnote";
   weight?: "regular" | "medium";
-  color?: "primary" | "secondary" | "tertiary" | string;
+  color?: "primary" | "secondary" | "tertiary" | "disabled" | "inherit" | `var(--${string})`;
   align?: "left" | "center" | "right";
   as?: "span" | "p" | "figcaption";
   class?: string;
@@ -45,8 +45,11 @@ const {
 } = Astro.props;
 
 // ── Resolve color value ──
-const isSemanticColor = ["primary", "secondary", "tertiary"].includes(color);
-const colorStyle = isSemanticColor ? undefined : `color: ${color}`;
+const semanticColors = ["primary", "secondary", "tertiary", "disabled"] as const;
+const isSemanticColor = semanticColors.includes(color as typeof semanticColors[number]);
+const isVarRef = typeof color === "string" && color.startsWith("var(--");
+const safeColor = (color === "inherit" || isSemanticColor || isVarRef) ? color : "secondary";
+const colorStyle = safeColor !== "inherit" && !isSemanticColor ? `color: ${safeColor}` : undefined;
 
 // ── Dynamic HTML Tag ──
 const Tag = as;
@@ -58,7 +61,7 @@ const Tag = as;
     `caption--${size}`,
     `caption--${weight}`,
     `caption--${align}`,
-    { [`caption--${color}`]: isSemanticColor },
+    { [`caption--${safeColor}`]: isSemanticColor },
     className,
   ]}
   style={colorStyle}

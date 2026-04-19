@@ -1,0 +1,216 @@
+---
+/**
+ * TextArea — Multi-line text input with label and character counter
+ * @atomchat/components-astro
+ *
+ * Depends on:
+ *   @atomchat/tokens (--textarea-*, --form-fields-* component tokens)
+ *   @atomchat/css (textarea.css)
+ *
+ * Props:
+ *   name            string                  (required) - Form input name
+ *   label?          string                  - Label text
+ *   placeholder?    string                  - Placeholder text
+ *   value?          string                  - Input value
+ *   size?           "m" | "xl"              - Field size (default: "m")
+ *   disabled?       boolean                 - Disabled state (default: false)
+ *   error?          boolean                 - Error state (default: false)
+ *   showSupportive? boolean                 - Show supportive text (default: true)
+ *   supportiveText? string                  - Supportive text message
+ *   maxLength?      number                  - Maximum character count (default: 200)
+ *   showCounter?    boolean                 - Show character counter (default: true)
+ *   showScrollbar?  boolean                 - Show custom scrollbar (default: true)
+ *   rows?           number                  - Textarea rows attribute
+ *   id?             string                  - Custom input ID
+ *   class?          string                  - Additional CSS classes
+ *
+ * States:
+ *   - Enabled: default state
+ *   - Hovered: mouse hover state
+ *   - Focused: keyboard focus state
+ *   - Filled: when input has value
+ *   - Disabled: when disabled prop is true
+ *   - Error: when error prop is true (red border, error icon)
+ *
+ * Sizes (from Figma):
+ *   - m: Medium (56px height, 12px font)
+ *   - xl: Extra Large (88px height, 16px font)
+ *
+ * Usage:
+ *   <TextArea name="bio" label="Biography" size="m" />
+ *   <TextArea name="message" placeholder="Type your message..." size="xl" />
+ *   <TextArea name="note" value="Some text" showCounter maxLength={500} />
+ */
+
+interface Props {
+  name: string;
+  label?: string;
+  placeholder?: string;
+  value?: string;
+  size?: "m" | "xl";
+  disabled?: boolean;
+  error?: boolean;
+  showSupportive?: boolean;
+  supportiveText?: string;
+  maxLength?: number;
+  showCounter?: boolean;
+  showScrollbar?: boolean;
+  rows?: number;
+  id?: string;
+  class?: string;
+  [key: string]: any;
+}
+
+const {
+  name,
+  label,
+  placeholder,
+  value = "",
+  size = "m",
+  disabled = false,
+  error = false,
+  showSupportive = true,
+  supportiveText = error ? "Supportive text negative" : "Supportive text",
+  maxLength = 200,
+  showCounter = true,
+  showScrollbar = true,
+  rows,
+  id,
+  class: className = "",
+  ...rest
+} = Astro.props;
+
+const inputId = id || `textarea-${name}`;
+const isFilled = value && value.length > 0;
+const charCount = value ? value.length : 0;
+---
+
+<div
+  class:list={[
+    "textarea",
+    `textarea--${size}`,
+    { "textarea--filled": isFilled },
+    { "textarea--error": error },
+    { "textarea--disabled": disabled },
+    className
+  ]}
+  data-textarea
+  data-max-length={maxLength}
+>
+  <!-- Label -->
+  {label && (
+    <label class="textarea__label" for={inputId}>
+      {label}
+    </label>
+  )}
+
+  <!-- Field Container -->
+  <div class="textarea__field">
+    <!-- Textarea -->
+    <textarea
+      class="textarea__input"
+      id={inputId}
+      name={name}
+      placeholder={placeholder}
+      disabled={disabled}
+      maxlength={maxLength}
+      rows={rows}
+      {...rest}
+    >{value}</textarea>
+
+    <!-- Custom Scrollbar -->
+    {showScrollbar && (
+      <div class="textarea__scrollbar" aria-hidden="true">
+        <div class="textarea__scrollbar-thumb"></div>
+      </div>
+    )}
+  </div>
+
+  <!-- Bottom Section (Supportive Text + Counter) -->
+  {(showSupportive || showCounter) && (
+    <div class="textarea__bottom">
+      <!-- Supportive Text -->
+      {showSupportive && (
+        <div class="textarea__supportive">
+          <!-- Icon -->
+          <div class="textarea__supportive-icon" aria-hidden="true">
+            {error ? (
+              <!-- Error icon -->
+              <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M6 11C8.76142 11 11 8.76142 11 6C11 3.23858 8.76142 1 6 1C3.23858 1 1 3.23858 1 6C1 8.76142 3.23858 11 6 11Z"
+                  fill="currentColor"
+                />
+                <path
+                  d="M7.5 4.5L4.5 7.5M4.5 4.5L7.5 7.5"
+                />
+              </svg>
+            ) : (
+              <!-- Info icon -->
+              <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M6 11C8.76142 11 11 8.76142 11 6C11 3.23858 8.76142 1 6 1C3.23858 1 1 3.23858 1 6C1 8.76142 3.23858 11 6 11Z"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                />
+                <path
+                  d="M6 6V8.5M6 3.5H6.005V3.505H6V3.5Z"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            )}
+          </div>
+          <!-- Text -->
+          <span class="textarea__supportive-text">
+            {supportiveText}
+          </span>
+        </div>
+      )}
+
+      <!-- Character Counter -->
+      {showCounter && (
+        <div class="textarea__counter" data-counter>
+          <span data-current>{charCount}</span>/<span data-max>{maxLength}</span>
+        </div>
+      )}
+    </div>
+  )}
+</div>
+
+<script>
+  // Handle character counting and filled state
+  document.addEventListener("DOMContentLoaded", () => {
+    const textareas = document.querySelectorAll("[data-textarea]");
+
+    textareas.forEach((wrapper) => {
+      const textarea = wrapper.querySelector("textarea");
+      const counter = wrapper.querySelector("[data-counter]");
+      const currentSpan = counter?.querySelector("[data-current]");
+
+      if (!textarea) return;
+
+      const updateState = () => {
+        // Update filled state
+        if (textarea.value.length > 0) {
+          wrapper.classList.add("textarea--filled");
+        } else {
+          wrapper.classList.remove("textarea--filled");
+        }
+
+        // Update character count
+        if (currentSpan) {
+          currentSpan.textContent = String(textarea.value.length);
+        }
+      };
+
+      // Listen for input events
+      textarea.addEventListener("input", updateState);
+
+      // Initialize state
+      updateState();
+    });
+  });
+</script>

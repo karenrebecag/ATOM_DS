@@ -64,7 +64,7 @@
 
 /* ── Required Indicator ───────────────────────────────────────────── */
 .label-text__required {
-  color: var(--primitive-red-500);
+  color: var(--border-status-error);
   font-weight: var(--font-weight-bold);
   user-select: none;
 }

@@ -1,0 +1,97 @@
+/* ============================================
+   @atomchat/css — nav-link.css
+   Depends on: @atomchat/tokens (tokens.css)
+
+   Navigation link component with 5 states:
+   - inactive (default)
+   - hover (bottom border)
+   - active (bold + bottom border)
+   - focused (blue outline)
+   - disabled (reduced opacity)
+
+   Based on Figma design: Web-Library 4129:6765
+============================================ */
+
+/* BASE — Nav Link */
+.nav-link {
+  /* Layout */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  /* Spacing */
+  padding: var(--xxs) var(--xs); /* 2px 4px */
+
+  /* Typography */
+  font-family: var(--font-family-titles);
+  font-size: var(--text-body);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-body);
+  text-align: center;
+  white-space: nowrap;
+
+  /* Colors */
+  color: var(--fg-primary);
+
+  /* Interaction */
+  text-decoration: none;
+  cursor: pointer;
+
+  /* Borders (default: none) */
+  border: none;
+  border-radius: 0;
+
+  /* Transitions */
+  transition: color var(--duration-quarter),
+              border-color var(--duration-quarter),
+              font-weight var(--duration-quarter);
+}
+
+/* HOVER STATE */
+.nav-link:hover {
+  color: var(--fg-primary);
+  border-bottom: var(--stroke-xs) solid var(--fg-primary);
+}
+
+/* ACTIVE STATE */
+.nav-link[data-active="true"],
+.nav-link.nav-link--active {
+  color: var(--fg-primary);
+  font-weight: var(--font-weight-bold);
+  border-bottom: var(--stroke-xs) solid var(--fg-primary);
+}
+
+/* FOCUSED STATE */
+.nav-link:focus-visible {
+  color: var(--fg-primary);
+  border: var(--stroke-xs) solid var(--border-interactive-link-focused);
+  border-radius: var(--radius-s);
+  outline: none;
+}
+
+/* DISABLED STATE */
+.nav-link:disabled,
+.nav-link[disabled],
+.nav-link[aria-disabled="true"],
+.nav-link.nav-link--disabled {
+  color: var(--fg-disabled);
+  opacity: var(--opacity-20);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Disabled links should not show borders */
+.nav-link:disabled:hover,
+.nav-link[disabled]:hover,
+.nav-link[aria-disabled="true"]:hover,
+.nav-link.nav-link--disabled:hover {
+  border-bottom: none;
+}
+
+/* REDUCED MOTION */
+@media (prefers-reduced-motion: reduce) {
+  .nav-link {
+    transition: none;
+  }
+}

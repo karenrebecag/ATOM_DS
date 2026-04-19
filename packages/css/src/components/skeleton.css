@@ -7,7 +7,7 @@
 :root {
   /* ── Background ──────────────────────────────────────────────── */
   --skeleton-bg: var(--bg-quaternary);           /* Zinc-200 */
-  --skeleton-bg-dark: var(--primitive-zinc-800);
+  --skeleton-bg-dark: var(--bg-inverse-secondary);
 
   /* ── Pulse animation ─────────────────────────────────────────── */
   --skeleton-pulse-duration: var(--duration-shimmer);  /* 1.5s */

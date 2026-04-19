@@ -265,7 +265,7 @@
 
 .toggle-field--m .toggle-field__error-text {
   font-size: var(--toggle-field-error-font-size-m);
-  line-height: 24px; /* optical adjustment — no matching token */
+  line-height: var(--l);
 }
 
 .toggle-field--m:not(:has(.toggle-field__supportive)) .toggle-field__row {

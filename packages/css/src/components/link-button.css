@@ -51,7 +51,7 @@
 
 /* Icon nudge on hover (right icon only) */
 .link-button:hover:not(.link-button--disabled):not(.link-button--loading) .link-button__icon:last-child {
-  transform: translateX(var(--primitive-spacing-xxs));
+  transform: translateX(var(--xxs));
 }
 
 /* ── Focus ───────────────────────────────────────────────── */
@@ -88,9 +88,8 @@
   background-color: var(--link-button-bg-loading);
   cursor: wait;
 
-  /* Shimmer uses blue tones instead of default grays */
-  --shimmer-base: var(--primitive-blue-300);
-  --shimmer-highlight: var(--primitive-blue-700);
+  --shimmer-base: var(--fg-interactive-link-disabled);
+  --shimmer-highlight: var(--fg-interactive-link-pressed);
 }
 
 .link-button--loading .link-button__icon {

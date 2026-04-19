@@ -262,7 +262,7 @@
 
 .radio-field--m .radio-field__error-text {
   font-size: var(--radio-field-error-font-size-m);
-  line-height: 24px; /* optical adjustment — no matching token */
+  line-height: var(--l);
 }
 
 .radio-field--m:not(:has(.radio-field__supportive)) .radio-field__row {

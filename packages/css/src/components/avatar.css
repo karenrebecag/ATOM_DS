@@ -66,8 +66,8 @@
 
 /* Verified badge: Custom styling (StatusIcon badges self-style) */
 .avatar__badge--verified {
-  background-color: var(--primitive-blue-500);
-  color: var(--primitive-neutral-0);
+  background-color: var(--fg-interactive-link-enabled);
+  color: var(--bg-primary);
   border-radius: var(--radius-pill);
   border: var(--avatar-structure-border-width) solid var(--bg-primary);
 }

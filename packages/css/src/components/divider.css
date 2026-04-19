@@ -5,7 +5,7 @@
 
 :root {
   /* ── Divider: Structure ──────────────────────────────────── */
-  --divider-height: var(--primitive-stroke-xs);
+  --divider-height: var(--stroke-xs);
   --divider-color: var(--border-tertiary);
 }
 

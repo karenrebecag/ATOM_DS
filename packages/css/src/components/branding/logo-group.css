@@ -1,0 +1,120 @@
+/* ============================================
+   @atomchat/css — logo-group.css
+   Depends on: @atomchat/tokens (tokens.css)
+
+   Generic logo group component for displaying
+   multiple brand logos.
+
+   Variants: xs, s, m (default), l, xl
+============================================ */
+
+/* BASE — Logo Group Container */
+.logo-group {
+  /* Layout */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--gap-m);
+
+  /* Alignment */
+  align-items: center;
+  justify-items: center;
+
+  /* Spacing */
+  width: 100%;
+  padding: 0;
+  margin: 0;
+
+  /* List reset */
+  list-style: none;
+}
+
+/* RESPONSIVE GRID */
+@media (min-width: 600px) {
+  .logo-group {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 961px) {
+  .logo-group {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: 1281px) {
+  .logo-group {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+/* LOGO ITEM */
+.logo-group__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-height: 33px;
+  padding: var(--gap-s);
+}
+
+/* LOGO IMAGE */
+.logo-group__img {
+  max-width: 128px;
+  max-height: 33px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* SIZE VARIANTS — From Figma */
+
+/* Extra Small */
+.logo-group--xs .logo-group__item {
+  max-height: 20px;
+}
+
+.logo-group--xs .logo-group__img {
+  max-height: 20px;
+  max-width: 80px;
+}
+
+/* Small */
+.logo-group--s .logo-group__item {
+  max-height: 24px;
+}
+
+.logo-group--s .logo-group__img {
+  max-height: 24px;
+  max-width: 92px;
+}
+
+/* Medium (Default) */
+.logo-group--m .logo-group__item {
+  max-height: 33px;
+}
+
+.logo-group--m .logo-group__img {
+  max-height: 33px;
+  max-width: 128px;
+}
+
+/* Large */
+.logo-group--l .logo-group__item {
+  max-height: 50px;
+}
+
+.logo-group--l .logo-group__img {
+  max-height: 50px;
+  max-width: 192px;
+}
+
+/* Extra Large */
+.logo-group--xl .logo-group__item {
+  max-height: 66px;
+}
+
+.logo-group--xl .logo-group__img {
+  max-height: 66px;
+  max-width: 256px;
+}

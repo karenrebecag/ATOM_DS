@@ -104,7 +104,7 @@
 
 /* ── Size Variants ───────────────────────────────────────── */
 .chip[data-size="xs"] {
-  padding: var(--chip-padding-xs) var(--primitive-spacing-s);
+  padding: var(--chip-padding-xs) var(--s);
 }
 
 .chip[data-size="s"] {

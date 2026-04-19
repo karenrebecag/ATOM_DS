@@ -55,7 +55,7 @@
 .checkbox {
   display: inline-flex;
   align-items: center;
-  gap: var(--primitive-spacing-sm);
+  gap: var(--sm);
   cursor: pointer;
   position: relative;
 }
@@ -74,33 +74,33 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: var(--primitive-spacing-l);
-  height: var(--primitive-spacing-l);
-  border-radius: var(--primitive-radius-pill);
+  width: var(--l);
+  height: var(--l);
+  border-radius: var(--radius-pill);
   background-color: var(--checkbox-bg-enabled-enabled);
-  border: var(--primitive-stroke-xs) solid var(--checkbox-border-enabled-default);
+  border: var(--stroke-xs) solid var(--checkbox-border-enabled-default);
   transition:
-    background-color var(--primitive-duration-half),
-    border-color var(--primitive-duration-half);
+    background-color var(--duration-half),
+    border-color var(--duration-half);
   flex-shrink: 0;
 }
 
 /* ── Checkmark Icon ──────────────────────────────────────────── */
 .checkbox__check {
-  width: var(--primitive-spacing-sm);
-  height: var(--primitive-spacing-sm);
+  width: var(--sm);
+  height: var(--sm);
   color: var(--checkbox-fg-checked-enabled);
   opacity: 0;
   transform: scale(0.5);
   transition:
-    opacity var(--primitive-duration-half),
-    transform var(--primitive-duration-half);
+    opacity var(--duration-half),
+    transform var(--duration-half);
 }
 
 /* ── Label Text ──────────────────────────────────────────────── */
 .checkbox__label {
-  font-size: var(--primitive-size-caption);
-  line-height: var(--primitive-line-height-normal);
+  font-size: var(--text-caption);
+  line-height: var(--line-height-normal);
 }
 
 /* ── Checked State ───────────────────────────────────────────── */
@@ -132,16 +132,16 @@
 
 /* ── Dark Theme ──────────────────────────────────────────────── */
 .checkbox--dark .checkbox__custom {
-  background-color: var(--primitive-zinc-600);
+  background-color: var(--bg-inverse-tertiary);
 }
 
 .checkbox--dark .checkbox__label {
-  color: var(--primitive-zinc-300);
+  color: var(--fg-inverse-disabled);
 }
 
 .checkbox--dark:hover .checkbox__custom {
-  border-color: var(--primitive-zinc-500);
-  background-color: var(--primitive-zinc-600);
+  border-color: var(--fg-inverse-tertiary);
+  background-color: var(--bg-inverse-tertiary);
 }
 
 .checkbox--dark .checkbox__input:checked + .checkbox__custom {

@@ -1,0 +1,111 @@
+---
+/**
+ * LogoBadge — Dual-image theme switcher molecule
+ *
+ * Features:
+ * - Displays two images (light and dark)
+ * - Switches opacity based on data-nav-theme attribute
+ * - Smooth transition prevents layout shift
+ * - Fixed dimensions for stable rendering
+ *
+ * Usage:
+ * - Parent must have data-nav-theme="default|inverted" attribute
+ * - When data-nav-theme="inverted", dark image shows, light image hides
+ *
+ * @component
+ */
+
+interface Props {
+  darkImage: string
+  lightImage: string
+  alt: string
+  height?: string
+  width?: string
+  class?: string
+}
+
+const {
+  darkImage,
+  lightImage,
+  alt,
+  height = '32px',
+  width = 'auto',
+  class: className
+} = Astro.props
+---
+
+<div
+  class:list={['logo-badge', className]}
+  style={{
+    '--logo-height': height,
+    '--logo-width': width
+  }}
+>
+  <!-- Light theme image (default visible) -->
+  <img
+    src={lightImage}
+    alt={alt}
+    class="logo-badge__image logo-badge__image--light"
+    loading="eager"
+    decoding="async"
+  />
+
+  <!-- Dark theme image (hidden by default) -->
+  <img
+    src={darkImage}
+    alt={alt}
+    class="logo-badge__image logo-badge__image--dark"
+    loading="eager"
+    decoding="async"
+  />
+</div>
+
+<style>
+  .logo-badge {
+    position: relative;
+    display: inline-block;
+    height: var(--logo-height);
+    width: var(--logo-width);
+    min-width: 80px; /* Prevent collapse when width is auto */
+  }
+
+  .logo-badge__image {
+    display: block;
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    transition: opacity var(--duration-quarter);
+  }
+
+  .logo-badge__image--dark {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  /* Light image — visible by default */
+  .logo-badge__image--light {
+    opacity: 1;
+  }
+
+  /* Dark image — hidden by default */
+  .logo-badge__image--dark {
+    opacity: 0;
+  }
+
+  /* Theme switching — inverted theme shows dark image */
+  [data-nav-theme="inverted"] .logo-badge__image--light {
+    opacity: 0;
+  }
+
+  [data-nav-theme="inverted"] .logo-badge__image--dark {
+    opacity: 1;
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .logo-badge__image {
+      transition: none;
+    }
+  }
+</style>

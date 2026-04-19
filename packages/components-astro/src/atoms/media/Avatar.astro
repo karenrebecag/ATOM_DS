@@ -15,7 +15,7 @@
  * @param {string} class - Additional CSS classes
  *
  * Architecture:
- * - Status badges (online/offline/idle/inactive) compose with StatusIcon atom
+ * - Status badges (online/offline/idle/inactive) rendered inline
  * - Verified badge renders custom SVG (different visual pattern)
  *
  * Auto-detection Logic:
@@ -31,8 +31,6 @@
  * <Avatar initials="JD" size="s" shape="square" />
  * <Avatar type="icon" size="l" badge="verified" />
  */
-
-import StatusIcon from './StatusIcon.astro';
 
 interface Props {
   src?: string;
@@ -70,6 +68,14 @@ const statusIconSizeMap: Record<string, "xs" | "s" | "m" | "l"> = {
 
 const statusIconSize = statusIconSizeMap[size];
 const isStatusBadge = badge === "online" || badge === "offline" || badge === "idle" || badge === "inactive";
+
+// Status badge labels for ARIA
+const statusLabels = {
+  online: "Online",
+  offline: "Offline",
+  idle: "Away",
+  inactive: "Inactive",
+};
 
 // Compute aria-label for accessibility
 const ariaLabel = alt || initials || "Avatar";
@@ -136,15 +142,22 @@ const ariaLabel = alt || initials || "Avatar";
     </span>
   )}
 
-  {/* Status badges: Compose with StatusIcon atom for consistency */}
+  {/* Status badges: Rendered inline (online/offline/idle/inactive) */}
   {isStatusBadge && (
-    <StatusIcon
-      status={badge as "online" | "offline" | "idle" | "inactive"}
-      size={statusIconSize}
-      hasBorder={true}
-      class="avatar__badge"
+    <span
+      class:list={[
+        "status-icon",
+        "status-icon--bordered",
+        `status-icon--${badge}`,
+        `status-icon--${statusIconSize}`,
+        "avatar__badge"
+      ]}
       data-avatar-badge
       data-badge-type={badge}
+      data-status={badge}
+      data-size={statusIconSize}
+      role="status"
+      aria-label={statusLabels[badge as keyof typeof statusLabels]}
     />
   )}
 </span>

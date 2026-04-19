@@ -11,7 +11,6 @@
  *   name      string   (required) - Form input name
  *   value?    string   - Input value attribute
  *   checked?  boolean  - Checked state (default: false)
- *   type?     "checkbox" | "radio" - Input type (default: "checkbox")
  *   theme?    "light" | "dark" - Visual theme (default: "light")
  *   class?    string   - Additional CSS classes
  */
@@ -20,7 +19,6 @@ interface Props {
   name: string;
   value?: string;
   checked?: boolean;
-  type?: "checkbox" | "radio";
   theme?: "light" | "dark";
   class?: string;
 }
@@ -29,7 +27,6 @@ const {
   name,
   value,
   checked = false,
-  type = "checkbox",
   theme = "light",
   class: className = "",
 } = Astro.props;
@@ -44,7 +41,7 @@ const id = `${name}-${value || "default"}`;
 >
   <input
     class="checkbox__input"
-    type={type}
+    type="checkbox"
     id={id}
     name={name}
     value={value}

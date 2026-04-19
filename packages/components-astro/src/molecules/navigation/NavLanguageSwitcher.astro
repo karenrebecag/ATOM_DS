@@ -1,0 +1,63 @@
+---
+/**
+ * NavLanguageSwitcher — Language selector dropdown for navbar
+ *
+ * Features:
+ * - Reuses DropdownMenu molecule for state management
+ * - Globe icon indicator
+ * - Current language highlighted
+ * - SEO-friendly with hreflang attributes
+ *
+ * @component
+ */
+
+import DropdownMenu from './DropdownMenu.astro'
+import NavLink from '../../atoms/navigation/NavLink.astro'
+
+interface LanguageOption {
+  lang: string
+  label: string
+  url: string
+  hreflang: string
+}
+
+interface Props {
+  currentLang: string
+  options: LanguageOption[]
+  class?: string
+}
+
+const {
+  currentLang,
+  options,
+  class: className
+} = Astro.props
+---
+
+<div class:list={['nav-language-switcher', className]}>
+  <DropdownMenu label={currentLang.toUpperCase()} align="right">
+    {options.map(option => (
+      <NavLink
+        href={option.url}
+        active={option.lang === currentLang}
+      >
+        <span class="nav-language-switcher__flag">{option.hreflang}</span>
+        <span>{option.label}</span>
+      </NavLink>
+    ))}
+  </DropdownMenu>
+</div>
+
+<style>
+  .nav-language-switcher {
+    display: inline-flex;
+  }
+
+  .nav-language-switcher__flag {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    font-size: var(--text-label);
+  }
+</style>

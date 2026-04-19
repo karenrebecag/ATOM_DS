@@ -331,3 +331,56 @@
 .avatar--image.avatar--circle .avatar__frame {
   border-radius: var(--radius-pill);
 }
+
+/* ============================================
+   STATUS ICON (used within avatar badges)
+============================================ */
+
+.status-icon {
+  display: inline-block;
+  border-radius: var(--radius-pill);
+  box-sizing: border-box;
+}
+
+/* Size variants */
+.status-icon--xs {
+  width: var(--status-icon-structure-size-xs);
+  height: var(--status-icon-structure-size-xs);
+}
+
+.status-icon--s {
+  width: var(--status-icon-structure-size-s);
+  height: var(--status-icon-structure-size-s);
+}
+
+.status-icon--m {
+  width: var(--status-icon-structure-size-m);
+  height: var(--status-icon-structure-size-m);
+}
+
+.status-icon--l {
+  width: var(--status-icon-structure-size-l);
+  height: var(--status-icon-structure-size-l);
+}
+
+/* Border variants */
+.status-icon--bordered {
+  border: var(--stroke-xs) solid var(--bg-primary);
+}
+
+/* Status colors */
+.status-icon--online {
+  background-color: var(--fg-accent-indicators-online);
+}
+
+.status-icon--offline {
+  background-color: var(--fg-accent-indicators-offline);
+}
+
+.status-icon--idle {
+  background-color: var(--fg-accent-indicators-idle);
+}
+
+.status-icon--inactive {
+  background-color: var(--fg-accent-indicators-inactive);
+}

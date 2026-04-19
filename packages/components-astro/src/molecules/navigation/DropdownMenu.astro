@@ -1,0 +1,114 @@
+---
+/**
+ * DropdownMenu — Dropdown molecule with toggle + panel
+ *
+ * Features:
+ * - Click to toggle dropdown panel
+ * - ESC key closes dropdown
+ * - Outside click closes dropdown
+ * - ARIA attributes for accessibility
+ * - Composable with NavLink atoms
+ *
+ * @component
+ */
+
+import DropdownIcon from '../../atoms/icons/DropdownIcon.astro'
+
+interface Props {
+  label: string
+  align?: 'left' | 'right'
+  class?: string
+}
+
+const {
+  label,
+  align = 'left',
+  class: className
+} = Astro.props
+
+// Generate unique ID for ARIA
+const dropdownId = `dropdown-${Math.random().toString(36).substr(2, 9)}`
+---
+
+<div
+  class:list={['dropdown-menu', className]}
+  data-dropdown
+  data-align={align}
+>
+  <button
+    class="dropdown-menu__toggle"
+    data-dropdown-toggle
+    aria-haspopup="true"
+    aria-expanded="false"
+    aria-controls={dropdownId}
+  >
+    <span class="dropdown-menu__label">{label}</span>
+    <DropdownIcon />
+  </button>
+
+  <div
+    class="dropdown-menu__panel"
+    data-dropdown-panel
+    id={dropdownId}
+    role="menu"
+  >
+    <slot />
+  </div>
+</div>
+
+<script>
+  // Dropdown state management (runs on each dropdown instance)
+  function initDropdown(dropdown: HTMLElement) {
+    const toggle = dropdown.querySelector('[data-dropdown-toggle]') as HTMLButtonElement
+    const panel = dropdown.querySelector('[data-dropdown-panel]') as HTMLElement
+    const icon = toggle.querySelector('.dropdown-icon') as HTMLElement
+
+    if (!toggle || !panel || !icon) return
+
+    let isOpen = false
+
+    function open() {
+      isOpen = true
+      dropdown.setAttribute('data-active', 'true')
+      toggle.setAttribute('aria-expanded', 'true')
+      icon.setAttribute('data-active', 'true')
+    }
+
+    function close() {
+      isOpen = false
+      dropdown.setAttribute('data-active', 'false')
+      toggle.setAttribute('aria-expanded', 'false')
+      icon.setAttribute('data-active', 'false')
+    }
+
+    function toggle_fn() {
+      if (isOpen) {
+        close()
+      } else {
+        open()
+      }
+    }
+
+    // Toggle on click
+    toggle.addEventListener('click', toggle_fn)
+
+    // Close on ESC
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && isOpen) {
+        close()
+      }
+    })
+
+    // Close on outside click
+    document.addEventListener('click', (e) => {
+      if (isOpen && !dropdown.contains(e.target as Node)) {
+        close()
+      }
+    })
+  }
+
+  // Initialize all dropdowns on page
+  document.querySelectorAll('[data-dropdown]').forEach((dropdown) => {
+    initDropdown(dropdown as HTMLElement)
+  })
+</script>

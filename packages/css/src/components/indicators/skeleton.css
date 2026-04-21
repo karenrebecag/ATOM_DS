@@ -1,7 +1,6 @@
 /* ============================================
    @atomchat/css — skeleton.css
    Depends on: @atomchat/tokens (tokens.css)
-   Animations: @atomchat/animations
 ============================================ */
 
 :root {
@@ -43,4 +42,58 @@
   --skeleton-body-h: var(--sm);                    /* 12px — h-3 */
   --skeleton-btn-h: var(--input-height-sm);        /* 32px — button sm */
   --skeleton-btn-w: var(--12xl);                   /* 80px — w-20 */
+}
+
+/* ══════════════════════════════════════════════════════════
+   KEYFRAME
+   ══════════════════════════════════════════════════════════ */
+
+@keyframes skeleton-pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: var(--skeleton-pulse-opacity); }
+}
+
+/* ══════════════════════════════════════════════════════════
+   BASE
+   ══════════════════════════════════════════════════════════ */
+
+.skeleton {
+  display: block;
+  background-color: var(--skeleton-bg);
+  border-radius: var(--skeleton-radius);
+  animation: skeleton-pulse var(--skeleton-pulse-duration) var(--skeleton-pulse-easing) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton {
+    animation: none;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════
+   VARIANTS
+   ══════════════════════════════════════════════════════════ */
+
+/* Line — texto, altura fija */
+.skeleton--line {
+  border-radius: var(--skeleton-radius-line);
+  height: var(--skeleton-line-height);
+  width: 100%;
+}
+
+/* Circle — avatar, icono */
+.skeleton--circle {
+  border-radius: var(--skeleton-radius-circle);
+}
+
+/* Card — contenedor con radio más suave */
+.skeleton--card {
+  border-radius: var(--skeleton-radius-card);
+}
+
+/* Button — alto y ancho fijos */
+.skeleton--btn {
+  border-radius: var(--skeleton-radius-btn);
+  height: var(--skeleton-btn-h);
+  width: var(--skeleton-btn-w);
 }

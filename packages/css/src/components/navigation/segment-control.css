@@ -14,8 +14,23 @@
 .segment-control {
   display: inline-flex;
   align-items: center;
-  gap: var(--s);
+  background-color: var(--bg-secondary);
+  padding: var(--xs);
   border-radius: var(--sm);
+  position: relative;
+}
+
+/* ── Sliding indicator ────────────────────────────────────── */
+.segment-control__indicator {
+  position: absolute;
+  z-index: 0;
+  background-color: var(--bg-primary);
+  border-radius: var(--s);
+  box-shadow: var(--elevation-dialog);
+  transition:
+    left var(--duration-default) var(--ease-default),
+    width var(--duration-default) var(--ease-default);
+  pointer-events: none;
 }
 
 /* ══════════════════════════════════════════════════════════
@@ -31,8 +46,9 @@
   border: var(--stroke-xs) solid transparent;
   cursor: pointer;
   flex-shrink: 0;
+  position: relative;
+  z-index: 1;
   transition:
-    background-color var(--duration-quarter),
     border-color var(--duration-quarter),
     box-shadow var(--duration-quarter),
     color var(--duration-quarter);
@@ -175,8 +191,7 @@
    ══════════════════════════════════════════════════════════ */
 
 .segment-control__item--selected {
-  background-color: var(--segment-control-bg-selected);
-  border-color: var(--segment-control-border-selected);
+  border-color: transparent;
 }
 
 /* Only icon changes color when selected, label stays at enabled */
@@ -188,7 +203,7 @@
    HOVER STATE
    ══════════════════════════════════════════════════════════ */
 
-.segment-control__item:hover {
+.segment-control__item:hover:not(.segment-control__item--selected) {
   background-color: var(--segment-control-bg-hovered);
 }
 

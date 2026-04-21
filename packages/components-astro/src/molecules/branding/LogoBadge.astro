@@ -34,18 +34,13 @@ const {
 } = Astro.props
 ---
 
-<div
-  class:list={['logo-badge', className]}
-  style={{
-    '--logo-height': height,
-    '--logo-width': width
-  }}
->
+<div class:list={['logo-badge', className]}>
   <!-- Light theme image (default visible) -->
   <img
     src={lightImage}
     alt={alt}
     class="logo-badge__image logo-badge__image--light"
+    style={`height: ${height}; width: ${width}`}
     loading="eager"
     decoding="async"
   />
@@ -55,6 +50,7 @@ const {
     src={darkImage}
     alt={alt}
     class="logo-badge__image logo-badge__image--dark"
+    style={`height: ${height}; width: ${width}`}
     loading="eager"
     decoding="async"
   />

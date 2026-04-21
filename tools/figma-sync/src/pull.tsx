@@ -198,6 +198,29 @@ function apiErrorMessage(status: number, body: string): string {
 
 // ── Transform ───────────────────────────────────────────────────────
 
+/**
+ * Map Figma FLOAT to the correct W3C DTCG type based on collection semantics.
+ * Figma only has FLOAT/COLOR/STRING/BOOLEAN — DTCG is more specific.
+ */
+const COLLECTION_TYPE_MAP: Record<string, string> = {
+  spacing: 'dimension',
+  radius: 'dimension',
+  stroke: 'dimension',
+  breakpoints: 'dimension',
+  opacity: 'number',
+  typography: 'number',
+}
+
+function resolveDtcgType(figmaType: string, collectionName: string): string {
+  const rawType = figmaType.toLowerCase()
+  if (rawType === 'color') return 'color'
+  if (rawType === 'boolean') return 'boolean'
+  if (rawType === 'string') return 'string'
+  // FLOAT → look up by collection name
+  const colKey = collectionName.toLowerCase()
+  return COLLECTION_TYPE_MAP[colKey] ?? 'number'
+}
+
 function rgbaToHex({ r, g, b, a = 1 }: { r: number; g: number; b: number; a?: number }): string {
   const toHex = (n: number): string => {
     const hex = Math.round(n * 255).toString(16).toUpperCase()
@@ -222,8 +245,9 @@ function transformValue(
   variable: FigmaVariable,
   allVariables: Record<string, FigmaVariable>,
   allCollections: Record<string, FigmaVariableCollection>,
+  collectionName: string,
 ): { value: string | number | boolean; type: string } {
-  const type = variable.resolvedType.toLowerCase()
+  const type = resolveDtcgType(variable.resolvedType, collectionName)
 
   // Alias reference
   if (typeof rawValue === 'object' && rawValue !== null && 'type' in rawValue && rawValue.type === 'VARIABLE_ALIAS') {
@@ -243,11 +267,6 @@ function transformValue(
   // Color
   if (type === 'color' && typeof rawValue === 'object' && rawValue !== null && 'r' in rawValue) {
     return { value: rgbaToHex(rawValue as { r: number; g: number; b: number; a?: number }), type }
-  }
-
-  // Float → number
-  if (type === 'float') {
-    return { value: rawValue as number, type: 'number' }
   }
 
   return { value: rawValue as string | number | boolean, type }
@@ -273,7 +292,7 @@ function transformCollection(
       .split('/')
       .map((part: string) => part.toLowerCase().replace(/\s+/g, '-'))
 
-    const { value, type } = transformValue(rawValue, variable, variables, variableCollections)
+    const { value, type } = transformValue(rawValue, variable, variables, variableCollections, collection.name)
 
     const tokenData: Record<string, unknown> = { $type: type, $value: value }
     if (variable.description) tokenData.$description = variable.description
@@ -305,8 +324,7 @@ function transformMcpCollection(collection: McpCollection): Record<string, unkno
       .split('/')
       .map((part: string) => part.toLowerCase().replace(/\s+/g, '-'))
 
-    const rawType = variable.type.toLowerCase()
-    const type = rawType === 'float' ? 'number' : rawType
+    const type = resolveDtcgType(variable.type, collection.name)
 
     // Prefer alias reference; fall back to resolved value
     const value = variable.alias

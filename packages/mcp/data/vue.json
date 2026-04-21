@@ -1,0 +1,1254 @@
+{
+  "meta": {
+    "generatedAt": "2026-04-21T19:46:14.499Z",
+    "gitSha": "6933d74",
+    "packageVersion": "1.0.1",
+    "sourceCount": 37
+  },
+  "package": "@atomchat.io/components-vue",
+  "version": "1.0.1",
+  "install": "npm install @atomchat.io/components-vue @atomchat.io/css",
+  "peerDeps": [
+    "vue >= 3.4",
+    "@atomchat.io/css"
+  ],
+  "components": [
+    {
+      "name": "Button",
+      "path": "atoms/Button",
+      "import": "import { Button } from '@atomchat.io/components-vue'",
+      "description": "Button (Atom)",
+      "props": [
+        {
+          "name": "variant",
+          "type": "ButtonVariant",
+          "values": [
+            "Primary",
+            "Secondary",
+            "Tertiary",
+            "Destructive Primary",
+            "Destructive Secondary",
+            "Destructive Tertiary"
+          ],
+          "default": "Primary"
+        },
+        {
+          "name": "size",
+          "type": "ButtonSize",
+          "values": [
+            "xs",
+            "s",
+            "m",
+            "l",
+            "xl"
+          ],
+          "default": "m"
+        },
+        {
+          "name": "href",
+          "type": "string"
+        },
+        {
+          "name": "type",
+          "type": "ButtonType",
+          "values": [
+            "button",
+            "submit",
+            "reset"
+          ],
+          "default": "button"
+        },
+        {
+          "name": "isDisabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "isLoading",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "tokens": [
+        "buttons-*"
+      ]
+    },
+    {
+      "name": "IconButton",
+      "path": "atoms/buttons/IconButton",
+      "import": "import { IconButton } from '@atomchat.io/components-vue'",
+      "description": "IconButton (Atom)",
+      "props": [
+        {
+          "name": "variant",
+          "type": "ButtonVariant",
+          "values": [
+            "Primary",
+            "Secondary",
+            "Tertiary",
+            "Destructive Primary",
+            "Destructive Secondary",
+            "Destructive Tertiary"
+          ],
+          "default": "Primary"
+        },
+        {
+          "name": "size",
+          "type": "Size",
+          "default": "m"
+        },
+        {
+          "name": "href",
+          "type": "string"
+        },
+        {
+          "name": "type",
+          "type": "ButtonType",
+          "values": [
+            "button",
+            "submit",
+            "reset"
+          ],
+          "default": "button"
+        },
+        {
+          "name": "isDisabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "isLoading",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "ariaLabel",
+          "type": "string"
+        }
+      ],
+      "tokens": []
+    },
+    {
+      "name": "LinkButton",
+      "path": "atoms/buttons/LinkButton",
+      "import": "import { LinkButton } from '@atomchat.io/components-vue'",
+      "description": "LinkButton (Atom)",
+      "props": [
+        {
+          "name": "size",
+          "type": "LinkButtonSize",
+          "values": [
+            "xs",
+            "s",
+            "m",
+            "l",
+            "xl"
+          ],
+          "default": "l"
+        },
+        {
+          "name": "href",
+          "type": "string"
+        },
+        {
+          "name": "isDisabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "isLoading",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "tokens": [
+        "link-button-*"
+      ]
+    },
+    {
+      "name": "NavLink",
+      "path": "atoms/buttons/NavLink",
+      "import": "import { NavLink } from '@atomchat.io/components-vue'",
+      "description": "NavLink (Atom)",
+      "props": [
+        {
+          "name": "href",
+          "type": "string"
+        },
+        {
+          "name": "underline",
+          "type": "NavLinkUnderline",
+          "values": [
+            "none",
+            "hover",
+            "always"
+          ],
+          "default": "default"
+        },
+        {
+          "name": "variant",
+          "type": "NavLinkVariant",
+          "values": [
+            "default",
+            "muted"
+          ],
+          "default": "primary"
+        },
+        {
+          "name": "size",
+          "type": "Size",
+          "default": "m"
+        },
+        {
+          "name": "isDisabled",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "tokens": []
+    },
+    {
+      "name": "Checkbox",
+      "path": "atoms/forms/Checkbox",
+      "import": "import { Checkbox } from '@atomchat.io/components-vue'",
+      "description": "Checkbox (Atom)",
+      "props": [
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "size",
+          "type": "CheckboxSize",
+          "default": "m"
+        },
+        {
+          "name": "checked",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "indeterminate",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "isDisabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "isError",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "tokens": [
+        "checkbox-*"
+      ]
+    },
+    {
+      "name": "Radio",
+      "path": "atoms/forms/Radio",
+      "import": "import { Radio } from '@atomchat.io/components-vue'",
+      "description": "Radio (Atom)",
+      "props": [
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "value",
+          "type": "string"
+        },
+        {
+          "name": "size",
+          "type": "RadioSize",
+          "default": "m"
+        },
+        {
+          "name": "checked",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "isDisabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "isError",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "supportiveText",
+          "type": "string"
+        },
+        {
+          "name": "errorText",
+          "type": "string"
+        }
+      ],
+      "tokens": [
+        "radio-*"
+      ]
+    },
+    {
+      "name": "SearchField",
+      "path": "atoms/forms/SearchField",
+      "import": "import { SearchField } from '@atomchat.io/components-vue'",
+      "description": "SearchField (Atom)",
+      "props": [
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "placeholder",
+          "type": "string",
+          "default": "Search..."
+        },
+        {
+          "name": "modelValue",
+          "type": "string"
+        },
+        {
+          "name": "size",
+          "type": "SearchFieldSize",
+          "default": "m"
+        },
+        {
+          "name": "isDisabled",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "tokens": [
+        "search-field-*"
+      ]
+    },
+    {
+      "name": "TextArea",
+      "path": "atoms/forms/TextArea",
+      "import": "import { TextArea } from '@atomchat.io/components-vue'",
+      "description": "TextArea (Atom)",
+      "props": [
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "label",
+          "type": "string"
+        },
+        {
+          "name": "placeholder",
+          "type": "string"
+        },
+        {
+          "name": "modelValue",
+          "type": "string"
+        },
+        {
+          "name": "size",
+          "type": "TextAreaSize",
+          "default": "m"
+        },
+        {
+          "name": "isDisabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "error",
+          "type": "string"
+        },
+        {
+          "name": "supportiveText",
+          "type": "string"
+        },
+        {
+          "name": "maxLength",
+          "type": "number"
+        },
+        {
+          "name": "showCounter",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "tokens": []
+    },
+    {
+      "name": "TextField",
+      "path": "atoms/forms/TextField",
+      "import": "import { TextField } from '@atomchat.io/components-vue'",
+      "description": "TextField (Atom)",
+      "props": [
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "label",
+          "type": "string"
+        },
+        {
+          "name": "placeholder",
+          "type": "string"
+        },
+        {
+          "name": "modelValue",
+          "type": "string"
+        },
+        {
+          "name": "size",
+          "type": "Size",
+          "default": "m"
+        },
+        {
+          "name": "isDisabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "error",
+          "type": "string"
+        },
+        {
+          "name": "supportiveText",
+          "type": "string"
+        },
+        {
+          "name": "maxLength",
+          "type": "number"
+        },
+        {
+          "name": "showCounter",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "tokens": [
+        "text-field-*"
+      ]
+    },
+    {
+      "name": "Toggle",
+      "path": "atoms/forms/Toggle",
+      "import": "import { Toggle } from '@atomchat.io/components-vue'",
+      "description": "Toggle (Atom)",
+      "props": [
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "size",
+          "type": "ToggleSize",
+          "default": "m"
+        },
+        {
+          "name": "checked",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "isDisabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "isError",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "errorText",
+          "type": "string"
+        },
+        {
+          "name": "supportiveText",
+          "type": "string"
+        }
+      ],
+      "tokens": [
+        "toggle-*"
+      ]
+    },
+    {
+      "name": "Badge",
+      "path": "atoms/indicators/Badge",
+      "import": "import { Badge } from '@atomchat.io/components-vue'",
+      "description": "Badge (Atom)",
+      "props": [
+        {
+          "name": "count",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "context",
+          "type": "BadgeContext",
+          "values": [
+            "default",
+            "navigation",
+            "tab"
+          ],
+          "default": "default"
+        },
+        {
+          "name": "type",
+          "type": "BadgeType",
+          "values": [
+            "numeric",
+            "dot"
+          ],
+          "default": "neutral"
+        },
+        {
+          "name": "state",
+          "type": "BadgeState",
+          "values": [
+            "default",
+            "active"
+          ],
+          "default": "default"
+        }
+      ],
+      "tokens": [
+        "badge-*"
+      ]
+    },
+    {
+      "name": "Chip",
+      "path": "atoms/indicators/Chip",
+      "import": "import { Chip } from '@atomchat.io/components-vue'",
+      "description": "Chip (Atom)",
+      "props": [
+        {
+          "name": "label",
+          "type": "string"
+        },
+        {
+          "name": "variant",
+          "type": "ChipVariant",
+          "values": [
+            "filled",
+            "outlined"
+          ],
+          "default": "filled"
+        },
+        {
+          "name": "color",
+          "type": "ChipColor",
+          "values": [
+            "default",
+            "primary",
+            "success",
+            "warning",
+            "danger"
+          ],
+          "default": "default"
+        },
+        {
+          "name": "size",
+          "type": "ChipSize",
+          "values": [
+            "s",
+            "m"
+          ],
+          "default": "m"
+        },
+        {
+          "name": "isSelected",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "isDisabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "closable",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "tokens": [
+        "chip-*"
+      ]
+    },
+    {
+      "name": "EmptyState",
+      "path": "atoms/indicators/EmptyState",
+      "import": "import { EmptyState } from '@atomchat.io/components-vue'",
+      "description": "EmptyState (Atom)",
+      "props": [
+        {
+          "name": "size",
+          "type": "EmptyStateSize",
+          "values": [
+            "s",
+            "m",
+            "l"
+          ],
+          "default": "m"
+        },
+        {
+          "name": "heading",
+          "type": "string"
+        },
+        {
+          "name": "supportingText",
+          "type": "string"
+        },
+        {
+          "name": "resultText",
+          "type": "string"
+        }
+      ],
+      "tokens": [
+        "empty-state-*"
+      ]
+    },
+    {
+      "name": "Spinner",
+      "path": "atoms/indicators/Spinner",
+      "import": "import { Spinner } from '@atomchat.io/components-vue'",
+      "description": "Spinner (Atom)",
+      "props": [
+        {
+          "name": "size",
+          "type": "SpinnerSize",
+          "values": [
+            "xs",
+            "s",
+            "m",
+            "l"
+          ],
+          "default": "m"
+        },
+        {
+          "name": "color",
+          "type": "SpinnerColor",
+          "values": [
+            "default",
+            "inverse",
+            "primary"
+          ],
+          "default": "primary"
+        }
+      ],
+      "tokens": [
+        "spinner-*"
+      ]
+    },
+    {
+      "name": "Tag",
+      "path": "atoms/indicators/Tag",
+      "import": "import { Tag } from '@atomchat.io/components-vue'",
+      "description": "Tag (Atom)",
+      "props": [
+        {
+          "name": "variant",
+          "type": "TagVariant",
+          "values": [
+            "filled",
+            "outlined",
+            "ghost"
+          ],
+          "default": "filled"
+        },
+        {
+          "name": "color",
+          "type": "TagColor",
+          "values": [
+            "default",
+            "primary",
+            "success",
+            "warning",
+            "danger",
+            "info"
+          ],
+          "default": "default"
+        },
+        {
+          "name": "size",
+          "type": "TagSize",
+          "values": [
+            "s",
+            "m",
+            "l"
+          ],
+          "default": "m"
+        }
+      ],
+      "tokens": [
+        "tags-*"
+      ]
+    },
+    {
+      "name": "Divider",
+      "path": "atoms/layout/Divider",
+      "import": "import { Divider } from '@atomchat.io/components-vue'",
+      "description": "Divider (Atom)",
+      "props": [
+        {
+          "name": "orientation",
+          "type": "DividerOrientation",
+          "default": "horizontal"
+        }
+      ],
+      "tokens": [
+        "divider-*"
+      ]
+    },
+    {
+      "name": "BulletItem",
+      "path": "atoms/lists/BulletItem",
+      "import": "import { BulletItem } from '@atomchat.io/components-vue'",
+      "description": "BulletItem (Atom)",
+      "props": [],
+      "tokens": []
+    },
+    {
+      "name": "NumberItem",
+      "path": "atoms/lists/NumberItem",
+      "import": "import { NumberItem } from '@atomchat.io/components-vue'",
+      "description": "NumberItem (Atom)",
+      "props": [
+        {
+          "name": "number",
+          "type": "number"
+        }
+      ],
+      "tokens": []
+    },
+    {
+      "name": "Avatar",
+      "path": "atoms/media/Avatar",
+      "import": "import { Avatar } from '@atomchat.io/components-vue'",
+      "description": "Avatar (Atom)",
+      "props": [
+        {
+          "name": "src",
+          "type": "string"
+        },
+        {
+          "name": "alt",
+          "type": "string",
+          "default": ""
+        },
+        {
+          "name": "size",
+          "type": "AvatarSize",
+          "values": [
+            "xs",
+            "s",
+            "m",
+            "l"
+          ],
+          "default": "xs"
+        },
+        {
+          "name": "shape",
+          "type": "AvatarShape",
+          "values": [
+            "circle",
+            "square"
+          ],
+          "default": "circle"
+        },
+        {
+          "name": "type",
+          "type": "AvatarType",
+          "values": [
+            "image",
+            "image-border",
+            "initials",
+            "icon"
+          ]
+        },
+        {
+          "name": "initials",
+          "type": "string"
+        },
+        {
+          "name": "badge",
+          "type": "StatusType",
+          "values": [
+            "verified",
+            "online",
+            "offline",
+            "idle",
+            "inactive",
+            "none"
+          ],
+          "default": "none"
+        }
+      ],
+      "tokens": [
+        "avatar-*"
+      ]
+    },
+    {
+      "name": "Pagination",
+      "path": "atoms/navigation/Pagination",
+      "import": "import { Pagination } from '@atomchat.io/components-vue'",
+      "description": "Pagination (Atom)",
+      "props": [
+        {
+          "name": "currentPage",
+          "type": "number"
+        },
+        {
+          "name": "totalPages",
+          "type": "number"
+        },
+        {
+          "name": "pageSize",
+          "type": "number",
+          "default": "10"
+        },
+        {
+          "name": "pageSizeOptions",
+          "type": "number[]",
+          "default": "() => [10"
+        },
+        {
+          "name": "isLoading",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "tokens": [
+        "pagination-*"
+      ]
+    },
+    {
+      "name": "SegmentControl",
+      "path": "atoms/navigation/SegmentControl",
+      "import": "import { SegmentControl } from '@atomchat.io/components-vue'",
+      "description": "SegmentControl (Atom)",
+      "props": [
+        {
+          "name": "items",
+          "type": "SegmentControlItem[]"
+        },
+        {
+          "name": "size",
+          "type": "Size",
+          "default": "m"
+        },
+        {
+          "name": "selectedIndex",
+          "type": "number",
+          "default": "0"
+        }
+      ],
+      "tokens": [
+        "segment-control-*"
+      ]
+    },
+    {
+      "name": "Heading",
+      "path": "atoms/typography/Heading",
+      "import": "import { Heading } from '@atomchat.io/components-vue'",
+      "description": "Heading (Atom)",
+      "props": [
+        {
+          "name": "level",
+          "type": "HeadingLevel",
+          "values": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6"
+          ],
+          "default": "2"
+        },
+        {
+          "name": "size",
+          "type": "HeadingSize",
+          "default": "heading-l"
+        },
+        {
+          "name": "weight",
+          "type": "HeadingWeight",
+          "default": "bold"
+        },
+        {
+          "name": "tracking",
+          "type": "HeadingTracking",
+          "default": "normal"
+        },
+        {
+          "name": "align",
+          "type": "HeadingAlign"
+        }
+      ],
+      "tokens": []
+    },
+    {
+      "name": "Text",
+      "path": "atoms/typography/Text",
+      "import": "import { Text } from '@atomchat.io/components-vue'",
+      "description": "Text (Atom)",
+      "props": [
+        {
+          "name": "size",
+          "type": "TextSize",
+          "default": "body"
+        },
+        {
+          "name": "weight",
+          "type": "TextWeight",
+          "default": "regular"
+        },
+        {
+          "name": "color",
+          "type": "TextColor",
+          "default": "primary"
+        },
+        {
+          "name": "align",
+          "type": "TextAlign"
+        },
+        {
+          "name": "truncate",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "as",
+          "type": "TextElement",
+          "default": "p"
+        }
+      ],
+      "tokens": []
+    },
+    {
+      "name": "Center",
+      "path": "layout/Center",
+      "import": "import { Center } from '@atomchat.io/components-vue'",
+      "description": "Center (Layout)",
+      "props": [],
+      "tokens": []
+    },
+    {
+      "name": "Container",
+      "path": "layout/Container",
+      "import": "import { Container } from '@atomchat.io/components-vue'",
+      "description": "Container (Layout)",
+      "props": [
+        {
+          "name": "size",
+          "type": "ContainerSize",
+          "default": "default"
+        }
+      ],
+      "tokens": []
+    },
+    {
+      "name": "Grid",
+      "path": "layout/Grid",
+      "import": "import { Grid } from '@atomchat.io/components-vue'",
+      "description": "Grid (Layout)",
+      "props": [
+        {
+          "name": "columns",
+          "type": "number | string"
+        },
+        {
+          "name": "gap",
+          "type": "GapSize",
+          "default": "m"
+        }
+      ],
+      "tokens": []
+    },
+    {
+      "name": "Inline",
+      "path": "layout/Inline",
+      "import": "import { Inline } from '@atomchat.io/components-vue'",
+      "description": "Inline (Layout)",
+      "props": [
+        {
+          "name": "gap",
+          "type": "GapSize",
+          "default": "m"
+        },
+        {
+          "name": "align",
+          "type": "LayoutAlignment"
+        },
+        {
+          "name": "isWrap",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "tokens": []
+    },
+    {
+      "name": "Section",
+      "path": "layout/Section",
+      "import": "import { Section } from '@atomchat.io/components-vue'",
+      "description": "Section (Layout)",
+      "props": [],
+      "tokens": []
+    },
+    {
+      "name": "Stack",
+      "path": "layout/Stack",
+      "import": "import { Stack } from '@atomchat.io/components-vue'",
+      "description": "Stack (Layout)",
+      "props": [
+        {
+          "name": "gap",
+          "type": "GapSize",
+          "default": "m"
+        },
+        {
+          "name": "align",
+          "type": "LayoutAlignment"
+        },
+        {
+          "name": "as",
+          "type": "'div' | 'section' | 'article'",
+          "values": [
+            "div",
+            "section",
+            "article"
+          ],
+          "default": "div"
+        }
+      ],
+      "tokens": []
+    },
+    {
+      "name": "Accordion",
+      "path": "molecules/Accordion",
+      "import": "import { Accordion } from '@atomchat.io/components-vue'",
+      "description": "Accordion (Molecule)",
+      "props": [
+        {
+          "name": "items",
+          "type": "AccordionItem[]"
+        },
+        {
+          "name": "closeSiblings",
+          "type": "boolean",
+          "default": "true"
+        }
+      ],
+      "tokens": [
+        "accordion-*"
+      ]
+    },
+    {
+      "name": "AvatarGroup",
+      "path": "molecules/AvatarGroup",
+      "import": "import { AvatarGroup } from '@atomchat.io/components-vue'",
+      "description": "AvatarGroup (Molecule)",
+      "props": [
+        {
+          "name": "avatars",
+          "type": "AvatarGroupItem[]"
+        },
+        {
+          "name": "max",
+          "type": "number",
+          "default": "5"
+        },
+        {
+          "name": "size",
+          "type": "AvatarSize",
+          "values": [
+            "xs",
+            "s",
+            "m",
+            "l"
+          ],
+          "default": "xs"
+        },
+        {
+          "name": "shape",
+          "type": "AvatarShape",
+          "values": [
+            "circle",
+            "square"
+          ],
+          "default": "circle"
+        }
+      ],
+      "tokens": []
+    },
+    {
+      "name": "Card",
+      "path": "molecules/Card",
+      "import": "import { Card } from '@atomchat.io/components-vue'",
+      "description": "Card (Molecule)",
+      "props": [],
+      "tokens": [
+        "card-*"
+      ]
+    },
+    {
+      "name": "CardBody",
+      "path": "molecules/CardBody",
+      "import": "import { CardBody } from '@atomchat.io/components-vue'",
+      "description": "CardBody (Molecule -- Card subcomponent)",
+      "props": [
+        {
+          "name": "headline",
+          "type": "string"
+        },
+        {
+          "name": "subhead",
+          "type": "string"
+        },
+        {
+          "name": "text",
+          "type": "string"
+        }
+      ],
+      "tokens": []
+    },
+    {
+      "name": "CardFooter",
+      "path": "molecules/CardFooter",
+      "import": "import { CardFooter } from '@atomchat.io/components-vue'",
+      "description": "CardFooter (Molecule -- Card subcomponent)",
+      "props": [
+        {
+          "name": "variant",
+          "type": "CardFooterVariant",
+          "default": "buttons"
+        }
+      ],
+      "tokens": []
+    },
+    {
+      "name": "CardHeader",
+      "path": "molecules/CardHeader",
+      "import": "import { CardHeader } from '@atomchat.io/components-vue'",
+      "description": "CardHeader (Molecule -- Card subcomponent)",
+      "props": [
+        {
+          "name": "headline",
+          "type": "string"
+        },
+        {
+          "name": "supporting",
+          "type": "string"
+        }
+      ],
+      "tokens": []
+    },
+    {
+      "name": "Marquee",
+      "path": "molecules/Marquee",
+      "import": "import { Marquee } from '@atomchat.io/components-vue'",
+      "description": "Marquee (Molecule)",
+      "props": [
+        {
+          "name": "variant",
+          "type": "MarqueeVariant",
+          "values": [
+            "primary",
+            "secondary"
+          ],
+          "default": "text"
+        },
+        {
+          "name": "size",
+          "type": "MarqueeSize",
+          "values": [
+            "s",
+            "m",
+            "l"
+          ],
+          "default": "m"
+        },
+        {
+          "name": "isDark",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "isReverse",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "speed",
+          "type": "MarqueeSpeed",
+          "values": [
+            "slow",
+            "normal",
+            "fast"
+          ],
+          "default": "default"
+        },
+        {
+          "name": "isFade",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "tokens": []
+    },
+    {
+      "name": "Tooltip",
+      "path": "molecules/Tooltip",
+      "import": "import { Tooltip } from '@atomchat.io/components-vue'",
+      "description": "Tooltip (Molecule)",
+      "props": [
+        {
+          "name": "text",
+          "type": "string"
+        },
+        {
+          "name": "iconType",
+          "type": "TooltipIconType",
+          "values": [
+            "info",
+            "help"
+          ],
+          "default": "info"
+        },
+        {
+          "name": "heading",
+          "type": "string"
+        },
+        {
+          "name": "body",
+          "type": "string"
+        },
+        {
+          "name": "posX",
+          "type": "TooltipPosX",
+          "default": "center"
+        },
+        {
+          "name": "posY",
+          "type": "TooltipPosY",
+          "default": "top"
+        }
+      ],
+      "tokens": [
+        "tooltip-*"
+      ]
+    }
+  ]
+}

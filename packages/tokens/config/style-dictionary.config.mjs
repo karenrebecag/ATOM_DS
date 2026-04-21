@@ -22,6 +22,8 @@ const CSS_TRANSFORMS = [
   'html/icon',
   'size/rem',
   'atom/spacing/px',
+  'atom/typography/px',
+  'atom/typography/font-weight',
   'color/css',
   'asset/url',
   'fontFamily/css',
@@ -49,7 +51,7 @@ const SEMANTIC_GROUPS = [
 ]
 
 const COMPONENT_GROUPS = [
-  'avatar', 'badge', 'buttons', 'checkbox', 'chip', 'divider',
+  'accordion', 'avatar', 'badge', 'buttons', 'checkbox', 'chip', 'divider',
   'link-button', 'navbar', 'nav-link', 'radio', 'skeleton',
   'spinner', 'status-icon', 'tags', 'toggle',
   'frosted-glass', 'glassmorphism', 'acrylic',

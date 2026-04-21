@@ -13,7 +13,7 @@
   max-width: var(--tags-max-width-m);
   border-radius: var(--tags-border-radius);
   border: var(--tags-border-width) solid transparent;
-  font-family: var(--font-family-content);
+  font-family: var(--font-body);
   font-weight: var(--font-weight-regular);
   font-size: var(--tags-font-size-m);
   line-height: var(--tags-line-height-m);

@@ -1,6 +1,6 @@
 {
   "name": "@atomchat.io/animations",
-  "version": "1.2.1",
+  "version": "1.4.0",
   "type": "module",
   "description": "ATOM Design System — GSAP animation system with accessibility-first motion preferences",
   "main": "dist/index.js",
@@ -131,6 +131,14 @@
       "import": "./dist/vertical-slider.js",
       "types": "./dist/vertical-slider.d.ts"
     },
+    "./components/forms": {
+      "import": "./dist/components/forms/index.js",
+      "types": "./dist/components/forms/index.d.ts"
+    },
+    "./components/navigation": {
+      "import": "./dist/components/navigation/index.js",
+      "types": "./dist/components/navigation/index.d.ts"
+    },
     "./extras/smooth-scroll": {
       "import": "./dist/extras/smooth-scroll.js",
       "types": "./dist/extras/smooth-scroll.d.ts"
@@ -165,7 +173,7 @@
     }
   },
   "devDependencies": {
-    "gsap": "^3.14.2",
+    "gsap": "^3.15.0",
     "typescript": "^5.8.0"
   },
   "license": "MIT"

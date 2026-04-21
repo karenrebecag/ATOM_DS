@@ -159,14 +159,14 @@
 }
 
 .radio-field__title {
-  font-family: var(--font-family-titles);
+  font-family: var(--font-body);
   font-weight: var(--font-weight-medium);
   color: var(--fg-secondary);
   cursor: pointer;
 }
 
 .radio-field__supportive {
-  font-family: var(--font-family-content);
+  font-family: var(--font-body);
   font-weight: var(--font-weight-regular);
   color: var(--fg-tertiary);
 }
@@ -183,7 +183,7 @@
 }
 
 .radio-field__error-text {
-  font-family: var(--font-family-content);
+  font-family: var(--font-body);
   font-weight: var(--font-weight-regular);
   color: var(--fg-status-error);
 }

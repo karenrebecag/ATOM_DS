@@ -1,130 +1,186 @@
 /* ============================================
    @atomchat/css — tooltip.css
    Depends on: @atomchat/tokens (tokens.css)
-   Tooltip component for contextual information
+   CSS-only tooltip — no JavaScript required.
+   Hover-driven with scale/translate animation.
+
+   Data attributes:
+     [data-tooltip-hover]                  Hover trigger wrapper
+     [data-tooltip-icon="info|question|alert"]  Icon type selector
+     [data-tooltip-x="center|left|right"]  Horizontal alignment
+     [data-tooltip-y="top|bottom"]         Vertical position
 ============================================ */
 
-/* TOOLTIP — Contextual information overlay */
+/* ── Root ─────────────────────────────────────────────────── */
 .tooltip {
-  display: flex;
-  border-radius: var(--s);
+  margin: 0;
+}
+
+/* ── Hover trigger ────────────────────────────────────────── */
+[data-tooltip-hover] {
   position: relative;
+  cursor: pointer;
 }
 
-/* PLAIN VARIANT — Simple dark tooltip with text */
-.tooltip--plain {
-  align-items: center;
-  justify-content: center;
-  max-width: var(--tooltip-plain-max-width);
-  min-height: var(--tooltip-plain-min-height);
-  max-height: var(--tooltip-plain-max-height);
-  padding: var(--tooltip-plain-padding);
-  background-color: var(--tooltip-plain-bg);
-  backdrop-filter: blur(var(--tooltip-plain-backdrop-blur));
-  -webkit-backdrop-filter: blur(var(--tooltip-plain-backdrop-blur));
+/* ── Icon ─────────────────────────────────────────────────── */
+.tooltip__icon {
+  display: inline-block;
+  vertical-align: sub;
+  cursor: pointer;
+  width: 1em;
+  height: 1em;
+  margin-left: var(--xxs);
+  color: var(--fg-tertiary);
+  transition: color var(--duration-quarter);
 }
 
-.tooltip--plain .tooltip__text {
-  flex: 1 1 0;
-  min-width: 1px;
-  font-family: var(--font-family-titles);
-  font-size: var(--font-sizes-label);
-  line-height: var(--line-height-label);
-  font-weight: var(--font-weight-medium);
-  color: var(--tooltip-plain-fg);
-  text-align: center;
-}
-
-/* RICH VARIANT — Complex tooltip with multiple sections */
-.tooltip--rich {
-  flex-direction: column;
-  gap: var(--tooltip-rich-gap);
-  max-width: var(--tooltip-rich-max-width);
-  width: var(--tooltip-rich-max-width);
-  padding-bottom: var(--tooltip-rich-action-padding);
-  background-color: var(--tooltip-rich-bg);
-  border: var(--tooltip-rich-border-width) solid var(--tooltip-rich-border-color);
-  box-shadow: var(--tooltip-rich-shadow);
-}
-
-/* Rich tooltip sections */
-.tooltip__content {
-  display: flex;
-  flex-direction: column;
-  gap: var(--tooltip-rich-content-gap);
-  padding: var(--tooltip-rich-content-padding);
-  width: 100%;
-}
-
-.tooltip__headline {
-  font-family: var(--font-family-titles);
-  font-size: var(--font-sizes-label);
-  line-height: var(--line-height-label);
-  font-weight: var(--font-weight-bold);
+[data-tooltip-hover]:hover .tooltip__icon {
   color: var(--fg-primary);
-  margin: 0;
-  width: 100%;
 }
 
-.tooltip__supporting {
-  font-family: var(--font-family-content);
-  font-size: var(--font-sizes-label);
-  line-height: var(--line-height-label);
-  font-weight: var(--font-weight-regular);
-  color: var(--fg-quaternary);
-  margin: 0;
-  width: 100%;
-}
-
-/* Extra content slot */
-.tooltip__extra {
-  width: 100%;
-  flex-shrink: 0;
-}
-
-/* Action section (button container) */
-.tooltip__action {
-  display: flex;
-  gap: var(--m);
-  align-items: center;
-  padding-left: var(--tooltip-rich-action-padding);
-  padding-right: var(--tooltip-rich-action-padding);
-  width: 100%;
-}
-
-/* Positioning classes (for positioning the tooltip) */
-.tooltip--top {
-  /* Position above trigger element */
-}
-
-.tooltip--bottom {
-  /* Position below trigger element */
-}
-
-.tooltip--left {
-  /* Position to the left of trigger element */
-}
-
-.tooltip--right {
-  /* Position to the right of trigger element */
-}
-
-/* Animations */
-@keyframes tooltip-fade-in {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-.tooltip--visible {
-  animation: tooltip-fade-in var(--duration-quarter) var(--ease-standard);
-}
-
-.tooltip--hidden {
+/* ── Icon type — single SVG, toggle paths via data attr ──── */
+[data-tooltip-icon] > svg path:not(:first-child) {
   display: none;
+}
+
+[data-tooltip-icon="question"] > svg path:nth-child(2),
+[data-tooltip-icon="question"] > svg path:nth-child(3) {
+  display: block;
+}
+
+[data-tooltip-icon="alert"] > svg path:nth-child(4),
+[data-tooltip-icon="alert"] > svg path:nth-child(5) {
+  display: block;
+}
+
+[data-tooltip-icon="info"] > svg path:nth-child(6),
+[data-tooltip-icon="info"] > svg path:nth-child(7),
+[data-tooltip-icon="info"] > svg path:nth-child(8),
+[data-tooltip-icon="info"] > svg path:nth-child(9) {
+  display: block;
+}
+
+/* ── Floating box container ───────────────────────────────── */
+.tooltip__box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding-top: var(--s);
+  padding-bottom: var(--s);
+  z-index: var(--z-tooltip);
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--duration-half) var(--ease-default);
+  pointer-events: none;
+}
+
+[data-tooltip-hover]:hover .tooltip__box {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* ── Inner animated wrapper ───────────────────────────────── */
+.tooltip__box-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  transition: transform var(--duration-half) var(--ease-default);
+  transform: translateY(1em) scale(0.9) rotate(0.001deg);
+}
+
+[data-tooltip-hover]:hover .tooltip__box-inner {
+  transform: translateY(0) scale(1) rotate(0.001deg);
+}
+
+/* ── Card ─────────────────────────────────────────────────── */
+.tooltip__card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s);
+  width: var(--tooltip-rich-max-width);
+  max-width: calc(100vw - var(--s));
+  padding: var(--m);
+  margin-left: var(--s);
+  margin-right: var(--s);
+  background-color: var(--bg-inverse-primary);
+  color: var(--fg-inverse-primary);
+  border-radius: var(--primitive-radius-sm);
+}
+
+/* ── Card heading ─────────────────────────────────────────── */
+.tooltip__card-heading {
+  font-family: var(--font-body);
+  font-size: var(--text-label);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-label);
+  margin: 0;
+}
+
+/* ── Card text ────────────────────────────────────────────── */
+.tooltip__card-text {
+  opacity: var(--opacity-60);
+}
+
+.tooltip__card-p {
+  font-family: var(--font-body);
+  font-size: var(--text-label-small);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-label-small);
+  margin: 0;
+}
+
+/* ── Tip arrow ────────────────────────────────────────────── */
+.tooltip__tip {
+  display: flex;
+  position: relative;
+  width: var(--l);
+  margin: -1px var(--sm);
+  color: var(--bg-inverse-primary);
+}
+
+/* ── Position: bottom ─────────────────────────────────────── */
+[data-tooltip-y="bottom"] {
+  top: 100%;
+  bottom: unset;
+}
+
+[data-tooltip-y="bottom"] .tooltip__card {
+  order: 2;
+}
+
+[data-tooltip-y="bottom"] .tooltip__tip {
+  transform: scaleY(-1);
+}
+
+[data-tooltip-y="bottom"] .tooltip__box-inner {
+  transform: translateY(-1em) scale(0.9) rotate(0.001deg);
+}
+
+/* ── Position: left ───────────────────────────────────────── */
+[data-tooltip-x="left"] {
+  align-items: flex-start;
+  left: calc(var(--l) * -1);
+  transform: translateX(0);
+}
+
+[data-tooltip-x="left"] .tooltip__box-inner {
+  align-items: flex-start;
+}
+
+/* ── Position: right ──────────────────────────────────────── */
+[data-tooltip-x="right"] {
+  align-items: flex-end;
+  left: unset;
+  right: calc(var(--l) * -1);
+  transform: translateX(0);
+}
+
+[data-tooltip-x="right"] .tooltip__box-inner {
+  align-items: flex-end;
 }

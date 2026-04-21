@@ -1,0 +1,1551 @@
+{
+  "meta": {
+    "generatedAt": "2026-04-21T19:46:14.557Z",
+    "gitSha": "6933d74",
+    "packageVersion": "2.0.1",
+    "sourceCount": 37
+  },
+  "package": "@atomchat.io/components-angular",
+  "version": "2.0.1",
+  "install": "npm install @atomchat.io/components-angular @atomchat.io/css",
+  "peerDeps": [
+    "@angular/core >= 21",
+    "@atomchat.io/css"
+  ],
+  "components": [
+    {
+      "name": "Button",
+      "path": "atoms/button.component",
+      "import": "import { ButtonComponent } from '@atomchat.io/components-angular'",
+      "description": "Interactive button with 6 variants, 5 sizes, loading state, and icon support.",
+      "props": [
+        {
+          "name": "variant",
+          "type": "ButtonVariant",
+          "default": "Primary",
+          "values": [
+            "Primary",
+            "Secondary",
+            "Tertiary",
+            "Destructive Primary",
+            "Destructive Secondary",
+            "Destructive Tertiary"
+          ]
+        },
+        {
+          "name": "size",
+          "type": "'xs' | 's' | 'm' | 'l' | 'xl'",
+          "default": "m",
+          "values": [
+            "xs",
+            "s",
+            "m",
+            "l",
+            "xl"
+          ]
+        },
+        {
+          "name": "href",
+          "type": "string"
+        },
+        {
+          "name": "type",
+          "type": "'button' | 'submit' | 'reset'",
+          "default": "button",
+          "values": [
+            "button",
+            "submit",
+            "reset"
+          ]
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "loading",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "customClass",
+          "type": "string",
+          "default": ""
+        }
+      ],
+      "tokens": [
+        "buttons-*"
+      ]
+    },
+    {
+      "name": "IconButton",
+      "path": "atoms/buttons/icon-button.component",
+      "import": "import { IconButtonComponent } from '@atomchat.io/components-angular'",
+      "description": "Icon-only interactive button with polymorphic rendering (button vs link).",
+      "props": [
+        {
+          "name": "variant",
+          "type": "IconButtonVariant",
+          "default": "Primary",
+          "values": [
+            "Primary",
+            "Secondary",
+            "Tertiary",
+            "Destructive Primary",
+            "Destructive Secondary",
+            "Destructive Tertiary"
+          ]
+        },
+        {
+          "name": "size",
+          "type": "'xs' | 's' | 'm' | 'l' | 'xl'",
+          "default": "m",
+          "values": [
+            "xs",
+            "s",
+            "m",
+            "l",
+            "xl"
+          ]
+        },
+        {
+          "name": "href",
+          "type": "string"
+        },
+        {
+          "name": "type",
+          "type": "'button' | 'submit' | 'reset'",
+          "default": "button",
+          "values": [
+            "button",
+            "submit",
+            "reset"
+          ]
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "loading",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "customClass",
+          "type": "string",
+          "default": ""
+        }
+      ],
+      "tokens": []
+    },
+    {
+      "name": "LinkButton",
+      "path": "atoms/buttons/link-button.component",
+      "import": "import { LinkButtonComponent } from '@atomchat.io/components-angular'",
+      "description": "Text link styled as a button with optional icon support.",
+      "props": [
+        {
+          "name": "size",
+          "type": "'s' | 'l'",
+          "default": "l",
+          "values": [
+            "s",
+            "l"
+          ]
+        },
+        {
+          "name": "href",
+          "type": "string"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "loading",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "customClass",
+          "type": "string",
+          "default": ""
+        }
+      ],
+      "tokens": [
+        "link-button-*"
+      ]
+    },
+    {
+      "name": "NavLink",
+      "path": "atoms/buttons/nav-link.component",
+      "import": "import { NavLinkComponent } from '@atomchat.io/components-angular'",
+      "description": "CSS-only underline link with animation support.",
+      "props": [
+        {
+          "name": "href",
+          "type": "string"
+        },
+        {
+          "name": "underline",
+          "type": "NavLinkUnderline",
+          "default": "default",
+          "values": [
+            "none",
+            "hover",
+            "always"
+          ]
+        },
+        {
+          "name": "variant",
+          "type": "NavLinkVariant",
+          "default": "primary",
+          "values": [
+            "default",
+            "muted"
+          ]
+        },
+        {
+          "name": "size",
+          "type": "'xs' | 's' | 'm' | 'l' | 'xl'",
+          "default": "m",
+          "values": [
+            "xs",
+            "s",
+            "m",
+            "l",
+            "xl"
+          ]
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "customClass",
+          "type": "string",
+          "default": ""
+        }
+      ],
+      "tokens": []
+    },
+    {
+      "name": "Checkbox",
+      "path": "atoms/forms/checkbox.component",
+      "import": "import { CheckboxComponent } from '@atomchat.io/components-angular'",
+      "description": "A form checkbox with label support, indeterminate state, and error handling.",
+      "props": [
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "size",
+          "type": "CheckboxSize",
+          "default": "m",
+          "values": [
+            "s",
+            "m"
+          ]
+        },
+        {
+          "name": "checked",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "indeterminate",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "error",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "customClass",
+          "type": "string",
+          "default": ""
+        }
+      ],
+      "tokens": [
+        "checkbox-*"
+      ]
+    },
+    {
+      "name": "Radio",
+      "path": "atoms/forms/radio.component",
+      "import": "import { RadioComponent } from '@atomchat.io/components-angular'",
+      "description": "A form radio button with title, supportive text, and error handling.",
+      "props": [
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "value",
+          "type": "string"
+        },
+        {
+          "name": "size",
+          "type": "RadioSize",
+          "default": "m",
+          "values": [
+            "s",
+            "m"
+          ]
+        },
+        {
+          "name": "checked",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "error",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "supportiveText",
+          "type": "string"
+        },
+        {
+          "name": "errorText",
+          "type": "string"
+        },
+        {
+          "name": "customClass",
+          "type": "string",
+          "default": ""
+        }
+      ],
+      "tokens": [
+        "radio-*"
+      ]
+    },
+    {
+      "name": "SearchField",
+      "path": "atoms/forms/search-field.component",
+      "import": "import { SearchFieldComponent } from '@atomchat.io/components-angular'",
+      "description": "Search input with clear button support.",
+      "props": [
+        {
+          "name": "placeholder",
+          "type": "string",
+          "default": "Search..."
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "default": ""
+        },
+        {
+          "name": "size",
+          "type": "SearchFieldSize",
+          "default": "m",
+          "values": [
+            "s",
+            "m",
+            "l"
+          ]
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "customClass",
+          "type": "string",
+          "default": ""
+        }
+      ],
+      "tokens": [
+        "search-field-*"
+      ]
+    },
+    {
+      "name": "TextArea",
+      "path": "atoms/forms/text-area.component",
+      "import": "import { TextAreaComponent } from '@atomchat.io/components-angular'",
+      "description": "Multi-line text input with label, supportive text, and character counter.",
+      "props": [
+        {
+          "name": "label",
+          "type": "string"
+        },
+        {
+          "name": "placeholder",
+          "type": "string",
+          "default": ""
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "default": ""
+        },
+        {
+          "name": "size",
+          "type": "TextAreaSize",
+          "default": "m",
+          "values": [
+            "m",
+            "xl"
+          ]
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "error",
+          "type": "string"
+        },
+        {
+          "name": "supportiveText",
+          "type": "string"
+        },
+        {
+          "name": "maxLength",
+          "type": "number"
+        },
+        {
+          "name": "showCounter",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "customClass",
+          "type": "string",
+          "default": ""
+        }
+      ],
+      "tokens": []
+    },
+    {
+      "name": "TextField",
+      "path": "atoms/forms/text-field.component",
+      "import": "import { TextFieldComponent } from '@atomchat.io/components-angular'",
+      "description": "Single-line text input with label, supportive text, and character counter.",
+      "props": [
+        {
+          "name": "label",
+          "type": "string"
+        },
+        {
+          "name": "placeholder",
+          "type": "string",
+          "default": ""
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "default": ""
+        },
+        {
+          "name": "size",
+          "type": "'xs' | 's' | 'm' | 'l' | 'xl'",
+          "default": "m",
+          "values": [
+            "xs",
+            "s",
+            "m",
+            "l",
+            "xl"
+          ]
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "error",
+          "type": "string"
+        },
+        {
+          "name": "supportiveText",
+          "type": "string"
+        },
+        {
+          "name": "maxLength",
+          "type": "number"
+        },
+        {
+          "name": "showCounter",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "customClass",
+          "type": "string",
+          "default": ""
+        }
+      ],
+      "tokens": [
+        "text-field-*"
+      ]
+    },
+    {
+      "name": "Toggle",
+      "path": "atoms/forms/toggle.component",
+      "import": "import { ToggleComponent } from '@atomchat.io/components-angular'",
+      "description": "A form toggle switch with label, supportive text, and error handling.",
+      "props": [
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "size",
+          "type": "ToggleSize",
+          "default": "m",
+          "values": [
+            "s",
+            "m"
+          ]
+        },
+        {
+          "name": "checked",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "error",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "errorText",
+          "type": "string"
+        },
+        {
+          "name": "supportiveText",
+          "type": "string"
+        },
+        {
+          "name": "customClass",
+          "type": "string",
+          "default": ""
+        }
+      ],
+      "tokens": [
+        "toggle-*"
+      ]
+    },
+    {
+      "name": "Badge",
+      "path": "atoms/indicators/badge.component",
+      "import": "import { BadgeComponent } from '@atomchat.io/components-angular'",
+      "description": "Notification badge with smart overflow logic.",
+      "props": [
+        {
+          "name": "count",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "context",
+          "type": "BadgeContext",
+          "default": "default",
+          "values": [
+            "default",
+            "navigation",
+            "tab"
+          ]
+        },
+        {
+          "name": "type",
+          "type": "BadgeType",
+          "default": "neutral",
+          "values": [
+            "numeric",
+            "dot"
+          ]
+        },
+        {
+          "name": "state",
+          "type": "BadgeState",
+          "default": "default",
+          "values": [
+            "default",
+            "active"
+          ]
+        },
+        {
+          "name": "customClass",
+          "type": "string",
+          "default": ""
+        }
+      ],
+      "tokens": [
+        "badge-*"
+      ]
+    },
+    {
+      "name": "Chip",
+      "path": "atoms/indicators/chip.component",
+      "import": "import { ChipComponent } from '@atomchat.io/components-angular'",
+      "description": "A compact interactive element for filtering, selecting, or triggering actions.",
+      "props": [
+        {
+          "name": "variant",
+          "type": "ChipVariant",
+          "default": "filled",
+          "values": [
+            "filled",
+            "outlined"
+          ]
+        },
+        {
+          "name": "color",
+          "type": "ChipColor",
+          "default": "default",
+          "values": [
+            "default",
+            "primary",
+            "success",
+            "warning",
+            "danger"
+          ]
+        },
+        {
+          "name": "size",
+          "type": "ChipSize",
+          "default": "m",
+          "values": [
+            "s",
+            "m"
+          ]
+        },
+        {
+          "name": "selected",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "closable",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "customClass",
+          "type": "string",
+          "default": ""
+        }
+      ],
+      "tokens": [
+        "chip-*"
+      ]
+    },
+    {
+      "name": "EmptyState",
+      "path": "atoms/indicators/empty-state.component",
+      "import": "import { EmptyStateComponent } from '@atomchat.io/components-angular'",
+      "description": "A placeholder component for empty content areas.",
+      "props": [
+        {
+          "name": "size",
+          "type": "EmptyStateSize",
+          "default": "m",
+          "values": [
+            "s",
+            "m",
+            "l"
+          ]
+        },
+        {
+          "name": "heading",
+          "type": "string"
+        },
+        {
+          "name": "supportingText",
+          "type": "string"
+        },
+        {
+          "name": "resultText",
+          "type": "string"
+        },
+        {
+          "name": "customClass",
+          "type": "string",
+          "default": ""
+        }
+      ],
+      "tokens": [
+        "empty-state-*"
+      ]
+    },
+    {
+      "name": "Spinner",
+      "path": "atoms/indicators/spinner.component",
+      "import": "import { SpinnerComponent } from '@atomchat.io/components-angular'",
+      "description": "A loading indicator with size and color variants.",
+      "props": [
+        {
+          "name": "size",
+          "type": "SpinnerSize",
+          "default": "m",
+          "values": [
+            "xs",
+            "s",
+            "m",
+            "l"
+          ]
+        },
+        {
+          "name": "color",
+          "type": "SpinnerColor",
+          "default": "primary",
+          "values": [
+            "default",
+            "inverse",
+            "primary"
+          ]
+        },
+        {
+          "name": "customClass",
+          "type": "string",
+          "default": ""
+        }
+      ],
+      "tokens": [
+        "spinner-*"
+      ]
+    },
+    {
+      "name": "Tag",
+      "path": "atoms/indicators/tag.component",
+      "import": "import { TagComponent } from '@atomchat.io/components-angular'",
+      "description": "A non-interactive label for categorization and metadata display.",
+      "props": [
+        {
+          "name": "variant",
+          "type": "TagVariant",
+          "default": "filled",
+          "values": [
+            "filled",
+            "outlined",
+            "ghost"
+          ]
+        },
+        {
+          "name": "color",
+          "type": "TagColor",
+          "default": "default",
+          "values": [
+            "default",
+            "primary",
+            "success",
+            "warning",
+            "danger",
+            "info"
+          ]
+        },
+        {
+          "name": "size",
+          "type": "TagSize",
+          "default": "m",
+          "values": [
+            "s",
+            "m",
+            "l"
+          ]
+        },
+        {
+          "name": "customClass",
+          "type": "string",
+          "default": ""
+        }
+      ],
+      "tokens": [
+        "tags-*"
+      ]
+    },
+    {
+      "name": "Divider",
+      "path": "atoms/layout/divider.component",
+      "import": "import { DividerComponent } from '@atomchat.io/components-angular'",
+      "description": "A visual separator for horizontal or vertical content division.",
+      "props": [
+        {
+          "name": "orientation",
+          "type": "DividerOrientation",
+          "default": "horizontal",
+          "values": [
+            "horizontal",
+            "vertical"
+          ]
+        },
+        {
+          "name": "customClass",
+          "type": "string",
+          "default": ""
+        }
+      ],
+      "tokens": [
+        "divider-*"
+      ]
+    },
+    {
+      "name": "BulletItem",
+      "path": "atoms/lists/bullet-item.component",
+      "import": "import { BulletItemComponent } from '@atomchat.io/components-angular'",
+      "description": "A list item for unordered bullet lists.",
+      "props": [
+        {
+          "name": "customClass",
+          "type": "string",
+          "default": ""
+        }
+      ],
+      "tokens": []
+    },
+    {
+      "name": "NumberItem",
+      "path": "atoms/lists/number-item.component",
+      "import": "import { NumberItemComponent } from '@atomchat.io/components-angular'",
+      "description": "A list item for ordered numbered lists.",
+      "props": [
+        {
+          "name": "customClass",
+          "type": "string",
+          "default": ""
+        }
+      ],
+      "tokens": []
+    },
+    {
+      "name": "Avatar",
+      "path": "atoms/media/avatar.component",
+      "import": "import { AvatarComponent } from '@atomchat.io/components-angular'",
+      "description": "Displays user profile images, initials, or icons with optional status badges.",
+      "props": [
+        {
+          "name": "src",
+          "type": "string"
+        },
+        {
+          "name": "alt",
+          "type": "string",
+          "default": ""
+        },
+        {
+          "name": "size",
+          "type": "AvatarSize",
+          "default": "xs",
+          "values": [
+            "xs",
+            "s",
+            "m",
+            "l"
+          ]
+        },
+        {
+          "name": "shape",
+          "type": "AvatarShape",
+          "default": "circle",
+          "values": [
+            "circle",
+            "square"
+          ]
+        },
+        {
+          "name": "type",
+          "type": "AvatarType",
+          "values": [
+            "image",
+            "image-border",
+            "initials",
+            "icon"
+          ]
+        },
+        {
+          "name": "initials",
+          "type": "string"
+        },
+        {
+          "name": "badge",
+          "type": "StatusType",
+          "default": "none",
+          "values": [
+            "verified",
+            "online",
+            "offline",
+            "idle",
+            "inactive",
+            "none"
+          ]
+        },
+        {
+          "name": "customClass",
+          "type": "string",
+          "default": ""
+        }
+      ],
+      "tokens": [
+        "avatar-*"
+      ]
+    },
+    {
+      "name": "Pagination",
+      "path": "atoms/navigation/pagination.component",
+      "import": "import { PaginationComponent } from '@atomchat.io/components-angular'",
+      "description": "Table pagination with page size selector and navigation controls.",
+      "props": [
+        {
+          "name": "pageSize",
+          "type": "number",
+          "default": "10"
+        },
+        {
+          "name": "pageSizeOptions",
+          "type": "number[]",
+          "default": "[10, 25, 50, 100]"
+        },
+        {
+          "name": "loading",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "customClass",
+          "type": "string",
+          "default": ""
+        }
+      ],
+      "tokens": [
+        "pagination-*"
+      ]
+    },
+    {
+      "name": "SegmentControl",
+      "path": "atoms/navigation/segment-control.component",
+      "import": "import { SegmentControlComponent } from '@atomchat.io/components-angular'",
+      "description": "Tabbed selection control with sliding indicator.",
+      "props": [
+        {
+          "name": "size",
+          "type": "'xs' | 's' | 'm' | 'l' | 'xl'",
+          "default": "m",
+          "values": [
+            "xs",
+            "s",
+            "m",
+            "l",
+            "xl"
+          ]
+        },
+        {
+          "name": "selectedIndex",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "customClass",
+          "type": "string",
+          "default": ""
+        }
+      ],
+      "tokens": [
+        "segment-control-*"
+      ]
+    },
+    {
+      "name": "Heading",
+      "path": "atoms/typography/heading.component",
+      "import": "import { HeadingComponent } from '@atomchat.io/components-angular'",
+      "description": "Semantic heading component that renders h1-h6 based on level prop.",
+      "props": [
+        {
+          "name": "level",
+          "type": "HeadingLevel",
+          "default": "2",
+          "values": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6"
+          ]
+        },
+        {
+          "name": "size",
+          "type": "HeadingSize",
+          "default": "heading-l",
+          "values": [
+            "display-xl",
+            "display-l",
+            "display-m",
+            "display-s",
+            "heading-xl",
+            "heading-l",
+            "heading-m",
+            "heading-s",
+            "heading"
+          ]
+        },
+        {
+          "name": "weight",
+          "type": "HeadingWeight",
+          "default": "bold",
+          "values": [
+            "regular",
+            "medium",
+            "bold"
+          ]
+        },
+        {
+          "name": "tracking",
+          "type": "HeadingTracking",
+          "default": "normal",
+          "values": [
+            "tight",
+            "normal"
+          ]
+        },
+        {
+          "name": "align",
+          "type": "HeadingAlign",
+          "values": [
+            "left",
+            "center",
+            "right"
+          ]
+        },
+        {
+          "name": "customClass",
+          "type": "string",
+          "default": ""
+        }
+      ],
+      "tokens": []
+    },
+    {
+      "name": "Text",
+      "path": "atoms/typography/text.component",
+      "import": "import { TextComponent } from '@atomchat.io/components-angular'",
+      "description": "A flexible text component for body copy, captions, labels, and footnotes.",
+      "props": [
+        {
+          "name": "size",
+          "type": "TextSize",
+          "default": "body",
+          "values": [
+            "body",
+            "caption",
+            "label",
+            "label-small",
+            "footnote"
+          ]
+        },
+        {
+          "name": "weight",
+          "type": "TextWeight",
+          "default": "regular",
+          "values": [
+            "regular",
+            "medium",
+            "bold"
+          ]
+        },
+        {
+          "name": "color",
+          "type": "TextColor",
+          "default": "primary",
+          "values": [
+            "primary",
+            "secondary",
+            "tertiary",
+            "disabled",
+            "inherit"
+          ]
+        },
+        {
+          "name": "align",
+          "type": "TextAlign",
+          "values": [
+            "left",
+            "center",
+            "right"
+          ]
+        },
+        {
+          "name": "truncate",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "as",
+          "type": "TextElement",
+          "default": "p",
+          "values": [
+            "p",
+            "span",
+            "div"
+          ]
+        },
+        {
+          "name": "customClass",
+          "type": "string",
+          "default": ""
+        }
+      ],
+      "tokens": []
+    },
+    {
+      "name": "Center",
+      "path": "layout/center.component",
+      "import": "import { CenterComponent } from '@atomchat.io/components-angular'",
+      "description": "Center component",
+      "props": [
+        {
+          "name": "customClass",
+          "type": "string",
+          "default": ""
+        }
+      ],
+      "tokens": []
+    },
+    {
+      "name": "Container",
+      "path": "layout/container.component",
+      "import": "import { ContainerComponent } from '@atomchat.io/components-angular'",
+      "description": "Constrains content width with responsive max-width variants.",
+      "props": [
+        {
+          "name": "size",
+          "type": "ContainerSize",
+          "default": "default",
+          "values": [
+            "default",
+            "medium",
+            "small"
+          ]
+        },
+        {
+          "name": "customClass",
+          "type": "string",
+          "default": ""
+        }
+      ],
+      "tokens": []
+    },
+    {
+      "name": "Grid",
+      "path": "layout/grid.component",
+      "import": "import { GridComponent } from '@atomchat.io/components-angular'",
+      "description": "Grid component",
+      "props": [
+        {
+          "name": "columns",
+          "type": "number | string",
+          "default": "3"
+        },
+        {
+          "name": "gap",
+          "type": "GapSize",
+          "default": "m",
+          "values": [
+            "xs",
+            "s",
+            "m",
+            "l",
+            "xl"
+          ]
+        },
+        {
+          "name": "customClass",
+          "type": "string",
+          "default": ""
+        }
+      ],
+      "tokens": []
+    },
+    {
+      "name": "Inline",
+      "path": "layout/inline.component",
+      "import": "import { InlineComponent } from '@atomchat.io/components-angular'",
+      "description": "Inline component",
+      "props": [
+        {
+          "name": "gap",
+          "type": "InlineGapSize",
+          "default": "m",
+          "values": [
+            "xs",
+            "s",
+            "m",
+            "l",
+            "xl"
+          ]
+        },
+        {
+          "name": "align",
+          "type": "InlineAlignment",
+          "default": "start",
+          "values": [
+            "start",
+            "center",
+            "end",
+            "stretch"
+          ]
+        },
+        {
+          "name": "wrap",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "customClass",
+          "type": "string",
+          "default": ""
+        }
+      ],
+      "tokens": []
+    },
+    {
+      "name": "Section",
+      "path": "layout/section.component",
+      "import": "import { SectionComponent } from '@atomchat.io/components-angular'",
+      "description": "Section component",
+      "props": [
+        {
+          "name": "customClass",
+          "type": "string",
+          "default": ""
+        }
+      ],
+      "tokens": []
+    },
+    {
+      "name": "Stack",
+      "path": "layout/stack.component",
+      "import": "import { StackComponent } from '@atomchat.io/components-angular'",
+      "description": "Vertical stack layout with configurable gap and alignment.",
+      "props": [
+        {
+          "name": "gap",
+          "type": "GapSize",
+          "default": "m",
+          "values": [
+            "xs",
+            "s",
+            "m",
+            "l",
+            "xl"
+          ]
+        },
+        {
+          "name": "align",
+          "type": "Alignment",
+          "values": [
+            "start",
+            "center",
+            "end",
+            "stretch"
+          ]
+        },
+        {
+          "name": "customClass",
+          "type": "string",
+          "default": ""
+        }
+      ],
+      "tokens": []
+    },
+    {
+      "name": "Accordion",
+      "path": "molecules/accordion.component",
+      "import": "import { AccordionComponent } from '@atomchat.io/components-angular'",
+      "description": "Expandable content panels with CSS grid animation.",
+      "props": [
+        {
+          "name": "closeSiblings",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "customClass",
+          "type": "string",
+          "default": ""
+        }
+      ],
+      "tokens": [
+        "accordion-*"
+      ]
+    },
+    {
+      "name": "AvatarGroup",
+      "path": "molecules/avatar-group.component",
+      "import": "import { AvatarGroupComponent } from '@atomchat.io/components-angular'",
+      "description": "Displays multiple avatars in a stacked layout with an overflow counter.",
+      "props": [
+        {
+          "name": "max",
+          "type": "number",
+          "default": "5"
+        },
+        {
+          "name": "size",
+          "type": "AvatarSize",
+          "default": "xs",
+          "values": [
+            "xs",
+            "s",
+            "m",
+            "l"
+          ]
+        },
+        {
+          "name": "shape",
+          "type": "AvatarShape",
+          "default": "circle",
+          "values": [
+            "circle",
+            "square"
+          ]
+        },
+        {
+          "name": "customClass",
+          "type": "string",
+          "default": ""
+        }
+      ],
+      "tokens": []
+    },
+    {
+      "name": "CardBody",
+      "path": "molecules/card-body.component",
+      "import": "import { CardBodyComponent } from '@atomchat.io/components-angular'",
+      "description": "Body section of a Card with headline, subhead, text, and custom content.",
+      "props": [
+        {
+          "name": "headline",
+          "type": "string"
+        },
+        {
+          "name": "subhead",
+          "type": "string"
+        },
+        {
+          "name": "text",
+          "type": "string"
+        },
+        {
+          "name": "customClass",
+          "type": "string",
+          "default": ""
+        }
+      ],
+      "tokens": []
+    },
+    {
+      "name": "CardFooter",
+      "path": "molecules/card-footer.component",
+      "import": "import { CardFooterComponent } from '@atomchat.io/components-angular'",
+      "description": "Footer section of a Card with buttons or tags variant.",
+      "props": [
+        {
+          "name": "variant",
+          "type": "CardFooterVariant",
+          "default": "buttons",
+          "values": [
+            "buttons",
+            "tags"
+          ]
+        },
+        {
+          "name": "customClass",
+          "type": "string",
+          "default": ""
+        }
+      ],
+      "tokens": []
+    },
+    {
+      "name": "CardHeader",
+      "path": "molecules/card-header.component",
+      "import": "import { CardHeaderComponent } from '@atomchat.io/components-angular'",
+      "description": "Header section of a Card with headline, supporting text, and action slot.",
+      "props": [
+        {
+          "name": "headline",
+          "type": "string"
+        },
+        {
+          "name": "supporting",
+          "type": "string"
+        },
+        {
+          "name": "customClass",
+          "type": "string",
+          "default": ""
+        }
+      ],
+      "tokens": []
+    },
+    {
+      "name": "Card",
+      "path": "molecules/card.component",
+      "import": "import { CardComponent } from '@atomchat.io/components-angular'",
+      "description": "Composable card container with header, body, and footer subcomponents.",
+      "props": [
+        {
+          "name": "customClass",
+          "type": "string",
+          "default": ""
+        }
+      ],
+      "tokens": [
+        "card-*"
+      ]
+    },
+    {
+      "name": "Marquee",
+      "path": "molecules/marquee.component",
+      "import": "import { MarqueeComponent } from '@atomchat.io/components-angular'",
+      "description": "CSS-driven infinite scroll for text or logos.",
+      "props": [
+        {
+          "name": "variant",
+          "type": "MarqueeVariant",
+          "default": "text",
+          "values": [
+            "primary",
+            "secondary"
+          ]
+        },
+        {
+          "name": "size",
+          "type": "MarqueeSize",
+          "default": "m",
+          "values": [
+            "s",
+            "m",
+            "l"
+          ]
+        },
+        {
+          "name": "dark",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "reverse",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "speed",
+          "type": "MarqueeSpeed",
+          "default": "default",
+          "values": [
+            "slow",
+            "normal",
+            "fast"
+          ]
+        },
+        {
+          "name": "fade",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "customClass",
+          "type": "string",
+          "default": ""
+        }
+      ],
+      "tokens": []
+    },
+    {
+      "name": "Tooltip",
+      "path": "molecules/tooltip.component",
+      "import": "import { TooltipComponent } from '@atomchat.io/components-angular'",
+      "description": "CSS-only tooltip with hover trigger. Supports icon types and configurable positioning.",
+      "props": [
+        {
+          "name": "text",
+          "type": "string"
+        },
+        {
+          "name": "iconType",
+          "type": "TooltipIconType",
+          "default": "info",
+          "values": [
+            "info",
+            "help"
+          ]
+        },
+        {
+          "name": "heading",
+          "type": "string"
+        },
+        {
+          "name": "body",
+          "type": "string"
+        },
+        {
+          "name": "posX",
+          "type": "TooltipPosX",
+          "default": "center",
+          "values": [
+            "center",
+            "left",
+            "right"
+          ]
+        },
+        {
+          "name": "posY",
+          "type": "TooltipPosY",
+          "default": "top",
+          "values": [
+            "top",
+            "bottom"
+          ]
+        },
+        {
+          "name": "customClass",
+          "type": "string",
+          "default": ""
+        }
+      ],
+      "tokens": [
+        "tooltip-*"
+      ]
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "name": "@atomchat.io/css",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "ATOM Design System — Component styles and utilities",
   "main": "./dist/atom.css",
   "style": "./dist/atom.css",
@@ -10,7 +10,9 @@
   "exports": {
     ".": "./dist/atom.css",
     "./atom.css": "./dist/atom.css",
-    "./dist/atom.css": "./dist/atom.css"
+    "./dist/atom.css": "./dist/atom.css",
+    "./fonts.css": "./dist/fonts.css",
+    "./dist/fonts.css": "./dist/fonts.css"
   },
   "files": [
     "dist"
@@ -23,8 +25,8 @@
     "@atomchat.io/tokens": "workspace:*"
   },
   "devDependencies": {
-    "vite": "^5.0.0",
-    "lightningcss": "^1.23.0"
+    "lightningcss": "^1.23.0",
+    "vite": "^5.0.0"
   },
   "keywords": [
     "css",

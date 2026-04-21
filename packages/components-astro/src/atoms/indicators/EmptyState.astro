@@ -1,4 +1,6 @@
 ---
+import Button from '../buttons/Button.astro';
+
 /**
  * EmptyState — Display when there's no content to show
  * @atomchat/components-astro
@@ -74,7 +76,6 @@ const {
 
 const hasCustomIcon = Astro.slots.has("icon");
 const hasCustomButton = Astro.slots.has("button");
-const ButtonTag = buttonHref ? "a" : "button";
 ---
 
 <div
@@ -123,12 +124,9 @@ const ButtonTag = buttonHref ? "a" : "button";
         hasCustomButton ? (
           <slot name="button" />
         ) : (
-          <ButtonTag
-            class="button button--secondary button--m"
-            {...buttonHref ? { href: buttonHref } : { type: "button" }}
-          >
+          <Button variant="Secondary" size="m" href={buttonHref}>
             {buttonText}
-          </ButtonTag>
+          </Button>
         )
       )}
     </>

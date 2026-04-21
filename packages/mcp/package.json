@@ -1,0 +1,31 @@
+{
+  "name": "@atomchat.io/mcp",
+  "version": "1.0.0",
+  "description": "MCP server for ATOM Design System — gives AI context about all components and tokens",
+  "type": "module",
+  "bin": {
+    "atomchat-mcp": "./dist/index.js"
+  },
+  "files": [
+    "dist",
+    "data"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "generate": "tsx scripts/generate-manifest.ts",
+    "prebuild": "pnpm generate",
+    "dev": "tsx src/index.ts"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "zod": "^3.25.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsx": "^4.21.0",
+    "typescript": "^5.8.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

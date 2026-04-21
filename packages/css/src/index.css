@@ -1,9 +1,9 @@
 /* ============================================
    @atomchat/css — Main Entry Point
    Complete ATOM Design System CSS
-   
+
    Depends on: @atomchat/tokens
-   Load order: foundation → components → utilities
+   Load order: fonts → foundation → components → utilities
 ============================================ */
 
 /* Foundation (reset, base, typography, responsive) */

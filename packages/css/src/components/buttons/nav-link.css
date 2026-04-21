@@ -1,0 +1,159 @@
+/* ============================================
+   @atomchat/css — nav-link.css
+   Depends on: @atomchat/tokens (tokens.css)
+   CSS-only underline link with animated hover.
+   No JavaScript required.
+
+   Variants:
+     [data-underline-link]        Default — line enters from left
+     [data-underline-link="alt"]  Alt — line swaps direction
+
+   Parent trigger:
+     [data-hover]:hover triggers children [data-underline-link]
+============================================ */
+
+/* ══════════════════════════════════════════════════════════
+   BASE
+   ══════════════════════════════════════════════════════════ */
+
+.nav-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+
+  font-family: var(--font-body);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-label);
+  text-decoration: none;
+  color: var(--nav-fg, var(--fg-primary));
+
+  cursor: pointer;
+  transition: color var(--duration-quarter), opacity var(--duration-quarter);
+}
+
+/* ── Focus visible ── */
+.nav-link:focus-visible {
+  outline: none;
+  box-shadow: var(--buttons-shadow-focus);
+  border-radius: var(--xxs);
+}
+
+/* ── Disabled ── */
+.nav-link--disabled {
+  color: var(--fg-disabled);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ══════════════════════════════════════════════════════════
+   COLOR VARIANTS
+   ══════════════════════════════════════════════════════════ */
+
+.nav-link--primary {
+  --nav-fg: var(--fg-primary);
+}
+
+.nav-link--secondary {
+  --nav-fg: var(--fg-secondary);
+}
+
+.nav-link--tertiary {
+  --nav-fg: var(--fg-tertiary);
+}
+
+.nav-link--inverse {
+  --nav-fg: var(--fg-inverse-primary);
+}
+
+/* ══════════════════════════════════════════════════════════
+   SIZES (font-size driven, mirrors button scale)
+   ══════════════════════════════════════════════════════════ */
+
+.nav-link--xs {
+  font-size: var(--text-label-small);
+  line-height: var(--line-height-label-small);
+}
+
+.nav-link--s {
+  font-size: var(--text-label);
+  line-height: var(--line-height-label);
+}
+
+.nav-link--m {
+  font-size: var(--text-caption);
+  line-height: var(--line-height-caption);
+}
+
+.nav-link--l {
+  font-size: var(--text-body);
+  line-height: var(--line-height-body);
+}
+
+.nav-link--xl {
+  font-size: var(--text-heading);
+  line-height: var(--line-height-heading);
+}
+
+/* ══════════════════════════════════════════════════════════
+   UNDERLINE ANIMATION
+   ══════════════════════════════════════════════════════════ */
+
+/* ── Default underline — hidden, enters from left on hover ── */
+[data-underline-link] {
+  text-decoration: none;
+  position: relative;
+}
+
+[data-underline-link]::before,
+[data-underline-link="alt"]::before,
+[data-underline-link="alt"]::after {
+  content: "";
+  position: absolute;
+  bottom: -0.0625em;
+  left: 0;
+  width: 100%;
+  height: 0.0625em;
+  background-color: currentColor;
+  transition: transform var(--duration-default) var(--ease-default);
+  transform-origin: right;
+  transform: scaleX(0) rotate(0.001deg);
+}
+
+/* ── Alt — visible line exits right, new line enters left ── */
+[data-underline-link="alt"]::before {
+  transform-origin: left;
+  transform: scaleX(1) rotate(0.001deg);
+  transition-delay: var(--duration-half);
+}
+
+[data-underline-link="alt"]::after {
+  transform-origin: right;
+  transform: scaleX(0) rotate(0.001deg);
+  transition-delay: 0s;
+}
+
+/* ── Hover (pointer devices only) ──────────────────────── */
+@media (hover: hover) and (pointer: fine) {
+  /* Default: line enters from left */
+  [data-hover]:hover [data-underline-link]::before,
+  [data-underline-link]:hover::before {
+    transform-origin: left;
+    transform: scaleX(1) rotate(0.001deg);
+  }
+
+  /* Alt: existing line exits right */
+  [data-hover]:hover [data-underline-link="alt"]::before,
+  [data-underline-link="alt"]:hover::before {
+    transform-origin: right;
+    transform: scaleX(0) rotate(0.001deg);
+    transition-delay: 0s;
+  }
+
+  /* Alt: new line enters from left */
+  [data-hover]:hover [data-underline-link="alt"]::after,
+  [data-underline-link="alt"]:hover::after {
+    transform-origin: left;
+    transform: scaleX(1) rotate(0.001deg);
+    transition-delay: var(--duration-half);
+  }
+}

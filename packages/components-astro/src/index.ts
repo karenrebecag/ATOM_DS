@@ -17,6 +17,7 @@ export { default as Center }    from './layout/Center.astro';
 export { default as Button }     from './atoms/buttons/Button.astro';
 export { default as IconButton } from './atoms/buttons/IconButton.astro';
 export { default as LinkButton } from './atoms/buttons/LinkButton.astro';
+export { default as NavLink }    from './atoms/buttons/NavLink.astro';
 
 // ── Atoms — Forms ──────────────────────────────────────────────
 export { default as Checkbox }    from './atoms/forms/Checkbox.astro';
@@ -29,9 +30,7 @@ export { default as TextArea }    from './atoms/forms/TextArea.astro';
 // ── Atoms — Typography ─────────────────────────────────────────
 export { default as Heading }   from './atoms/typography/Heading.astro';
 export { default as Text }      from './atoms/typography/Text.astro';
-export { default as Caption }   from './atoms/typography/Caption.astro';
-export { default as LabelText } from './atoms/typography/LabelText.astro';
-export { default as LegalMeta } from './atoms/typography/LegalMeta.astro';
+
 
 // ── Atoms — Indicators ─────────────────────────────────────────
 export { default as Badge }      from './atoms/indicators/Badge.astro';
@@ -60,11 +59,24 @@ export { default as Tooltip } from './atoms/feedback/Tooltip.astro';
 // ── Molecules ──────────────────────────────────────────────────
 export { default as AvatarGroup } from './molecules/AvatarGroup.astro';
 
+// ── Molecules — Containers ─────────────────────────────────
+export { default as Accordion } from './molecules/Accordion.astro';
+
+// ── Molecules — Marketing ──────────────────────────────────
+export { default as Marquee } from './molecules/Marquee.astro';
+
 // ── Molecules — Card System ────────────────────────────────
 export { default as Card }       from './molecules/Card.astro';
 export { default as CardHeader } from './molecules/CardHeader.astro';
 export { default as CardBody }   from './molecules/CardBody.astro';
 export { default as CardFooter } from './molecules/CardFooter.astro';
+
+// ── Molecules — Branding ───────────────────────────────────
+export { default as LogoBadge } from './molecules/branding/LogoBadge.astro';
+
+// ── Molecules — Navigation ─────────────────────────────────
+export { default as DropdownMenu }        from './molecules/navigation/DropdownMenu.astro';
+export { default as NavLanguageSwitcher } from './molecules/navigation/NavLanguageSwitcher.astro';
 
 // ── Molecules — Dialog System ──────────────────────────────
 export { default as Dialog }          from './molecules/Dialog.astro';

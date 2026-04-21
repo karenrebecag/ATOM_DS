@@ -1,17 +1,12 @@
-# Figma Token Sync
+# /figma-pull
 
-Pull design tokens from any Figma file via Claude Code.
+Pull tokens from Figma via MCP Plugin API (all plans).
 
-## Usage
-
-```bash
+```
 /figma-pull <figma-url>
 ```
 
-Select collections → auto-syncs to `packages/tokens/src/figma/`
+Flow: FETCH → DIFF (dry-run) → MERGE (backup) → STATUS.
+Never deletes tokens. Asks before writing. Outputs W3C DTCG JSON to `packages/tokens/src/figma/`.
 
-## CLI (advanced)
-
-```bash
-pnpm figma:pull --data <json> --backup
-```
+CLI directo: `pnpm figma:pull --data <json> --backup --dry-run`

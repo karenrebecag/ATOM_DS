@@ -3,7 +3,18 @@
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": ["build/**", "dist/**"]
+      "outputs": ["build/**", "dist/**", "storybook-static/**"]
+    },
+    "generate": {
+      "dependsOn": ["^build"],
+      "outputs": ["data/**"],
+      "inputs": [
+        "../components-react/src/**",
+        "../components-vue/src/**",
+        "../components-angular/src/**",
+        "../components-astro/src/**",
+        "../tokens/src/**"
+      ]
     },
     "dev": {
       "cache": false,

@@ -1,28 +1,34 @@
-# /figma-pull — Pull tokens from Figma via MCP
+# /figma-pull — Pull tokens from Figma (git-style)
 
-Pull all variable collections from a Figma file and sync them as W3C DTCG token files.
-Works on ALL Figma plans — uses the Plugin API via MCP, not the REST Variables endpoint.
+Sync design tokens from a Figma file into the local token pipeline.
+Works on ALL Figma plans via the Plugin API (MCP). No REST API token needed.
 
 ## Input
 
-The user provides a Figma file URL as argument: `$ARGUMENTS`
+`$ARGUMENTS` — A Figma file URL: `https://figma.com/design/:fileKey/:fileName`
 
-## Steps
+If no URL is provided, ask the user for one.
 
-### 1. Parse the file key
+---
 
-Extract the `fileKey` from the URL. Figma URLs follow this pattern:
-- `figma.com/design/:fileKey/:fileName?node-id=...`
-- `figma.com/file/:fileKey/...`
-- Or a raw file key string
+## Flow Overview (git analogy)
 
-### 2. Extract variables via `use_figma` MCP
+```
+FETCH  →  STAGE  →  DIFF  →  MERGE  →  STATUS
+(fetch)   (add)    (diff)   (merge)   (status)
+```
 
-Run this Plugin API code against the file using `mcp__figma-remote__use_figma` (or `mcp__claude_ai_Figma__use_figma`).
+---
 
-**Important:** Use `ToolSearch` to load the `use_figma` tool first if needed.
+## Phase 1: FETCH
 
-Execute this JavaScript code with the extracted `fileKey`:
+Extract the `fileKey` from the URL pattern:
+- `figma.com/design/:fileKey/:fileName...` → use `:fileKey`
+- `figma.com/file/:fileKey/...` → use `:fileKey`
+
+Call `mcp__claude_ai_Figma__use_figma` with the extracted fileKey and the code below.
+
+**Description:** `Extract all published variable collections for token sync`
 
 ```javascript
 const collections = await figma.variables.getLocalVariableCollectionsAsync();
@@ -30,41 +36,27 @@ const allVars = await figma.variables.getLocalVariablesAsync();
 const varMap = new Map();
 for (const v of allVars) varMap.set(v.id, v);
 
-function rgbaToHex(c) {
-  const r = Math.round(c.r * 255), g = Math.round(c.g * 255), b = Math.round(c.b * 255);
-  const a = c.a !== undefined ? c.a : 1;
-  const hex = '#' + [r,g,b].map(n => n.toString(16).padStart(2,'0')).join('');
-  return a < 1 ? hex + Math.round(a*255).toString(16).padStart(2,'0') : hex;
+function sanitize(name) {
+  return name.toLowerCase().replace(/[\s/]+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
 }
 
-async function resolveValue(val, depth) {
-  if (depth > 10) return { resolved: '??', alias: null };
-  if (val && typeof val === 'object' && 'type' in val && val.type === 'VARIABLE_ALIAS') {
-    try {
-      const ref = await figma.variables.getVariableByIdAsync(val.id);
-      if (ref) {
-        const alias = '{' + ref.name.replace(/\//g, '.') + '}';
-        const modes = Object.entries(ref.valuesByMode);
-        if (modes.length > 0) {
-          const inner = await resolveValue(modes[0][1], (depth||0)+1);
-          return { resolved: inner.resolved, alias };
-        }
-        return { resolved: '??', alias };
-      }
-    } catch(e) {}
-    return { resolved: '??', alias: '{alias:' + val.id + '}' };
-  }
-  if (val && typeof val === 'object' && 'r' in val) return { resolved: rgbaToHex(val), alias: null };
-  if (typeof val === 'number') return { resolved: val, alias: null };
-  if (typeof val === 'string') return { resolved: val, alias: null };
-  if (typeof val === 'boolean') return { resolved: val, alias: null };
-  return { resolved: JSON.stringify(val), alias: null };
+function rgbaToHex(c) {
+  const toHex = n => Math.round(n * 255).toString(16).toUpperCase().padStart(2, '0');
+  const hex = '#' + toHex(c.r) + toHex(c.g) + toHex(c.b);
+  return (c.a !== undefined && c.a < 1) ? hex + toHex(c.a) : hex;
+}
+
+function buildAlias(aliasVar) {
+  const col = collections.find(c => c.id === aliasVar.variableCollectionId);
+  const colKey = sanitize(col ? col.name : 'unknown');
+  const path = aliasVar.name.split('/').map(p => p.toLowerCase().replace(/\s+/g, '-')).join('.');
+  return '{figma.' + colKey + '.' + path + '}';
 }
 
 const PREFER = ['light', 'base', 'default'];
 function pickMode(col) {
   for (const p of PREFER) {
-    const m = col.modes.find(m => m.name.toLowerCase().includes(p));
+    const m = col.modes.find(m => m.name.toLowerCase() === p);
     if (m) return m.modeId;
   }
   return col.defaultModeId;
@@ -75,127 +67,153 @@ const result = { fileName: figma.root.name, collections: [] };
 for (const col of collections) {
   const modeId = pickMode(col);
   const vars = [];
+
   for (const varId of col.variableIds) {
     const v = varMap.get(varId);
-    if (!v) continue;
+    if (!v || v.hiddenFromPublishing) continue;
+
     const raw = v.valuesByMode[modeId];
     if (raw === undefined) continue;
-    const res = await resolveValue(raw, 0);
-    const entry = { name: v.name, type: v.resolvedType, value: res.resolved };
-    if (res.alias) entry.alias = res.alias;
+
+    const entry = { name: v.name, type: v.resolvedType };
+
+    if (raw && typeof raw === 'object' && 'type' in raw && raw.type === 'VARIABLE_ALIAS') {
+      const aliasVar = varMap.get(raw.id);
+      if (aliasVar) {
+        entry.alias = buildAlias(aliasVar);
+        // Resolve concrete value as fallback
+        const aliasModes = Object.values(aliasVar.valuesByMode);
+        const aliasRaw = aliasModes[0];
+        if (aliasRaw && typeof aliasRaw === 'object' && 'r' in aliasRaw) {
+          entry.value = rgbaToHex(aliasRaw);
+        } else if (typeof aliasRaw === 'number' || typeof aliasRaw === 'string' || typeof aliasRaw === 'boolean') {
+          entry.value = aliasRaw;
+        } else {
+          entry.value = 0;
+        }
+      } else {
+        entry.value = 0;
+        entry.alias = '{alias:unresolved:' + raw.id + '}';
+      }
+    } else if (v.resolvedType === 'COLOR' && raw && typeof raw === 'object' && 'r' in raw) {
+      entry.value = rgbaToHex(raw);
+    } else {
+      entry.value = raw;
+    }
+
     vars.push(entry);
   }
-  result.collections.push({ name: col.name, variables: vars });
+
+  if (vars.length > 0) {
+    result.collections.push({ name: col.name, variables: vars });
+  }
 }
 
 return JSON.stringify(result);
 ```
 
-Set the description to: `Extract all variable collections and variables from this Figma file for token sync`
+**If the response is truncated** (very large files), split the extraction per collection:
+Add `const TARGET = "CollectionName";` at the top and filter:
+`for (const col of collections.filter(c => c.name === TARGET)) {`
+Then combine partial results into one McpData object.
 
-### 3. Handle truncation
-
-If the output is truncated (ends with `// truncated`), run separate extractions per collection. Filter by collection name in the code:
-
-```javascript
-// Add at the top: const TARGET_COL = "CollectionName";
-// Then: for (const col of collections.filter(c => c.name === TARGET_COL)) {
+**Report to user:**
+```
+Fetched {N} variables from {M} collections in "{fileName}"
+  - CollectionA: 120 variables
+  - CollectionB: 45 variables
+  - CollectionC: 8 variables
 ```
 
-Combine the partial results into a single `McpData` JSON.
+Ask: **"Import all collections, or exclude any?"**
+If the user wants to exclude some, filter them from the data before continuing.
 
-### 4. Collection Selector
+---
 
-**IMPORTANT:** After extraction, parse the JSON and present a collection selector to the user.
+## Phase 2: STAGE
 
-Use `AskUserQuestion` to show an interactive multi-select list:
+Write the JSON to a temp file:
 
-```typescript
-// Parse the extracted JSON
-const data = JSON.parse(extractedOutput)
-const collections = data.collections
-
-// Build options array
-const options = collections.map(col => ({
-  label: `${col.name} (${col.variables.length} variables)`,
-  description: `Import ${col.name} collection with ${col.variables.length} tokens`
-}))
-
-// Ask user with multi-select
-AskUserQuestion({
-  questions: [{
-    question: "Which collections do you want to import?",
-    header: "Collections",
-    multiSelect: true,
-    options: options
-  }]
-})
-```
-
-Then filter the JSON to only include selected collections:
-
-```javascript
-// Get selected indices from user answer
-const selectedIndices = [0, 2] // Example: user selected first and third
-
-// Filter collections
-const filteredData = {
-  fileName: data.fileName,
-  collections: selectedIndices.map(i => data.collections[i])
-}
-```
-
-### 5. Write the JSON file
-
-Write the extracted JSON to a temp file:
-```
+```bash
 /tmp/figma-pull-{fileKey}.json
 ```
 
-The JSON must follow this exact format:
-```json
-{
-  "fileName": "Semantics",
-  "collections": [
-    {
-      "name": "Semantic",
-      "variables": [
-        { "name": "bg/primary", "type": "COLOR", "value": "#ffffff", "alias": "{Primitive.Neutral.0}" },
-        { "name": "bg/secondary", "type": "COLOR", "value": "#fafafa" }
-      ]
-    }
-  ]
-}
-```
+Use the Write tool to save the extracted JSON (the full McpData object).
 
-### 6. Run the CLI with backup
+Report: `Staged → /tmp/figma-pull-{fileKey}.json`
+
+---
+
+## Phase 3: DIFF (dry-run)
+
+Preview what would change WITHOUT writing anything:
 
 ```bash
-cd /Users/karenortiz/Desktop/atom-design-system && pnpm figma:pull -- --data /tmp/figma-pull-{fileKey}.json --backup
+cd /Users/karenrebecaortiz/Desktop/SoftwareDevProjects/ATOM_DS && npx tsx tools/figma-sync/src/pull.tsx --data /tmp/figma-pull-{fileKey}.json --dry-run --yes
 ```
 
-The `--backup` flag will automatically create a timestamped backup of all files that will be modified.
+Report the diff output to the user showing added/updated tokens per collection.
 
-Do NOT add `--yes` — let the user confirm the changes interactively.
+If there are zero changes, report "Already up to date" and stop.
 
-### 7. Clean up
+Otherwise ask: **"Apply changes? (backup will be created automatically)"**
 
-After the CLI finishes (user confirms or cancels), delete the temp file:
+---
+
+## Phase 4: MERGE
+
+Only if the user confirms. Run with backup + auto-confirm:
+
 ```bash
-rm /tmp/figma-pull-{fileKey}.json
+cd /Users/karenrebecaortiz/Desktop/SoftwareDevProjects/ATOM_DS && npx tsx tools/figma-sync/src/pull.tsx --data /tmp/figma-pull-{fileKey}.json --backup --yes
 ```
 
-## Output
+---
 
-Report to the user:
-- How many collections were selected (out of total detected)
-- How many variables were extracted from selected collections
-- Where the backup was saved (if any files were modified)
-- Where the files were written
-- Suggest running `cd packages/tokens && pnpm build` to compile
+## Phase 5: STATUS
+
+After merge completes:
+
+1. Show the git diff summary:
+```bash
+cd /Users/karenrebecaortiz/Desktop/SoftwareDevProjects/ATOM_DS && git diff --stat packages/tokens/src/figma/
+```
+
+2. Clean up temp file:
+```bash
+rm -f /tmp/figma-pull-{fileKey}.json
+```
+
+3. Report next steps:
+```
+Done! Tokens synced from Figma.
+
+Next steps:
+  1. Review:  packages/tokens/src/figma/{folder}/
+  2. Build:   cd packages/tokens && pnpm build
+  3. Test:    your app with updated tokens
+  4. Commit:  git add packages/tokens/src/figma/ && git commit
+```
+
+---
 
 ## Error Handling
 
-- If `use_figma` returns "nothing selected" or fails, try with `mcp__claude_ai_Figma__use_figma` instead
-- If the Figma file has no variables, tell the user
-- If the CLI fails, show the error and suggest checking the file URL
+| Error | Action |
+|-------|--------|
+| No URL provided | Ask the user for a Figma file URL |
+| MCP auth required | Tell user to authenticate: check MCP panel or run `/mcp` |
+| No variables found | Report: "No published variables in this file" |
+| Truncated response | Re-extract per collection (see Phase 1 note) |
+| pull.tsx fails | Show error, suggest checking the URL and file permissions |
+| Alias unresolved | Warn but continue — the alias ref `{alias:unresolved:id}` signals a broken link in Figma |
+
+---
+
+## Key Guarantees
+
+- **Never deletes tokens** — merge-only strategy (additive)
+- **Auto-backup** — timestamped copy of modified files before overwrite
+- **Dry-run first** — user always sees the diff before any write
+- **Only published vars** — hiddenFromPublishing are skipped
+- **Preferred mode** — Light > Base > Default > first available

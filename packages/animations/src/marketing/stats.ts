@@ -27,7 +27,7 @@
 
 import { gsap, ScrollTrigger } from "../core/config";
 import { prefersReducedMotion, isMotionExempt } from "../core/motion";
-import { initNumberOdometer } from "./odometer";
+import { initNumberOdometer } from "../effects/text/odometer";
 import type { AnimationConfig, CleanupFn } from "../core/types";
 import { NOOP } from "../core/types";
 

@@ -1,0 +1,59 @@
+---
+/**
+ * NavLink (Atom) — CSS-only underline link animation
+ *
+ * No JavaScript required. Mirrors button variant/size pattern.
+ *
+ * @param {string}  href        Link destination (required)
+ * @param {"default"|"alt"}  underline  Animation variant (default: "default")
+ * @param {"primary"|"secondary"|"tertiary"|"inverse"}  variant  Color (default: "primary")
+ * @param {"xs"|"s"|"m"|"l"|"xl"}  size  Font-size scale (default: "s")
+ * @param {boolean} disabled    Disabled state (default: false)
+ * @param {string}  class       Additional CSS classes
+ *
+ * Parent trigger:
+ *   Add [data-hover] to a parent to trigger the underline on parent hover.
+ *
+ * Slots:
+ *   default — Link text content
+ */
+
+interface Props {
+  href: string;
+  underline?: "default" | "alt";
+  variant?: "primary" | "secondary" | "tertiary" | "inverse";
+  size?: "xs" | "s" | "m" | "l" | "xl";
+  disabled?: boolean;
+  class?: string;
+  [key: string]: any;
+}
+
+const {
+  href,
+  underline = "default",
+  variant = "primary",
+  size = "s",
+  disabled = false,
+  class: className = "",
+  ...rest
+} = Astro.props;
+
+const dataValue = underline === "alt" ? "alt" : "";
+---
+
+<a
+  href={disabled ? undefined : href}
+  data-underline-link={dataValue || true}
+  class:list={[
+    "nav-link",
+    `nav-link--${variant}`,
+    `nav-link--${size}`,
+    { "nav-link--disabled": disabled },
+    className,
+  ]}
+  aria-disabled={disabled ? "true" : undefined}
+  tabindex={disabled ? "-1" : undefined}
+  {...rest}
+>
+  <slot />
+</a>

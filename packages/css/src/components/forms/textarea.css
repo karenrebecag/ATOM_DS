@@ -157,13 +157,21 @@
 .textarea__counter {
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-shrink: 0;
+  margin-left: auto;
+  white-space: nowrap;
   font-family: var(--textarea-font-family);
-  font-weight: var(--textarea-font-weight);
+  font-weight: var(--font-weight-regular);
+  font-variant-numeric: tabular-nums;
   color: var(--fg-tertiary);
-  text-align: right;
   transition: color var(--duration-quarter);
+}
+
+.textarea__counter [data-current] {
+  display: inline-block;
+  vertical-align: bottom;
+  line-height: 1;
+  min-width: 1ch;
 }
 
 /* STATE MODIFIERS */

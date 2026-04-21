@@ -1,0 +1,192 @@
+/* ============================================
+   @atomchat/css — marquee.css
+   Depends on: @atomchat/tokens (tokens.css)
+   CSS-driven infinite horizontal scroll.
+   JS optional (speed calc, duplication, viewport pause).
+
+   Data attributes:
+     [data-marquee]          Root container
+     [data-marquee-list]     Scrolling track (duplicated for loop)
+
+   Variants:
+     .marquee--text          Large text items with separator
+     .marquee--logos         Logo/image row with equal spacing
+     .marquee--reverse       Right-to-left direction
+     .marquee--dark          Dark background + light text
+     .marquee--fast          Faster animation (15s)
+     .marquee--slow          Slower animation (60s)
+============================================ */
+
+/* ── Keyframe ─────────────────────────────────────────────── */
+@keyframes marquee-scroll {
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+/* ══════════════════════════════════════════════════════════
+   BASE
+   ══════════════════════════════════════════════════════════ */
+
+.marquee {
+  display: flex;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── Scrolling track ──────────────────────────────────────── */
+.marquee__list {
+  display: flex;
+  align-items: center;
+  flex: none;
+  position: relative;
+}
+
+[data-marquee-list] {
+  animation: marquee-scroll 30s linear infinite;
+  animation-play-state: paused;
+}
+
+/* ── Item ─────────────────────────────────────────────────── */
+.marquee__item {
+  display: flex;
+  align-items: center;
+  gap: var(--m);
+  flex: none;
+  padding: var(--sm) var(--m);
+  white-space: nowrap;
+}
+
+/* ── Item text ────────────────────────────────────────────── */
+.marquee__text {
+  font-family: var(--font-body);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--text-heading);
+  line-height: 1;
+  margin: 0;
+}
+
+/* ── Item separator (decorative) ──────────────────────────── */
+.marquee__separator {
+  flex-shrink: 0;
+  width: var(--m);
+  height: var(--m);
+  color: var(--fg-tertiary);
+}
+
+/* ── Item image/logo ──────────────────────────────────────── */
+.marquee__logo {
+  flex-shrink: 0;
+  height: var(--l);
+  width: auto;
+  object-fit: contain;
+  opacity: var(--opacity-60);
+  transition: opacity var(--duration-quarter);
+}
+
+.marquee:hover .marquee__logo {
+  opacity: 1;
+}
+
+/* ══════════════════════════════════════════════════════════
+   VARIANT — TEXT (large text with separators)
+   ══════════════════════════════════════════════════════════ */
+
+.marquee--text {
+  color: var(--fg-primary);
+}
+
+.marquee--text .marquee__item {
+  gap: var(--l);
+  padding: var(--m) var(--l);
+}
+
+/* ══════════════════════════════════════════════════════════
+   VARIANT — LOGOS (logo strip)
+   ══════════════════════════════════════════════════════════ */
+
+.marquee--logos .marquee__item {
+  padding: var(--sm) var(--xl);
+}
+
+/* ══════════════════════════════════════════════════════════
+   VARIANT — DARK
+   ══════════════════════════════════════════════════════════ */
+
+.marquee--dark {
+  background-color: var(--bg-inverse-primary);
+  color: var(--fg-inverse-primary);
+}
+
+.marquee--dark .marquee__separator {
+  color: var(--fg-inverse-tertiary);
+}
+
+.marquee--dark .marquee__logo {
+  filter: brightness(0) invert(1);
+  opacity: var(--opacity-40);
+}
+
+.marquee--dark:hover .marquee__logo {
+  opacity: var(--opacity-60);
+}
+
+/* ══════════════════════════════════════════════════════════
+   VARIANT — DIRECTION
+   ══════════════════════════════════════════════════════════ */
+
+.marquee--reverse [data-marquee-list] {
+  animation-direction: reverse;
+}
+
+/* ══════════════════════════════════════════════════════════
+   VARIANT — SPEED
+   ══════════════════════════════════════════════════════════ */
+
+.marquee--fast [data-marquee-list] {
+  animation-duration: 15s;
+}
+
+.marquee--slow [data-marquee-list] {
+  animation-duration: 60s;
+}
+
+/* ══════════════════════════════════════════════════════════
+   SIZES (text scale)
+   ══════════════════════════════════════════════════════════ */
+
+.marquee--s .marquee__text {
+  font-size: var(--text-caption);
+}
+
+.marquee--m .marquee__text {
+  font-size: var(--text-heading);
+}
+
+.marquee--l .marquee__text {
+  font-size: var(--text-h4);
+}
+
+.marquee--xl .marquee__text {
+  font-size: var(--text-h3);
+}
+
+/* ══════════════════════════════════════════════════════════
+   FADE EDGES (optional — softens left/right edges)
+   ══════════════════════════════════════════════════════════ */
+
+.marquee--fade {
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+/* ══════════════════════════════════════════════════════════
+   REDUCED MOTION
+   ══════════════════════════════════════════════════════════ */
+
+@media (prefers-reduced-motion: reduce) {
+  [data-marquee-list] {
+    animation-play-state: paused !important;
+  }
+}

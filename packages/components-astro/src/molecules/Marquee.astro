@@ -1,0 +1,59 @@
+---
+/**
+ * Marquee (Molecule) — CSS-driven infinite horizontal scroll
+ *
+ * JS optional: initMarquee() adds speed calc, list duplication, viewport pause.
+ * Without JS: duplicate the list manually and remove animation-play-state: paused.
+ *
+ * @param {"text"|"logos"} variant  Content type (default: "text")
+ * @param {"s"|"m"|"l"|"xl"} size  Text size scale (default: "m")
+ * @param {boolean} dark           Dark background (default: false)
+ * @param {boolean} reverse        Right-to-left (default: false)
+ * @param {"default"|"fast"|"slow"} speed  Animation speed (default: "default")
+ * @param {boolean} fade           Fade edges (default: true)
+ * @param {string}  class          Additional CSS classes
+ *
+ * Slots:
+ *   default — Marquee items (.marquee__item elements)
+ */
+
+interface Props {
+  variant?: "text" | "logos";
+  size?: "s" | "m" | "l" | "xl";
+  dark?: boolean;
+  reverse?: boolean;
+  speed?: "default" | "fast" | "slow";
+  fade?: boolean;
+  class?: string;
+}
+
+const {
+  variant = "text",
+  size = "m",
+  dark = false,
+  reverse = false,
+  speed = "default",
+  fade = true,
+  class: className = "",
+} = Astro.props;
+---
+
+<div
+  data-marquee
+  class:list={[
+    "marquee",
+    `marquee--${variant}`,
+    `marquee--${size}`,
+    {
+      "marquee--dark": dark,
+      "marquee--reverse": reverse,
+      "marquee--fade": fade,
+      [`marquee--${speed}`]: speed !== "default",
+    },
+    className,
+  ]}
+>
+  <div data-marquee-list class="marquee__list">
+    <slot />
+  </div>
+</div>

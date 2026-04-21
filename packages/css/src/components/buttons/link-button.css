@@ -26,7 +26,7 @@
   color: var(--link-button-fg-enabled);
 
   /* Typography */
-  font-family: var(--font-family-titles);
+  font-family: var(--font-body);
   font-weight: var(--font-weight-medium);
   text-decoration: none;
 

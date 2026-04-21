@@ -24,7 +24,7 @@
   padding: var(--xxs) var(--xs); /* 2px 4px */
 
   /* Typography */
-  font-family: var(--font-family-titles);
+  font-family: var(--font-body);
   font-size: var(--text-body);
   font-weight: var(--font-weight-medium);
   line-height: var(--line-height-body);

@@ -7,6 +7,7 @@
 @import './buttons/button.css';
 @import './buttons/icon-button.css';
 @import './buttons/link-button.css';
+@import './buttons/nav-link.css';
 
 /* ── Forms ──────────────────────────────────── */
 @import './forms/checkbox.css';
@@ -19,9 +20,6 @@
 /* ── Typography ─────────────────────────────── */
 @import './typography/heading.css';
 @import './typography/text.css';
-@import './typography/caption.css';
-@import './typography/label-text.css';
-@import './typography/legal-meta.css';
 
 /* ── Indicators ─────────────────────────────── */
 @import './indicators/badge.css';
@@ -39,6 +37,7 @@
 @import './layout/divider.css';
 
 /* ── Containers ─────────────────────────────── */
+@import './containers/accordion.css';
 @import './containers/card.css';
 
 /* ── Lists ──────────────────────────────────── */
@@ -55,6 +54,9 @@
 @import './feedback/tooltip.css';
 @import './feedback/dialog.css';
 @import './feedback/page-transition.css';
+
+/* ── Marketing ─────────────────────────────────── */
+@import './marketing/marquee.css';
 
 /* ── Special Components ─────────────────────── */
 @import './odometer.css';

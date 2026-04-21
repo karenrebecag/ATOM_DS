@@ -84,7 +84,6 @@
   display: flex;
   gap: var(--s);
   align-items: center;
-  justify-content: space-between;
   width: 100%;
 }
 
@@ -138,13 +137,21 @@
 .text-field__counter {
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-shrink: 0;
+  margin-left: auto;
+  white-space: nowrap;
   font-family: var(--text-field-font-family);
-  font-weight: var(--text-field-font-weight);
+  font-weight: var(--font-weight-regular);
+  font-variant-numeric: tabular-nums;
   color: var(--fg-tertiary);
-  text-align: right;
   transition: color var(--duration-quarter);
+}
+
+.text-field__counter [data-current] {
+  display: inline-block;
+  vertical-align: bottom;
+  line-height: 1;
+  min-width: 1ch;
 }
 
 /* STATE MODIFIERS */

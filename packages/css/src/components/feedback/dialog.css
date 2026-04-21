@@ -1,44 +1,356 @@
 /* ============================================
    @atomchat/css — dialog.css
    Depends on: @atomchat/tokens (tokens.css)
-   Composable dialog system: headline, content, actions
+   Animations: @atomchat/animations — initModal
+
+   Full modal system with composable inner content.
+   Data attributes drive open/close — no inline styles.
+
+   Data attributes:
+     [data-modal-group-status]  "active"|"not-active" on root overlay
+     [data-modal-name]          Named modal card
+     [data-modal-status]        "active"|"not-active" per card
+     [data-modal-target]        Trigger button (value = modal name)
+     [data-modal-close]         Close trigger (backdrop or button)
 ============================================ */
 
-/* DIALOG BACKDROP — Overlay behind dialog */
+/* ══════════════════════════════════════════════════════════
+   MODAL OVERLAY (fixed full-screen container)
+   ══════════════════════════════════════════════════════════ */
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-dialog-backdrop);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--l) var(--m);
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity var(--duration-quarter) linear,
+    visibility var(--duration-quarter) linear;
+}
+
+.modal[data-modal-group-status="active"] {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* ── Backdrop ─────────────────────────────────────────────── */
+.modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background-color: var(--backdrop-overlay);
+  cursor: pointer;
+}
+
+/* ══════════════════════════════════════════════════════════
+   MODAL CARD (dialog surface)
+   ══════════════════════════════════════════════════════════ */
+
+.modal__card {
+  position: relative;
+  display: none;
+  flex-direction: column;
+  width: 100%;
+  max-height: 100%;
+  padding: var(--sm);
+  background-color: var(--dialog-bg-default);
+  border: var(--stroke-xs) solid var(--dialog-border-default);
+  border-radius: var(--sm);
+  box-shadow: var(--elevation-dialog);
+  pointer-events: auto;
+}
+
+.modal__card[data-modal-status="active"] {
+  display: flex;
+}
+
+/* Size variants */
+.modal__card--s { max-width: var(--dialog-width-s); }
+.modal__card--m { max-width: var(--dialog-width-m); }
+.modal__card--l { max-width: var(--dialog-width-l); }
+
+/* ── Scroll container ─────────────────────────────────────── */
+.modal__scroll {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-height: 100%;
+  background-color: var(--bg-tertiary);
+  border-radius: var(--s);
+  overflow-y: auto;
+  position: relative;
+}
+
+/* ── Content ──────────────────────────────────────────────── */
+.modal__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--m);
+  padding: var(--l);
+
+  /* Osmo-inspired local scaling unit.
+     All child typography uses em — major third (1.25) cascade.
+     Change this one value and the entire modal rescales. */
+  font-size: var(--text-label);
+
+  /* Unitless line-heights for em cascade */
+  --modal-lh-tight: 1.3;
+  --modal-lh-default: 1.4;
+  --modal-lh-relaxed: 1.5;
+}
+
+/* ══════════════════════════════════════════════════════════
+   CLOSE BUTTON (X icon via CSS bars)
+   ══════════════════════════════════════════════════════════ */
+
+.modal__close {
+  position: absolute;
+  top: var(--l);
+  right: var(--l);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--xl);
+  height: var(--xl);
+  border-radius: var(--radius-pill);
+  background-color: var(--dialog-bg-default);
+  cursor: pointer;
+  border: none;
+  padding: 0;
+  color: var(--dialog-fg-primary);
+  transition: background-color var(--duration-quarter);
+}
+
+.modal__close:hover {
+  background-color: var(--bg-secondary);
+}
+
+.modal__close-bar {
+  position: absolute;
+  width: 0.125em;
+  height: 40%;
+  background-color: currentColor;
+  transform: rotate(45deg);
+}
+
+.modal__close-bar.is--second {
+  transform: rotate(-45deg);
+}
+
+/* ══════════════════════════════════════════════════════════
+   TYPOGRAPHY — Major Third (1.25) em cascade
+   Base unit set on .modal__content via font-size token.
+   All sizes relative — change the base, everything rescales.
+
+   Step 2:  1.563em  → heading
+   Step 1:  1.25em   → body text, alert text
+   Base:    1em      → section titles, callout titles
+   Step -1: 0.875em  → callout body, list items
+   ══════════════════════════════════════════════════════════ */
+
+/* Step 2 — Heading */
+.modal__heading {
+  font-family: var(--font-body);
+  font-size: 1.563em;
+  font-weight: var(--font-weight-bold);
+  line-height: var(--modal-lh-tight);
+  color: var(--dialog-fg-primary);
+  margin: 0;
+}
+
+/* Step 1 — Body text */
+.modal__text {
+  font-family: var(--font-body);
+  font-size: 1.25em;
+  font-weight: var(--font-weight-regular);
+  line-height: var(--modal-lh-default);
+  color: var(--dialog-fg-secondary);
+  margin: 0;
+}
+
+/* ── Callout (highlighted info box) ───────────────────────── */
+.modal__callout {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s);
+  padding: var(--s);
+  background-color: var(--bg-secondary);
+  border-radius: var(--s);
+  width: 100%;
+}
+
+/* Base — Callout title */
+.modal__callout-title {
+  font-family: var(--font-body);
+  font-size: 1em;
+  font-weight: var(--font-weight-bold);
+  line-height: var(--modal-lh-default);
+  color: var(--dialog-fg-primary);
+  margin: 0;
+}
+
+/* Step -1 — Callout body */
+.modal__callout-text {
+  font-family: var(--font-body);
+  font-size: 0.875em;
+  font-weight: var(--font-weight-regular);
+  line-height: var(--modal-lh-relaxed);
+  color: var(--dialog-fg-secondary);
+  margin: 0;
+}
+
+/* ── Alert (warning/error box) ────────────────────────────── */
+.modal__alert {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sm);
+  padding: var(--m);
+  background-color: var(--bg-primary);
+  border: var(--stroke-xs) solid var(--border-secondary);
+  border-radius: var(--s);
+  width: 100%;
+}
+
+.modal__alert-icon {
+  flex-shrink: 0;
+  width: var(--l);
+  height: var(--l);
+}
+
+/* Base — Alert text */
+.modal__alert-text {
+  font-family: var(--font-body);
+  font-size: 1em;
+  font-weight: var(--font-weight-medium);
+  line-height: var(--modal-lh-default);
+  margin: 0;
+}
+
+.modal__alert--warning .modal__alert-text {
+  color: var(--fg-status-warning);
+}
+
+.modal__alert--danger .modal__alert-text {
+  color: var(--fg-status-error);
+}
+
+/* Base — Section title */
+.modal__section-title {
+  font-family: var(--font-body);
+  font-size: 1em;
+  font-weight: var(--font-weight-bold);
+  line-height: var(--modal-lh-default);
+  color: var(--dialog-fg-primary);
+  margin: 0;
+}
+
+/* ── Permission list (check items) ────────────────────────── */
+.modal__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--xs);
+  width: 100%;
+}
+
+.modal__list-item {
+  display: flex;
+  align-items: center;
+  gap: var(--xs);
+}
+
+.modal__list-item-icon {
+  flex-shrink: 0;
+  width: var(--l);
+  height: var(--l);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Step -1 — List item text */
+.modal__list-item-text {
+  font-family: var(--font-body);
+  font-size: 0.875em;
+  font-weight: var(--font-weight-regular);
+  line-height: var(--modal-lh-relaxed);
+  color: var(--dialog-fg-secondary);
+}
+
+/* ── Scoped overrides for DS components inside modal ───── */
+.modal__content .bullet-item {
+  font-size: 0.875em;
+  line-height: var(--modal-lh-relaxed);
+}
+
+/* ══════════════════════════════════════════════════════════
+   DIALOG — Standalone React-compatible surface
+   (separate from the GSAP .modal system above)
+
+   React component generates:
+     .dialog-backdrop.dialog-backdrop--visible|hidden
+     .dialog.dialog--s|m|l.dialog--visible
+   ══════════════════════════════════════════════════════════ */
+
+/* ── Backdrop ─────────────────────────────────────────────── */
 .dialog-backdrop {
   position: fixed;
   inset: 0;
   z-index: var(--z-dialog-backdrop);
   background-color: var(--backdrop-overlay);
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity var(--duration-quarter) linear,
+    visibility var(--duration-quarter) linear;
 }
 
-/* DIALOG WRAPPER — Container surface */
+.dialog-backdrop--visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* ── Dialog card ──────────────────────────────────────────── */
 .dialog {
-  display: flex;
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  height: fit-content;
+  z-index: var(--z-dialog);
+  display: none;
   flex-direction: column;
+  width: calc(100% - 2 * var(--m));
+  max-height: calc(100svh - 2 * var(--l));
+  overflow-y: auto;
   background-color: var(--dialog-bg-default);
   border: var(--stroke-xs) solid var(--dialog-border-default);
   border-radius: var(--sm);
   box-shadow: var(--elevation-dialog);
-  overflow: clip;
-  position: relative;
-  z-index: var(--z-dialog);
 }
 
-/* Size variants */
-.dialog--s { width: var(--dialog-width-s); }
-.dialog--m { width: var(--dialog-width-m); }
-.dialog--l { width: var(--dialog-width-l); }
-
-/* Centered positioning (when used with backdrop) */
-.dialog--centered {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.dialog--visible {
+  display: flex;
 }
 
-/* DIALOG HEADLINE — Header section */
+.dialog--s { max-width: var(--dialog-width-s); }
+.dialog--m { max-width: var(--dialog-width-m); }
+.dialog--l { max-width: var(--dialog-width-l); }
+
+/* ══════════════════════════════════════════════════════════
+   COMPOSABLE SECTIONS (headline, content, actions)
+   Compatible with standalone dialog usage
+   ══════════════════════════════════════════════════════════ */
+
+/* ── Dialog Headline ──────────────────────────────────────── */
 .dialog-headline {
   display: flex;
   width: 100%;
@@ -46,37 +358,32 @@
   position: relative;
 }
 
-/* Headline Left alignment */
 .dialog-headline--left {
   align-items: center;
   gap: var(--s);
-  padding: var(--m) var(--m) var(--m) var(--m);
+  padding: var(--m);
 }
 
-/* Headline Center alignment */
 .dialog-headline--center {
   flex-direction: column;
   align-items: center;
   gap: var(--m);
-  padding: var(--l) var(--l) var(--l) var(--l);
+  padding: var(--l);
 }
 
-/* Headline icon (Center variant) */
 .dialog-headline__icon {
   flex-shrink: 0;
 }
 
-/* Headline text */
 .dialog-headline__title {
-  font-family: var(--font-family-titles);
-  font-size: var(--font-sizes-body);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
   line-height: var(--line-height-body);
   font-weight: var(--font-weight-bold);
   color: var(--dialog-fg-primary);
   margin: 0;
 }
 
-/* Left: title fills space */
 .dialog-headline--left .dialog-headline__title {
   flex: 1 0 0;
   min-width: 1px;
@@ -85,16 +392,13 @@
   white-space: nowrap;
 }
 
-/* Center: title centered */
 .dialog-headline--center .dialog-headline__title {
   text-align: center;
-  white-space: nowrap;
 }
 
-/* Supporting text (Center variant) */
 .dialog-headline__supporting {
-  font-family: var(--font-family-content);
-  font-size: var(--font-sizes-caption);
+  font-family: var(--font-body);
+  font-size: var(--text-caption);
   line-height: var(--line-height-caption);
   font-weight: var(--font-weight-regular);
   color: var(--dialog-fg-secondary);
@@ -103,17 +407,26 @@
   min-width: 100%;
 }
 
-/* Back button */
-.dialog-headline__back {
-  flex-shrink: 0;
-}
-
-/* Close button */
+.dialog-headline__back,
 .dialog-headline__close {
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--dialog-fg-primary);
+  padding: var(--xs);
+  border-radius: var(--radius-pill);
+  transition: background-color var(--duration-quarter);
 }
 
-/* Center variant: position back/close absolutely */
+.dialog-headline__back:hover,
+.dialog-headline__close:hover {
+  background-color: var(--bg-secondary);
+}
+
 .dialog-headline--center .dialog-headline__back {
   position: absolute;
   top: var(--m);
@@ -126,16 +439,24 @@
   right: var(--m);
 }
 
-/* DIALOG CONTENT — Flexible content area */
+/* ── Dialog Content ───────────────────────────────────────── */
 .dialog-content {
   display: flex;
   flex-direction: column;
   width: 100%;
+  /* flex: 1 0 0 fills remaining height inside .modal__card (fixed max-height).
+     Overridden below for standalone .dialog where the card is height: fit-content. */
   flex: 1 0 0;
   min-height: 1px;
 }
 
-/* DIALOG ACTIONS — Footer with buttons */
+/* Inside standalone dialog: content wraps naturally, dialog itself scrolls */
+.dialog .dialog-content {
+  flex: 0 0 auto;
+  min-height: unset;
+}
+
+/* ── Dialog Actions ───────────────────────────────────────── */
 .dialog-actions {
   display: flex;
   gap: var(--s);
@@ -144,13 +465,11 @@
   flex-shrink: 0;
 }
 
-/* Actions: hug contents (right-aligned buttons) */
 .dialog-actions--hug {
   align-items: center;
   justify-content: flex-end;
 }
 
-/* Actions: fill container (stretch buttons) */
 .dialog-actions--fill {
   align-items: stretch;
 }
@@ -160,42 +479,12 @@
   min-width: 1px;
 }
 
-/* Counter text (left side) */
 .dialog-actions__counter {
   flex: 1 0 0;
   min-width: 1px;
-  font-family: var(--font-family-content);
-  font-size: var(--font-sizes-caption);
+  font-family: var(--font-body);
+  font-size: var(--text-caption);
   line-height: var(--line-height-caption);
   font-weight: var(--font-weight-regular);
   color: var(--dialog-fg-secondary);
-}
-
-/* ANIMATION — Entrance animation */
-@keyframes dialog-enter {
-  from {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-  }
-}
-
-@keyframes backdrop-enter {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-.dialog--centered.dialog--visible {
-  animation: dialog-enter var(--duration-quarter) var(--ease-standard);
-}
-
-.dialog-backdrop--visible {
-  animation: backdrop-enter var(--duration-quarter) var(--ease-standard);
-}
-
-.dialog-backdrop--hidden {
-  display: none;
 }

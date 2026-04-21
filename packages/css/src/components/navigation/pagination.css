@@ -25,8 +25,8 @@
 }
 
 .pagination__label {
-  font-family: var(--font-family-content);
-  font-size: var(--font-sizes-label);
+  font-family: var(--font-body);
+  font-size: var(--text-label);
   line-height: var(--line-height-label);
   font-weight: var(--font-weight-regular);
   color: var(--fg-primary);
@@ -43,8 +43,8 @@
   border: var(--stroke-xs) solid var(--form-fields-border-enabled);
   border-radius: var(--radius-s);
   background-color: var(--form-fields-bg-enabled);
-  font-family: var(--font-family-content);
-  font-size: var(--font-sizes-label);
+  font-family: var(--font-body);
+  font-size: var(--text-label);
   line-height: var(--line-height-label);
   font-weight: var(--font-weight-regular);
   color: var(--form-fields-fg-enabled);
@@ -80,13 +80,22 @@
 
 /* CENTER SECTION — Page info text */
 .pagination__center {
-  font-family: var(--font-family-content);
-  font-size: var(--font-sizes-label);
+  font-family: var(--font-body);
+  font-size: var(--text-label);
   line-height: var(--line-height-label);
   font-weight: var(--font-weight-regular);
   color: var(--fg-primary);
   white-space: nowrap;
   flex-shrink: 0;
+}
+
+.pagination__center [data-page-current],
+.pagination__center [data-page-total] {
+  display: inline-block;
+  vertical-align: bottom;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  min-width: 1ch;
 }
 
 /* RIGHT SECTION — Navigation buttons */

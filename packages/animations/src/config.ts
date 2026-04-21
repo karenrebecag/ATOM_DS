@@ -27,9 +27,10 @@ import { Draggable } from "gsap/Draggable";
 import { InertiaPlugin } from "gsap/InertiaPlugin";
 import { Observer } from "gsap/Observer";
 import { Flip } from "gsap/Flip";
+import { SplitText } from "gsap/SplitText";
 
 // ── Plugin Registration (ONE place, never duplicated) ─────────
-gsap.registerPlugin(ScrollTrigger, CustomEase, Draggable, InertiaPlugin, Observer, Flip);
+gsap.registerPlugin(ScrollTrigger, CustomEase, Draggable, InertiaPlugin, Observer, Flip, SplitText);
 
 // ── Custom Ease ───────────────────────────────────────────────
 // Matches --ease-default / motion.easing.atom in @atom/tokens
@@ -78,4 +79,4 @@ if (typeof document !== "undefined") {
 export const MM = gsap.matchMedia();
 
 // ── Re-exports ────────────────────────────────────────────────
-export { gsap, ScrollTrigger, Draggable, InertiaPlugin, Observer, Flip };
+export { gsap, ScrollTrigger, Draggable, InertiaPlugin, Observer, Flip, SplitText };

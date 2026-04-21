@@ -102,12 +102,12 @@
 .icon-button__icon--clone {
   position: absolute;
   transform: rotate(calc(var(--r) * -1));
-  opacity: var(--opacity-0);
+  opacity: var(--primitive-opacity-0);
 }
 
 /* ── Loading state ── */
 .icon-button--loading .icon-button__icon-wrap {
-  opacity: var(--opacity-0);
+  opacity: var(--primitive-opacity-0);
 }
 
 .icon-button__loader {

@@ -12,10 +12,9 @@
  * @see packages/tokens/src/components/avatar.json
  */
 
-import { forwardRef, type HTMLAttributes } from 'react';
+import { forwardRef, type HTMLAttributes, type ReactNode } from 'react';
 import type { AvatarSize, AvatarShape, AvatarType, StatusType } from '../types';
 import { cn } from '../utils/cn';
-// import { StatusIcon } from './StatusIcon'; // TODO: Re-enable when StatusIcon is available
 
 export interface AvatarProps extends HTMLAttributes<HTMLSpanElement> {
   src?: string;
@@ -25,7 +24,7 @@ export interface AvatarProps extends HTMLAttributes<HTMLSpanElement> {
   type?: AvatarType;
   initials?: string;
   badge?: StatusType;
-  icon?: React.ReactNode;
+  icon?: ReactNode;
 }
 
 // ── Static Icons (hoisted) ────────────────────────────────
@@ -42,14 +41,20 @@ const VerifiedBadgeIcon = (
   </svg>
 );
 
-// ── Avatar Size to StatusIcon Size Mapping ────────────────
-// TODO: Re-enable when StatusIcon is available
-// const statusIconSizeMap: Record<AvatarSize, AvatarSize> = {
-//   xs: 's',
-//   s: 's',
-//   m: 'm',
-//   l: 'l',
-// };
+// ── Avatar Size → Status badge size mapping (matches Astro) ──
+const statusIconSizeMap: Record<AvatarSize, string> = {
+  xs: 's',
+  s: 's',
+  m: 'm',
+  l: 'l',
+};
+
+const statusLabels: Record<string, string> = {
+  online: 'Online',
+  offline: 'Offline',
+  idle: 'Away',
+  inactive: 'Inactive',
+};
 
 export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(
   (
@@ -70,9 +75,8 @@ export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(
     // Auto-detect type if not provided
     const type = typeProp ?? (src ? 'image-border' : 'initials');
 
-    // TODO: Re-enable when StatusIcon is available
-    // const isStatusBadge = badge === 'online' || badge === 'offline' || badge === 'idle' || badge === 'inactive';
-    // const statusIconSize = statusIconSizeMap[size];
+    const isStatusBadge = badge === 'online' || badge === 'offline' || badge === 'idle' || badge === 'inactive';
+    const statusIconSize = statusIconSizeMap[size];
 
     const ariaLabel = alt || initials || 'Avatar';
 
@@ -129,18 +133,24 @@ export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(
           </span>
         )}
 
-        {/* Status Badge (composed with StatusIcon) */}
-        {/* TODO: Re-enable when StatusIcon is available */}
-        {/* {isStatusBadge && (
-          <StatusIcon
-            status={badge as 'online' | 'offline' | 'idle' | 'inactive'}
-            size={statusIconSize}
-            hasBorder={true}
-            className="avatar__badge"
+        {/* Status Badge — inline span matching Astro HTML exactly */}
+        {isStatusBadge && (
+          <span
+            className={cn(
+              'status-icon',
+              'status-icon--bordered',
+              `status-icon--${badge}`,
+              `status-icon--${statusIconSize}`,
+              'avatar__badge'
+            )}
             data-avatar-badge
             data-badge-type={badge}
+            data-status={badge}
+            data-size={statusIconSize}
+            role="status"
+            aria-label={statusLabels[badge as string]}
           />
-        )} */}
+        )}
       </span>
     );
   }

@@ -1,0 +1,104 @@
+---
+/**
+ * Accordion (Molecule)
+ *
+ * CSS-driven expandable content panels. Uses grid-template-rows
+ * animation — no layout recalculation on expand/collapse.
+ *
+ * @param {AccordionItem[]} items         Array of accordion items
+ * @param {boolean}         closeSiblings Close other items when one opens (default: true)
+ * @param {string}          class         Additional CSS classes
+ *
+ * AccordionItem:
+ *   title    {string}  — Header text
+ *   content  {string}  — Body HTML or text
+ *   open?    {boolean} — Initially expanded (default: false)
+ *   disabled?{boolean} — Not yet supported visually, reserved
+ *   id?      {string}  — Custom id prefix for a11y ids
+ *
+ * Data Attributes (Animation Contract):
+ *   [data-accordion]                    Root — initAccordion() discovery
+ *   [data-accordion-close-siblings]     "true" | "false"
+ *   [data-accordion-status]             "active" | "not-active" on each item
+ *   [data-accordion-toggle]             Clickable trigger inside each item
+ */
+
+interface AccordionItem {
+  title: string;
+  content: string;
+  open?: boolean;
+  id?: string;
+}
+
+interface Props {
+  items: AccordionItem[];
+  closeSiblings?: boolean;
+  class?: string;
+}
+
+const {
+  items,
+  closeSiblings = true,
+  class: className = '',
+} = Astro.props;
+
+const uid = Math.random().toString(36).slice(2, 7);
+---
+
+<div
+  class:list={['accordion', className]}
+  data-accordion
+  data-accordion-close-siblings={closeSiblings.toString()}
+>
+  <ul class="accordion__list">
+    {items.map((item, i) => {
+      const itemId = item.id ?? `accordion-${uid}-${i}`;
+      const status = item.open ? 'active' : 'not-active';
+      return (
+        <li
+          class="accordion__item"
+          data-accordion-status={status}
+          id={itemId}
+        >
+          <div
+            class="accordion__header"
+            data-accordion-toggle
+            aria-expanded={item.open ? 'true' : 'false'}
+            aria-controls={`${itemId}-body`}
+            role="button"
+            tabindex="0"
+          >
+            <h3 class="accordion__title">{item.title}</h3>
+            <div class="accordion__icon" aria-hidden="true">
+              <svg
+                class="accordion__icon-svg"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 36 36"
+                fill="none"
+              >
+                <path
+                  d="M28.5 22.5L18 12L7.5 22.5"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  stroke-miterlimit="10"
+                />
+              </svg>
+            </div>
+          </div>
+          <div
+            class="accordion__body"
+            id={`${itemId}-body`}
+            role="region"
+            aria-labelledby={itemId}
+          >
+            <div class="accordion__body-wrap">
+              <div class="accordion__body-content">
+                <p set:html={item.content} />
+              </div>
+            </div>
+          </div>
+        </li>
+      );
+    })}
+  </ul>
+</div>

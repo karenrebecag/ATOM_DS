@@ -10,16 +10,14 @@
 .logo-badge {
   position: relative;
   display: inline-block;
-  height: var(--logo-height);
-  width: var(--logo-width);
+  /* height/width driven by the light image via its inline style */
 }
 
 /* IMAGE — Shared styles for both theme variants */
+/* height and width are applied as inline styles on each <img> element
+   by the React/Astro component — no CSS variable chain needed */
 .logo-badge__image {
   display: block;
-  height: 100%;
-  width: 100%;
-  object-fit: contain;
   transition: opacity var(--duration-quarter);
 }
 

@@ -24,7 +24,7 @@
  * ```
  */
 
-import { gsap, DURATION, STAGGER } from "../../core/config";
+import { gsap, DURATION, STAGGER, SplitText } from "../../core/config";
 import { prefersReducedMotion, isMotionExempt } from "../../core/motion";
 import type { AnimationConfig, CleanupFn } from "../../core/types";
 import { NOOP } from "../../core/types";
@@ -55,10 +55,6 @@ export function initTextReveal(config: TextRevealConfig = {}): CleanupFn {
   const headings = scope.querySelectorAll<HTMLElement>("[data-text-reveal]");
   if (!headings.length) return NOOP;
 
-  // SplitText is a Club GSAP plugin — may not be registered.
-  // Dynamic check is unavoidable; plugin has no TS declarations in standard package.
-  const SplitText =
-    (window as any).SplitText || (gsap as any).SplitText || null;
   const hasSplitText = SplitText !== null;
 
   const splits: Array<{ revert: () => void }> = [];
@@ -222,9 +218,6 @@ export function initMaskedReveal(config: AnimationConfig = {}): CleanupFn {
   );
   if (!elements.length) return NOOP;
 
-  const SplitText =
-    (window as any).SplitText || (gsap as any).SplitText || null;
-
   if (!SplitText) {
     console.warn(
       "[text.ts] SplitText not available — masked reveals will use simple fade"
@@ -260,46 +253,48 @@ export function initMaskedReveal(config: AnimationConfig = {}): CleanupFn {
         ? "lines, words"
         : "lines, words, chars";
 
-    const split = new SplitText(el, {
+    const splitConfig = {
+      lines: { duration: 0.8, stagger: 0.08 },
+      words: { duration: 0.6, stagger: 0.06 },
+      chars: { duration: 0.4, stagger: 0.01 },
+    };
+
+    const config = splitConfig[type];
+
+    SplitText.create(el, {
       type: typesToSplit,
+      mask: "lines",
+      autoSplit: true,
       linesClass: "split-line",
       wordsClass: "split-word",
       charsClass: "split-char",
+      onSplit(instance: any) {
+        const targets = instance[type];
+
+        const tweenVars = {
+          yPercent: 110,
+          duration: config.duration,
+          stagger: config.stagger,
+          ease: "expo.out",
+          delay,
+        };
+
+        if (trigger === "scroll") {
+          return gsap.from(targets, {
+            ...tweenVars,
+            scrollTrigger: {
+              trigger: el,
+              start: "clamp(top 80%)",
+              once: true,
+            },
+          });
+        }
+        return gsap.from(targets, tweenVars);
+      },
     });
-
-    splits.push(split);
-
-    const targets = split[type];
-    const duration = type === "chars" ? 0.4 : type === "words" ? 0.6 : 0.8;
-    const stagger = type === "chars" ? 0.01 : type === "words" ? 0.06 : 0.08;
-
-    gsap.set(el, { overflow: "hidden" });
-
-    const tweenVars = {
-      yPercent: 110,
-      duration,
-      stagger,
-      ease: "expo.out",
-      delay,
-    };
-
-    if (trigger === "scroll") {
-      gsap.from(targets, {
-        ...tweenVars,
-        scrollTrigger: {
-          trigger: el,
-          start: "clamp(top 80%)",
-          once: true,
-        },
-      });
-    } else {
-      gsap.from(targets, tweenVars);
-    }
   });
 
-  return () => {
-    splits.forEach((split) => split.revert());
-  };
+  return NOOP;
 }
 
 /**
@@ -425,9 +420,6 @@ export function initHighlightScroll(config: AnimationConfig = {}): CleanupFn {
     '[data-text-animate="highlight-scroll"]'
   );
   if (!elements.length) return NOOP;
-
-  const SplitText =
-    (window as any).SplitText || (gsap as any).SplitText || null;
 
   if (!SplitText) {
     console.warn(

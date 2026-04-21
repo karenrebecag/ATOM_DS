@@ -3,58 +3,44 @@
    Depends on: @atomchat/tokens (tokens.css)
 ============================================ */
 
-/* NUMBER ITEM — Enhanced numbered list item with custom number styling */
 .number-item {
-  /* Typography */
   font-family: var(--font-body);
   font-size: var(--text-body);
   font-weight: var(--font-weight-regular);
   line-height: var(--line-height-body);
   color: var(--fg-secondary);
 
-  /* Layout */
+  display: flex;
+  align-items: baseline;
+  gap: var(--s);
   list-style: none;
-  position: relative;
-  padding-left: var(--spacing-xl);
-  margin-bottom: var(--spacing-s);
-
-  /* Reset */
+  margin-bottom: var(--s);
   margin-top: 0;
 }
 
-/* Number indicator */
 .number-item::before {
   content: attr(data-number) '.';
-  position: absolute;
-  left: 0;
-  color: var(--number-color, var(--fg-accent));
+  flex-shrink: 0;
+  color: var(--fg-primary);
   font-weight: var(--font-weight-bold);
-  font-size: 1em;
-  line-height: var(--line-height-body);
-  top: 0;
 }
 
-/* Strong text within number items */
 .number-item strong {
   font-weight: var(--font-weight-medium);
   color: var(--fg-primary);
 }
 
-/* Links within number items */
 .number-item a {
-  color: var(--fg-accent);
+  color: var(--fg-primary);
   text-decoration: underline;
-  text-decoration-color: var(--border-subtle);
   text-underline-offset: 0.2em;
-  transition: color var(--duration-fast), text-decoration-color var(--duration-fast);
+  transition: color var(--duration-quarter);
 }
 
 .number-item a:hover {
-  color: var(--fg-accent-hover);
-  text-decoration-color: var(--fg-accent-hover);
+  color: var(--fg-secondary);
 }
 
-/* Last item no margin */
 .number-item:last-child {
   margin-bottom: 0;
 }

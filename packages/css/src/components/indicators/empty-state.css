@@ -28,7 +28,7 @@
 
 /* HEADING */
 .empty-state__heading {
-  font-family: var(--font-family-titles);
+  font-family: var(--font-body);
   color: var(--fg-primary);
   margin: 0;
 }
@@ -44,7 +44,7 @@
 
 /* SUPPORTING TEXT */
 .empty-state__supporting {
-  font-family: var(--font-family-content);
+  font-family: var(--font-body);
   font-weight: var(--font-weight-regular);
   color: var(--fg-quaternary);
   margin: 0;
@@ -52,7 +52,7 @@
 
 /* RESULT TEXT (for small size - bold text below supporting) */
 .empty-state__result {
-  font-family: var(--font-family-titles);
+  font-family: var(--font-body);
   font-weight: var(--font-weight-bold);
   color: var(--fg-primary);
   margin: 0;
@@ -84,18 +84,18 @@
 }
 
 .empty-state--s .empty-state__heading {
-  font-size: var(--font-sizes-label);
+  font-size: var(--text-label);
   line-height: var(--line-height-label);
   font-weight: var(--font-weight-bold);
 }
 
 .empty-state--s .empty-state__supporting {
-  font-size: var(--font-sizes-label);
+  font-size: var(--text-label);
   line-height: var(--line-height-label);
 }
 
 .empty-state--s .empty-state__result {
-  font-size: var(--font-sizes-label);
+  font-size: var(--text-label);
   line-height: var(--line-height-label);
 }
 
@@ -115,12 +115,12 @@
 }
 
 .empty-state--m .empty-state__heading {
-  font-size: var(--font-sizes-body);
+  font-size: var(--text-body);
   line-height: var(--line-height-body);
   font-weight: var(--font-weight-medium);
 }
 
 .empty-state--m .empty-state__supporting {
-  font-size: var(--font-sizes-caption);
+  font-size: var(--text-caption);
   line-height: var(--line-height-caption);
 }

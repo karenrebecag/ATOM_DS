@@ -43,11 +43,12 @@
 /* ── Checkmark Icon ──────────────────────────────────────────── */
 .checkbox__check {
   color: var(--checkbox-fg-checked-enabled);
-  opacity: 0;
-  transform: scale(0.5);
-  transition:
-    opacity var(--duration-half),
-    transform var(--duration-half);
+}
+
+.checkbox__check path {
+  stroke-dasharray: 14.2;
+  stroke-dashoffset: 14.2;
+  transition: stroke-dashoffset var(--duration-half) ease-out;
 }
 
 /* ── Minus Icon (Indeterminate) ──────────────────────────────── */
@@ -111,9 +112,8 @@
   border-color: var(--checkbox-bg-checked-enabled);
 }
 
-.checkbox__input:checked + .checkbox__custom .checkbox__check {
-  opacity: 1;
-  transform: scale(1);
+.checkbox__input:checked + .checkbox__custom .checkbox__check path {
+  stroke-dashoffset: 0;
 }
 
 /* ══════════════════════════════════════════════════════════
@@ -130,10 +130,7 @@
   transform: scale(1);
 }
 
-/* Hide check icon when indeterminate */
-.checkbox__input:indeterminate + .checkbox__custom .checkbox__check {
-  opacity: 0;
-}
+/* Check icon stays hidden when indeterminate (stroke-dashoffset: 14.2 by default) */
 
 /* ══════════════════════════════════════════════════════════
    FOCUS STATE (matches Figma box-shadow)

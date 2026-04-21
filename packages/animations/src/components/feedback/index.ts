@@ -11,3 +11,6 @@ export {
   initToastAnimations,
   cleanupToastAnimations,
 } from './toast';
+
+// Modal behavior
+export { initModal } from './modal';

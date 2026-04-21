@@ -26,6 +26,47 @@ function isFigmaSpacing(token) {
   )
 }
 
+function isFigmaTypography(token) {
+  const type = token.$type ?? token.type
+  return (
+    type === 'number' &&
+    typeof token.filePath === 'string' &&
+    token.filePath.includes('figma/') &&
+    Array.isArray(token.path) &&
+    (token.path.includes('font-sizes') || token.path.includes('line-height'))
+  )
+}
+
+const FONT_WEIGHT_MAP = {
+  thin: '100',
+  extralight: '200',
+  'extra light': '200',
+  ultralight: '200',
+  light: '300',
+  regular: '400',
+  normal: '400',
+  medium: '500',
+  semibold: '600',
+  'semi bold': '600',
+  demibold: '600',
+  bold: '700',
+  extrabold: '800',
+  'extra bold': '800',
+  black: '900',
+  heavy: '900',
+}
+
+function isFigmaFontWeight(token) {
+  const type = token.$type ?? token.type
+  return (
+    type === 'string' &&
+    typeof token.filePath === 'string' &&
+    token.filePath.includes('figma/') &&
+    Array.isArray(token.path) &&
+    token.path.includes('font-weight')
+  )
+}
+
 StyleDictionary.registerTransform({
   name: 'atom/spacing/canonical-name',
   type: 'name',
@@ -47,5 +88,25 @@ StyleDictionary.registerTransform({
   filter: isFigmaSpacing,
   transform: (token) => {
     return `${token.$value ?? token.value}px`
+  },
+})
+
+StyleDictionary.registerTransform({
+  name: 'atom/typography/px',
+  type: 'value',
+  filter: isFigmaTypography,
+  transform: (token) => {
+    return `${token.$value ?? token.value}px`
+  },
+})
+
+StyleDictionary.registerTransform({
+  name: 'atom/typography/font-weight',
+  type: 'value',
+  filter: isFigmaFontWeight,
+  transform: (token) => {
+    const raw = String(token.$value ?? token.value)
+    const numeric = FONT_WEIGHT_MAP[raw.toLowerCase()]
+    return numeric ?? raw
   },
 })

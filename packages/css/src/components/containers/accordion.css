@@ -1,0 +1,115 @@
+/* ============================================
+   @atomchat/css — accordion.css
+   Depends on: @atomchat/tokens (tokens.css)
+   Animations: @atomchat/animations — initAccordion
+   CSS-driven expand/collapse via grid-template-rows
+============================================ */
+
+/* ── Root ─────────────────────────────────────────────────── */
+.accordion {
+  width: 100%;
+}
+
+/* ── List ─────────────────────────────────────────────────── */
+.accordion__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--accordion-structure-item-gap);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* ── Item ─────────────────────────────────────────────────── */
+.accordion__item {
+  background-color: var(--accordion-bg-item);
+  border-radius: var(--accordion-structure-border-radius);
+  overflow: hidden;
+  transition: background-color var(--duration-quarter);
+}
+
+.accordion__item:hover {
+  background-color: var(--accordion-bg-item-hovered);
+}
+
+/* ── Header ───────────────────────────────────────────────── */
+.accordion__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--accordion-structure-header-gap);
+  padding: var(--accordion-structure-header-padding-y) var(--accordion-structure-header-padding-x);
+  cursor: pointer;
+  user-select: none;
+}
+
+/* ── Title ────────────────────────────────────────────────── */
+.accordion__title {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-body);
+  color: var(--accordion-fg-title);
+  margin: 0;
+}
+
+/* ── Icon container ───────────────────────────────────────── */
+.accordion__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: var(--accordion-structure-icon-size);
+  height: var(--accordion-structure-icon-size);
+  border-radius: var(--radius-pill);
+  background-color: var(--accordion-bg-icon);
+  color: var(--accordion-fg-icon);
+  transition:
+    transform var(--duration-half) var(--ease-default),
+    background-color var(--duration-quarter);
+  transform: rotate(180deg);
+}
+
+.accordion__item:hover .accordion__icon {
+  background-color: var(--accordion-bg-icon-hovered);
+}
+
+.accordion__icon-svg {
+  width: var(--accordion-structure-icon-svg-size);
+  height: var(--accordion-structure-icon-svg-size);
+}
+
+/* ── Body — CSS grid expand/collapse ─────────────────────── */
+.accordion__body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--duration-half) var(--ease-default);
+}
+
+.accordion__body-wrap {
+  overflow: hidden;
+}
+
+.accordion__body-content {
+  padding-right: var(--accordion-structure-content-padding-x);
+  padding-bottom: var(--accordion-structure-content-padding-bottom);
+  padding-left: var(--accordion-structure-content-padding-x);
+}
+
+.accordion__body-content p {
+  font-family: var(--font-body);
+  font-size: var(--text-label);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-body);
+  color: var(--accordion-fg-body);
+  margin: 0;
+}
+
+/* ── Active state ─────────────────────────────────────────── */
+[data-accordion-status="active"] .accordion__body {
+  grid-template-rows: 1fr;
+}
+
+[data-accordion-status="active"] .accordion__icon {
+  transform: rotate(0.001deg);
+}

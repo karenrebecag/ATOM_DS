@@ -98,7 +98,7 @@
 
 .button__label--clone {
   transform: rotate(calc(var(--r) * -1));
-  opacity: var(--opacity-0);
+  opacity: var(--primitive-opacity-0);
 }
 
 /* ── Icon ── */

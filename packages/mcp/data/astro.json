@@ -1,0 +1,1482 @@
+{
+  "meta": {
+    "generatedAt": "2026-04-21T19:46:14.607Z",
+    "gitSha": "6933d74",
+    "packageVersion": "5.3.0",
+    "sourceCount": 44
+  },
+  "package": "@atomchat.io/components-astro",
+  "version": "5.3.0",
+  "install": "npm install @atomchat.io/components-astro @atomchat.io/css",
+  "peerDeps": [
+    "astro >= 4.0",
+    "@atomchat.io/css"
+  ],
+  "components": [
+    {
+      "name": "Container",
+      "path": "layout/Container",
+      "import": "import { Container } from '@atomchat.io/components-astro'",
+      "description": "Container (Layout Primitive)",
+      "props": [
+        {
+          "name": "size",
+          "type": "\"sm\" | \"md\" | \"lg\" | \"xl\" | \"2xl\" | \"full\"",
+          "default": "lg"
+        },
+        {
+          "name": "as",
+          "type": "string",
+          "default": "div"
+        }
+      ],
+      "tokens": []
+    },
+    {
+      "name": "Stack",
+      "path": "layout/Stack",
+      "import": "import { Stack } from '@atomchat.io/components-astro'",
+      "description": "Stack (Layout Primitive)",
+      "props": [
+        {
+          "name": "gap",
+          "type": "\"xs\" | \"s\" | \"m\" | \"l\" | \"xl\"",
+          "default": "m"
+        },
+        {
+          "name": "align",
+          "type": "\"start\" | \"center\" | \"end\" | \"stretch\"",
+          "default": "stretch"
+        },
+        {
+          "name": "justify",
+          "type": "\"start\" | \"center\" | \"end\" | \"between\" | \"around\"",
+          "default": "start"
+        },
+        {
+          "name": "fullHeight",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "as",
+          "type": "string",
+          "default": "div"
+        }
+      ],
+      "tokens": []
+    },
+    {
+      "name": "Inline",
+      "path": "layout/Inline",
+      "import": "import { Inline } from '@atomchat.io/components-astro'",
+      "description": "Inline (Layout Primitive)",
+      "props": [
+        {
+          "name": "gap",
+          "type": "\"xs\" | \"s\" | \"m\" | \"l\" | \"xl\"",
+          "default": "m"
+        },
+        {
+          "name": "align",
+          "type": "\"start\" | \"center\" | \"end\" | \"baseline\"",
+          "default": "center"
+        },
+        {
+          "name": "justify",
+          "type": "\"start\" | \"center\" | \"end\" | \"between\" | \"around\"",
+          "default": "start"
+        },
+        {
+          "name": "nowrap",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "as",
+          "type": "string",
+          "default": "div"
+        }
+      ],
+      "tokens": []
+    },
+    {
+      "name": "Grid",
+      "path": "layout/Grid",
+      "import": "import { Grid } from '@atomchat.io/components-astro'",
+      "description": "Grid (Layout Primitive)",
+      "props": [
+        {
+          "name": "columns",
+          "type": "1 | 2 | 3 | 4 | 5 | 6 | \"auto-fit\" | \"auto-fit-sm\" | \"auto-fit-lg\"",
+          "default": "3"
+        },
+        {
+          "name": "gap",
+          "type": "\"xs\" | \"s\" | \"m\" | \"l\" | \"xl\"",
+          "default": "m"
+        },
+        {
+          "name": "align",
+          "type": "\"start\" | \"center\" | \"end\" | \"stretch\"",
+          "default": "stretch"
+        },
+        {
+          "name": "justify",
+          "type": "\"start\" | \"center\" | \"end\" | \"stretch\"",
+          "default": "stretch"
+        },
+        {
+          "name": "preserve",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "as",
+          "type": "string",
+          "default": "div"
+        }
+      ],
+      "tokens": []
+    },
+    {
+      "name": "Section",
+      "path": "layout/Section",
+      "import": "import { Section } from '@atomchat.io/components-astro'",
+      "description": "Section (Layout Primitive)",
+      "props": [
+        {
+          "name": "size",
+          "type": "\"xs\" | \"s\" | \"m\" | \"l\" | \"xl\"",
+          "default": "m"
+        },
+        {
+          "name": "as",
+          "type": "string",
+          "default": "section"
+        }
+      ],
+      "tokens": []
+    },
+    {
+      "name": "Center",
+      "path": "layout/Center",
+      "import": "import { Center } from '@atomchat.io/components-astro'",
+      "description": "Center (Layout Primitive)",
+      "props": [
+        {
+          "name": "direction",
+          "type": "\"row\" | \"column\"",
+          "default": "row"
+        },
+        {
+          "name": "gap",
+          "type": "\"xs\" | \"s\" | \"m\" | \"l\" | \"xl\""
+        },
+        {
+          "name": "fullHeight",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "fullWidth",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "inline",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "as",
+          "type": "string",
+          "default": "div"
+        }
+      ],
+      "tokens": []
+    },
+    {
+      "name": "Button",
+      "path": "atoms/buttons/Button",
+      "import": "import { Button } from '@atomchat.io/components-astro'",
+      "description": "Button (Atom)",
+      "props": [
+        {
+          "name": "variant",
+          "type": "\"Primary\" | \"Secondary\" | \"Tertiary\" | \"Destructive Primary\" | \"Destructive Secondary\" | \"Destructive Tertiary\"",
+          "default": "Primary"
+        },
+        {
+          "name": "size",
+          "type": "\"xs\" | \"s\" | \"m\" | \"l\" | \"xl\"",
+          "default": "m"
+        },
+        {
+          "name": "href",
+          "type": "string"
+        },
+        {
+          "name": "type",
+          "type": "\"button\" | \"submit\" | \"reset\"",
+          "default": "button"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "loading",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "tokens": [
+        "buttons-*"
+      ]
+    },
+    {
+      "name": "IconButton",
+      "path": "atoms/buttons/IconButton",
+      "import": "import { IconButton } from '@atomchat.io/components-astro'",
+      "description": "IconButton (Atom)",
+      "props": [
+        {
+          "name": "variant",
+          "type": "\"Primary\" | \"Secondary\" | \"Tertiary\" | \"Destructive Primary\" | \"Destructive Secondary\" | \"Destructive Tertiary\"",
+          "default": "Primary"
+        },
+        {
+          "name": "size",
+          "type": "\"xs\" | \"s\" | \"m\" | \"l\" | \"xl\"",
+          "default": "m"
+        },
+        {
+          "name": "href",
+          "type": "string"
+        },
+        {
+          "name": "label",
+          "type": "string"
+        },
+        {
+          "name": "external",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "loading",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "tokens": []
+    },
+    {
+      "name": "LinkButton",
+      "path": "atoms/buttons/LinkButton",
+      "import": "import { LinkButton } from '@atomchat.io/components-astro'",
+      "description": "LinkButton component",
+      "props": [
+        {
+          "name": "href",
+          "type": "string"
+        },
+        {
+          "name": "size",
+          "type": "\"s\" | \"l\"",
+          "default": "s"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "loading",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "external",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "tokens": [
+        "link-button-*"
+      ]
+    },
+    {
+      "name": "NavLink",
+      "path": "atoms/buttons/NavLink",
+      "import": "import { NavLink } from '@atomchat.io/components-astro'",
+      "description": "NavLink (Atom) — CSS-only underline link animation",
+      "props": [
+        {
+          "name": "href",
+          "type": "string"
+        },
+        {
+          "name": "underline",
+          "type": "\"default\" | \"alt\"",
+          "default": "default"
+        },
+        {
+          "name": "variant",
+          "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"inverse\"",
+          "default": "primary"
+        },
+        {
+          "name": "size",
+          "type": "\"xs\" | \"s\" | \"m\" | \"l\" | \"xl\"",
+          "default": "s"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "tokens": []
+    },
+    {
+      "name": "Checkbox",
+      "path": "atoms/forms/Checkbox",
+      "import": "import { Checkbox } from '@atomchat.io/components-astro'",
+      "description": "Checkbox — Binary input control",
+      "props": [
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "value",
+          "type": "string"
+        },
+        {
+          "name": "checked",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "indeterminate",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "size",
+          "type": "\"s\" | \"m\"",
+          "default": "m"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "error",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "tokens": [
+        "checkbox-*"
+      ]
+    },
+    {
+      "name": "Radio",
+      "path": "atoms/forms/Radio",
+      "import": "import { Radio } from '@atomchat.io/components-astro'",
+      "description": "Radio component",
+      "props": [
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "value",
+          "type": "string"
+        },
+        {
+          "name": "size",
+          "type": "\"s\" | \"m\"",
+          "default": "s"
+        },
+        {
+          "name": "checked",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "supportiveText",
+          "type": "string"
+        },
+        {
+          "name": "error",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "errorText",
+          "type": "string"
+        }
+      ],
+      "tokens": [
+        "radio-*"
+      ]
+    },
+    {
+      "name": "Toggle",
+      "path": "atoms/forms/Toggle",
+      "import": "import { Toggle } from '@atomchat.io/components-astro'",
+      "description": "Toggle (Atom)",
+      "props": [
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "size",
+          "type": "\"s\" | \"m\"",
+          "default": "s"
+        },
+        {
+          "name": "checked",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "supportiveText",
+          "type": "string"
+        },
+        {
+          "name": "error",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "errorText",
+          "type": "string"
+        }
+      ],
+      "tokens": [
+        "toggle-*"
+      ]
+    },
+    {
+      "name": "SearchField",
+      "path": "atoms/forms/SearchField",
+      "import": "import { SearchField } from '@atomchat.io/components-astro'",
+      "description": "SearchField — Search input with icon and keyboard shortcut",
+      "props": [
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "placeholder",
+          "type": "string",
+          "default": "Search..."
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "default": ""
+        },
+        {
+          "name": "size",
+          "type": "\"s\" | \"m\" | \"l\"",
+          "default": "m"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "shortcut",
+          "type": "string",
+          "default": "⌘K"
+        },
+        {
+          "name": "showClear",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "id",
+          "type": "string"
+        }
+      ],
+      "tokens": [
+        "search-field-*"
+      ]
+    },
+    {
+      "name": "TextField",
+      "path": "atoms/forms/TextField",
+      "import": "import { TextField } from '@atomchat.io/components-astro'",
+      "description": "TextField — Single-line text input with label and character counter",
+      "props": [
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "type",
+          "type": "string",
+          "default": "text"
+        },
+        {
+          "name": "label",
+          "type": "string"
+        },
+        {
+          "name": "placeholder",
+          "type": "string"
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "default": ""
+        },
+        {
+          "name": "size",
+          "type": "\"xs\" | \"s\" | \"m\" | \"l\" | \"xl\"",
+          "default": "m"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "error",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "showSupportive",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "supportiveText",
+          "type": "string",
+          "default": "error ?"
+        },
+        {
+          "name": "maxLength",
+          "type": "number",
+          "default": "200"
+        },
+        {
+          "name": "showCounter",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "id",
+          "type": "string"
+        }
+      ],
+      "tokens": [
+        "text-field-*"
+      ]
+    },
+    {
+      "name": "TextArea",
+      "path": "atoms/forms/TextArea",
+      "import": "import { TextArea } from '@atomchat.io/components-astro'",
+      "description": "TextArea — Multi-line text input with label and character counter",
+      "props": [
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "label",
+          "type": "string"
+        },
+        {
+          "name": "placeholder",
+          "type": "string"
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "default": ""
+        },
+        {
+          "name": "size",
+          "type": "\"m\" | \"xl\"",
+          "default": "m"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "error",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "showSupportive",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "supportiveText",
+          "type": "string",
+          "default": "error ?"
+        },
+        {
+          "name": "maxLength",
+          "type": "number",
+          "default": "200"
+        },
+        {
+          "name": "showCounter",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "showScrollbar",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "rows",
+          "type": "number"
+        },
+        {
+          "name": "id",
+          "type": "string"
+        }
+      ],
+      "tokens": []
+    },
+    {
+      "name": "Heading",
+      "path": "atoms/typography/Heading",
+      "import": "import { Heading } from '@atomchat.io/components-astro'",
+      "description": "Heading",
+      "props": [
+        {
+          "name": "level",
+          "type": "1 | 2 | 3 | 4 | 5 | 6",
+          "default": "2"
+        },
+        {
+          "name": "size",
+          "type": "\"display-xl\" | \"display-l\" | \"display-m\" | \"display-s\" | \"huge-title\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"heading\""
+        },
+        {
+          "name": "weight",
+          "type": "\"regular\" | \"medium\" | \"bold\"",
+          "default": "bold"
+        },
+        {
+          "name": "tracking",
+          "type": "\"tighter\" | \"tight\" | \"normal\" | \"wide\" | \"wider\" | \"widest\"",
+          "default": "tight"
+        },
+        {
+          "name": "color",
+          "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"disabled\" | \"inherit\" | `var(--${string",
+          "default": "inherit"
+        }
+      ],
+      "tokens": []
+    },
+    {
+      "name": "Text",
+      "path": "atoms/typography/Text",
+      "import": "import { Text } from '@atomchat.io/components-astro'",
+      "description": "Text",
+      "props": [
+        {
+          "name": "as",
+          "type": "\"p\" | \"span\" | \"div\" | \"li\"",
+          "default": "p"
+        },
+        {
+          "name": "size",
+          "type": "\"body\" | \"caption\" | \"label\" | \"label-small\" | \"footnote\"",
+          "default": "body"
+        },
+        {
+          "name": "weight",
+          "type": "\"regular\" | \"medium\" | \"bold\"",
+          "default": "regular"
+        },
+        {
+          "name": "color",
+          "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"disabled\" | \"inherit\" | `var(--${string",
+          "default": "inherit"
+        }
+      ],
+      "tokens": []
+    },
+    {
+      "name": "Badge",
+      "path": "atoms/indicators/Badge",
+      "import": "import { Badge } from '@atomchat.io/components-astro'",
+      "description": "Badge (Notification Badge)",
+      "props": [
+        {
+          "name": "count",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "context",
+          "type": "\"default\" | \"inbox\"",
+          "default": "default"
+        },
+        {
+          "name": "type",
+          "type": "\"neutral\" | \"inbox\" | \"info\"",
+          "default": "neutral"
+        },
+        {
+          "name": "state",
+          "type": "\"default\" | \"focused\" | \"subtle\"",
+          "default": "default"
+        }
+      ],
+      "tokens": [
+        "badge-*"
+      ]
+    },
+    {
+      "name": "Chip",
+      "path": "atoms/indicators/Chip",
+      "import": "import { Chip } from '@atomchat.io/components-astro'",
+      "description": "Chip — Filterable tag component",
+      "props": [
+        {
+          "name": "variant",
+          "type": "\"outlined\" | \"filled\"",
+          "default": "filled"
+        },
+        {
+          "name": "size",
+          "type": "\"xs\" | \"s\" | \"m\" | \"l\" | \"xl\"",
+          "default": "m"
+        },
+        {
+          "name": "selected",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "error",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "dismissible",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "onclick",
+          "type": "string"
+        },
+        {
+          "name": "onDismiss",
+          "type": "string"
+        }
+      ],
+      "tokens": [
+        "chip-*"
+      ]
+    },
+    {
+      "name": "Tag",
+      "path": "atoms/indicators/Tag",
+      "import": "import { Tag } from '@atomchat.io/components-astro'",
+      "description": "Tag (Atom)",
+      "props": [
+        {
+          "name": "intent",
+          "type": "\"success\" | \"warning\" | \"danger\" | \"info\" | \"neutral\" | \"brand\" | \"ai\" | \"disabled\"",
+          "default": "success"
+        },
+        {
+          "name": "variant",
+          "type": "\"ghost\" | \"filled\" | \"outlined\"",
+          "default": "filled"
+        },
+        {
+          "name": "size",
+          "type": "\"xs\" | \"s\" | \"m\"",
+          "default": "m"
+        },
+        {
+          "name": "hasDots",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "tokens": [
+        "tags-*"
+      ]
+    },
+    {
+      "name": "Spinner",
+      "path": "atoms/indicators/Spinner",
+      "import": "import { Spinner } from '@atomchat.io/components-astro'",
+      "description": "Spinner (Atom)",
+      "props": [
+        {
+          "name": "size",
+          "type": "\"xs\" | \"s\" | \"m\" | \"l\" | \"xl\"",
+          "default": "m"
+        }
+      ],
+      "tokens": [
+        "spinner-*"
+      ]
+    },
+    {
+      "name": "EmptyState",
+      "path": "atoms/indicators/EmptyState",
+      "import": "import { EmptyState } from '@atomchat.io/components-astro'",
+      "description": "EmptyState — Display when there's no content to show",
+      "props": [
+        {
+          "name": "heading",
+          "type": "string"
+        },
+        {
+          "name": "supportingText",
+          "type": "string"
+        },
+        {
+          "name": "resultText",
+          "type": "string"
+        },
+        {
+          "name": "size",
+          "type": "\"s\" | \"m\"",
+          "default": "s"
+        },
+        {
+          "name": "showButton",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "buttonText",
+          "type": "string",
+          "default": "Button"
+        },
+        {
+          "name": "buttonHref",
+          "type": "string"
+        }
+      ],
+      "tokens": [
+        "empty-state-*"
+      ]
+    },
+    {
+      "name": "Avatar",
+      "path": "atoms/media/Avatar",
+      "import": "import { Avatar } from '@atomchat.io/components-astro'",
+      "description": "Avatar (User Profile Avatar)",
+      "props": [
+        {
+          "name": "src",
+          "type": "string"
+        },
+        {
+          "name": "alt",
+          "type": "string",
+          "default": ""
+        },
+        {
+          "name": "size",
+          "type": "\"xs\" | \"s\" | \"m\" | \"l\"",
+          "default": "xs"
+        },
+        {
+          "name": "shape",
+          "type": "\"circle\" | \"square\"",
+          "default": "circle"
+        },
+        {
+          "name": "type",
+          "type": "\"image\" | \"image-border\" | \"initials\" | \"icon\"",
+          "default": "src ?"
+        },
+        {
+          "name": "initials",
+          "type": "string"
+        },
+        {
+          "name": "badge",
+          "type": "\"verified\" | \"online\" | \"offline\" | \"idle\" | \"inactive\" | \"none\"",
+          "default": "none"
+        }
+      ],
+      "tokens": [
+        "avatar-*"
+      ]
+    },
+    {
+      "name": "Divider",
+      "path": "atoms/layout/Divider",
+      "import": "import { Divider } from '@atomchat.io/components-astro'",
+      "description": "Divider — Horizontal rule separator",
+      "props": [
+        {
+          "name": "opacity",
+          "type": "number"
+        }
+      ],
+      "tokens": [
+        "divider-*"
+      ]
+    },
+    {
+      "name": "BulletItem",
+      "path": "atoms/lists/BulletItem",
+      "import": "import { BulletItem } from '@atomchat.io/components-astro'",
+      "description": "BulletItem",
+      "props": [
+        {
+          "name": "bulletColor",
+          "type": "string"
+        }
+      ],
+      "tokens": []
+    },
+    {
+      "name": "NumberItem",
+      "path": "atoms/lists/NumberItem",
+      "import": "import { NumberItem } from '@atomchat.io/components-astro'",
+      "description": "NumberItem",
+      "props": [
+        {
+          "name": "number",
+          "type": "number | string"
+        },
+        {
+          "name": "numberColor",
+          "type": "string"
+        }
+      ],
+      "tokens": []
+    },
+    {
+      "name": "Pagination",
+      "path": "atoms/navigation/Pagination",
+      "import": "import { Pagination } from '@atomchat.io/components-astro'",
+      "description": "Pagination — Table pagination with page navigation",
+      "props": [
+        {
+          "name": "currentPage",
+          "type": "number"
+        },
+        {
+          "name": "totalPages",
+          "type": "number"
+        },
+        {
+          "name": "pageSize",
+          "type": "number",
+          "default": "10"
+        },
+        {
+          "name": "pageSizeOptions",
+          "type": "number[]",
+          "default": "[10"
+        },
+        {
+          "name": "loading",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "onPageChange",
+          "type": "string"
+        },
+        {
+          "name": "onPageSizeChange",
+          "type": "string"
+        }
+      ],
+      "tokens": [
+        "pagination-*"
+      ]
+    },
+    {
+      "name": "SegmentControl",
+      "path": "atoms/navigation/SegmentControl",
+      "import": "import { SegmentControl } from '@atomchat.io/components-astro'",
+      "description": "SegmentControl — Tabbed segment selection control",
+      "props": [
+        {
+          "name": "size",
+          "type": "\"xs\" | \"s\" | \"m\" | \"l\" | \"xl\"",
+          "default": "m"
+        },
+        {
+          "name": "items",
+          "type": "SegmentItem[]"
+        },
+        {
+          "name": "selectedIndex",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "name",
+          "type": "string"
+        }
+      ],
+      "tokens": [
+        "segment-control-*"
+      ]
+    },
+    {
+      "name": "Tooltip",
+      "path": "atoms/feedback/Tooltip",
+      "import": "import { Tooltip } from '@atomchat.io/components-astro'",
+      "description": "Tooltip (Atom) — CSS-only contextual information overlay",
+      "props": [
+        {
+          "name": "text",
+          "type": "string",
+          "default": "Hover me"
+        },
+        {
+          "name": "iconType",
+          "type": "\"info\" | \"question\" | \"alert\"",
+          "default": "info"
+        },
+        {
+          "name": "heading",
+          "type": "string",
+          "default": "Tooltip"
+        },
+        {
+          "name": "body",
+          "type": "string",
+          "default": ""
+        },
+        {
+          "name": "posX",
+          "type": "\"center\" | \"left\" | \"right\"",
+          "default": "center"
+        },
+        {
+          "name": "posY",
+          "type": "\"top\" | \"bottom\"",
+          "default": "top"
+        }
+      ],
+      "tokens": [
+        "tooltip-*"
+      ]
+    },
+    {
+      "name": "AvatarGroup",
+      "path": "molecules/AvatarGroup",
+      "import": "import { AvatarGroup } from '@atomchat.io/components-astro'",
+      "description": "Avatar Group (Molecule)",
+      "props": [
+        {
+          "name": "avatars",
+          "type": "AvatarItem[]",
+          "default": "[]"
+        },
+        {
+          "name": "max",
+          "type": "number",
+          "default": "5"
+        },
+        {
+          "name": "size",
+          "type": "\"xs\" | \"s\" | \"m\" | \"l\"",
+          "default": "s"
+        },
+        {
+          "name": "shape",
+          "type": "\"circle\" | \"square\"",
+          "default": "circle"
+        },
+        {
+          "name": "type",
+          "type": "\"image\" | \"image-border\" | \"initials\" | \"icon\"",
+          "default": "image-border"
+        }
+      ],
+      "tokens": []
+    },
+    {
+      "name": "Accordion",
+      "path": "molecules/Accordion",
+      "import": "import { Accordion } from '@atomchat.io/components-astro'",
+      "description": "Accordion (Molecule)",
+      "props": [
+        {
+          "name": "items",
+          "type": "AccordionItem[]"
+        },
+        {
+          "name": "closeSiblings",
+          "type": "boolean",
+          "default": "true"
+        }
+      ],
+      "tokens": [
+        "accordion-*"
+      ]
+    },
+    {
+      "name": "Marquee",
+      "path": "molecules/Marquee",
+      "import": "import { Marquee } from '@atomchat.io/components-astro'",
+      "description": "Marquee (Molecule) — CSS-driven infinite horizontal scroll",
+      "props": [
+        {
+          "name": "variant",
+          "type": "\"text\" | \"logos\"",
+          "default": "text"
+        },
+        {
+          "name": "size",
+          "type": "\"s\" | \"m\" | \"l\" | \"xl\"",
+          "default": "m"
+        },
+        {
+          "name": "dark",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "reverse",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "speed",
+          "type": "\"default\" | \"fast\" | \"slow\"",
+          "default": "default"
+        },
+        {
+          "name": "fade",
+          "type": "boolean",
+          "default": "true"
+        }
+      ],
+      "tokens": []
+    },
+    {
+      "name": "Card",
+      "path": "molecules/Card",
+      "import": "import { Card } from '@atomchat.io/components-astro'",
+      "description": "Card — Composable container component",
+      "props": [],
+      "tokens": [
+        "card-*"
+      ]
+    },
+    {
+      "name": "CardHeader",
+      "path": "molecules/CardHeader",
+      "import": "import { CardHeader } from '@atomchat.io/components-astro'",
+      "description": "CardHeader — Card header with optional image, text, and action",
+      "props": [
+        {
+          "name": "headline",
+          "type": "string"
+        },
+        {
+          "name": "supportingText",
+          "type": "string"
+        },
+        {
+          "name": "hasLeadImage",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "hasAction",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "actionIcon",
+          "type": "string",
+          "default": "\\uF142"
+        }
+      ],
+      "tokens": []
+    },
+    {
+      "name": "CardBody",
+      "path": "molecules/CardBody",
+      "import": "import { CardBody } from '@atomchat.io/components-astro'",
+      "description": "CardBody — Flexible card content area",
+      "props": [
+        {
+          "name": "headline",
+          "type": "string"
+        },
+        {
+          "name": "subhead",
+          "type": "string"
+        },
+        {
+          "name": "bodyText",
+          "type": "string"
+        }
+      ],
+      "tokens": []
+    },
+    {
+      "name": "CardFooter",
+      "path": "molecules/CardFooter",
+      "import": "import { CardFooter } from '@atomchat.io/components-astro'",
+      "description": "CardFooter — Card footer with buttons or tags",
+      "props": [
+        {
+          "name": "variant",
+          "type": "\"buttons\" | \"tags\"",
+          "default": "buttons"
+        },
+        {
+          "name": "cancelText",
+          "type": "string",
+          "default": "Cancel"
+        },
+        {
+          "name": "actionText",
+          "type": "string",
+          "default": "Action"
+        },
+        {
+          "name": "tagLabel",
+          "type": "string",
+          "default": "Label"
+        },
+        {
+          "name": "tagVariant",
+          "type": "\"default\" | \"success\" | \"warning\" | \"error\" | \"info\"",
+          "default": "success"
+        }
+      ],
+      "tokens": []
+    },
+    {
+      "name": "LogoBadge",
+      "path": "molecules/branding/LogoBadge",
+      "import": "import { LogoBadge } from '@atomchat.io/components-astro'",
+      "description": "LogoBadge — Dual-image theme switcher molecule",
+      "props": [
+        {
+          "name": "darkImage",
+          "type": "string"
+        },
+        {
+          "name": "lightImage",
+          "type": "string"
+        },
+        {
+          "name": "alt",
+          "type": "string"
+        },
+        {
+          "name": "height",
+          "type": "string",
+          "default": "32px"
+        },
+        {
+          "name": "width",
+          "type": "string",
+          "default": "auto"
+        }
+      ],
+      "tokens": []
+    },
+    {
+      "name": "DropdownMenu",
+      "path": "molecules/navigation/DropdownMenu",
+      "import": "import { DropdownMenu } from '@atomchat.io/components-astro'",
+      "description": "DropdownMenu — Dropdown molecule with toggle + panel",
+      "props": [
+        {
+          "name": "label",
+          "type": "string"
+        },
+        {
+          "name": "align",
+          "type": "'left' | 'right'",
+          "values": [
+            "left",
+            "right"
+          ],
+          "default": "left"
+        }
+      ],
+      "tokens": []
+    },
+    {
+      "name": "NavLanguageSwitcher",
+      "path": "molecules/navigation/NavLanguageSwitcher",
+      "import": "import { NavLanguageSwitcher } from '@atomchat.io/components-astro'",
+      "description": "NavLanguageSwitcher — Language selector dropdown for navbar",
+      "props": [
+        {
+          "name": "currentLang",
+          "type": "string"
+        },
+        {
+          "name": "options",
+          "type": "LanguageOption[]"
+        }
+      ],
+      "tokens": []
+    },
+    {
+      "name": "Dialog",
+      "path": "molecules/Dialog",
+      "import": "import { Dialog } from '@atomchat.io/components-astro'",
+      "description": "Dialog — Composable modal dialog surface",
+      "props": [
+        {
+          "name": "size",
+          "type": "\"s\" | \"m\" | \"l\"",
+          "default": "s"
+        },
+        {
+          "name": "centered",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "visible",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "showBackdrop",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "id",
+          "type": "string"
+        }
+      ],
+      "tokens": []
+    },
+    {
+      "name": "DialogHeadline",
+      "path": "molecules/DialogHeadline",
+      "import": "import { DialogHeadline } from '@atomchat.io/components-astro'",
+      "description": "DialogHeadline — Dialog header with headline, back/close buttons",
+      "props": [
+        {
+          "name": "headline",
+          "type": "string"
+        },
+        {
+          "name": "supportingText",
+          "type": "string"
+        },
+        {
+          "name": "alignment",
+          "type": "\"left\" | \"center\"",
+          "default": "left"
+        },
+        {
+          "name": "hasBack",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "isClosable",
+          "type": "boolean",
+          "default": "true"
+        }
+      ],
+      "tokens": []
+    },
+    {
+      "name": "DialogContent",
+      "path": "molecules/DialogContent",
+      "import": "import { DialogContent } from '@atomchat.io/components-astro'",
+      "description": "DialogContent — Flexible dialog content area",
+      "props": [],
+      "tokens": []
+    },
+    {
+      "name": "DialogActions",
+      "path": "molecules/DialogActions",
+      "import": "import { DialogActions } from '@atomchat.io/components-astro'",
+      "description": "DialogActions — Dialog footer with action buttons",
+      "props": [
+        {
+          "name": "variant",
+          "type": "\"hug\" | \"fill\"",
+          "default": "hug"
+        },
+        {
+          "name": "cancelText",
+          "type": "string",
+          "default": "Cancel"
+        },
+        {
+          "name": "actionText",
+          "type": "string",
+          "default": "Action"
+        },
+        {
+          "name": "counterText",
+          "type": "string"
+        }
+      ],
+      "tokens": []
+    }
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "accordion": {
+    "bg": {
+      "$type": "color",
+      "item": {
+        "$value": "{figma.colors.primitive.zinc.50}",
+        "$description": "Item background default #fafafa"
+      },
+      "item-hovered": {
+        "$value": "{figma.colors.primitive.zinc.100}",
+        "$description": "Item background on hover #f4f4f5"
+      },
+      "icon": {
+        "$value": "{figma.colors.primitive.zinc.200}",
+        "$description": "Icon container background #e4e4e7"
+      },
+      "icon-hovered": {
+        "$value": "{figma.colors.primitive.zinc.300}",
+        "$description": "Icon container background on hover #d4d4d8"
+      }
+    },
+    "fg": {
+      "$type": "color",
+      "title": {
+        "$value": "{figma.colors.primitive.zinc.900}",
+        "$description": "Accordion title text #18181b"
+      },
+      "body": {
+        "$value": "{figma.colors.primitive.zinc.600}",
+        "$description": "Accordion body text #52525b"
+      },
+      "icon": {
+        "$value": "{figma.colors.primitive.zinc.900}",
+        "$description": "Icon color #18181b"
+      }
+    },
+    "border": {
+      "$type": "color",
+      "item": {
+        "$value": "{figma.colors.primitive.zinc.200}",
+        "$description": "Subtle border between items #e4e4e7"
+      }
+    },
+    "structure": {
+      "border-radius": {
+        "$type": "dimension",
+        "$value": "{Primitive.Radius.s}",
+        "$description": "8px"
+      },
+      "item-gap": {
+        "$type": "dimension",
+        "$value": "{Primitive.Spacing.xs}",
+        "$description": "4px gap between items"
+      },
+      "header-padding-y": {
+        "$type": "dimension",
+        "$value": "{Primitive.Spacing.sm}",
+        "$description": "12px vertical padding in header"
+      },
+      "header-padding-x": {
+        "$type": "dimension",
+        "$value": "{Primitive.Spacing.m}",
+        "$description": "16px horizontal padding in header"
+      },
+      "header-gap": {
+        "$type": "dimension",
+        "$value": "{Primitive.Spacing.m}",
+        "$description": "16px gap between title and icon"
+      },
+      "content-padding-x": {
+        "$type": "dimension",
+        "$value": "{Primitive.Spacing.m}",
+        "$description": "16px horizontal padding for content"
+      },
+      "content-padding-bottom": {
+        "$type": "dimension",
+        "$value": "{Primitive.Spacing.m}",
+        "$description": "16px bottom padding for content"
+      },
+      "icon-size": {
+        "$type": "dimension",
+        "$value": "32px",
+        "$description": "Icon container width/height"
+      },
+      "icon-svg-size": {
+        "$type": "dimension",
+        "$value": "16px",
+        "$description": "SVG icon width/height"
+      }
+    }
+  }
+}

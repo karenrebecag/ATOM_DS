@@ -171,14 +171,14 @@
 }
 
 .toggle-field__title {
-  font-family: var(--font-family-titles);
+  font-family: var(--font-body);
   font-weight: var(--font-weight-medium);
   color: var(--fg-secondary);
   cursor: pointer;
 }
 
 .toggle-field__supportive {
-  font-family: var(--font-family-content);
+  font-family: var(--font-body);
   font-weight: var(--font-weight-regular);
   color: var(--fg-tertiary);
 }
@@ -195,7 +195,7 @@
 }
 
 .toggle-field__error-text {
-  font-family: var(--font-family-content);
+  font-family: var(--font-body);
   font-weight: var(--font-weight-regular);
   color: var(--fg-status-error);
 }

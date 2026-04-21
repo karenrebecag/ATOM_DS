@@ -5,16 +5,20 @@
  *
  * Usage:
  * ```typescript
- * import { Button } from '@atomchat.io/components-vue'
- * import type { ButtonProps } from '@atomchat.io/components-vue'
+ * import { Button, Card, Stack } from '@atomchat.io/components-vue'
  * ```
  *
- * @version 1.0.0 — Button only (other components coming soon)
  * @see https://github.com/atomchat/atom-design-system
  */
 
-// Re-export atoms (currently: Button only)
+// Re-export atoms
 export * from './atoms'
+
+// Re-export molecules
+export * from './molecules'
+
+// Re-export layout
+export * from './layout'
 
 // Re-export types
 export * from './types'

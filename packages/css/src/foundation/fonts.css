@@ -1,0 +1,8 @@
+/* ============================================
+   @atomchat/css — foundation/fonts.css
+   Inter variable font — all weights (100–900)
+   External @import is passed through by Vite
+   unchanged, no asset pipeline issues.
+============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');

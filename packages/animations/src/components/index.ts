@@ -7,5 +7,8 @@
  */
 
 // Re-export all component animations
+export * from './containers';
 export * from './indicators';
 export * from './feedback';
+export * from './forms';
+export * from './navigation';

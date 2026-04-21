@@ -17,6 +17,9 @@ export type { ButtonProps } from './atoms/buttons/Button';
 export { IconButton } from './atoms/buttons/IconButton';
 export type { IconButtonProps } from './atoms/buttons/IconButton';
 
+export { LinkButton } from './atoms/buttons/LinkButton';
+export type { LinkButtonProps } from './atoms/buttons/LinkButton';
+
 export { NavLink } from './atoms/buttons/NavLink';
 export type { NavLinkProps } from './atoms/buttons/NavLink';
 

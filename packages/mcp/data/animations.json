@@ -1,0 +1,393 @@
+{
+  "package": "@atomchat.io/animations",
+  "version": "1.4.0",
+  "install": "npm install @atomchat.io/animations gsap",
+  "peerDeps": ["gsap >= 3.12"],
+  "optionalPeerDeps": ["lenis", "@barba/core", "@barba/prefetch"],
+  "setup": {
+    "allAtOnce": "import { initAllAnimations } from '@atomchat.io/animations';\nconst cleanup = initAllAnimations();",
+    "react": "import { useEffect } from 'react';\nimport { initReveal, initHoverRotate } from '@atomchat.io/animations';\n\nfunction Page() {\n  useEffect(() => {\n    const c1 = initReveal();\n    const c2 = initHoverRotate();\n    return () => { c1(); c2(); };\n  }, []);\n  return <div data-reveal=\"fade-up\">Content</div>;\n}",
+    "vue": "<script setup>\nimport { onMounted, onUnmounted } from 'vue';\nimport { initReveal } from '@atomchat.io/animations';\n\nlet cleanup;\nonMounted(() => { cleanup = initReveal(); });\nonUnmounted(() => { cleanup?.(); });\n</script>",
+    "astro": "---\n// No framework needed\n---\n<div data-reveal=\"fade-up\">Content</div>\n\n<script>\n  import { initReveal } from '@atomchat.io/animations';\n  initReveal();\n</script>",
+    "angular": "import { Component, AfterViewInit, OnDestroy } from '@angular/core';\nimport { initReveal } from '@atomchat.io/animations';\n\n@Component({ ... })\nexport class PageComponent implements AfterViewInit, OnDestroy {\n  private cleanup?: () => void;\n  ngAfterViewInit() { this.cleanup = initReveal(); }\n  ngOnDestroy() { this.cleanup?.(); }\n}"
+  },
+  "pattern": "Every init*() returns a CleanupFn. Call it on unmount/navigation to kill tweens, ScrollTriggers, listeners, and observers.",
+  "motionPreferences": {
+    "description": "Three-tier WCAG 2.3.3 motion system",
+    "tiers": [
+      { "level": "OS", "how": "Automatic via prefers-reduced-motion" },
+      { "level": "Site", "how": "<html data-motion=\"reduced\"> or setMotionLevel('reduced')" },
+      { "level": "Element", "how": "data-motion-exempt on any element" }
+    ],
+    "imports": "import { getMotionLevel, setMotionLevel, watchMotionPreference } from '@atomchat.io/animations';"
+  },
+  "categories": [
+    {
+      "name": "scroll",
+      "description": "Scroll-triggered reveal and parallax animations",
+      "modules": [
+        {
+          "name": "Scroll Reveal",
+          "initFunctions": ["initReveal", "initBatchReveal"],
+          "import": "import { initReveal, initBatchReveal } from '@atomchat.io/animations';",
+          "dataAttributes": [
+            { "attr": "data-reveal", "values": ["fade-up", "fade-down", "fade-left", "fade-right", "fade", "fade-scale", "stagger"], "description": "Scroll reveal animation variant" },
+            { "attr": "data-batch-reveal", "values": [], "description": "Performance-optimized batch reveal for large lists" },
+            { "attr": "data-stagger", "values": ["number (e.g. 0.05)"], "description": "Custom stagger timing between children" }
+          ],
+          "example": "<div data-reveal=\"fade-up\">Fades up on scroll</div>"
+        },
+        {
+          "name": "Parallax",
+          "initFunctions": ["initParallax", "initParallaxScale"],
+          "import": "import { initParallax } from '@atomchat.io/animations';",
+          "dataAttributes": [
+            { "attr": "data-parallax", "values": [], "description": "Y-axis parallax movement on scroll" },
+            { "attr": "data-speed", "values": ["number (pixels, default 50)"], "description": "Parallax movement distance" },
+            { "attr": "data-parallax-scale", "values": [], "description": "Scale-based parallax on scroll" },
+            { "attr": "data-from", "values": ["number (default 1.15)"], "description": "Scale start value" },
+            { "attr": "data-to", "values": ["number (default 1)"], "description": "Scale end value" }
+          ],
+          "example": "<div data-parallax data-speed=\"50\">Moves 50px on scroll</div>",
+          "motionNote": "Vestibular-risk — skipped entirely when motion is reduced"
+        },
+        {
+          "name": "Scroll Direction",
+          "initFunctions": ["initScrollDirection"],
+          "import": "import { initScrollDirection } from '@atomchat.io/animations';",
+          "dataAttributes": [
+            { "attr": "data-scroll-direction", "values": ["up", "down"], "description": "Set on body automatically — use for header show/hide" }
+          ],
+          "example": "body[data-scroll-direction='down'] .header { transform: translateY(-100%); }"
+        },
+        {
+          "name": "Progress Nav",
+          "initFunctions": ["initProgressNav"],
+          "import": "import { initProgressNav } from '@atomchat.io/animations';",
+          "dataAttributes": [
+            { "attr": "data-progress-nav", "values": [], "description": "Scroll progress indicator bar" }
+          ],
+          "example": "<div data-progress-nav></div>"
+        }
+      ]
+    },
+    {
+      "name": "interactions",
+      "description": "Hover effects, cursor, and magnetic interactions",
+      "modules": [
+        {
+          "name": "Hover Rotate",
+          "initFunctions": ["initRotateClones", "initRotateCalc", "initHoverRotate"],
+          "import": "import { initRotateClones, initRotateCalc, initHoverRotate } from '@atomchat.io/animations';",
+          "dataAttributes": [
+            { "attr": "data-hover-rotate", "values": [], "description": "Rotate label animation on hover (used by Button)" },
+            { "attr": "data-size", "values": ["full"], "description": "Full-width hover variant" }
+          ],
+          "example": "<button data-hover-rotate>\n  <span class=\"button__label\">Hover me</span>\n</button>",
+          "initOrder": "Must call in order: initRotateClones() → initRotateCalc() → initHoverRotate()"
+        },
+        {
+          "name": "Card Hover",
+          "initFunctions": ["initCardHover"],
+          "import": "import { initCardHover } from '@atomchat.io/animations';",
+          "dataAttributes": [
+            { "attr": "data-card-hover", "values": [], "description": "Card lift + shadow + image zoom on hover" }
+          ],
+          "example": "<div data-card-hover>\n  <img src=\"card.jpg\" />\n  <h3>Card title</h3>\n</div>"
+        },
+        {
+          "name": "Magnetic",
+          "initFunctions": ["initMagnetic"],
+          "import": "import { initMagnetic } from '@atomchat.io/animations';",
+          "dataAttributes": [
+            { "attr": "data-magnetic", "values": ["number 0-1 (default 0.3)"], "description": "Cursor-following magnetic effect" }
+          ],
+          "example": "<button data-magnetic=\"0.3\">Follows cursor</button>"
+        },
+        {
+          "name": "Custom Cursor",
+          "initFunctions": ["initCursor"],
+          "import": "import { initCursor } from '@atomchat.io/animations';",
+          "dataAttributes": [
+            { "attr": "data-cursor-text", "values": ["string"], "description": "Custom cursor label on hover" }
+          ],
+          "example": "<a href=\"/about\" data-cursor-text=\"Read more\">About us</a>",
+          "motionNote": "Disabled on touch devices and when motion is reduced"
+        }
+      ]
+    },
+    {
+      "name": "text",
+      "description": "Text reveal, shimmer, scramble, and odometer animations",
+      "modules": [
+        {
+          "name": "Text Animations",
+          "initFunctions": ["initTextAnimations", "initTextReveal", "initMaskedReveal", "initFadeUpLoad", "initScrambleLoad", "initScrambleHover", "initHighlightScroll", "initScrambleScroll"],
+          "import": "import { initTextAnimations } from '@atomchat.io/animations';",
+          "dataAttributes": [
+            { "attr": "data-text-reveal", "values": ["words", "lines"], "description": "Character/line entrance animation" },
+            { "attr": "data-shimmer", "values": ["number? (seconds)"], "description": "Animated gradient shimmer sweep" }
+          ],
+          "example": "<h1 data-text-reveal>Animated headline</h1>\n<span data-shimmer>Loading...</span>"
+        },
+        {
+          "name": "Odometer",
+          "initFunctions": ["initNumberOdometer"],
+          "import": "import { initNumberOdometer } from '@atomchat.io/animations';",
+          "dataAttributes": [
+            { "attr": "data-odometer-group", "values": [], "description": "Odometer container" },
+            { "attr": "data-odometer-element", "values": [], "description": "Individual digit element" },
+            { "attr": "data-odometer-start", "values": ["number (default 0)"], "description": "Starting value" },
+            { "attr": "data-odometer-duration", "values": ["number (default 0.6)"], "description": "Roll animation duration" }
+          ],
+          "example": "<span data-odometer>1,234</span>"
+        }
+      ]
+    },
+    {
+      "name": "components",
+      "description": "Animations tied to specific ATOM components",
+      "modules": [
+        {
+          "name": "Badge",
+          "initFunctions": ["initBadge", "showBadge", "hideBadge", "animateBadgeEntry"],
+          "import": "import { initBadge } from '@atomchat.io/animations';",
+          "dataAttributes": [
+            { "attr": "data-badge", "values": [], "description": "Badge pop-in animation" },
+            { "attr": "data-count", "values": ["number"], "description": "Badge count value" }
+          ],
+          "relatedComponent": "Badge"
+        },
+        {
+          "name": "Toast",
+          "initFunctions": ["initToastAnimations", "animateToastEnter", "animateToastExit", "restackToasts"],
+          "import": "import { initToastAnimations, animateToastEnter, animateToastExit } from '@atomchat.io/animations';",
+          "dataAttributes": [],
+          "example": "const cleanup = initToastAnimations();\n// Or imperatively:\nanimateToastEnter(toastElement);\nawait animateToastExit(toastElement);"
+        },
+        {
+          "name": "Modal",
+          "initFunctions": ["initModal"],
+          "import": "import { initModal } from '@atomchat.io/animations';",
+          "dataAttributes": [],
+          "relatedComponent": "Dialog"
+        },
+        {
+          "name": "Accordion",
+          "initFunctions": ["initAccordion"],
+          "import": "import { initAccordion } from '@atomchat.io/animations/components/containers';",
+          "dataAttributes": [],
+          "relatedComponent": "Accordion"
+        },
+        {
+          "name": "Segment Indicator",
+          "initFunctions": ["initSegmentIndicator"],
+          "import": "import { initSegmentIndicator } from '@atomchat.io/animations/components/containers';",
+          "dataAttributes": [],
+          "relatedComponent": "SegmentControl"
+        },
+        {
+          "name": "Form Validation",
+          "initFunctions": ["initFormValidation", "validateAll", "validateField", "resetField"],
+          "import": "import { initFormValidation } from '@atomchat.io/animations/components/forms';",
+          "dataAttributes": [],
+          "relatedComponent": "TextField"
+        },
+        {
+          "name": "Counter Odometer",
+          "initFunctions": ["initCounterOdometer"],
+          "import": "import { initCounterOdometer } from '@atomchat.io/animations/components/forms';",
+          "dataAttributes": []
+        },
+        {
+          "name": "Pagination Odometer",
+          "initFunctions": ["initPaginationOdometer"],
+          "import": "import { initPaginationOdometer } from '@atomchat.io/animations/components/navigation';",
+          "dataAttributes": [],
+          "relatedComponent": "Pagination"
+        },
+        {
+          "name": "Loading / Shimmer",
+          "initFunctions": ["initLoadingAnimations", "initShimmerText"],
+          "import": "import { initLoadingAnimations, initShimmerText } from '@atomchat.io/animations';",
+          "dataAttributes": [
+            { "attr": "data-shimmer", "values": ["number? (seconds)"], "description": "Shimmer gradient on text" }
+          ],
+          "relatedComponent": "Spinner"
+        }
+      ]
+    },
+    {
+      "name": "transitions",
+      "description": "Page and section transition effects",
+      "modules": [
+        {
+          "name": "Page Transition",
+          "initFunctions": ["runPageEnterAnimation"],
+          "import": "import { runPageEnterAnimation } from '@atomchat.io/animations';",
+          "dataAttributes": [
+            { "attr": "data-load-heading", "values": [], "description": "Heading reveal on page enter" },
+            { "attr": "data-load-reveal", "values": [], "description": "Element reveal on page enter" },
+            { "attr": "data-load-nav", "values": [], "description": "Nav reveal on page enter" }
+          ]
+        },
+        {
+          "name": "Parallax Transition",
+          "initFunctions": ["runParallaxLeave", "runParallaxEnter", "runParallaxOnce"],
+          "import": "import { runParallaxLeave, runParallaxEnter } from '@atomchat.io/animations';",
+          "dataAttributes": [
+            { "attr": "data-transition-wrap", "values": [], "description": "Transition wrapper element" },
+            { "attr": "data-transition-dark", "values": [], "description": "Dark overlay transition" }
+          ]
+        },
+        {
+          "name": "Sidebar Wipe",
+          "initFunctions": ["initSidebarCollapse"],
+          "import": "import { initSidebarCollapse } from '@atomchat.io/animations';",
+          "dataAttributes": [
+            { "attr": "data-sidebar-collapse", "values": [], "description": "Sidebar wipe transition trigger" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "marketing",
+      "description": "Landing page animations — import selectively to avoid unused code",
+      "modules": [
+        {
+          "name": "Marquee",
+          "initFunctions": ["initMarqueeObserver"],
+          "import": "import { initMarqueeObserver } from '@atomchat.io/animations';",
+          "dataAttributes": [
+            { "attr": "data-marquee", "values": [], "description": "Marquee wrapper" },
+            { "attr": "data-marquee-list", "values": [], "description": "Marquee scrolling list" }
+          ],
+          "example": "<div data-marquee>\n  <div data-marquee-list>\n    <span>Item 1</span><span>Item 2</span>\n    <span>Item 1</span><span>Item 2</span>\n  </div>\n</div>",
+          "relatedComponent": "Marquee"
+        },
+        {
+          "name": "Stats",
+          "initFunctions": ["initStats"],
+          "import": "import { initStats } from '@atomchat.io/animations';",
+          "dataAttributes": [
+            { "attr": "data-stats-*", "values": [], "description": "Count-up number animations" }
+          ]
+        },
+        {
+          "name": "Logo Wall",
+          "initFunctions": ["initLogoWallCycle"],
+          "import": "import { initLogoWallCycle } from '@atomchat.io/animations';",
+          "dataAttributes": [
+            { "attr": "data-logo-wall-cycle-init", "values": [], "description": "Logo cycling grid wrapper" }
+          ]
+        },
+        {
+          "name": "Slider",
+          "initFunctions": ["initRotationSlider"],
+          "import": "import { initRotationSlider } from '@atomchat.io/animations';",
+          "dataAttributes": [
+            { "attr": "data-rotation-slider-*", "values": [], "description": "Rotation carousel" }
+          ]
+        },
+        {
+          "name": "Vertical Slider",
+          "initFunctions": ["initVerticalSlider"],
+          "import": "import { initVerticalSlider } from '@atomchat.io/animations';",
+          "dataAttributes": [
+            { "attr": "data-vslider-init", "values": [], "description": "Vertical slider wrapper" }
+          ]
+        },
+        {
+          "name": "Flick Cards",
+          "initFunctions": ["initFlickCards"],
+          "import": "import { initFlickCards } from '@atomchat.io/animations';",
+          "dataAttributes": [
+            { "attr": "data-flick-cards-init", "values": [], "description": "Draggable card carousel" }
+          ]
+        },
+        {
+          "name": "Draggable Marquee",
+          "initFunctions": ["initDraggableMarquee"],
+          "import": "import { initDraggableMarquee } from '@atomchat.io/animations';",
+          "dataAttributes": [
+            { "attr": "data-draggable-marquee", "values": [], "description": "Draggable marquee wrapper" }
+          ]
+        },
+        {
+          "name": "Rotating Layers",
+          "initFunctions": ["initRotatingLayers"],
+          "import": "import { initRotatingLayers } from '@atomchat.io/animations';",
+          "dataAttributes": [
+            { "attr": "data-rotating-layers", "values": [], "description": "Concentric rotating circles" }
+          ]
+        },
+        {
+          "name": "Layout Grid Flip",
+          "initFunctions": ["initLayoutGridFlip"],
+          "import": "import { initLayoutGridFlip } from '@atomchat.io/animations';",
+          "dataAttributes": [
+            { "attr": "data-layout-grid", "values": [], "description": "FLIP grid transitions" }
+          ]
+        },
+        {
+          "name": "Features",
+          "initFunctions": ["initFeatures"],
+          "import": "import { initFeatures } from '@atomchat.io/animations';",
+          "dataAttributes": [
+            { "attr": "data-features-section", "values": [], "description": "Bento grid features" }
+          ]
+        },
+        {
+          "name": "Pricing",
+          "initFunctions": ["initPricingSection"],
+          "import": "import { initPricingSection } from '@atomchat.io/animations';",
+          "dataAttributes": [
+            { "attr": "data-pricing-*", "values": [], "description": "Pricing toggle animation" }
+          ]
+        },
+        {
+          "name": "Social Proof",
+          "initFunctions": ["initSocialProof"],
+          "import": "import { initSocialProof } from '@atomchat.io/animations';",
+          "dataAttributes": [
+            { "attr": "data-social-proof-*", "values": [], "description": "Social proof strip" }
+          ]
+        },
+        {
+          "name": "About Card",
+          "initFunctions": ["initAboutCardAnimation"],
+          "import": "import { initAboutCardAnimation } from '@atomchat.io/animations';",
+          "dataAttributes": [
+            { "attr": "data-about-card", "values": [], "description": "Persona card swap animation" }
+          ]
+        },
+        {
+          "name": "Footer Logo",
+          "initFunctions": ["initFooterLogo"],
+          "import": "import { initFooterLogo } from '@atomchat.io/animations';",
+          "dataAttributes": [
+            { "attr": "data-footer-logo-wrap", "values": [], "description": "Footer scatter animation" }
+          ]
+        }
+      ]
+    }
+  ],
+  "gsapConfig": {
+    "plugins": ["ScrollTrigger", "CustomEase", "Draggable", "InertiaPlugin", "Observer", "Flip", "SplitText"],
+    "customEase": "\"atom\" — cubic-bezier(0.625, 0.05, 0, 1)",
+    "note": "All plugins registered once in config.ts — NEVER register them yourself"
+  },
+  "timing": {
+    "duration": {
+      "quarter": 0.15,
+      "half": 0.3,
+      "default": 0.6,
+      "double": 1.2
+    },
+    "stagger": {
+      "fast": 0.03,
+      "default": 0.05,
+      "slow": 0.1
+    }
+  }
+}

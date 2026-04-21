@@ -1,16 +1,23 @@
 {
   "meta": {
-    "generatedAt": "2026-04-21T19:46:14.607Z",
-    "gitSha": "6933d74",
+    "generatedAt": "2026-04-21T21:45:20.706Z",
+    "gitSha": "48a3472",
     "packageVersion": "5.3.0",
     "sourceCount": 44
   },
   "package": "@atomchat.io/components-astro",
   "version": "5.3.0",
-  "install": "npm install @atomchat.io/components-astro @atomchat.io/css",
+  "install": "npm install @atomchat.io/components-astro @atomchat.io/css @atomchat.io/tokens",
   "peerDeps": [
     "astro >= 4.0",
-    "@atomchat.io/css"
+    "@atomchat.io/css",
+    "@atomchat.io/tokens"
+  ],
+  "setup": [
+    "// In your global layout (e.g. src/layouts/Layout.astro):",
+    "import '@atomchat.io/tokens/build/css/tokens.css';",
+    "import '@atomchat.io/css/dist/fonts.css';",
+    "import '@atomchat.io/css/dist/atom.css';"
   ],
   "components": [
     {

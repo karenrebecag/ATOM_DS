@@ -57,6 +57,17 @@ export function handleGetComponent(args: unknown) {
         return m.components.some(c => c.name.toLowerCase() === name.toLowerCase());
       });
 
+    const setupSection = manifest.setup?.length > 0
+      ? [
+          '',
+          '## Setup (required CSS imports)',
+          '',
+          '```',
+          ...manifest.setup,
+          '```',
+        ]
+      : [];
+
     const lines = [
       `# ${comp.name} (${manifest.package})`,
       '',
@@ -67,6 +78,7 @@ export function handleGetComponent(args: unknown) {
       '```bash',
       manifest.install,
       '```',
+      ...setupSection,
       '',
       '## Import',
       '',

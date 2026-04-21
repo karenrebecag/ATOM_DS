@@ -1,16 +1,22 @@
 {
   "meta": {
-    "generatedAt": "2026-04-21T19:46:14.499Z",
-    "gitSha": "6933d74",
+    "generatedAt": "2026-04-21T21:45:20.604Z",
+    "gitSha": "48a3472",
     "packageVersion": "1.0.1",
     "sourceCount": 37
   },
   "package": "@atomchat.io/components-vue",
   "version": "1.0.1",
-  "install": "npm install @atomchat.io/components-vue @atomchat.io/css",
+  "install": "npm install @atomchat.io/components-vue @atomchat.io/css @atomchat.io/tokens",
   "peerDeps": [
     "vue >= 3.4",
-    "@atomchat.io/css"
+    "@atomchat.io/css",
+    "@atomchat.io/tokens"
+  ],
+  "setup": [
+    "import '@atomchat.io/tokens/build/css/tokens.css';",
+    "import '@atomchat.io/css/dist/fonts.css';",
+    "import '@atomchat.io/css/dist/atom.css';"
   ],
   "components": [
     {

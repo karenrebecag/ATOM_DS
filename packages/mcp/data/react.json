@@ -1,16 +1,22 @@
 {
   "meta": {
-    "generatedAt": "2026-04-21T19:46:14.435Z",
-    "gitSha": "6933d74",
+    "generatedAt": "2026-04-21T21:45:20.538Z",
+    "gitSha": "48a3472",
     "packageVersion": "2.2.0",
-    "sourceCount": 36
+    "sourceCount": 37
   },
   "package": "@atomchat.io/components-react",
   "version": "2.2.0",
-  "install": "npm install @atomchat.io/components-react @atomchat.io/css",
+  "install": "npm install @atomchat.io/components-react @atomchat.io/css @atomchat.io/tokens",
   "peerDeps": [
     "react >= 18",
-    "@atomchat.io/css"
+    "@atomchat.io/css",
+    "@atomchat.io/tokens"
+  ],
+  "setup": [
+    "import '@atomchat.io/tokens/build/css/tokens.css';",
+    "import '@atomchat.io/css/dist/fonts.css';",
+    "import '@atomchat.io/css/dist/atom.css';"
   ],
   "components": [
     {
@@ -144,6 +150,51 @@
         }
       ],
       "tokens": []
+    },
+    {
+      "name": "LinkButton",
+      "path": "atoms/buttons/LinkButton",
+      "import": "import { LinkButton } from '@atomchat.io/components-react'",
+      "description": "LinkButton (Atom)",
+      "props": [
+        {
+          "name": "size",
+          "type": "LinkButtonSize",
+          "values": [
+            "xs",
+            "s",
+            "m",
+            "l",
+            "xl"
+          ],
+          "default": "l"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "loading",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "href",
+          "type": "string"
+        },
+        {
+          "name": "iconLeft",
+          "type": "ReactNode"
+        },
+        {
+          "name": "iconRight",
+          "type": "ReactNode"
+        }
+      ],
+      "tokens": [
+        "link-button-*"
+      ]
     },
     {
       "name": "NavLink",

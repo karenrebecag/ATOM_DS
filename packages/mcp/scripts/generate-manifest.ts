@@ -64,6 +64,7 @@ interface FrameworkManifest {
   version: string;
   install: string;
   peerDeps: string[];
+  setup: string[];
   components: ComponentEntry[];
 }
 
@@ -229,8 +230,13 @@ function generateReactManifest(): FrameworkManifest {
     meta: makeMeta(pkg.version as string, components.length),
     package: pkg.name as string,
     version: pkg.version as string,
-    install: `npm install ${pkg.name} @atomchat.io/css`,
-    peerDeps: ['react >= 18', '@atomchat.io/css'],
+    install: `npm install ${pkg.name} @atomchat.io/css @atomchat.io/tokens`,
+    peerDeps: ['react >= 18', '@atomchat.io/css', '@atomchat.io/tokens'],
+    setup: [
+      "import '@atomchat.io/tokens/build/css/tokens.css';",
+      "import '@atomchat.io/css/dist/fonts.css';",
+      "import '@atomchat.io/css/dist/atom.css';",
+    ],
     components,
   };
 }
@@ -378,8 +384,13 @@ function generateVueManifest(): FrameworkManifest {
     meta: makeMeta(pkg.version as string, components.length),
     package: pkg.name as string,
     version: pkg.version as string,
-    install: `npm install ${pkg.name} @atomchat.io/css`,
-    peerDeps: ['vue >= 3.4', '@atomchat.io/css'],
+    install: `npm install ${pkg.name} @atomchat.io/css @atomchat.io/tokens`,
+    peerDeps: ['vue >= 3.4', '@atomchat.io/css', '@atomchat.io/tokens'],
+    setup: [
+      "import '@atomchat.io/tokens/build/css/tokens.css';",
+      "import '@atomchat.io/css/dist/fonts.css';",
+      "import '@atomchat.io/css/dist/atom.css';",
+    ],
     components,
   };
 }
@@ -514,8 +525,14 @@ function generateAngularManifest(): FrameworkManifest {
     meta: makeMeta(pkg.version as string, components.length),
     package: pkg.name as string,
     version: pkg.version as string,
-    install: `npm install ${pkg.name} @atomchat.io/css`,
-    peerDeps: ['@angular/core >= 21', '@atomchat.io/css'],
+    install: `npm install ${pkg.name} @atomchat.io/css @atomchat.io/tokens`,
+    peerDeps: ['@angular/core >= 21', '@atomchat.io/css', '@atomchat.io/tokens'],
+    setup: [
+      "// In angular.json → styles array:",
+      "\"node_modules/@atomchat.io/tokens/build/css/tokens.css\",",
+      "\"node_modules/@atomchat.io/css/dist/fonts.css\",",
+      "\"node_modules/@atomchat.io/css/dist/atom.css\"",
+    ],
     components,
   };
 }
@@ -607,8 +624,14 @@ function generateAstroManifest(): FrameworkManifest {
     meta: makeMeta(pkg.version as string, components.length),
     package: pkg.name as string,
     version: pkg.version as string,
-    install: `npm install ${pkg.name} @atomchat.io/css`,
-    peerDeps: ['astro >= 4.0', '@atomchat.io/css'],
+    install: `npm install ${pkg.name} @atomchat.io/css @atomchat.io/tokens`,
+    peerDeps: ['astro >= 4.0', '@atomchat.io/css', '@atomchat.io/tokens'],
+    setup: [
+      "// In your global layout (e.g. src/layouts/Layout.astro):",
+      "import '@atomchat.io/tokens/build/css/tokens.css';",
+      "import '@atomchat.io/css/dist/fonts.css';",
+      "import '@atomchat.io/css/dist/atom.css';",
+    ],
     components,
   };
 }

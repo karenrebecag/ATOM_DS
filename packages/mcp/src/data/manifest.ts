@@ -28,6 +28,7 @@ export interface FrameworkManifest {
   version: string;
   install: string;
   peerDeps: string[];
+  setup: string[];
   components: ComponentEntry[];
 }
 
@@ -65,6 +66,10 @@ export function getFrameworkManifest(framework: Framework): FrameworkManifest {
 
 export function getTokensManifest(): TokensManifest {
   return loadJSON<TokensManifest>('tokens.json');
+}
+
+export function getAnimationsManifest(): Record<string, unknown> {
+  return loadJSON<Record<string, unknown>>('animations.json');
 }
 
 export function getAllFrameworks(): Framework[] {

@@ -1,6 +1,6 @@
 {
   "name": "@atomchat.io/mcp",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "MCP server for ATOM Design System — gives AI context about all components and tokens",
   "type": "module",
   "bin": {

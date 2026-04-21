@@ -1,16 +1,23 @@
 {
   "meta": {
-    "generatedAt": "2026-04-21T19:46:14.557Z",
-    "gitSha": "6933d74",
+    "generatedAt": "2026-04-21T21:45:20.651Z",
+    "gitSha": "48a3472",
     "packageVersion": "2.0.1",
     "sourceCount": 37
   },
   "package": "@atomchat.io/components-angular",
   "version": "2.0.1",
-  "install": "npm install @atomchat.io/components-angular @atomchat.io/css",
+  "install": "npm install @atomchat.io/components-angular @atomchat.io/css @atomchat.io/tokens",
   "peerDeps": [
     "@angular/core >= 21",
-    "@atomchat.io/css"
+    "@atomchat.io/css",
+    "@atomchat.io/tokens"
+  ],
+  "setup": [
+    "// In angular.json → styles array:",
+    "\"node_modules/@atomchat.io/tokens/build/css/tokens.css\",",
+    "\"node_modules/@atomchat.io/css/dist/fonts.css\",",
+    "\"node_modules/@atomchat.io/css/dist/atom.css\""
   ],
   "components": [
     {

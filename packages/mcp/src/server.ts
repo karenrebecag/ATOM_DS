@@ -8,6 +8,7 @@ import { handleListComponents, listComponentsSchema } from './tools/list-compone
 import { handleGetComponent, getComponentSchema } from './tools/get-component.js';
 import { handleGetTokens, getTokensSchema } from './tools/get-tokens.js';
 import { handleSearch, searchSchema } from './tools/search.js';
+import { handleGetAnimations, getAnimationsSchema } from './tools/get-animations.js';
 
 export function createServer() {
   const server = new Server(
@@ -36,9 +37,15 @@ export function createServer() {
         inputSchema: getTokensSchema,
       },
       {
+        name: 'atom_get_animations',
+        description:
+          'Get ATOM animation modules: install, init functions, data attributes, and framework-specific setup (React, Vue, Angular, Astro). Filter by category (scroll, interactions, text, components, transitions, marketing), by component name, or by framework.',
+        inputSchema: getAnimationsSchema,
+      },
+      {
         name: 'atom_search',
         description:
-          'Search across ATOM components and tokens by keyword. Returns ranked results matching component names, prop names, token names, or descriptions.',
+          'Search across ATOM components, tokens, and animations by keyword. Returns ranked results matching component names, prop names, token names, or descriptions.',
         inputSchema: searchSchema,
       },
     ],
@@ -54,6 +61,8 @@ export function createServer() {
         return handleGetComponent(args);
       case 'atom_get_tokens':
         return handleGetTokens(args);
+      case 'atom_get_animations':
+        return handleGetAnimations(args);
       case 'atom_search':
         return handleSearch(args);
       default:

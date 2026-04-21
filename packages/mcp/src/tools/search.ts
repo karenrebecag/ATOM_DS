@@ -1,4 +1,4 @@
-import { getAllFrameworks, getFrameworkManifest, getTokensManifest } from '../data/manifest.js';
+import { getAllFrameworks, getFrameworkManifest, getTokensManifest, getAnimationsManifest } from '../data/manifest.js';
 
 export const searchSchema = {
   type: 'object' as const,
@@ -12,7 +12,7 @@ export const searchSchema = {
 };
 
 interface SearchResult {
-  type: 'component' | 'token';
+  type: 'component' | 'token' | 'animation';
   name: string;
   detail: string;
   score: number;
@@ -89,11 +89,40 @@ export function handleSearch(args: unknown) {
     }
   }
 
+  // Search animations
+  const animations = getAnimationsManifest();
+  for (const cat of (animations.categories as { name: string; description: string; modules: { name: string; initFunctions: string[]; import: string; dataAttributes: { attr: string }[] }[] }[])) {
+    for (const mod of cat.modules) {
+      const nameScore = scoreMatch(mod.name, query);
+      const catScore = scoreMatch(cat.name, query) * 0.5;
+      const attrScore = mod.dataAttributes?.some((a: { attr: string }) =>
+        scoreMatch(a.attr, query) > 50
+      ) ? 30 : 0;
+      const fnScore = mod.initFunctions.some((f: string) =>
+        scoreMatch(f, query) > 50
+      ) ? 30 : 0;
+
+      const score = Math.max(nameScore, catScore, attrScore, fnScore);
+      if (score > 0) {
+        const existing = results.find(r => r.type === 'animation' && r.name === mod.name);
+        if (!existing) {
+          results.push({
+            type: 'animation',
+            name: mod.name,
+            detail: `${mod.initFunctions.map((f: string) => `${f}()`).join(', ')} [${cat.name}]`,
+            score,
+          });
+        }
+      }
+    }
+  }
+
   // Sort by score, limit results
   results.sort((a, b) => b.score - a.score);
   const top = results.slice(0, 30);
 
   const componentResults = top.filter(r => r.type === 'component');
+  const animationResults = top.filter(r => r.type === 'animation');
   const tokenResults = top.filter(r => r.type === 'token');
 
   const lines = [
@@ -108,6 +137,15 @@ export function handleSearch(args: unknown) {
       '## Components',
       '',
       ...componentResults.map(r => `- **${r.name}** — ${r.detail}`),
+    );
+  }
+
+  if (animationResults.length > 0) {
+    lines.push(
+      '',
+      '## Animations',
+      '',
+      ...animationResults.map(r => `- **${r.name}** — ${r.detail}`),
     );
   }
 

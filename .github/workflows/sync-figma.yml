@@ -1,12 +1,6 @@
 name: Sync Figma Variables
 
-on:
-  # Run every 6 hours (adjust as needed)
-  schedule:
-    - cron: '0 */6 * * *'
-
-  # Allow manual trigger from GitHub UI
-  workflow_dispatch:
+on: []  # Disabled
 
 jobs:
   sync:

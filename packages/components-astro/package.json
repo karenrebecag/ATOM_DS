@@ -1,6 +1,6 @@
 {
   "name": "@atomchat.io/components-astro",
-  "version": "5.3.3",
+  "version": "5.3.4",
   "description": "ATOM Design System — Astro component library (requires Astro build pipeline)",
   "publishConfig": {
     "access": "public"

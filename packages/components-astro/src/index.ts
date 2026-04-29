@@ -33,11 +33,12 @@ export { default as Text }      from './atoms/typography/Text.astro';
 
 
 // ── Atoms — Indicators ─────────────────────────────────────────
-export { default as Badge }      from './atoms/indicators/Badge.astro';
-export { default as Chip }       from './atoms/indicators/Chip.astro';
-export { default as Tag }        from './atoms/indicators/Tag.astro';
-export { default as Spinner }    from './atoms/indicators/Spinner.astro';
-export { default as EmptyState } from './atoms/indicators/EmptyState.astro';
+export { default as Badge }       from './atoms/indicators/Badge.astro';
+export { default as Chip }        from './atoms/indicators/Chip.astro';
+export { default as Tag }         from './atoms/indicators/Tag.astro';
+export { default as Spinner }     from './atoms/indicators/Spinner.astro';
+export { default as EmptyState }  from './atoms/indicators/EmptyState.astro';
+export { default as StatusIcon }  from './atoms/indicators/StatusIcon.astro';
 
 // ── Atoms — Media ──────────────────────────────────────────────
 export { default as Avatar } from './atoms/media/Avatar.astro';

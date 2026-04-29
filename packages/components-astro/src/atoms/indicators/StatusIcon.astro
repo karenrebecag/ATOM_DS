@@ -1,0 +1,52 @@
+---
+/**
+ * StatusIcon (Atom)
+ *
+ * Colored dot indicator for user presence / connection status.
+ *
+ * @param {"online" | "offline" | "idle" | "inactive"} status - Status type (default: "online")
+ * @param {"xs" | "s" | "m" | "l"} size - Icon size (default: "xs")
+ * @param {boolean} hasBorder - White border ring for visibility on colored backgrounds (default: true)
+ * @param {string} class - Additional CSS classes
+ *
+ * @see packages/css/src/components/media/avatar.css (.status-icon)
+ */
+
+type StatusType = 'online' | 'offline' | 'idle' | 'inactive';
+type StatusSize = 'xs' | 's' | 'm' | 'l';
+
+const ariaLabels: Record<StatusType, string> = {
+  online:   'Online',
+  offline:  'Offline',
+  idle:     'Away',
+  inactive: 'Inactive',
+};
+
+interface Props {
+  status?:   StatusType;
+  size?:     StatusSize;
+  hasBorder?: boolean;
+  class?:    string;
+}
+
+const {
+  status    = 'online',
+  size      = 'xs',
+  hasBorder = true,
+  class: className,
+} = Astro.props;
+---
+
+<span
+  class:list={[
+    'status-icon',
+    `status-icon--${status}`,
+    `status-icon--${size}`,
+    hasBorder && 'status-icon--bordered',
+    className,
+  ]}
+  role="status"
+  aria-label={ariaLabels[status]}
+  data-status-icon
+  data-status={status}
+/>

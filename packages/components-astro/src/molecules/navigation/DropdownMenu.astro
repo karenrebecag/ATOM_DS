@@ -12,7 +12,7 @@
  * @component
  */
 
-import DropdownIcon from '../../atoms/icons/DropdownIcon.astro'
+// DropdownIcon inlined — no separate icon component needed
 
 interface Props {
   label: string
@@ -43,7 +43,9 @@ const dropdownId = `dropdown-${Math.random().toString(36).substr(2, 9)}`
     aria-controls={dropdownId}
   >
     <span class="dropdown-menu__label">{label}</span>
-    <DropdownIcon />
+    <svg class="dropdown-icon" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" focusable="false">
+      <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    </svg>
   </button>
 
   <div

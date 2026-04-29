@@ -106,5 +106,9 @@ export type { MarqueeProps } from './molecules/Marquee';
 export { Tooltip } from './molecules/Tooltip';
 export type { TooltipProps } from './molecules/Tooltip';
 
+// ── Integrations ───────────────────────────────────────────
+export { WhatsAppButton } from './atoms/integrations/WhatsAppButton';
+export type { WhatsAppButtonProps } from './atoms/integrations/WhatsAppButton';
+
 // ── Utilities ──────────────────────────────────────────────
 export { cn } from './utils/cn';

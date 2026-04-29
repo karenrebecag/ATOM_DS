@@ -28,7 +28,7 @@ export type TextElement = 'p' | 'span' | 'div';
     '[class]': 'customClass() || null',
   },
   template: `
-    @switch (as()) {
+    @switch (element()) {
       @case ('span') {
         <span [class]="classes()" data-text><ng-content /></span>
       }
@@ -48,7 +48,7 @@ export class TextComponent {
   color = input<TextColor>('primary');
   align = input<TextAlign>();
   truncate = input<boolean>(false);
-  as = input<TextElement>('p');
+  element = input<TextElement>('p', { alias: 'as' });
   customClass = input<string>('', { alias: 'class' });
 
   classes = computed(() => {

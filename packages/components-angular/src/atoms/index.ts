@@ -26,3 +26,6 @@ export * from './media';
 
 // ── Atoms — Navigation ─────────────────────────────────────
 export * from './navigation';
+
+// ── Atoms — Integrations ───────────────────────────────────
+export * from './integrations/whatsapp-button.component';

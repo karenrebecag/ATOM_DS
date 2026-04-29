@@ -83,3 +83,6 @@ export { default as Dialog }          from './molecules/Dialog.astro';
 export { default as DialogHeadline }  from './molecules/DialogHeadline.astro';
 export { default as DialogContent }   from './molecules/DialogContent.astro';
 export { default as DialogActions }   from './molecules/DialogActions.astro';
+
+// ── Atoms — Integrations ───────────────────────────────────
+export { default as WhatsAppButton } from './atoms/integrations/WhatsAppButton.astro';

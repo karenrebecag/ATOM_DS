@@ -41,3 +41,6 @@ export { default as Avatar } from './media/Avatar.vue'
 // -- Atoms -- Navigation -----------------------------------------------------
 export { default as SegmentControl } from './navigation/SegmentControl.vue'
 export { default as Pagination } from './navigation/Pagination.vue'
+
+// -- Atoms -- Integrations ---------------------------------------------------
+export { default as WhatsAppButton } from './integrations/WhatsAppButton.vue'

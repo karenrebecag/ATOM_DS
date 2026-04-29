@@ -9,9 +9,7 @@
     "lint": "turbo run lint",
     "validate": "node scripts/validate-tokens.js",
     "release": "pnpm build && changeset publish",
-    "figma:pull": "pnpm --filter @atomchat.io/figma-sync pull --",
-    "figma:sync": "node scripts/sync-figma-api.js",
-    "figma:help": "echo 'Usage: FIGMA_TOKEN=xxx pnpm figma:pull <figma-url>' && echo 'Get token: https://www.figma.com/settings'"
+    "figma:sync": "node scripts/sync-figma-api.js"
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.1",
